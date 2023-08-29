@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAwake : State
 {
-    [SerializeField] float speed = 10f; //maybe derive from scriptable object with speeds for awake and asleep modes
+    [SerializeField] float speed = 10f;
     private Rigidbody2D rb;
     private float vert = 0f;
     private float horiz = 0f;
@@ -23,12 +23,14 @@ public class PlayerAwake : State
     {
         base.EnterState();
         spriteRenderer.color = Color.white;
+        rb.velocity = Vector2.zero;
     }
     
     public override void UpdateBehaviour()
     {
         vert = Input.GetAxis("Vertical");
         horiz = Input.GetAxis("Horizontal");
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StateController.TryEnqueueState<PlayerSleep>();

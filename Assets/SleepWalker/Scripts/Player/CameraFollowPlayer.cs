@@ -15,12 +15,12 @@ public class CameraFollowPlayer : MonoBehaviour
         target = GameObject.FindWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    // fixed update coz update makes it all snappy
+    void FixedUpdate()
     {
         //offset ensure player is in front of camera, and that camera follows pointer slightly
-        //offset = (dirOffset*FindMouseDirection());
-        offset = Vector3.zero; //take this out when you fix the other offset
+        offset = (dirOffset*FindMouseDirection());
+        //offset = Vector3.zero; //take this out when you fix the other offset
         offset.z = -10f;
 
         //transform.position = Vector3.Lerp(transform.position, target.position, damp) + offset;
@@ -29,14 +29,18 @@ public class CameraFollowPlayer : MonoBehaviour
 
     Vector3 FindMouseDirection()
     {
-        //find mouse x and mouse y
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        Vector3 mouseScreenPosition;
+        Vector3 mouseWorldPosition;
 
-        //normalise the vector it makes
-        Vector3 value = new Vector3(mouseX, mouseY, 0f);
-        value = value.normalized;
+        //get mouse pointer position
+        mouseScreenPosition = Input.mousePosition;
+        mouseScreenPosition.z = 0;
 
-        return value; ;
+        mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+
+        //find direction from current player to mouse
+        Vector3 mouseDirection = (mouseWorldPosition - target.transform.position).normalized;
+
+        return mouseDirection;
     }
 }
