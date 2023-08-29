@@ -16,6 +16,8 @@ public class StateController : MonoBehaviour
     private Queue<State> transitionQueue = new Queue<State>();
 
     private List<State> stateList = new List<State>();
+
+
     
     private void Awake()
     {
