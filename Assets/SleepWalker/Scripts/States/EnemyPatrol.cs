@@ -63,18 +63,18 @@ public class EnemyPatrol : State
         sequence.Play();
     }
 
-    private void AppendToSequence(Sequence sequence, PatrolNode nodeA, PatrolNode nodeB)
+    private void AppendToSequence(Sequence _sequence, PatrolNode _nodeA, PatrolNode _nodeB)
     {
         //Append the delay for the first node, if there is one
-        if (nodeA.delay > 0f)
-            sequence.AppendInterval(nodeA.delay);
+        if (_nodeA.delay > 0f)
+            _sequence.AppendInterval(_nodeA.delay);
 
-        Vector3 pos1 = nodeA.nodeTransform.position;
-        Vector3 pos2 = nodeB.nodeTransform.position;
+        Vector3 pos1 = _nodeA.nodeTransform.position;
+        Vector3 pos2 = _nodeB.nodeTransform.position;
         float distance = Vector3.Distance(pos1, pos2);
         float time = distance / speed;
         
-        sequence.Append(rb.DOMove(pos2, time).SetEase(Ease.Linear));
+        _sequence.Append(rb.DOMove(pos2, time).SetEase(Ease.Linear));
     }
 
     public override void ExitState()

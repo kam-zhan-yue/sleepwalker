@@ -39,4 +39,26 @@ public static class StaticHelper
     {
         return (_layerMask & (1 << _layer)) > 0;
     }
+    
+
+    /// <summary>
+    /// Draws a gizmo rectangle
+    /// </summary>
+    /// <param name="_center">Center.</param>
+    /// <param name="_size">Size.</param>
+    /// <param name="_color">Color.</param>
+    public static void DrawGizmoRectangle(Vector2 _center, Vector2 _size, Color _color)
+    {
+        Gizmos.color = _color;
+
+        Vector3 v3TopLeft = new(_center.x - _size.x/2, _center.y + _size.y/2, 0);
+        Vector3 v3TopRight = new(_center.x + _size.x/2, _center.y + _size.y/2, 0);;
+        Vector3 v3BottomRight = new(_center.x + _size.x/2, _center.y - _size.y/2, 0);;
+        Vector3 v3BottomLeft = new(_center.x - _size.x/2, _center.y - _size.y/2, 0);;
+
+        Gizmos.DrawLine(v3TopLeft,v3TopRight);
+        Gizmos.DrawLine(v3TopRight,v3BottomRight);
+        Gizmos.DrawLine(v3BottomRight,v3BottomLeft);
+        Gizmos.DrawLine(v3BottomLeft,v3TopLeft);
+    }
 }
