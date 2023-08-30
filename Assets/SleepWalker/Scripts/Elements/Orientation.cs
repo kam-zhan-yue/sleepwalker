@@ -20,6 +20,8 @@ public class Orientation : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Camera mainCamera;
+    private Vector3 positionLastFrame;
+    private Vector3 positionDifference;
     
     private void Awake()
     {
@@ -50,7 +52,16 @@ public class Orientation : MonoBehaviour
 
     private void ProcessAutomatic()
     {
-        
+        positionDifference = (transform.position - positionLastFrame);
+        if (positionDifference.x > 0f)
+        {
+            FlipModel(1);
+        }
+        else if (positionDifference.x < 0f)
+        {
+            FlipModel(-1);
+        }
+        positionLastFrame = transform.position;
     }
 
     private void ProcessMovement()
