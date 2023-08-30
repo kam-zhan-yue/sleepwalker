@@ -16,6 +16,8 @@ public class PlayerAwake : State
     private float horiz = 0f;
     private Vector2 speedVector = new();
     private SpriteRenderer spriteRenderer;
+    private Orientation orientation;
+    private Camera mainCamera;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -24,6 +26,8 @@ public class PlayerAwake : State
         rb = GetComponent<Rigidbody2D>();
         staminaBar = GetComponent<UIStaminaManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        orientation = GetComponent<Orientation>();
+        mainCamera = Camera.main;
     }
 
     public override void EnterState()
@@ -34,6 +38,7 @@ public class PlayerAwake : State
         staminaBar.UpdateMaxValue(awakeTime);
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
+        orientation.facingMode = Orientation.FacingMode.Movement;
     }
     
     public override void UpdateBehaviour()
@@ -41,12 +46,26 @@ public class PlayerAwake : State
         vert = Input.GetAxis("Vertical");
         horiz = Input.GetAxis("Horizontal");
 
+        UpdateOrientation();
+
         if (Input.GetKeyDown(KeyCode.Space) && canSleep)
         {
             StateController.TryEnqueueState<PlayerSleep>();
         }
 
         UpdateStamina();
+    }
+
+    private void UpdateOrientation()
+    {
+        if (horiz > 0)
+        {
+            orientation.facingRight = true;
+        }
+        else if (horiz < 0)
+        {
+            orientation.facingRight = false;
+        }
     }
 
     public override void FixedUpdateBehaviour()
@@ -96,14 +115,11 @@ public class PlayerAwake : State
 
     private Vector3 FindMouseDirection()
     {
-        Vector3 mouseScreenPosition;
-        Vector3 mouseWorldPosition;
-
         //get mouse pointer position
-        mouseScreenPosition = Input.mousePosition;
+        Vector3 mouseScreenPosition = Input.mousePosition;
         mouseScreenPosition.z = 0;
 
-        mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
 
         //find direction from current player to mouse
         Vector3 mouseDirection = (mouseWorldPosition - transform.position).normalized;

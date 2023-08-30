@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 468874112}
   - component: {fileID: 468874114}
   - component: {fileID: 468874115}
+  - component: {fileID: 468874116}
   - component: {fileID: 468874111}
   - component: {fileID: 468874110}
   m_Layer: 0
@@ -608,6 +609,20 @@ MonoBehaviour:
   onDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &468874116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468874109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d602d81b97b4e578d540905e010ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingMode: 0
+  facingRight: 0
 --- !u!1 &660481656
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +766,7 @@ GameObject:
   - component: {fileID: 1216463846}
   - component: {fileID: 1216463845}
   - component: {fileID: 1216463853}
+  - component: {fileID: 1216463854}
   - component: {fileID: 1216463850}
   - component: {fileID: 1216463849}
   - component: {fileID: 1216463851}
@@ -779,7 +795,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -850,8 +866,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc570d0b68875aa468baed8b33c5965b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -875,7 +890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1216463849
 MonoBehaviour:
@@ -949,6 +964,20 @@ MonoBehaviour:
   onDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1216463854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216463843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d602d81b97b4e578d540905e010ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingMode: 1
+  facingRight: 0
 --- !u!1 &1321597869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1113,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603580773
 GameObject:
@@ -1375,7 +1404,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2020352542
 GameObject:
