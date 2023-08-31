@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Orientation : MonoBehaviour
 {
@@ -19,14 +20,12 @@ public class Orientation : MonoBehaviour
     public bool facingRight;
 
     private SpriteRenderer spriteRenderer;
-    private Camera mainCamera;
     private Vector3 positionLastFrame;
     private Vector3 positionDifference;
     
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -79,9 +78,7 @@ public class Orientation : MonoBehaviour
     private void ProcessCursor()
     {
         float xPos = transform.position.x;
-        Vector3 mouseScreenPosition = Input.mousePosition;
-        mouseScreenPosition.z = 0;
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+        Vector3 mouseWorldPosition = CameraManager.instance.GetMousePosition();
         if(mouseWorldPosition.x >= xPos)
             FlipModel(1);
         else

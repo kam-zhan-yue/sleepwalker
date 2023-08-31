@@ -1,14 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class PlayerAwake : State
 {
-    [SerializeField] float speed = 10f;
-    [SerializeField] float dashSpeed = 25f;
-    [SerializeField] float awakeTime = 15f;
-    [SerializeField] private bool canDash = true;
-    [SerializeField] private bool canSleep = false;
+    [NonSerialized, ShowInInspector, ReadOnly] 
+    private float speed = 10f;
+    
+    [NonSerialized, ShowInInspector, ReadOnly] 
+    private float dashSpeed = 25f;
+    
+    [NonSerialized, ShowInInspector, ReadOnly] 
+    private float awakeTime = 15f;
+    
+    [NonSerialized, ShowInInspector, ReadOnly] 
+    private bool canDash = true;
+    
+    [NonSerialized, ShowInInspector, ReadOnly] 
+    private bool canSleep = false;
+    
     private float awakeTimer;
     private UIStaminaManager staminaBar;
     private Rigidbody2D rb;
@@ -17,9 +31,10 @@ public class PlayerAwake : State
     private Vector2 speedVector = new();
     private SpriteRenderer spriteRenderer;
     private Orientation orientation;
-    private Camera mainCamera;
+    
+    //Input Actions
+    private PlayerControls playerControls;
 
-    // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +42,11 @@ public class PlayerAwake : State
         staminaBar = GetComponent<UIStaminaManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         orientation = GetComponent<Orientation>();
-        mainCamera = Camera.main;
+
+        playerControls = new PlayerControls();
+        playerControls.PlayerInput.Enable();
+        playerControls.PlayerInput.Dash.started += DashStarted;
+        playerControls.PlayerInput.Sleep.started += SleepStarted;
     }
 
     public override void EnterState()
@@ -43,14 +62,9 @@ public class PlayerAwake : State
     
     public override void UpdateBehaviour()
     {
-        vert = Input.GetAxis("Vertical");
-        horiz = Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.Space) && canSleep)
-        {
-            StateController.TryEnqueueState<PlayerSleep>();
-        }
-
+        Vector2 moveInput = playerControls.PlayerInput.Move.ReadValue<Vector2>();
+        vert = moveInput.y;
+        horiz = moveInput.x;
         UpdateOrientation();
         UpdateStamina();
     }
@@ -77,11 +91,6 @@ public class PlayerAwake : State
             speedVector.x = horiz * speed;
             speedVector.y = vert * speed;
             rb.velocity = speedVector;
-
-            if (Input.GetButtonDown("Dash"))
-            {
-                Dash();
-            }
         }
     }
 
@@ -98,31 +107,34 @@ public class PlayerAwake : State
 
     private void Dash()
     {
-        rb.velocity = dashSpeed * FindMouseDirection();
+        rb.velocity = dashSpeed * CameraManager.instance.GetMouseDirection();
         canDash = false;
 
         //wait small time and then allow for dashing
         IEnumerator coroutine = DashCoolDown(0.1f);
         StartCoroutine(coroutine);
     }
-
-    IEnumerator DashCoolDown(float coolDownTime)
+    
+    private void DashStarted(InputAction.CallbackContext _callbackContext)
     {
-        yield return new WaitForSeconds(coolDownTime);
+        Dash();
+    }
+    
+    private void SleepStarted(InputAction.CallbackContext _callbackContext)
+    {
+        if(canSleep)
+            StateController.TryEnqueueState<PlayerSleep>();
+    }
+
+    IEnumerator DashCoolDown(float _coolDownTime)
+    {
+        yield return new WaitForSeconds(_coolDownTime);
         canDash = true;
     }
 
-    private Vector3 FindMouseDirection()
+    private void OnDestroy()
     {
-        //get mouse pointer position
-        Vector3 mouseScreenPosition = Input.mousePosition;
-        mouseScreenPosition.z = 0;
-
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
-
-        //find direction from current player to mouse
-        Vector3 mouseDirection = (mouseWorldPosition - transform.position).normalized;
-
-        return mouseDirection;
+        playerControls.PlayerInput.Disable();
+        playerControls.Dispose();
     }
 }
