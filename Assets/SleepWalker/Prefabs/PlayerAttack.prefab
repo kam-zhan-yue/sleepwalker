@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDirection: 0
+  aimingTransform: {fileID: 5158425076337626710}
   activationFrame: 5
   endFrame: 8
   sampleRate: 12

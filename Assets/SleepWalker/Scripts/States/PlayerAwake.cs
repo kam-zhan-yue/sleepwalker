@@ -61,7 +61,8 @@ public class PlayerAwake : State
         staminaBar.UpdateMaxValue(awakeTime);
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
-        orientation.facingMode = Orientation.FacingMode.Movement;
+        //Uncomment when done testing attack 1st September Alex
+        // orientation.facingMode = Orientation.FacingMode.Movement;
     }
     
     public override void UpdateBehaviour()

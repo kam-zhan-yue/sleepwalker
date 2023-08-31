@@ -11,6 +11,9 @@ public class Attack : MonoBehaviour
     public Damage.Direction damageDirection = Damage.Direction.None;
 
     [BoxGroup("Setup Variables")] 
+    public Transform aimingTransform;
+    
+    [BoxGroup("Setup Variables")] 
     public int activationFrame = 0;
     
     [BoxGroup("Setup Variables")] 
@@ -42,7 +45,7 @@ public class Attack : MonoBehaviour
     
     [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
     public string animationToTrigger = String.Empty;
-    
+
     //Damage Area Variables
     private GameObject damageArea;
     private BoxCollider2D damageAreaCollider;
@@ -58,7 +61,7 @@ public class Attack : MonoBehaviour
         Transform transform1 = transform;
         damageArea.transform.position = transform1.position;
         damageArea.transform.rotation = transform1.rotation;
-        damageArea.transform.SetParent(transform1);
+        damageArea.transform.SetParent(aimingTransform == null ? transform1 : aimingTransform);
         damageArea.transform.localScale = Vector3.one;
         damageArea.layer = gameObject.layer;
 
