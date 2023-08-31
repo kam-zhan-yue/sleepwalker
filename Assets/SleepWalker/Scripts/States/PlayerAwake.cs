@@ -111,7 +111,7 @@ public class PlayerAwake : State
 
     private void Dash()
     {
-        rb.velocity = dashSpeed * CameraManager.instance.GetMouseDirection();
+        rb.velocity = dashSpeed * CameraManager.instance.GetMouseDirection(transform.position);
         canDash = false;
 
         //wait small time and then allow for dashing

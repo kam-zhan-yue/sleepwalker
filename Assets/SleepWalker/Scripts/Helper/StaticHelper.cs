@@ -47,6 +47,14 @@ public static class StaticHelper
         float frameSecond = 1 / FPS;
         return _frame * frameSecond;
     }
+    
+    public static float GetFrameInSeconds(int _frame, float _sampleRate)
+    {
+        if (_sampleRate == 0)
+            return 0;
+        float frameSecond = 1 / _sampleRate;
+        return _frame * frameSecond;
+    }
 
     public static bool BelongsToLayerMask(int _layer, int _layerMask)
     {

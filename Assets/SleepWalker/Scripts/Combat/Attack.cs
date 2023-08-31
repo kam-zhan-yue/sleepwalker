@@ -14,6 +14,12 @@ public class Attack : MonoBehaviour
     public int activationFrame = 0;
     
     [BoxGroup("Setup Variables")] 
+    public int endFrame = 0;
+    
+    [BoxGroup("Setup Variables")] 
+    public int sampleRate = 0;
+
+    [BoxGroup("Setup Variables")] 
     public float activationTime = 0f;
 
     [BoxGroup("Setup Variables")] 
@@ -41,9 +47,12 @@ public class Attack : MonoBehaviour
     private GameObject damageArea;
     private BoxCollider2D damageAreaCollider;
     private DamageBox damageBox;
+    private Aiming aiming;
     
     private void Awake()
     {
+        aiming = GetComponent<Aiming>();
+        
         damageArea = new GameObject();
         damageArea.name = name + "DamageArea";
         Transform transform1 = transform;
@@ -79,15 +88,24 @@ public class Attack : MonoBehaviour
     {
         PlayAnimation();
         Timing.RunCoroutine(ActivateAttack());
+        if(aiming != null)
+            Timing.RunCoroutine(HandleAiming());
     }
     
-    IEnumerator<float> ActivateAttack()
+    private IEnumerator<float> ActivateAttack()
     {
-        float initialDelay = StaticHelper.GetFrameInSeconds(activationFrame);
+        float initialDelay = StaticHelper.GetFrameInSeconds(activationFrame, sampleRate);
         yield return Timing.WaitForSeconds(initialDelay);
         EnableDamageArea();
         yield return Timing.WaitForSeconds(activationTime);
         DisableDamageArea();
+    }
+
+    private IEnumerator<float> HandleAiming()
+    {
+        aiming.Toggle(false);
+        yield return Timing.WaitForSeconds(StaticHelper.GetFrameInSeconds(endFrame, sampleRate));
+        aiming.Toggle(true);
     }
 
     public void Deactivate()

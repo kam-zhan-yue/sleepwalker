@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         //offset ensure player is in front of camera, and that camera follows pointer slightly
-        offset = (dirOffset*GetMouseDirection());
+        offset = (dirOffset*GetMouseDirection(target.transform.position));
         //offset = Vector3.zero; //take this out when you fix the other offset
         offset.z = -10f;
 
@@ -54,7 +54,7 @@ public class CameraManager : MonoBehaviour
         return mouseWorldPosition;
     }
 
-    public Vector3 GetMouseDirection()
+    public Vector3 GetMouseDirection(Vector3 _targetPosition)
     {
         //get mouse pointer position
         Vector3 mouseScreenPosition = Mouse.current.position.ReadValue();
@@ -63,7 +63,7 @@ public class CameraManager : MonoBehaviour
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
 
         //find direction from current player to mouse
-        Vector3 mouseDirection = (mouseWorldPosition - target.transform.position).normalized;
+        Vector3 mouseDirection = (mouseWorldPosition - _targetPosition).normalized;
 
         return mouseDirection;
     }
