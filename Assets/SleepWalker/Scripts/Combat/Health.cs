@@ -12,6 +12,7 @@ public class Health : MonoBehaviour, IDamageTarget
 
 
     [BoxGroup("Events")] 
+    public UnityEvent onDamageTaken;
     public UnityEvent onDead;
 
     private void Awake()
@@ -27,6 +28,7 @@ public class Health : MonoBehaviour, IDamageTarget
     public void TakeDamage(Damage _damage)
     {
         currentHealth -= _damage.damage;
+        onDamageTaken?.Invoke();
         CheckDead();
     }
 
@@ -35,7 +37,7 @@ public class Health : MonoBehaviour, IDamageTarget
         if (currentHealth <= 0f)
         {
             onDead?.Invoke();
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

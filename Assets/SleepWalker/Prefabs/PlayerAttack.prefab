@@ -162,7 +162,7 @@ MonoBehaviour:
     m_Bits: 8192
   areaOffset: {x: 0, y: 0.04}
   areaSize: {x: 5.51, y: 2.14}
-  damage: 10
+  damage: 60
   usesAnimation: 1
   animator: {fileID: 3978038592194075979}
   animationToTrigger: Koala_Sword_Slash1

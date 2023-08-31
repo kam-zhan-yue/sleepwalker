@@ -101,4 +101,9 @@ public class EnemyPatrol : State
     {
         return patrolType == PatrolType.Loop && nodeList.Count > 1;
     }
+
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
+    }
 }
