@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,9 +9,12 @@ public class Attack : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] 
     public Damage.Direction damageDirection = Damage.Direction.None;
+
+    [BoxGroup("Setup Variables")] 
+    public int activationFrame = 0;
     
     [BoxGroup("Setup Variables")] 
-    public float initialDelay = 0f;
+    public float activationTime = 0f;
 
     [BoxGroup("Setup Variables")] 
     public LayerMask targetLayerMask;
@@ -22,6 +27,15 @@ public class Attack : MonoBehaviour
     
     [BoxGroup("Setup Variables")] 
     public float damage = 0f;
+
+    [BoxGroup("Animation Variables")] 
+    public bool usesAnimation = false;
+
+    [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
+    public Animator animator;
+    
+    [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
+    public string animationToTrigger = String.Empty;
     
     //Damage Area Variables
     private GameObject damageArea;
@@ -54,6 +68,48 @@ public class Attack : MonoBehaviour
         damageBox.owner = gameObject;
         damageBox.boxCollider2D = damageAreaCollider;
         damageBox.direction = damageDirection;
+    }
+
+    private void Start()
+    {
+        DisableDamageArea();
+    }
+
+    public void Activate()
+    {
+        PlayAnimation();
+        Timing.RunCoroutine(ActivateAttack());
+    }
+    
+    IEnumerator<float> ActivateAttack()
+    {
+        float initialDelay = StaticHelper.GetFrameInSeconds(activationFrame);
+        yield return Timing.WaitForSeconds(initialDelay);
+        EnableDamageArea();
+        yield return Timing.WaitForSeconds(activationTime);
+        DisableDamageArea();
+    }
+
+    public void Deactivate()
+    {
+        Timing.KillCoroutines();
+        DisableDamageArea();
+    }
+
+    private void PlayAnimation()
+    {
+        if (usesAnimation && animator != null)
+            animator.Play(animationToTrigger);
+    }
+
+    private void DisableDamageArea()
+    {
+        damageAreaCollider.enabled = false;
+    }
+
+    private void EnableDamageArea()
+    {
+        damageAreaCollider.enabled = true;
     }
 
     private void OnDrawGizmos()

@@ -35,6 +35,9 @@ public class PlayerAwake : State
     //Input Actions
     private PlayerControls playerControls;
 
+    [FoldoutGroup("Testing")] 
+    public Attack playerAttack;
+
     protected override void Awake()
     {
         base.Awake();
@@ -47,6 +50,7 @@ public class PlayerAwake : State
         playerControls.PlayerInput.Enable();
         playerControls.PlayerInput.Dash.started += DashStarted;
         playerControls.PlayerInput.Sleep.started += SleepStarted;
+        playerControls.PlayerInput.Fire.started += FireStarted;
     }
 
     public override void EnterState()
@@ -124,6 +128,12 @@ public class PlayerAwake : State
     {
         if(canSleep)
             StateController.TryEnqueueState<PlayerSleep>();
+    }
+    
+    private void FireStarted(InputAction.CallbackContext _callbackContext)
+    {
+        if(playerAttack != null)
+            playerAttack.Activate();
     }
 
     IEnumerator DashCoolDown(float _coolDownTime)

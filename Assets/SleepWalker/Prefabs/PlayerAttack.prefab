@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6439376788038639215}
   - component: {fileID: 8611532371416308863}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: PlayerAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f347bd1d488140b49e51eca6fed06d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDelay: 0
-  areaOffset: {x: 2, y: 0}
-  areaSize: {x: 2, y: 2}
+  damageDirection: 0
+  activationFrame: 5
+  activationTime: 0.05
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  areaOffset: {x: 0, y: 0.04}
+  areaSize: {x: 5.51, y: 2.14}
   damage: 10
+  usesAnimation: 1
+  animator: {fileID: 3978038592194075979}
+  animationToTrigger: Koala_Sword_Slash1

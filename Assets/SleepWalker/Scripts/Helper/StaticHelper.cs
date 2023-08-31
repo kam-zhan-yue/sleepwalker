@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class StaticHelper
 {
+    private const float FPS = 24;
+    
     public static void AddOnce<T>(this HashSet<T> _list, T _item)
     {
         if (_item != null && !_list.Contains(_item))
@@ -38,6 +40,12 @@ public static class StaticHelper
         for (int i = 0; i < count; ++i)
             array[i] = _list[i];
         return array;
+    }
+
+    public static float GetFrameInSeconds(int _frame)
+    {
+        float frameSecond = 1 / FPS;
+        return _frame * frameSecond;
     }
 
     public static bool BelongsToLayerMask(int _layer, int _layerMask)
