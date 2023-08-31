@@ -24,6 +24,11 @@ public static class StaticHelper
         _gameObject.SetActive(_active);
     }
 
+    public static bool BelongsToLayerMask(this GameObject _gameObject, LayerMask _layerMask)
+    {
+        return ((1 << _gameObject.layer) & _layerMask) != 0;
+    }
+
     public static T[] Copy<T>(this List<T> _list)
     {
         if (_list == null)

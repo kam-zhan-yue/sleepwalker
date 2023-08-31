@@ -46,13 +46,12 @@ public class PlayerAwake : State
         vert = Input.GetAxis("Vertical");
         horiz = Input.GetAxis("Horizontal");
 
-        UpdateOrientation();
-
         if (Input.GetKeyDown(KeyCode.Space) && canSleep)
         {
             StateController.TryEnqueueState<PlayerSleep>();
         }
 
+        UpdateOrientation();
         UpdateStamina();
     }
 

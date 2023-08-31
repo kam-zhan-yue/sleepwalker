@@ -152,6 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDelay: 0
-  areaOffset: {x: 1, y: 0}
-  areaSize: {x: 1, y: 1}
+  areaOffset: {x: 2, y: 0}
+  areaSize: {x: 2, y: 2}
   damage: 10

@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Damage
 {
+    public enum Direction
+    {
+        None = 0,
+        BasedOnOwnerPosition = 1
+    }
+    
     public float damage;
 
     private IDamageSource source;
