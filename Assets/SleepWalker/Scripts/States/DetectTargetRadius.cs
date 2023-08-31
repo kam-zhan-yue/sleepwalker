@@ -9,11 +9,10 @@ public sealed class DetectTargetRadius : Decision
     [BoxGroup("Setup Variables")] public LayerMask targetLayerMask;
     [BoxGroup("Setup Variables")] public bool canTargetSelf;
     [BoxGroup("Setup Variables")] public bool obstacleDetection;
-    [ShowIf("obstacleDetection")]
-    [BoxGroup("Setup Variables")] public LayerMask obstacleLayerMask;
-
     [BoxGroup("Setup Variables")] public int overlapMaximum = 10;
 
+
+    private readonly LayerMask obstacleLayerMask = LayerHelper.obstaclesLayerMask;
     private Collider2D[] results;
     private List<Transform> potentialTargets = new();
     private RaycastHit2D[] hits = new RaycastHit2D[10];
