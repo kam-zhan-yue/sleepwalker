@@ -135,6 +135,7 @@ public class Attack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        StaticHelper.DrawGizmoRectangle(transform.position + (Vector3)areaOffset, areaSize, Color.red);
+        Gizmos.matrix = transform.localToWorldMatrix;
+        StaticHelper.DrawGizmoRectangle(Vector3.zero + (Vector3)areaOffset, areaSize, Color.red);
     }
 }
