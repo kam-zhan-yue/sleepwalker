@@ -6,10 +6,7 @@ public class AimingCursor : Aiming
 {
     private void Update()
     {
-        if (active)
-        {
-            Vector3 mouseDirection = CameraManager.instance.GetMouseDirection(transform.position);
-            AimWeapon(mouseDirection);
-        }
+        Vector3 mouseDirection = CameraManager.instance.GetMouseDirection(transform.position);
+        AimWeapon(mouseDirection);
     }
 }

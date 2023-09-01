@@ -26,6 +26,7 @@ public class Orientation : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        FlipModel(facingRight ? 1 : -1);
     }
 
     private void Update()
@@ -65,14 +66,7 @@ public class Orientation : MonoBehaviour
 
     private void ProcessMovement()
     {
-        if (facingRight)
-        {
-            FlipModel(1);
-        }
-        else
-        {
-            FlipModel(-1);
-        }
+        FlipModel(facingRight ? 1 : -1);
     }
 
     private void ProcessCursor()

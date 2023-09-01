@@ -17,7 +17,6 @@ public class StateController : MonoBehaviour
 
     private List<State> stateList = new List<State>();
 
-
     
     private void Awake()
     {

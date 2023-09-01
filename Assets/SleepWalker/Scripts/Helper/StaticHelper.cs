@@ -60,6 +60,17 @@ public static class StaticHelper
     {
         return (_layerMask & (1 << _layer)) > 0;
     }
+
+    public static Vector3 DirectionToObject(this Transform _transformA, Transform _transformB)
+    {
+        return (_transformB.position - _transformA.position).normalized;
+    }
+    
+    public static float DistanceToObject(this Transform _transformA, Transform _transformB)
+    {
+        float distance = Vector3.Distance(_transformA.position, _transformB.position);
+        return distance;
+    }
     
 
     /// <summary>

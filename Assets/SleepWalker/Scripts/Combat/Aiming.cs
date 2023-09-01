@@ -5,8 +5,10 @@ public class Aiming : MonoBehaviour
     public SpriteRenderer weapon;
     public bool active = false;
 
-    protected void AimWeapon(Vector2 _direction)
+    public void AimWeapon(Vector2 _direction)
     {
+        if (!active)
+            return;
         float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
         weapon.flipY = angle <= -90f || angle > 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);

@@ -7,42 +7,19 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [BoxGroup("Setup Variables")] 
-    public Damage.Direction damageDirection = Damage.Direction.None;
-
-    [BoxGroup("Setup Variables")] 
-    public Transform aimingTransform;
-    
-    [BoxGroup("Setup Variables")] 
-    public int activationFrame = 0;
-    
-    [BoxGroup("Setup Variables")] 
-    public int endFrame = 0;
-    
-    [BoxGroup("Setup Variables")] 
-    public int sampleRate = 0;
-
-    [BoxGroup("Setup Variables")] 
-    public float activationTime = 0f;
-
-    [BoxGroup("Setup Variables")] 
-    public LayerMask targetLayerMask;
-    
-    [BoxGroup("Setup Variables")] 
-    public Vector2 areaOffset;
-    
-    [BoxGroup("Setup Variables")] 
-    public Vector2 areaSize;
-    
-    [BoxGroup("Setup Variables")] 
-    public float damage = 0f;
-
-    [BoxGroup("Animation Variables")] 
-    public bool usesAnimation = false;
-
+    [BoxGroup("Setup Variables")] public Damage.Direction damageDirection = Damage.Direction.None;
+    [BoxGroup("Setup Variables")] public Transform aimingTransform;
+    [BoxGroup("Setup Variables")] public int activationFrame = 0;
+    [BoxGroup("Setup Variables")] public int endFrame = 0;
+    [BoxGroup("Setup Variables")] public int sampleRate = 0;
+    [BoxGroup("Setup Variables")] public float activationTime = 0f;
+    [BoxGroup("Setup Variables")] public LayerMask targetLayerMask;
+    [BoxGroup("Setup Variables")] public Vector2 areaOffset;
+    [BoxGroup("Setup Variables")] public Vector2 areaSize;
+    [BoxGroup("Setup Variables")] public float damage = 0f;
+    [BoxGroup("Animation Variables")] public bool usesAnimation = false;
     [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
     public Animator animator;
-    
     [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
     public string animationToTrigger = String.Empty;
 
@@ -82,26 +59,32 @@ public class Attack : MonoBehaviour
         damageBox.direction = damageDirection;
     }
 
+    public Aiming GetAiming()
+    {
+        return aiming;
+    }
+
     private void Start()
     {
         DisableDamageArea();
     }
 
-    public void Activate()
+    public void Activate(Action _callback = null)
     {
         PlayAnimation();
-        Timing.RunCoroutine(ActivateAttack());
+        Timing.RunCoroutine(ActivateAttack(_callback));
         if(aiming != null)
             Timing.RunCoroutine(HandleAiming());
     }
     
-    private IEnumerator<float> ActivateAttack()
+    private IEnumerator<float> ActivateAttack(Action _callback = null)
     {
         float initialDelay = StaticHelper.GetFrameInSeconds(activationFrame, sampleRate);
         yield return Timing.WaitForSeconds(initialDelay);
         EnableDamageArea();
         yield return Timing.WaitForSeconds(activationTime);
         DisableDamageArea();
+        _callback?.Invoke();
     }
 
     private IEnumerator<float> HandleAiming()
@@ -137,5 +120,10 @@ public class Attack : MonoBehaviour
     {
         Gizmos.matrix = transform.localToWorldMatrix;
         StaticHelper.DrawGizmoRectangle(Vector3.zero + (Vector3)areaOffset, areaSize, Color.red);
+    }
+
+    private void OnDestroy()
+    {
+        Deactivate();
     }
 }
