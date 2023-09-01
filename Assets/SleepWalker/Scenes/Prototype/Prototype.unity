@@ -1149,6 +1149,7 @@ GameObject:
   - component: {fileID: 1216463849}
   - component: {fileID: 1216463851}
   - component: {fileID: 1216463852}
+  - component: {fileID: 1216463855}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1311,6 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sleepTime: 5
+  playerAttack: {fileID: 0}
 --- !u!114 &1216463852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1371,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingMode: 2
   facingRight: 0
+--- !u!58 &1216463855
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216463843}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
 --- !u!1 &1220954412
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class PlayerAwake : State
     private float speed = 10f;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
-    private float dashSpeed = 25f;
+    private float dashSpeed = 50f;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private float awakeTime = 15f;
@@ -50,7 +50,8 @@ public class PlayerAwake : State
         playerControls.PlayerInput.Enable();
         playerControls.PlayerInput.Dash.started += DashStarted;
         playerControls.PlayerInput.Sleep.started += SleepStarted;
-        playerControls.PlayerInput.Fire.started += FireStarted;
+        //not needed because player can't attack while awake (keeping it commented in case we use it later)
+        //playerControls.PlayerInput.Fire.started += FireStarted;
     }
 
     public override void EnterState()
@@ -112,7 +113,12 @@ public class PlayerAwake : State
 
     private void Dash()
     {
-        rb.velocity = dashSpeed * CameraManager.instance.GetMouseDirection(transform.position);
+        //dash vector needs to be normalized
+        Vector3 reference = CameraManager.instance.GetMouseDirection(transform.position);
+        Vector2 dashVector = new Vector2(reference.x, reference.y);
+        dashVector = dashVector.normalized;
+
+        rb.velocity = dashSpeed * dashVector;
         canDash = false;
 
         //wait small time and then allow for dashing
@@ -122,7 +128,8 @@ public class PlayerAwake : State
     
     private void DashStarted(InputAction.CallbackContext _callbackContext)
     {
-        Dash();
+        if (StateController.currentState == this && canDash)
+            Dash();
     }
     
     private void SleepStarted(InputAction.CallbackContext _callbackContext)

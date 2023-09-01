@@ -14,7 +14,7 @@ public class CameraManager : MonoBehaviour
     private float damp = 0.3f;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
-    private float dirOffset = 1f;
+    private float dirOffset = 1.5f;
     
     private Transform target;
     
