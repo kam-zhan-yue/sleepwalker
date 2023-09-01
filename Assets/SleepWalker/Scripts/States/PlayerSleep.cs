@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerSleep : State
@@ -17,13 +19,24 @@ public class PlayerSleep : State
     public Attack playerAttack;
 
     //ai actions
-    private List<GameObject> targets = new List<GameObject>();
+    private List<Transform> targets = new List<Transform>();
+    private Vector2 target;
     private CircleCollider2D trigger;
     const int BEGIN = -1;
     const int ROAM = 0;
     const int APPROACH = 1;
     const int LUNGE = 2;
     private int aiState = BEGIN;
+    private bool followTarget = false;
+
+    [Header("AI Behaviour")]
+    [SerializeField] private float maxTargetDistance = 7f;
+    [SerializeField] private float minTargetDistance = 1f;
+    [SerializeField] private float bufferDistance = 1f;
+    [SerializeField] private float speed = 10f;
+
+    [Header("Debugging")]
+    [SerializeField] TMPro.TextMeshProUGUI stateText;
 
     protected override void Awake()
     {
@@ -34,17 +47,6 @@ public class PlayerSleep : State
 
         playerControls = new PlayerControls();
         playerControls.PlayerInput.Enable();
-
-        //ai initialisation
-        trigger = GetComponent<CircleCollider2D>();
-        trigger.radius = 0.1f;
-        IEnumerator coroutine = Begin(5f);
-        StartCoroutine(coroutine);
-
-        if (!trigger.isTrigger)
-        {
-            trigger.isTrigger = true;
-        }
     }
 
     public override void EnterState()
@@ -54,6 +56,17 @@ public class PlayerSleep : State
         staminaBar.UpdateMaxValue(sleepTime);
         spriteRenderer.color = Color.red;
         rb.velocity = Vector2.zero;
+
+        //ai initialisation
+        trigger = GetComponent<CircleCollider2D>();
+        trigger.radius = 0.01f;
+        IEnumerator coroutine = Begin(5f);
+        StartCoroutine(coroutine);
+
+        if (!trigger.isTrigger)
+        {
+            trigger.isTrigger = true;
+        }
     }
 
     public override void UpdateBehaviour()
@@ -61,9 +74,49 @@ public class PlayerSleep : State
         sleepTimer -= Time.deltaTime;
         staminaBar.UpdateDisplayValue(sleepTimer);
 
+        stateText.text = $"Sleep State: {aiState}";
+
         if (sleepTimer <= 0f)
         {
             StateController.TryEnqueueState<PlayerAwake>();
+        }
+
+        if (followTarget)
+        {
+            if (aiState == ROAM)
+            {
+                //check if state needs to change
+                if (targets.Count > 0)
+                {
+                    Approach(targets[Random.Range(0, targets.Count - 1)].position);
+                }
+            }
+
+            //ai behaviour
+            if (Vector2.Distance(transform.position, target) < 1f)
+            {
+                if (targets.Count > 0)
+                {
+                    Approach(targets[Random.Range(0, targets.Count-1)].position);
+                }
+                else
+                {
+                    Roam();
+                }
+            }
+
+            rb.velocity = speed * (target - (Vector2)transform.position).normalized;
+        }  else
+        {
+            //make sure this doesn't overwrite fallback
+            rb.velocity = Vector2.zero;
+        }
+
+        Debug.DrawLine(transform.position,target, Color.green);
+
+        foreach (Transform t in targets)
+        {
+            Debug.DrawLine(transform.position, t.position, Color.yellow);
         }
     }
 
@@ -88,15 +141,48 @@ public class PlayerSleep : State
             Roam();
         }
 
+        followTarget = true;
+
         yield return null;
     }
     private void Roam() //when no one enters the trigger, find a random point and chase it
     {
         aiState = ROAM;
+
+        //find random direction
+        Vector2 direction = new Vector2(Random.Range(-1f,1f), Random.Range(-1f, 1f));
+        direction = direction.normalized;
+
+        //check if there's enough space to move in that direction
+        RaycastHit hit;
+        Vector2 targetSpot;
+        float avgScale = transform.localScale.x + transform.localScale.y / 2f;
+
+        if (Physics.Raycast(transform.position, direction, out hit, maxTargetDistance))
+        {
+            if (hit.distance < minTargetDistance + bufferDistance)
+            {
+                //if no, repeat this process
+                Roam();
+                return;
+            } else
+            {
+                //if yes, set that as the target
+                targetSpot = (Vector2)transform.position + ((hit.distance - ((avgScale / 2f)+bufferDistance)) * direction);
+            }
+        } else
+        {
+            //if yes, set that as the target
+            targetSpot = (Vector2)transform.position + ((maxTargetDistance - (avgScale / 2f)) * direction);
+        }
+
+        target = targetSpot;
     }
-    private void Approach() //when someone enters the trigger, find their position and chase it
+    private void Approach(Vector2 approach) //when someone enters the trigger, find their position and chase it
     {
         aiState = APPROACH;
+
+        target = approach;
     }
     private void Lunge() //when someone is close enough, attack them
     {
@@ -105,9 +191,21 @@ public class PlayerSleep : State
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Sleep Gas")
+        GameObject col = collision.gameObject;
+        //add pontential targets to list
+        if (col.layer == LayerMask.NameToLayer("Enemies") || col.layer == LayerMask.NameToLayer("Barrel"))
         {
+            targets.Add(col.transform);
+        }
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        GameObject col = collision.gameObject;
+        //remove targets as they move away
+        if (col.layer == LayerMask.NameToLayer("Enemies") || col.layer == LayerMask.NameToLayer("Barrel"))
+        {
+            targets.Remove(col.transform);
         }
     }
 
