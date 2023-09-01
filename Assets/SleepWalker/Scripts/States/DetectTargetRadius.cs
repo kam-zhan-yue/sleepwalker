@@ -46,7 +46,7 @@ public sealed class DetectTargetRadius : Decision
             }
             potentialTargets.Add(results[i].gameObject.transform);
         }
-
+        
         //If there are no targets, then return false
         if (potentialTargets.Count <= 0)
             return false;

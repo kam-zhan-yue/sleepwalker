@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerSleep : State
 {
+    [BoxGroup("Setup Variables")] public CircleCollider2D trigger;
     public float sleepTime = 5f;
     private float sleepTimer = 0f;
     private SpriteRenderer spriteRenderer;
@@ -21,7 +22,6 @@ public class PlayerSleep : State
     //ai actions
     private List<Transform> targets = new List<Transform>();
     private Vector2 target;
-    private CircleCollider2D trigger;
     const int BEGIN = -1;
     const int ROAM = 0;
     const int APPROACH = 1;
@@ -47,6 +47,8 @@ public class PlayerSleep : State
 
         playerControls = new PlayerControls();
         playerControls.PlayerInput.Enable();
+        if(trigger == null)
+            Debug.LogError("Trigger not found.");
     }
 
     public override void EnterState()
@@ -58,7 +60,6 @@ public class PlayerSleep : State
         rb.velocity = Vector2.zero;
 
         //ai initialisation
-        trigger = GetComponent<CircleCollider2D>();
         trigger.radius = 0.01f;
         IEnumerator coroutine = Begin(5f);
         StartCoroutine(coroutine);
@@ -74,7 +75,7 @@ public class PlayerSleep : State
         sleepTimer -= Time.deltaTime;
         staminaBar.UpdateDisplayValue(sleepTimer);
 
-        stateText.text = $"Sleep State: {aiState}";
+        // stateText.text = $"Sleep State: {aiState}";
 
         if (sleepTimer <= 0f)
         {

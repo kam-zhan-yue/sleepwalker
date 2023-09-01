@@ -89,6 +89,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2130785485066996477}
     m_Modifications:
+    - target: {fileID: 4861231555087974023, guid: 9b670ee8312c04ad9915f7ec2d84ffc5,
+        type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 2130785485066996473}
     - target: {fileID: 4861231555087974025, guid: 9b670ee8312c04ad9915f7ec2d84ffc5,
         type: 3}
       propertyPath: m_RootOrder
@@ -291,6 +296,18 @@ MonoBehaviour:
   aggroRange: 5
   resetDecision: 1
   decision: {fileID: 1220954415}
+--- !u!114 &2130785485066996473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8965463861423883276, guid: c572d8b3b5555468cae4df82c61427ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 7059862983177916149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130785485066996420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d602d81b97b4e578d540905e010ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2130785485066996474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8965463861423883279, guid: c572d8b3b5555468cae4df82c61427ed,
