@@ -28,8 +28,10 @@ public class EnemyAggro : State
 
     public override void EnterState()
     {
+        Debug.Log("Enter State");
         base.EnterState();
-        aiming = attack.GetAiming();
+        aiming = attack.aiming;
+        aiming.idle = false;
         Timing.RunCoroutine(AggroRoutine());
     }
     
@@ -37,13 +39,16 @@ public class EnemyAggro : State
     {
         while (CanAggro())
         {
+            Debug.Log("Aggro");
             AimTarget();
             MoveTowardsTarget();
             if (CanAttack())
                 Timing.WaitUntilDone(AttackRoutine());
             yield return Timing.WaitForOneFrame;
         }
+        Debug.Log("Leaving State");
         StateController.EnterDefaultState();
+        yield return 0f;
     }
 
     private IEnumerator<float> AttackRoutine()
@@ -95,9 +100,12 @@ public class EnemyAggro : State
     public override void ExitState()
     {
         base.ExitState();
+        Debug.Log("Exiting State");
+        Timing.KillCoroutines();
         attack.Deactivate();
         rb.velocity = Vector2.zero;
         aiming.ResetAim();
+        aiming.idle = true;
         if(resetDecision)
             decision.ToggleActive(true);
     }

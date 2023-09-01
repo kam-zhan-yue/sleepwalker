@@ -78,6 +78,7 @@ public sealed class DetectTargetRadius : Decision
                 //If there are no hits, then return the target
                 if (hitCount == 0)
                 {
+                    Debug.Log("Player Hit");
                     brain.target = potentialTargets[i].gameObject.transform;
                     return true;
                 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AimingCursor : Aiming
 {
-    private void Update()
+    protected override void Update()
     {
         Vector3 mouseDirection = CameraManager.instance.GetMouseDirection(transform.position);
         AimWeapon(mouseDirection);

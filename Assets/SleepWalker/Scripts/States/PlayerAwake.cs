@@ -45,13 +45,19 @@ public class PlayerAwake : State
         staminaBar = GetComponent<UIStaminaManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         orientation = GetComponent<Orientation>();
-
+        
         playerControls = new PlayerControls();
         playerControls.PlayerInput.Enable();
         playerControls.PlayerInput.Dash.started += DashStarted;
         playerControls.PlayerInput.Sleep.started += SleepStarted;
         //not needed because player can't attack while awake (keeping it commented in case we use it later)
-        //playerControls.PlayerInput.Fire.started += FireStarted;
+        playerControls.PlayerInput.Fire.started += FireStarted;
+    }
+
+    private void Start()
+    {
+        //Avoid messy null pointers due to different awake calls
+        playerAttack.aiming.idle = false;
     }
 
     public override void EnterState()

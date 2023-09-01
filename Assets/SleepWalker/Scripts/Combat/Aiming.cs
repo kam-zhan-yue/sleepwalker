@@ -2,8 +2,29 @@ using UnityEngine;
 
 public class Aiming : MonoBehaviour
 {
+    public Orientation orientation;
     public SpriteRenderer weapon;
     public bool active = false;
+    public bool idle = true;
+    
+    private bool hasOrientation = false;
+
+    private void Awake()
+    {
+        hasOrientation = orientation != null;
+    }
+
+    protected virtual void Update()
+    {
+        if (idle && hasOrientation)
+        {
+            weapon.flipX = !orientation.facingRight;
+        }
+        else
+        {
+            weapon.flipX = false;
+        }
+    }
 
     public void AimWeapon(Vector2 _direction)
     {

@@ -28,7 +28,9 @@ public class Attack : MonoBehaviour
     private GameObject damageArea;
     private BoxCollider2D damageAreaCollider;
     private DamageBox damageBox;
-    private Aiming aiming;
+    
+    [HideInInspector]
+    public Aiming aiming;
     private bool cooldown = false;
     
     private void Awake()
@@ -60,12 +62,7 @@ public class Attack : MonoBehaviour
         damageBox.boxCollider2D = damageAreaCollider;
         damageBox.direction = damageDirection;
     }
-
-    public Aiming GetAiming()
-    {
-        return aiming;
-    }
-
+    
     private void Start()
     {
         DisableDamageArea();

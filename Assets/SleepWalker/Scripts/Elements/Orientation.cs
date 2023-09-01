@@ -55,10 +55,12 @@ public class Orientation : MonoBehaviour
         positionDifference = (transform.position - positionLastFrame);
         if (positionDifference.x > 0f)
         {
+            facingRight = true;
             FlipModel(1);
         }
         else if (positionDifference.x < 0f)
         {
+            facingRight = false;
             FlipModel(-1);
         }
         positionLastFrame = transform.position;
