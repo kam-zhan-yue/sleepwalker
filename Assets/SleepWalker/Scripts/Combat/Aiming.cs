@@ -18,4 +18,10 @@ public class Aiming : MonoBehaviour
     {
         active = _active;
     }
+
+    public void ResetAim()
+    {
+        weapon.flipY = false;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
 }

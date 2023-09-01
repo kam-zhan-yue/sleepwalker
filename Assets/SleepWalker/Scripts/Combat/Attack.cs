@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [BoxGroup("Setup Variables")] public float damage = 0f;
+    [BoxGroup("Setup Variables")] public float attackCooldown = 0f;
     [BoxGroup("Setup Variables")] public Damage.Direction damageDirection = Damage.Direction.None;
     [BoxGroup("Setup Variables")] public Transform aimingTransform;
     [BoxGroup("Setup Variables")] public int activationFrame = 0;
@@ -16,7 +18,6 @@ public class Attack : MonoBehaviour
     [BoxGroup("Setup Variables")] public LayerMask targetLayerMask;
     [BoxGroup("Setup Variables")] public Vector2 areaOffset;
     [BoxGroup("Setup Variables")] public Vector2 areaSize;
-    [BoxGroup("Setup Variables")] public float damage = 0f;
     [BoxGroup("Animation Variables")] public bool usesAnimation = false;
     [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
     public Animator animator;
@@ -28,6 +29,7 @@ public class Attack : MonoBehaviour
     private BoxCollider2D damageAreaCollider;
     private DamageBox damageBox;
     private Aiming aiming;
+    private bool cooldown = false;
     
     private void Awake()
     {
@@ -69,12 +71,24 @@ public class Attack : MonoBehaviour
         DisableDamageArea();
     }
 
+    public bool InCooldown()
+    {
+        return cooldown;
+    }
+
     public void Activate(Action _callback = null)
     {
         PlayAnimation();
-        Timing.RunCoroutine(ActivateAttack(_callback));
-        if(aiming != null)
-            Timing.RunCoroutine(HandleAiming());
+        Timing.RunCoroutine(CooldownCountdown());
+        if (aiming)
+        {
+            Timing.RunCoroutine(ActivateAttack());
+            Timing.RunCoroutine(HandleAiming(_callback));
+        }
+        else
+        {
+            Timing.RunCoroutine(ActivateAttack(_callback));
+        }
     }
     
     private IEnumerator<float> ActivateAttack(Action _callback = null)
@@ -87,15 +101,24 @@ public class Attack : MonoBehaviour
         _callback?.Invoke();
     }
 
-    private IEnumerator<float> HandleAiming()
+    private IEnumerator<float> HandleAiming(Action _callback = null)
     {
         aiming.Toggle(false);
         yield return Timing.WaitForSeconds(StaticHelper.GetFrameInSeconds(endFrame, sampleRate));
         aiming.Toggle(true);
+        _callback?.Invoke();
+    }
+
+    private IEnumerator<float> CooldownCountdown()
+    {
+        cooldown = true;
+        yield return Timing.WaitForSeconds(attackCooldown);
+        cooldown = false;
     }
 
     public void Deactivate()
     {
+        cooldown = false;
         Timing.KillCoroutines();
         DisableDamageArea();
     }

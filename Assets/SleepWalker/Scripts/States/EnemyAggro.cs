@@ -10,6 +10,9 @@ public class EnemyAggro : State
     [BoxGroup("Setup Variables")] public float speed;
     [BoxGroup("Setup Variables")] public float attackDistance;
     [BoxGroup("Setup Variables")] public float aggroRange;
+    [BoxGroup("Setup Variables")] public bool resetDecision;
+    [ShowIf("resetDecision")]
+    [BoxGroup("Setup Variables")] public Decision decision;
     
     [ShowInInspector, NonSerialized, ReadOnly]
     public Transform target;
@@ -67,13 +70,21 @@ public class EnemyAggro : State
     private void MoveTowardsTarget()
     {
         // Calculate the direction from this object to the target
-        Vector3 direction = transform.DirectionToObject(target);
-        rb.velocity = direction * speed;
+        float distanceToTarget = transform.DistanceToObject(target);
+        if (distanceToTarget > attackDistance)
+        {
+            Vector3 direction = transform.DirectionToObject(target);
+            rb.velocity = direction * speed;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
     
     private bool CanAttack()
     {
-        return transform.DistanceToObject(target) <= attackDistance;
+        return transform.DistanceToObject(target) <= attackDistance && !attack.InCooldown();
     }
     
     private bool CanAggro()
@@ -86,5 +97,8 @@ public class EnemyAggro : State
         base.ExitState();
         attack.Deactivate();
         rb.velocity = Vector2.zero;
+        aiming.ResetAim();
+        if(resetDecision)
+            decision.ToggleActive(true);
     }
 }
