@@ -19,6 +19,8 @@ public class EnemyAggro : State
 
     private Rigidbody2D rb;
     private Aiming aiming;
+
+    private CoroutineHandle aggroRoutine;
     
     protected override void Awake()
     {
@@ -30,8 +32,8 @@ public class EnemyAggro : State
     {
         base.EnterState();
         aiming = attack.aiming;
-        aiming.idle = false;
-        Timing.RunCoroutine(AggroRoutine());
+        aiming.SetAimingState(Aiming.AimingState.Aiming);
+        aggroRoutine = Timing.RunCoroutine(AggroRoutine());
     }
     
     private IEnumerator<float> AggroRoutine()
@@ -97,11 +99,11 @@ public class EnemyAggro : State
     public override void ExitState()
     {
         base.ExitState();
-        Timing.KillCoroutines();
+        Timing.KillCoroutines(aggroRoutine);
         attack.Deactivate();
         rb.velocity = Vector2.zero;
         aiming.ResetAim();
-        aiming.idle = true;
+        aiming.SetAimingState(Aiming.AimingState.Idle);
         if(resetDecision)
             decision.ToggleActive(true);
     }

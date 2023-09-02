@@ -57,7 +57,7 @@ public class PlayerAwake : State
     private void Start()
     {
         //Avoid messy null pointers due to different awake calls
-        playerAttack.aiming.idle = false;
+        playerAttack.aiming.SetAimingState(Aiming.AimingState.Aiming);
     }
 
     public override void EnterState()

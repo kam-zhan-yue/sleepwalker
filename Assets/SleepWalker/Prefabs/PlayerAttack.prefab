@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f347bd1d488140b49e51eca6fed06d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 60
+  attackCooldown: 0
+  knockbackForce: 0
   damageDirection: 0
   aimingTransform: {fileID: 5158425076337626710}
   activationFrame: 5
@@ -163,10 +166,10 @@ MonoBehaviour:
     m_Bits: 8192
   areaOffset: {x: 0, y: 0.04}
   areaSize: {x: 5.51, y: 2.14}
-  damage: 60
   usesAnimation: 1
   animator: {fileID: 3978038592194075979}
   animationToTrigger: Koala_Sword_Slash1
+  aiming: {fileID: 0}
 --- !u!114 &6178875089385519109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,5 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0daa06211cc420e84cccd322fd23ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
   weapon: {fileID: 339839052198203769}
-  active: 1
+  aimingState: 1

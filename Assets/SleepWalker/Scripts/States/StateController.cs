@@ -110,6 +110,14 @@ public class StateController : MonoBehaviour
         EnterState(defaultState);
     }
 
+    public void EnterPreviousState()
+    {
+        if(previousState != null && previousState != currentState)
+            EnterState(previousState);
+        else
+            EnterDefaultState();
+    }
+
     private void EnterState(State _state)
     {
         currentState.ExitState();

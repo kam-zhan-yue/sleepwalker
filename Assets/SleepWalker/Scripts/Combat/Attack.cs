@@ -9,6 +9,7 @@ public class Attack : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] public float damage = 0f;
     [BoxGroup("Setup Variables")] public float attackCooldown = 0f;
+    [BoxGroup("Setup Variables")] public float knockbackForce = 0f;
     [BoxGroup("Setup Variables")] public Damage.Direction damageDirection = Damage.Direction.None;
     [BoxGroup("Setup Variables")] public Transform aimingTransform;
     [BoxGroup("Setup Variables")] public int activationFrame = 0;
@@ -32,6 +33,10 @@ public class Attack : MonoBehaviour
     [HideInInspector]
     public Aiming aiming;
     private bool cooldown = false;
+
+    private CoroutineHandle attackRoutine;
+    private CoroutineHandle aimingRoutine;
+    private CoroutineHandle cooldownRoutine;
     
     private void Awake()
     {
@@ -61,6 +66,7 @@ public class Attack : MonoBehaviour
         damageBox.owner = gameObject;
         damageBox.boxCollider2D = damageAreaCollider;
         damageBox.direction = damageDirection;
+        damageBox.knockbackForce = knockbackForce;
     }
     
     private void Start()
@@ -76,15 +82,15 @@ public class Attack : MonoBehaviour
     public void Activate(Action _callback = null)
     {
         PlayAnimation();
-        Timing.RunCoroutine(CooldownCountdown());
+        cooldownRoutine = Timing.RunCoroutine(CooldownCountdown());
         if (aiming)
         {
-            Timing.RunCoroutine(ActivateAttack());
-            Timing.RunCoroutine(HandleAiming(_callback));
+            attackRoutine = Timing.RunCoroutine(ActivateAttack());
+            aimingRoutine = Timing.RunCoroutine(HandleAiming(_callback));
         }
         else
         {
-            Timing.RunCoroutine(ActivateAttack(_callback));
+            attackRoutine = Timing.RunCoroutine(ActivateAttack(_callback));
         }
     }
     
@@ -100,9 +106,9 @@ public class Attack : MonoBehaviour
 
     private IEnumerator<float> HandleAiming(Action _callback = null)
     {
-        aiming.Toggle(false);
+        aiming.SetAimingState(Aiming.AimingState.Firing);
         yield return Timing.WaitForSeconds(StaticHelper.GetFrameInSeconds(endFrame, sampleRate));
-        aiming.Toggle(true);
+        aiming.SetAimingState(Aiming.AimingState.Aiming);
         _callback?.Invoke();
     }
 
@@ -115,8 +121,11 @@ public class Attack : MonoBehaviour
 
     public void Deactivate()
     {
+        Debug.Log("Deactivate");
         cooldown = false;
-        Timing.KillCoroutines();
+        Timing.KillCoroutines(attackRoutine);
+        Timing.KillCoroutines(cooldownRoutine);
+        Timing.KillCoroutines(aimingRoutine);
         DisableDamageArea();
     }
 

@@ -2,21 +2,28 @@ using UnityEngine;
 
 public class Aiming : MonoBehaviour
 {
+    public enum AimingState
+    {
+        Idle = 0,
+        Aiming = 1,
+        Firing = 2
+    }
     public Orientation orientation;
     public SpriteRenderer weapon;
-    public bool active = false;
-    public bool idle = true;
+    public AimingState aimingState;
     
     private bool hasOrientation = false;
+    private AimingState initialState;
 
     private void Awake()
     {
         hasOrientation = orientation != null;
+        initialState = aimingState;
     }
 
     protected virtual void Update()
     {
-        if (idle && hasOrientation)
+        if (aimingState == AimingState.Idle && hasOrientation)
         {
             weapon.flipX = !orientation.facingRight;
         }
@@ -28,21 +35,27 @@ public class Aiming : MonoBehaviour
 
     public void AimWeapon(Vector2 _direction)
     {
-        if (!active)
-            return;
-        float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
-        weapon.flipY = angle <= -90f || angle > 90f;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (aimingState == AimingState.Aiming)
+        {
+            float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
+            weapon.flipY = angle <= -90f || angle > 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
-    public void Toggle(bool _active)
+    public void SetAimingState(AimingState _state)
     {
-        active = _active;
+        aimingState = _state;
     }
 
     public void ResetAim()
     {
         weapon.flipY = false;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public void ResetState()
+    {
+        aimingState = initialState;
     }
 }

@@ -12,6 +12,9 @@ public class DamageBox : MonoBehaviour, IDamageSource
     public float damage = 0f;
 
     [NonSerialized, ShowInInspector, ReadOnly]
+    public float knockbackForce = 0f;
+
+    [NonSerialized, ShowInInspector, ReadOnly]
     public GameObject owner;
     
     [NonSerialized, ShowInInspector, ReadOnly]
