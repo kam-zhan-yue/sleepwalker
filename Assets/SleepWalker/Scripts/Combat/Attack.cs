@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
     [BoxGroup("Setup Variables")] public float damage = 0f;
     [BoxGroup("Setup Variables")] public float attackCooldown = 0f;
     [BoxGroup("Setup Variables")] public float knockbackForce = 0f;
-    [BoxGroup("Setup Variables")] public Damage.Direction damageDirection = Damage.Direction.None;
+    [BoxGroup("Setup Variables")] public KnockbackDirection knockbackDirection;
     [BoxGroup("Setup Variables")] public Transform aimingTransform;
     [BoxGroup("Setup Variables")] public int activationFrame = 0;
     [BoxGroup("Setup Variables")] public int endFrame = 0;
@@ -65,8 +65,8 @@ public class Attack : MonoBehaviour
         damageBox.damage = damage;
         damageBox.owner = gameObject;
         damageBox.boxCollider2D = damageAreaCollider;
-        damageBox.direction = damageDirection;
         damageBox.knockbackForce = knockbackForce;
+        damageBox.knockbackDirection = knockbackDirection;
     }
     
     private void Start()

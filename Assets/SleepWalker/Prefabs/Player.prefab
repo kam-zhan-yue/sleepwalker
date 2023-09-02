@@ -50,12 +50,13 @@ GameObject:
   - component: {fileID: 2876119124840176083}
   - component: {fileID: 2876119124840176080}
   - component: {fileID: 2876119124840176088}
+  - component: {fileID: 2403198204158527193}
   - component: {fileID: 2876119124840176091}
   - component: {fileID: 2876119124840176095}
   - component: {fileID: 2876119124840176092}
   - component: {fileID: 2876119124840176094}
   - component: {fileID: 2876119124840176089}
-  - component: {fileID: 2214015296527333045}
+  - component: {fileID: 3525607051695614560}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -209,9 +210,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4214212104505471163}
+        m_TargetAssemblyTypeName: HurtReaction, Assembly-CSharp
+        m_MethodName: React
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2403198204158527193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876119124840176086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756ca43e7de8f4e0aa17b71b194c52c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2876119124840176091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: {fileID: 8930296283736806794}
   sleepTime: 5
-  playerAttack: {fileID: 0}
+  playerAttack: {fileID: 5793960136874332686}
   maxTargetDistance: 7
   minTargetDistance: 1
   bufferDistance: 1
@@ -285,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaSlider: {fileID: 0}
---- !u!114 &2214015296527333045
+--- !u!114 &3525607051695614560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30f84e7c281e496e9579dbe8ce0be3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtTime: 0
+  hurtTime: 0.2
 --- !u!1 &2876119125567975305
 GameObject:
   m_ObjectHideFlags: 0

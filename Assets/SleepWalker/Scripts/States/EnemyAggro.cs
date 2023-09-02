@@ -28,9 +28,10 @@ public class EnemyAggro : State
         rb = GetComponent<Rigidbody2D>();
     }
 
+    //Need CanAggro to avoid changing states twice in EnterState
     public override bool CanEnterState(State _currentState)
     {
-        return !StateController.IsCurrentState<Hurt>();
+        return !StateController.IsCurrentState<Hurt>() && CanAggro();
     }
 
     public override void EnterState()
@@ -39,6 +40,7 @@ public class EnemyAggro : State
         aiming = attack.aiming;
         aiming.SetAimingState(Aiming.AimingState.Aiming);
         aggroRoutine = Timing.RunCoroutine(AggroRoutine());
+        decision.ToggleActive(false);
     }
     
     private IEnumerator<float> AggroRoutine()
@@ -48,7 +50,9 @@ public class EnemyAggro : State
             AimTarget();
             MoveTowardsTarget();
             if (CanAttack())
+            {
                 Timing.WaitUntilDone(AttackRoutine());
+            }
             yield return Timing.WaitForOneFrame;
         }
         StateController.EnterDefaultState();
@@ -106,10 +110,14 @@ public class EnemyAggro : State
         base.ExitState();
         Timing.KillCoroutines(aggroRoutine);
         attack.Deactivate();
-        rb.velocity = Vector2.zero;
         aiming.ResetAim();
         aiming.SetAimingState(Aiming.AimingState.Idle);
         if(resetDecision)
             decision.ToggleActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        Timing.KillCoroutines(aggroRoutine);
     }
 }

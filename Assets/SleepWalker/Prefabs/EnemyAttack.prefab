@@ -154,7 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   attackCooldown: 2
-  damageDirection: 0
+  knockbackForce: 10
+  knockbackDirection: 1
   aimingTransform: {fileID: 4861231554471373074}
   activationFrame: 6
   endFrame: 8
@@ -168,6 +169,7 @@ MonoBehaviour:
   usesAnimation: 1
   animator: {fileID: 4861231554471373073}
   animationToTrigger: NinjaSwordSlash
+  aiming: {fileID: 0}
 --- !u!114 &4861231555087974023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,5 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d15bb39c34924dae9dbd17077da38ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
   weapon: {fileID: 4861231554471373072}
-  active: 0
+  aimingState: 0

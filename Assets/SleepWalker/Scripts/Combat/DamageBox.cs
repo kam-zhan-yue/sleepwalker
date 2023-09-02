@@ -15,13 +15,13 @@ public class DamageBox : MonoBehaviour, IDamageSource
     public float knockbackForce = 0f;
 
     [NonSerialized, ShowInInspector, ReadOnly]
+    public KnockbackDirection knockbackDirection = KnockbackDirection.None;
+
+    [NonSerialized, ShowInInspector, ReadOnly]
     public GameObject owner;
     
     [NonSerialized, ShowInInspector, ReadOnly]
     public BoxCollider2D boxCollider2D;
-    
-    [NonSerialized, ShowInInspector, ReadOnly]
-    public Damage.Direction direction = Damage.Direction.None;
     
     private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
 
@@ -54,6 +54,12 @@ public class DamageBox : MonoBehaviour, IDamageSource
             Damage damageObject = new(this, target);
             damageObject.DamageTarget();
             // Debug.Log(damageObject.ToString());
+        }
+
+        if (_collider.gameObject.TryGetComponent(out IDamagePhysics physics))
+        {
+            Knockback knockback = new (knockbackForce, knockbackDirection, transform, physics);
+            knockback.KnockbackTarget();
         }
     }
 

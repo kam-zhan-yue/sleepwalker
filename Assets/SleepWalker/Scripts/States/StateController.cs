@@ -119,8 +119,11 @@ public class StateController : MonoBehaviour
 
     public void EnterPreviousState()
     {
-        if(previousState != null && previousState != currentState)
-            EnterState(previousState);
+        if (previousState != null && previousState != currentState)
+        {
+            if(!TryEnterState(previousState))
+                EnterDefaultState();
+        }
         else
             EnterDefaultState();
     }

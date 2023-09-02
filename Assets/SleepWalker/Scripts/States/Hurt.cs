@@ -8,7 +8,13 @@ public class Hurt : State
 {
     [BoxGroup("Setup Variables")] public float hurtTime;
     private SpriteRenderer spriteRenderer;
+    private CoroutineHandle hurtRoutine;
     
+    //for now, the player cannot be interrupted during their sleep
+    public override bool CanEnterState(State _currentState)
+    {
+        return !StateController.IsCurrentState<PlayerSleep>();
+    }
 
     protected override void Awake()
     {
@@ -20,7 +26,7 @@ public class Hurt : State
     public override void EnterState()
     {
         base.EnterState();
-        Timing.RunCoroutine(HurtCountdown());
+        hurtRoutine = Timing.RunCoroutine(HurtCountdown());
         spriteRenderer.color = Color.blue;
     }
 
@@ -33,7 +39,7 @@ public class Hurt : State
     public override void ExitState()
     {
         base.ExitState();
-        Timing.KillCoroutines();
+        Timing.KillCoroutines(hurtRoutine);
         spriteRenderer.color = Color.white;
     }
 }

@@ -27,9 +27,12 @@ public class Health : MonoBehaviour, IDamageTarget
 
     public void TakeDamage(Damage _damage)
     {
-        currentHealth -= _damage.damage;
-        onDamageTaken?.Invoke();
-        CheckDead();
+        if (_damage.damage > 0f)
+        {
+            currentHealth -= _damage.damage;
+            onDamageTaken?.Invoke();
+            CheckDead();
+        }
     }
 
     private void CheckDead()

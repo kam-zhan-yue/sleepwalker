@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 60
   attackCooldown: 0
-  knockbackForce: 0
-  damageDirection: 0
+  knockbackForce: 10
+  knockbackDirection: 1
   aimingTransform: {fileID: 5158425076337626710}
   activationFrame: 5
   endFrame: 8

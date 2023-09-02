@@ -78,6 +78,8 @@ public sealed class DetectTargetRadius : Decision
                 //If there are no hits, then return the target
                 if (hitCount == 0)
                 {
+                    float distance = transform.DistanceToObject(potentialTargets[i].gameObject.transform);
+                    Debug.Log("Hit with Distance: "+distance);
                     brain.target = potentialTargets[i].gameObject.transform;
                     return true;
                 }
