@@ -28,6 +28,11 @@ public class EnemyAggro : State
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public override bool CanEnterState(State _currentState)
+    {
+        return !StateController.IsCurrentState<Hurt>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();

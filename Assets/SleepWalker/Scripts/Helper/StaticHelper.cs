@@ -5,7 +5,7 @@ using UnityEngine;
 public static class StaticHelper
 {
     private const float FPS = 24;
-    
+
     public static void AddOnce<T>(this HashSet<T> _list, T _item)
     {
         if (_item != null && !_list.Contains(_item))

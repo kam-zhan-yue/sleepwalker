@@ -95,6 +95,13 @@ public class StateController : MonoBehaviour
         return enqueueSuccess;
     }
 
+    public bool IsCurrentState<T>() where T : State
+    {
+        Type currentType = currentState.GetType();
+        Type queryType = typeof(T);
+        return currentType == queryType;
+    }
+
     public bool TryEnterState(State _state)
     {
         bool canEnterState = _state.CanEnterState(currentState);

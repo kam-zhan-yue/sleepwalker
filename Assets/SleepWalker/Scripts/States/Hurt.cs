@@ -27,7 +27,7 @@ public class Hurt : State
     private IEnumerator<float> HurtCountdown()
     {
         yield return Timing.WaitForSeconds(hurtTime);
-        StateController.EnterDefaultState();
+        StateController.EnterPreviousState();
     }
 
     public override void ExitState()

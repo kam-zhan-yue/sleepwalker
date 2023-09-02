@@ -121,7 +121,6 @@ public class Attack : MonoBehaviour
 
     public void Deactivate()
     {
-        Debug.Log("Deactivate");
         cooldown = false;
         Timing.KillCoroutines(attackRoutine);
         Timing.KillCoroutines(cooldownRoutine);
