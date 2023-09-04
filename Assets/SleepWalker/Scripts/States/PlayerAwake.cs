@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 
 public class PlayerAwake : State
@@ -14,18 +15,20 @@ public class PlayerAwake : State
 
     [SerializeField]
     private FloatReference dashSpeed;
-    
-    [NonSerialized, ShowInInspector, ReadOnly] 
-    private float awakeTime = 15f;
+
+    [SerializeField]
+    private FloatReference maxStamina;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private bool canDash = true;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private bool canSleep = false;
-    
-    private float awakeTimer;
-    private UIStaminaManager staminaBar;
+
+    [SerializeField] 
+    private FloatReference staminaTime;
+    [SerializeField] 
+    private FloatReference stamina;
     private Rigidbody2D rb;
     private float vert = 0f;
     private float horiz = 0f;
@@ -43,7 +46,6 @@ public class PlayerAwake : State
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
-        staminaBar = GetComponent<UIStaminaManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         orientation = GetComponent<Orientation>();
         
@@ -65,8 +67,8 @@ public class PlayerAwake : State
     {
         base.EnterState();
         spriteRenderer.color = Color.white;
-        awakeTimer = awakeTime;
-        staminaBar.UpdateMaxValue(awakeTime);
+        staminaTime.Value = maxStamina;
+        stamina.Value = staminaTime;
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
         //Uncomment when done testing attack 1st September Alex
@@ -109,10 +111,9 @@ public class PlayerAwake : State
 
     private void UpdateStamina()
     {
-        awakeTimer -= Time.deltaTime;
-        staminaBar.UpdateDisplayValue(awakeTimer);
+        stamina.Value -= Time.deltaTime;
 
-        if (awakeTimer <= 0f)
+        if (stamina <= 0f)
         {
             StateController.TryEnqueueState<PlayerSleep>();
         }

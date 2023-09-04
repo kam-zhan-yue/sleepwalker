@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b46c0f62c93543f88d3eb693740d091, type: 3}
-  m_Name: PlayerHealth
+  m_Name: PlayerStamina
   m_EditorClassIdentifier: 
   _developerDescription: 
   _id: 
-  _value: 100
+  _value: 0
   _changed: {fileID: 0}
-  _changedWithHistory: {fileID: 11400000, guid: 10b564170a2bb45f3bbca3d924693a6c,
+  _changedWithHistory: {fileID: 11400000, guid: 0db798af6a2be430a9ffbcdd7e67527b,
     type: 2}
   _triggerChangedOnOnEnable: 0
   _triggerChangedWithHistoryOnOnEnable: 0
-  _oldValue: 100
-  _initialValue: 100
+  _oldValue: 0
+  _initialValue: 0
   _preChangeTransformers: []

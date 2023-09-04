@@ -5,14 +5,16 @@ using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerSleep : State
 {
     [BoxGroup("Setup Variables")] public CircleCollider2D trigger;
-    public float sleepTime = 5f;
-    private float sleepTimer = 0f;
+    [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;
+    [BoxGroup("Setup Variables")] public FloatReference staminaTime;
+    [SerializeField]
+    [BoxGroup("Setup Variables")] private FloatReference stamina;
     private SpriteRenderer spriteRenderer;
-    private UIStaminaManager staminaBar;
     private Rigidbody2D rb;
 
     //input actions
@@ -43,7 +45,6 @@ public class PlayerSleep : State
     {
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        staminaBar = GetComponent<UIStaminaManager>();
         rb = GetComponent<Rigidbody2D>();
 
         playerControls = new PlayerControls();
@@ -55,8 +56,8 @@ public class PlayerSleep : State
     public override void EnterState()
     {
         base.EnterState();
-        sleepTimer = sleepTime;
-        staminaBar.UpdateMaxValue(sleepTime);
+        staminaTime.Value = maxSleepTime;
+        stamina.Value = staminaTime;
         spriteRenderer.color = Color.red;
         rb.velocity = Vector2.zero;
 
@@ -73,12 +74,11 @@ public class PlayerSleep : State
 
     public override void UpdateBehaviour()
     {
-        sleepTimer -= Time.deltaTime;
-        staminaBar.UpdateDisplayValue(sleepTimer);
+        stamina.Value -= Time.deltaTime;
 
         // stateText.text = $"Sleep State: {aiState}";
 
-        if (sleepTimer <= 0f)
+        if (stamina <= 0f)
         {
             StateController.TryEnqueueState<PlayerAwake>();
         }
