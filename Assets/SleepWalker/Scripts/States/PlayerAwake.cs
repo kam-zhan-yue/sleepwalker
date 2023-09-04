@@ -2,17 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class PlayerAwake : State
 {
-    [NonSerialized, ShowInInspector, ReadOnly] 
-    private float speed = 10f;
-    
-    [NonSerialized, ShowInInspector, ReadOnly] 
-    private float dashSpeed = 50f;
+    [SerializeField]
+    private FloatReference speed;
+
+    [SerializeField]
+    private FloatReference dashSpeed;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private float awakeTime = 15f;

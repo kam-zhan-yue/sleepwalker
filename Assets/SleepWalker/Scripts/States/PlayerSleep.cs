@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -33,7 +34,7 @@ public class PlayerSleep : State
     [SerializeField] private float maxTargetDistance = 7f;
     [SerializeField] private float minTargetDistance = 1f;
     [SerializeField] private float bufferDistance = 1f;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private FloatReference speed;
 
     [Header("Debugging")]
     [SerializeField] TMPro.TextMeshProUGUI stateText;

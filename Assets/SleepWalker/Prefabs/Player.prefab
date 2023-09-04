@@ -194,7 +194,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth:
+    _usage: 1
+    _value: 0
+    _constant: {fileID: 11400000, guid: 85e072166412644ccaf4d881c32f1240, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+  currentHealth:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 3b46e92404e2546ed85e5b1d9ed66367, type: 2}
+    _variableInstancer: {fileID: 0}
   onDamageTaken:
     m_PersistentCalls:
       m_Calls:
@@ -276,6 +287,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1e2f2c592f04b408271eac32807780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 1773910ff22e24129ab5ad535a77f9d8, type: 2}
+    _variableInstancer: {fileID: 0}
+  dashSpeed:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: e887bca2e795b4aed918eeeae8aac842, type: 2}
+    _variableInstancer: {fileID: 0}
   playerAttack: {fileID: 5793960136874332686}
 --- !u!114 &2876119124840176094
 MonoBehaviour:
@@ -295,7 +318,12 @@ MonoBehaviour:
   maxTargetDistance: 7
   minTargetDistance: 1
   bufferDistance: 1
-  speed: 10
+  speed:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 5942c12dfdad94c9d8f2ecb400f30735, type: 2}
+    _variableInstancer: {fileID: 0}
   stateText: {fileID: 0}
 --- !u!114 &2876119124840176089
 MonoBehaviour:
@@ -872,6 +900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611532371416308863, guid: 6b1a87389eb5b43829460465bd6a057b,
+        type: 3}
+      propertyPath: damage._usage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b1a87389eb5b43829460465bd6a057b, type: 3}

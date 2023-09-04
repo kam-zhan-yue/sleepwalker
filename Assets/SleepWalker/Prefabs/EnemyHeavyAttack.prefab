@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4861231555087974024}
   - component: {fileID: 4861231555087974023}
   m_Layer: 13
-  m_Name: EnemyAttack
+  m_Name: EnemyHeavyAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,8 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f347bd1d488140b49e51eca6fed06d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  attackCooldown: 2
+  damage:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: bfc46a9e008f7429ca50052f97308311, type: 2}
+    _variableInstancer: {fileID: 0}
+  attackCooldown: 2.5
   knockbackForce: 10
   knockbackDirection: 1
   aimingTransform: {fileID: 4861231554471373074}

@@ -258,7 +258,7 @@ PrefabInstance:
     - target: {fileID: 8965463861423883313, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Attack
+      value: EnemyLight - Attack
       objectReference: {fileID: 0}
     - target: {fileID: 8965463863138193918, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
@@ -296,9 +296,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 7059862983039310830}
-  speed: 2
+  speed:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 142aeefe85bd043c387a28036a493ddd, type: 2}
+    _variableInstancer: {fileID: 0}
   attackDistance: 2
-  aggroRange: 5
+  aggroRange: 10
   resetDecision: 1
   decision: {fileID: 1220954415}
 --- !u!114 &2130785485066996473 stripped

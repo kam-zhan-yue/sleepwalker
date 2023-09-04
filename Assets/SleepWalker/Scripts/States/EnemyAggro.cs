@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class EnemyAggro : State
 {
     [BoxGroup("Setup Variables")] public Attack attack;
-    [BoxGroup("Setup Variables")] public float speed;
+    [BoxGroup("Setup Variables")] public FloatReference speed;
     [BoxGroup("Setup Variables")] public float attackDistance;
     [BoxGroup("Setup Variables")] public float aggroRange;
     [BoxGroup("Setup Variables")] public bool resetDecision;

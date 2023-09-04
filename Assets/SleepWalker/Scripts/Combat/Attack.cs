@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [BoxGroup("Setup Variables")] public float damage = 0f;
+    [BoxGroup("Setup Variables")] public FloatReference damage;
     [BoxGroup("Setup Variables")] public float attackCooldown = 0f;
     [BoxGroup("Setup Variables")] public float knockbackForce = 0f;
     [BoxGroup("Setup Variables")] public KnockbackDirection knockbackDirection;

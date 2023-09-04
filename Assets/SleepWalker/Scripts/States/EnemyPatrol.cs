@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -22,7 +23,7 @@ public class EnemyPatrol : State
     }
 
     [BoxGroup("Patrol Variables")]
-    public float speed = 0f;
+    public FloatReference speed;
     
     [BoxGroup("Patrol Variables")] 
     public PatrolType patrolType;

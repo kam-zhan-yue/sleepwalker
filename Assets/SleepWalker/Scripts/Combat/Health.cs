@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageTarget
 {
     [BoxGroup("Health Variables")]
-    public float maxHealth;
-    private float currentHealth;
+    public FloatReference maxHealth;
+    [BoxGroup("Health Variables")]
+    [SerializeField]
+    private FloatReference currentHealth;
 
 
     [BoxGroup("Events")] 
@@ -17,7 +20,7 @@ public class Health : MonoBehaviour, IDamageTarget
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        currentHealth.Value = maxHealth;
     }
 
     public string GetId()
@@ -29,7 +32,7 @@ public class Health : MonoBehaviour, IDamageTarget
     {
         if (_damage.damage > 0f)
         {
-            currentHealth -= _damage.damage;
+            currentHealth.Value -= _damage.damage;
             onDamageTaken?.Invoke();
             CheckDead();
         }

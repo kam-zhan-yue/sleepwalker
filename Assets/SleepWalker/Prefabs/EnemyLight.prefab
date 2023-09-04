@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 8965463861423883278}
   - component: {fileID: 6571252438357622928}
   m_Layer: 13
-  m_Name: Enemy
+  m_Name: EnemyLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth:
+    _usage: 1
+    _value: 0
+    _constant: {fileID: 11400000, guid: bb188e2dc7ac548d6ac8126a804c07ac, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   onDamageTaken:
     m_PersistentCalls:
       m_Calls:
