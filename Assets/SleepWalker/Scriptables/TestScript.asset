@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc676c80362ea4d00aa23fecdb4dcbe0, type: 3}
+  m_Name: TestScript
+  m_EditorClassIdentifier: 
+  actors:
+  - Grunt 1
+  - Grunt 2
+  groups:
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: It's a beautiful day outside
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 1
+      customName: SANS
+      message: Birds are singing...
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: Flowers are blooming...
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: On days like these...
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: Kids like you...
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: Should be burning in hell
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 1
+      actor: 
+      custom: 0
+      customName: 
+      message: 
+      pauseTime: 1
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 2
+      custom: 0
+      customName: 
+      message: What the fuck?!?!
+      pauseTime: 1
+      animationName: 

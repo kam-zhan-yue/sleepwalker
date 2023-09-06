@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class DialogueEvent : MonoBehaviour
 {
-    [BoxGroup("Setup Variables")]
+    [FoldoutGroup("Scene Variables")]
     public List<DialogueActor> actors = new();
 
-    [BoxGroup("Setup Variables")] 
+    [FoldoutGroup("Setup Variables")] 
+    [InlineEditor()]
     public DialogueScript script;
     
     private BoxCollider2D dialogueZone;
