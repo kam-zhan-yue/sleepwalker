@@ -76,7 +76,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -10}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2323463192293057942
 MonoBehaviour:
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   slider: {fileID: 0}
+  holder: {fileID: 0}
 --- !u!1 &2323463192339781486
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +446,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -60}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: -0.00000014161425, y: 0.5}
 --- !u!114 &2323463192973069078
 MonoBehaviour:
@@ -535,7 +536,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -10}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2323463193262209701
 MonoBehaviour:
@@ -602,6 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   slider: {fileID: 0}
+  holder: {fileID: 0}
 --- !u!1 &2323463193441899507
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2323463193441899511

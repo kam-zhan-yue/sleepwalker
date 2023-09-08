@@ -9,6 +9,8 @@ public class DialogueEvent : MonoBehaviour
 {
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventStarted;
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventEnded;
+    [FoldoutGroup("Game Events")] public TransformGameEvent transformDialogueEventStarted;
+    [FoldoutGroup("Game Events")] public TransformGameEvent transformDialogueEventEnded;
     [FoldoutGroup("Scene Variables")] public List<DialogueActor> actors = new();
 
     [FoldoutGroup("Setup Variables")] [InlineEditor()]
@@ -43,6 +45,10 @@ public class DialogueEvent : MonoBehaviour
             dialogueQueue.Enqueue(script.groups[i]);
         DequeueDialogue();
         dialogueEventStarted.Raise();
+        if (script.useCamera)
+        {
+            transformDialogueEventStarted.Raise(transform);
+        }
     }
 
     private void DequeueDialogue()
@@ -157,5 +163,9 @@ public class DialogueEvent : MonoBehaviour
     {
         Debug.Log("End Event");
         dialogueEventEnded.Raise();
+        if (script.useCamera)
+        {
+            transformDialogueEventEnded.Raise(transform);
+        }
     }
 }

@@ -295,34 +295,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "PauseMenu",
-            "id": "a9a6e202-dd7b-4920-8d5c-3e62c81fdb99",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "fb5ff408-e697-4233-9f90-042b3b98a657",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "b626b84a-db96-4c99-8681-fc9e172cb44e",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": []

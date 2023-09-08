@@ -1,0 +1,34 @@
+{
+    "name": "UIControls",
+    "maps": [
+        {
+            "name": "UIInput",
+            "id": "5c8d3aad-a5f1-4293-b6ed-e9a63ba49c0a",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "ded115b6-6a2d-4a12-8c81-d4293d87c786",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "89ad9bf0-d861-483a-ba0b-aaa96f0087d4",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

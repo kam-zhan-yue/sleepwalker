@@ -1,12 +1,23 @@
 using System;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
-    public static CameraManager instance;
+    public enum CameraState
+    {
+        None = 0,
+        TrackingPlayer = 1,
+        Transition = 2,
+    }
     
+    public static CameraManager instance;
+
+    [BoxGroup("Setup Variables")] public float transitionDuration = 1f;
+    [BoxGroup("Setup Variables")] public Ease easing = Ease.OutQuart;
+
     [NonSerialized, ShowInInspector, ReadOnly] 
     private Vector3 offset = Vector3.zero; //for z offset and offset to follow mouse pointer
     
@@ -16,9 +27,15 @@ public class CameraManager : MonoBehaviour
     [NonSerialized, ShowInInspector, ReadOnly] 
     private float dirOffset = 1.5f;
     
+    [NonSerialized, ShowInInspector, ReadOnly] 
+    private CameraState state = CameraState.TrackingPlayer;
+
     private Transform target;
     
     private Camera mainCamera;
+
+
+    private Tween transitionTween;
 
     private void Awake()
     {
@@ -32,17 +49,27 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
+        Debug.Log(target);
     }
 
     private void Update()
     {
-        //offset ensure player is in front of camera, and that camera follows pointer slightly
-        offset = (dirOffset*GetMouseDirection(target.transform.position));
-        //offset = Vector3.zero; //take this out when you fix the other offset
-        offset.z = -10f;
+        switch (state)
+        {
+            case CameraState.None:
+                break;
+            case CameraState.TrackingPlayer:
+                //offset ensure player is in front of camera, and that camera follows pointer slightly
+                offset = (dirOffset*GetMouseDirection(target.transform.position));
+                //offset = Vector3.zero; //take this out when you fix the other offset
+                offset.z = -10f;
 
-        //transform.position = Vector3.Lerp(transform.position, target.position, damp) + offset;
-        transform.position = Vector3.Lerp(transform.position, target.position + offset, damp);
+                //transform.position = Vector3.Lerp(transform.position, target.position, damp) + offset;
+                transform.position = Vector3.Lerp(transform.position, target.position + offset, damp);
+                break;
+            case CameraState.Transition:
+                break;
+        }
     }
 
     public Vector3 GetMousePosition()
@@ -54,6 +81,27 @@ public class CameraManager : MonoBehaviour
         return mouseWorldPosition;
     }
 
+    public void OnDialogueEventStarted(Transform _transform)
+    {
+        state = CameraState.Transition;
+        Vector3 position = _transform.position;
+        position.z = transform.position.z;
+        transitionTween = transform.DOMove(position, transitionDuration)
+            .SetEase(easing);
+    }
+
+    public void OnDialogueEventEnded(Transform _transform)
+    {
+        Vector3 position = target.position;
+        position.z = transform.position.z;
+        transitionTween = transform.DOMove(position, transitionDuration)
+            .SetEase(easing)
+            .OnComplete(() =>
+            {
+                state = CameraState.TrackingPlayer;
+            });;
+    }
+    
     public Vector3 GetMouseDirection(Vector3 _targetPosition)
     {
         //get mouse pointer position

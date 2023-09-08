@@ -42,6 +42,8 @@ public class PlayerAwake : State
     [FoldoutGroup("Testing")] 
     public Attack playerAttack;
 
+    private bool pauseStamina = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -111,6 +113,8 @@ public class PlayerAwake : State
 
     private void UpdateStamina()
     {
+        if (pauseStamina)
+            return;
         stamina.Value -= Time.deltaTime;
 
         if (stamina <= 0f)
@@ -150,6 +154,18 @@ public class PlayerAwake : State
     {
         if(playerAttack != null)
             playerAttack.Activate();
+    }
+
+    public void OnDialogueEventStarted()
+    {
+        playerControls.Disable();
+        pauseStamina = true;
+    }
+
+    public void OnDialogueEventEnded()
+    {
+        playerControls.Enable();
+        pauseStamina = false;
     }
 
     IEnumerator DashCoolDown(float _coolDownTime)

@@ -41,6 +41,8 @@ public class PlayerSleep : State
     [Header("Debugging")]
     [SerializeField] TMPro.TextMeshProUGUI stateText;
 
+    private bool pauseStamina = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -74,7 +76,8 @@ public class PlayerSleep : State
 
     public override void UpdateBehaviour()
     {
-        stamina.Value -= Time.deltaTime;
+        if(!pauseStamina)
+            stamina.Value -= Time.deltaTime;
 
         // stateText.text = $"Sleep State: {aiState}";
 
@@ -211,4 +214,15 @@ public class PlayerSleep : State
         }
     }
 
+    public void OnDialogueEventStarted()
+    {
+        playerControls.Disable();
+        pauseStamina = true;
+    }
+
+    public void OnDialogueEventEnded()
+    {
+        playerControls.Enable();
+        pauseStamina = false;
+    }
 }
