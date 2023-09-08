@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ public class DialogueObject : MonoBehaviour
     }
 
     [Button]
-    public void Show(string _text)
+    public void ShowMessage(string _name, string _text, Action _onComplete = null)
     {
 #if UNITY_EDITOR
         if(dialoguePopup == null)
@@ -34,7 +35,31 @@ public class DialogueObject : MonoBehaviour
         Bounds bounds = sizeCollider.bounds;
         Vector3 dialoguePosition = bounds.center;
         dialoguePosition.y = bounds.center.y + (bounds.extents.y);
-        Debug.Log(dialoguePosition);
-        dialoguePopup.Show(dialoguePosition + offset, _text);
+        dialoguePopup.Show(dialoguePosition + offset, _name, _text, _onComplete);
+    }
+
+    public void ForceEndMessage()
+    {
+        dialoguePopup.Stop();
+    }
+
+    public void HideMessage()
+    {
+        dialoguePopup.Hide();
+    }
+
+    public void PlayAnimation(string _animationName, Action _onComplete = null)
+    {
+        
+    }
+
+    public void ForceEndAnimation()
+    {
+        
+    }
+
+    public void StopAnimation(string _animationName)
+    {
+        
     }
 }

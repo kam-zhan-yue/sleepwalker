@@ -22,9 +22,12 @@ public class DialogueAction
     [TextArea(4, 10)]
     public string message = string.Empty;
 
-    [ShowIf("type", DialogueType.Pause)] 
-    public float pauseTime = 1f;
-    
     [ShowIf("type", DialogueType.Animation)]
     public string animationName;
+
+    public string GetName()
+    {
+        return custom ? customName : actor;
+    }
 }
+

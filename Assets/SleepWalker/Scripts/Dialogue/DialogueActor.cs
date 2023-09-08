@@ -4,5 +4,5 @@ using System;
 public class DialogueActor
 {
     public string key = string.Empty;
-    public DialogueObject actor;
+    public DialogueObject dialogueObject;
 }

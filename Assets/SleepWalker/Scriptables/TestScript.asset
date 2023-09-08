@@ -22,7 +22,6 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: It's a beautiful day outside
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 0
@@ -30,7 +29,6 @@ MonoBehaviour:
       custom: 1
       customName: SANS
       message: Birds are singing...
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 0
@@ -38,7 +36,6 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: Flowers are blooming...
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 0
@@ -46,7 +43,6 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: On days like these...
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 0
@@ -54,7 +50,6 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: Kids like you...
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 0
@@ -62,7 +57,6 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: Should be burning in hell
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 1
@@ -70,7 +64,6 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: 
-      pauseTime: 1
       animationName: 
   - actions:
     - type: 0
@@ -78,5 +71,4 @@ MonoBehaviour:
       custom: 0
       customName: 
       message: What the fuck?!?!
-      pauseTime: 1
       animationName: 
