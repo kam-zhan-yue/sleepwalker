@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class DialogueEvent : MonoBehaviour
 {
+    [FoldoutGroup("Game Events")] public GameEvent dialogueEventStarted;
+    [FoldoutGroup("Game Events")] public GameEvent dialogueEventEnded;
     [FoldoutGroup("Scene Variables")] public List<DialogueActor> actors = new();
 
     [FoldoutGroup("Setup Variables")] [InlineEditor()]
@@ -14,9 +16,9 @@ public class DialogueEvent : MonoBehaviour
 
     private BoxCollider2D dialogueZone;
     
-    private Dictionary<string, DialogueActor> actorDictionary = new();
+    private readonly Dictionary<string, DialogueActor> actorDictionary = new();
 
-    private Queue<DialogueGroup> dialogueQueue = new();
+    private readonly Queue<DialogueGroup> dialogueQueue = new();
 
     private DialogueGroup currentGroup;
     
@@ -40,6 +42,7 @@ public class DialogueEvent : MonoBehaviour
         for (int i = 0; i < script.groups.Count; ++i)
             dialogueQueue.Enqueue(script.groups[i]);
         DequeueDialogue();
+        dialogueEventStarted.Raise();
     }
 
     private void DequeueDialogue()
@@ -153,5 +156,6 @@ public class DialogueEvent : MonoBehaviour
     private void EndEvent()
     {
         Debug.Log("End Event");
+        dialogueEventEnded.Raise();
     }
 }

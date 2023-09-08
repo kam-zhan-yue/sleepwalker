@@ -296,6 +296,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1605487996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8965463861423883313, guid: c572d8b3b5555468cae4df82c61427ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 416358382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1605487997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605487996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f24775a798e40679966eab0ffcbd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePopupPrefab: {fileID: 3539448771220117397, guid: 7273da780addf4d57861be12a69fd664,
+    type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1782256441
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,11 +346,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3914a9319035a4695a155282e9be015a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEventStarted: {fileID: 11400000, guid: 849ed33a6aa214158a5daee2a553dfa7,
+    type: 2}
+  dialogueEventEnded: {fileID: 11400000, guid: e0e9348d6bb9d4f5aa15e6f3bfd730f3, type: 2}
   actors:
   - key: Grunt 1
-    actor: {fileID: 0}
+    dialogueObject: {fileID: 1866398566}
   - key: Grunt 2
-    actor: {fileID: 0}
+    dialogueObject: {fileID: 1605487997}
   script: {fileID: 11400000, guid: 24fa4ae0c31fa3844ae7a5950678faa6, type: 2}
 --- !u!4 &1782256443
 Transform:
@@ -364,7 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f24775a798e40679966eab0ffcbd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePopupPrefab: {fileID: 0}
+  dialoguePopupPrefab: {fileID: 3539448771220117397, guid: 7273da780addf4d57861be12a69fd664,
+    type: 3}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1982788731
 PrefabInstance:
