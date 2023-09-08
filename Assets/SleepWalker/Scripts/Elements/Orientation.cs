@@ -26,6 +26,7 @@ public class Orientation : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        positionLastFrame = transform.position;
         FlipModel(facingRight ? 1 : -1);
     }
 
