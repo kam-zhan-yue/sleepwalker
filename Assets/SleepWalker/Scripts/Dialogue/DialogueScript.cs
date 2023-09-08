@@ -14,4 +14,11 @@ public class DialogueScript : ScriptableObject
     {
         groups.Add(new DialogueGroup());
     }
+
+    public List<DialogueAction> GetActions(int _groupIndex)
+    {
+        if (_groupIndex > 0 && _groupIndex < groups.Count)
+            return groups[_groupIndex].actions;
+        return new List<DialogueAction>();
+    }
 }
