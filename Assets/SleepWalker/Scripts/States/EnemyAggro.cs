@@ -22,11 +22,13 @@ public class EnemyAggro : State
     private Aiming aiming;
 
     private CoroutineHandle aggroRoutine;
+    private Animator animator;
     
     protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     //Need CanAggro to avoid changing states twice in EnterState
@@ -89,10 +91,12 @@ public class EnemyAggro : State
         {
             Vector3 direction = transform.DirectionToObject(target);
             rb.velocity = direction * speed;
+            animator.SetFloat(AnimationHelper.SpeedParameter, speed);
         }
         else
         {
             rb.velocity = Vector2.zero;
+            animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
         }
     }
     

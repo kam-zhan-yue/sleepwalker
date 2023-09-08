@@ -33,10 +33,12 @@ public class EnemyPatrol : State
     public List<PatrolNode> nodeList = new();
 
     private Rigidbody2D rb;
+    private Animator animator;
     
     protected override void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     public override void EnterState()
@@ -60,7 +62,7 @@ public class EnemyPatrol : State
         {
             sequence.SetLoops(-1, LoopType.Yoyo);
         }
-        
+        animator.SetFloat(AnimationHelper.SpeedParameter, 1f);
         sequence.Play();
     }
 
@@ -82,6 +84,7 @@ public class EnemyPatrol : State
     {
         base.ExitState();
         DOTween.KillAll();
+        animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
     }
 
     private void OnDrawGizmos()

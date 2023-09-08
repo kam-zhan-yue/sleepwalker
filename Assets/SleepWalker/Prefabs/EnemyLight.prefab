@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 8965463861423883279}
   - component: {fileID: 8965463861423883278}
   - component: {fileID: 6571252438357622928}
+  - component: {fileID: 5796097751032943882}
   m_Layer: 13
   m_Name: EnemyLight
   m_TagString: Untagged
@@ -128,7 +129,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aba7b5c63d9ec304b89edc574d32d4bd, type: 3}
+  m_Sprite: {fileID: 2000098146, guid: 8682f7796a17a434fbfe2df23fdea988, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,18 +174,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.08075619, y: -0.040377975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.3384876, y: 1.7422678}
   m_EdgeRadius: 0
 --- !u!114 &8965463861423883277
 MonoBehaviour:
@@ -198,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDeadEvent: {fileID: 0}
   maxHealth:
     _usage: 1
     _value: 0
@@ -304,6 +306,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtTime: 0.2
+--- !u!95 &5796097751032943882
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965463861423883313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 027faaf3f45d345438691ef87f64b707, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8965463862264186991
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 7191709783883841943, guid: 65931d58ef5f841c2975fb01f55ab2e8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.9000015
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7191709783883841943, guid: 65931d58ef5f841c2975fb01f55ab2e8,
         type: 3}
