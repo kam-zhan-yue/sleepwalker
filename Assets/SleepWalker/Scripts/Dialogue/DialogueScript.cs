@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueScript : ScriptableObject
 {
     public bool useCamera = true;
+    public bool playOnce = true;
     public List<string> actors = new();
     public List<DialogueGroup> groups = new();
     

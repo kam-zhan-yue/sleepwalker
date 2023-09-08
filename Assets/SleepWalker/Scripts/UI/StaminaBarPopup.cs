@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class StaminaBarPopup : Popup
 {
+    [FoldoutGroup("UI Objects")] public RectTransform holder;
     [FoldoutGroup("UI Objects")] public FloatReference playerMaxStamina;
     [FoldoutGroup("UI Objects")] public FloatReference playerStamina;
     [FoldoutGroup("UI Objects")] public Slider staminaSlider;
@@ -19,12 +20,12 @@ public class StaminaBarPopup : Popup
 
     public override void ShowPopup()
     {
-        gameObject.SetActiveFast(true);
+        holder.gameObject.SetActiveFast(true);
     }
 
     public override void HidePopup()
     {
-        gameObject.SetActiveFast(false); 
+        holder.gameObject.SetActiveFast(false); 
     }
     
     public void OnStaminaChanged(FloatPair _floatPair)
@@ -35,5 +36,15 @@ public class StaminaBarPopup : Popup
     public void OnMaxStaminaChanged(FloatPair _floatPair)
     {
         staminaSlider.maxValue = _floatPair.Item1;
+    }
+
+    public void OnDialogueEventStarted()
+    {
+        HidePopup();
+    }
+
+    public void OnDialogueEventEnded()
+    {
+        ShowPopup();
     }
 }

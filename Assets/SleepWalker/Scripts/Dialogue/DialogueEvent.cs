@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueEvent : MonoBehaviour
 {
@@ -13,11 +14,15 @@ public class DialogueEvent : MonoBehaviour
     [FoldoutGroup("Game Events")] public TransformGameEvent transformDialogueEventEnded;
     [FoldoutGroup("Scene Variables")] public List<DialogueActor> actors = new();
 
+    // [FoldoutGroup("Setup Variables")] [InlineEditor()]
+    // public bool useZone = false;
+    //
+    // [ShowIf("useZone")]
+    // public BoxCollider2D dialogueZone;
+    
     [FoldoutGroup("Setup Variables")] [InlineEditor()]
     public DialogueScript script;
 
-    private BoxCollider2D dialogueZone;
-    
     private readonly Dictionary<string, DialogueActor> actorDictionary = new();
 
     private readonly Queue<DialogueGroup> dialogueQueue = new();
@@ -29,17 +34,35 @@ public class DialogueEvent : MonoBehaviour
     private int finishedEvents = 0;
     private int totalEvents = 0;
 
+    private UIControls uiControls;
+    private bool played = false;
+
     private void Awake()
     {
         for (int i = 0; i < actors.Count; ++i)
         {
             actorDictionary.Add(actors[i].key, actors[i]);
         }
+
+        uiControls = new UIControls();
+    }
+
+    private void OnTriggerEnter2D(Collider2D _collider2D)
+    {
+        if (_collider2D.gameObject.TryGetComponent(out DialogueTrigger _))
+        {
+            StartEvent();
+        }
     }
 
     [Button]
     public void StartEvent()
     {
+        //If already played, then don't bother
+        if (script.playOnce && played)
+            return;
+        uiControls.UIInput.Enable();
+        uiControls.UIInput.Next.started += NextStarted;
         dialogueQueue.Clear();
         for (int i = 0; i < script.groups.Count; ++i)
             dialogueQueue.Enqueue(script.groups[i]);
@@ -67,7 +90,12 @@ public class DialogueEvent : MonoBehaviour
             EndEvent();
         }
     }
-
+    
+    private void NextStarted(InputAction.CallbackContext _callbackContext)
+    {
+        MoveDialogue();
+    }
+    
     [Button]
     private void MoveDialogue()
     {
@@ -161,6 +189,9 @@ public class DialogueEvent : MonoBehaviour
         
     private void EndEvent()
     {
+        played = true;
+        uiControls.UIInput.Next.started -= NextStarted;
+        uiControls.UIInput.Disable();
         Debug.Log("End Event");
         dialogueEventEnded.Raise();
         if (script.useCamera)

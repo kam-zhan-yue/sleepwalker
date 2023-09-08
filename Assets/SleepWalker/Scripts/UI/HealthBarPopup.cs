@@ -12,6 +12,7 @@ public class HealthBarPopup : Popup
     [FoldoutGroup("Setup")] public float secondaryTime;
     [FoldoutGroup("Setup")] public float delay;
     [FoldoutGroup("Setup")] public Ease easing;
+    [FoldoutGroup("UI Objects")] public RectTransform holder;
     [FoldoutGroup("UI Objects")] public FloatReference maxHealth;
     [FoldoutGroup("UI Objects")] public Slider primarySlider;
     [FoldoutGroup("UI Objects")] public Slider secondarySlider;
@@ -22,12 +23,12 @@ public class HealthBarPopup : Popup
 
     public override void ShowPopup()
     {
-        gameObject.SetActiveFast(true);
+        holder.gameObject.SetActiveFast(true);
     }
 
     public override void HidePopup()
     {
-        gameObject.SetActiveFast(false);
+        holder.gameObject.SetActiveFast(false);
     }
 
     public void OnHealthChanged(FloatPair _floatPair)
@@ -42,5 +43,15 @@ public class HealthBarPopup : Popup
         sequence.AppendInterval(delay);
         sequence.Append(DOTween.To(_x => secondarySlider.value = _x, _floatPair.Item2 / maxHealth.Value, _floatPair.Item1 / maxHealth.Value, secondaryTime).SetEase(easing));
         sequence.Play();
+    }
+
+    public void OnDialogueEventStarted()
+    {
+        HidePopup();
+    }
+
+    public void OnDialogueEventEnded()
+    {
+        ShowPopup();
     }
 }
