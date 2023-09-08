@@ -119,6 +119,7 @@ public class EnemyAggro : State
         aiming.SetAimingState(Aiming.AimingState.Idle);
         if(resetDecision)
             decision.ToggleActive(true);
+        animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
     }
 
     private void OnDestroy()
