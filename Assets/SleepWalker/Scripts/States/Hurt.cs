@@ -7,7 +7,6 @@ using UnityEngine;
 public class Hurt : State
 {
     [BoxGroup("Setup Variables")] public float hurtTime;
-    private SpriteRenderer spriteRenderer;
     private CoroutineHandle hurtRoutine;
     
     //for now, the player cannot be interrupted during their sleep
@@ -19,7 +18,6 @@ public class Hurt : State
     protected override void Awake()
     {
         base.Awake();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         
     }
 
@@ -27,7 +25,6 @@ public class Hurt : State
     {
         base.EnterState();
         hurtRoutine = Timing.RunCoroutine(HurtCountdown());
-        spriteRenderer.color = Color.blue;
     }
 
     private IEnumerator<float> HurtCountdown()
@@ -40,6 +37,5 @@ public class Hurt : State
     {
         base.ExitState();
         Timing.KillCoroutines(hurtRoutine);
-        spriteRenderer.color = Color.white;
     }
 }

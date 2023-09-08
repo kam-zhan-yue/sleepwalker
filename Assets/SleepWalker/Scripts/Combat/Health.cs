@@ -39,26 +39,30 @@ public class Health : MonoBehaviour, IDamageTarget
         {
             currentHealth.Value -= _damage.damage;
             onDamageTaken?.Invoke();
-            CheckDead();
-        }
-    }
-
-    private void CheckDead()
-    {
-        if (currentHealth <= 0f)
-        {
-            if (animator != null)
+            
+            if (currentHealth <= 0f)
             {
-                Debug.Log("Send Dead Event");
-                animator.SetTrigger(AnimationHelper.DeadParameter);
-            }
+                if (animator != null)
+                {
+                    Debug.Log("Send Dead Event");
+                    animator.SetTrigger(AnimationHelper.DeadParameter);
+                }
 
-            if (onDeadEvent != null)
-            {
-                onDeadEvent.Raise();
+                if (onDeadEvent != null)
+                {
+                    onDeadEvent.Raise();
+                }
+                onDead?.Invoke();
+                // Destroy(gameObject);
             }
-            onDead?.Invoke();
-            // Destroy(gameObject);
+            else
+            {
+                if (animator != null)
+                {
+                    Debug.Log("Send Hurt Event");
+                    animator.SetTrigger(AnimationHelper.HurtParameter);
+                }
+            }
         }
     }
 
