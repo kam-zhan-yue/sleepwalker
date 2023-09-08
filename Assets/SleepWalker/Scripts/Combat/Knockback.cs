@@ -38,6 +38,6 @@ public class Knockback
         Rigidbody2D targetRigidbody = target.GetRigidbody2D();
         targetRigidbody.velocity = Vector2.zero;
         targetRigidbody.AddForce(force * finalDirection, ForceMode2D.Impulse);
-        Debug.Log("Add Knockback: "+force * finalDirection);
+        // Debug.Log("Add Knockback: "+force * finalDirection);
     }
 }

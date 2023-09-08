@@ -10,25 +10,31 @@ using UnityEngine.Serialization;
 
 public class PlayerAwake : State
 {
+    [BoxGroup("Setup Variables")] 
     [SerializeField]
     private FloatReference speed;
 
+    [BoxGroup("Setup Variables")] 
     [SerializeField]
     private FloatReference dashSpeed;
 
+    [BoxGroup("Setup Variables")] 
     [SerializeField]
     private FloatReference maxStamina;
+    
+    [BoxGroup("Setup Variables")] 
+    [SerializeField] 
+    private FloatReference staminaTime;
+    
+    [BoxGroup("Setup Variables")] 
+    [SerializeField] 
+    private FloatReference stamina;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private bool canDash = true;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private bool canSleep = false;
-
-    [SerializeField] 
-    private FloatReference staminaTime;
-    [SerializeField] 
-    private FloatReference stamina;
     private Rigidbody2D rb;
     private float vert = 0f;
     private float horiz = 0f;
@@ -38,18 +44,20 @@ public class PlayerAwake : State
     
     //Input Actions
     private PlayerControls playerControls;
+    private Animator animator;
 
     [FoldoutGroup("Testing")] 
     public Attack playerAttack;
 
     private bool pauseStamina = false;
-
+    
     protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         orientation = GetComponent<Orientation>();
+        animator = GetComponent<Animator>();
         
         playerControls = new PlayerControls();
         playerControls.PlayerInput.Enable();
@@ -84,6 +92,12 @@ public class PlayerAwake : State
         horiz = moveInput.x;
         UpdateOrientation();
         UpdateStamina();
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        animator.SetFloat(AnimationHelper.SpeedParameter, Mathf.Abs(vert) + Mathf.Abs(horiz));
     }
 
     private void UpdateOrientation()

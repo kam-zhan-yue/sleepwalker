@@ -7,12 +7,16 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageTarget
 {
+    [BoxGroup("Setup Variables")]
+    public GameEvent onDeadEvent;
+    
     [BoxGroup("Health Variables")]
     public FloatReference maxHealth;
     [BoxGroup("Health Variables")]
     [SerializeField]
     private FloatReference currentHealth;
 
+    private Animator animator;
 
     [BoxGroup("Events")] 
     public UnityEvent onDamageTaken;
@@ -21,6 +25,7 @@ public class Health : MonoBehaviour, IDamageTarget
     private void Awake()
     {
         currentHealth.Value = maxHealth;
+        TryGetComponent(out animator);
     }
 
     public string GetId()
@@ -42,8 +47,18 @@ public class Health : MonoBehaviour, IDamageTarget
     {
         if (currentHealth <= 0f)
         {
+            if (animator != null)
+            {
+                Debug.Log("Send Dead Event");
+                animator.SetTrigger(AnimationHelper.DeadParameter);
+            }
+
+            if (onDeadEvent != null)
+            {
+                onDeadEvent.Raise();
+            }
             onDead?.Invoke();
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
     }
 
