@@ -25,10 +25,12 @@ public class PlayerSleep : State
     //ai actions
     private List<Transform> targets = new List<Transform>();
     private Vector2 target;
+    const int DEACTIVATE = -2;
     const int BEGIN = -1;
     const int ROAM = 0;
     const int APPROACH = 1;
     const int LUNGE = 2;
+    
     private int aiState = BEGIN;
     private bool followTarget = false;
 
@@ -78,7 +80,8 @@ public class PlayerSleep : State
     {
         if(!pauseStamina)
             stamina.Value -= Time.deltaTime;
-
+        if (aiState == DEACTIVATE)
+            return;
         // stateText.text = $"Sleep State: {aiState}";
 
         if (stamina <= 0f)
@@ -232,8 +235,10 @@ public class PlayerSleep : State
     {
         base.Deactivate();
         playerControls.Disable();
+        aiState = DEACTIVATE;
+        rb.velocity = Vector2.zero;
     }
-    
+
     private void OnDestroy()
     {
         playerControls.Dispose();
