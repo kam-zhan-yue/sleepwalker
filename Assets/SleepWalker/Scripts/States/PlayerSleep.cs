@@ -228,8 +228,15 @@ public class PlayerSleep : State
         pauseStamina = false;
     }
 
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        playerControls.Disable();
+    }
+    
     private void OnDestroy()
     {
-        
+        playerControls.Dispose();
     }
+
 }

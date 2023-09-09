@@ -119,4 +119,9 @@ public class CameraManager : MonoBehaviour
 
         return mouseDirection;
     }
+
+    private void OnDestroy()
+    {
+        instance = null;
+    }
 }

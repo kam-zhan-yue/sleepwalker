@@ -199,4 +199,10 @@ public class DialogueEvent : MonoBehaviour
             transformDialogueEventEnded.Raise(transform);
         }
     }
+    
+    private void OnDestroy()
+    {
+        uiControls.UIInput.Disable();
+        uiControls.Dispose();
+    }
 }
