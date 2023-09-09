@@ -9,6 +9,8 @@ using UnityEngine.Serialization;
 
 public class EnemyPatrol : State
 {
+    private Orientation orientation;
+    
     [Serializable]
     public class PatrolNode
     {
@@ -39,11 +41,13 @@ public class EnemyPatrol : State
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        orientation = GetComponent<Orientation>();
     }
 
     public override void EnterState()
     {
         base.EnterState();
+        orientation.SetFacingMode(Orientation.FacingMode.Automatic);
         if (nodeList.Count > 0)
             transform.position = nodeList[0].nodeTransform.position;
 

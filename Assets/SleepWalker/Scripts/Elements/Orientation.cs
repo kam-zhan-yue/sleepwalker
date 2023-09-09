@@ -12,7 +12,8 @@ public class Orientation : MonoBehaviour
         Automatic = 0,
         Movement = 1,
         Cursor = 2,
-        Both = 3
+        Aiming = 3,
+        Both = 4
     }
     
     public FacingMode facingMode = FacingMode.Automatic;
@@ -22,6 +23,7 @@ public class Orientation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 positionLastFrame;
     private Vector3 positionDifference;
+    private Transform target;
     
     private void Awake()
     {
@@ -42,6 +44,9 @@ public class Orientation : MonoBehaviour
                 break;
             case FacingMode.Cursor:
                 ProcessCursor();
+                break;
+            case FacingMode.Aiming:
+                ProcessAiming();
                 break;
             case FacingMode.Both:
                 break;
@@ -82,6 +87,23 @@ public class Orientation : MonoBehaviour
         {
             FlipModel(-1);
         }
+    }
+    
+    public void SetAimTarget(Transform _target)
+    {
+        target = _target;
+    }
+    
+    private void ProcessAiming()
+    {
+        Vector3 direction = transform.DirectionToObject(target);
+        facingRight = direction.x >= 0f;
+        FlipModel(facingRight ? 1 : -1);
+    }
+
+    public void SetFacingMode(FacingMode _mode)
+    {
+        facingMode = _mode;
     }
 
     private void FlipModel(int _direction)
