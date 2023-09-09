@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOverPopup : Popup
 {
     [BoxGroup("UI Objects")] public RectTransform mainHolder;
+    
     public override void InitPopup()
     {
         mainHolder.gameObject.SetActiveFast(false);
