@@ -192,6 +192,8 @@ public class PlayerSleep : State
     private void Lunge() //when someone is close enough, attack them
     {
         aiState = LUNGE;
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -208,7 +208,7 @@ PrefabInstance:
     - target: {fileID: 8965463861423883272, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.34
       objectReference: {fileID: 0}
     - target: {fileID: 8965463861423883272, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
@@ -258,7 +258,12 @@ PrefabInstance:
     - target: {fileID: 8965463861423883313, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: m_Name
-      value: EnemyLight - Attack
+      value: Enemy - Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965463861423883313, guid: c572d8b3b5555468cae4df82c61427ed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8965463863138193918, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}

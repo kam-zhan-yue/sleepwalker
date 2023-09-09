@@ -317,34 +317,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""PauseMenu"",
-            ""id"": ""a9a6e202-dd7b-4920-8d5c-3e62c81fdb99"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""fb5ff408-e697-4233-9f90-042b3b98a657"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""b626b84a-db96-4c99-8681-fc9e172cb44e"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -356,9 +328,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerInput_Look = m_PlayerInput.FindAction("Look", throwIfNotFound: true);
         m_PlayerInput_Move = m_PlayerInput.FindAction("Move", throwIfNotFound: true);
         m_PlayerInput_Sleep = m_PlayerInput.FindAction("Sleep", throwIfNotFound: true);
-        // PauseMenu
-        m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
-        m_PauseMenu_Newaction = m_PauseMenu.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -494,52 +463,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerInputActions @PlayerInput => new PlayerInputActions(this);
-
-    // PauseMenu
-    private readonly InputActionMap m_PauseMenu;
-    private List<IPauseMenuActions> m_PauseMenuActionsCallbackInterfaces = new List<IPauseMenuActions>();
-    private readonly InputAction m_PauseMenu_Newaction;
-    public struct PauseMenuActions
-    {
-        private @PlayerControls m_Wrapper;
-        public PauseMenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_PauseMenu_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_PauseMenu; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PauseMenuActions set) { return set.Get(); }
-        public void AddCallbacks(IPauseMenuActions instance)
-        {
-            if (instance == null || m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IPauseMenuActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        public void RemoveCallbacks(IPauseMenuActions instance)
-        {
-            if (m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IPauseMenuActions instance)
-        {
-            foreach (var item in m_Wrapper.m_PauseMenuActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public PauseMenuActions @PauseMenu => new PauseMenuActions(this);
     public interface IPlayerInputActions
     {
         void OnDash(InputAction.CallbackContext context);
@@ -547,9 +470,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnSleep(InputAction.CallbackContext context);
-    }
-    public interface IPauseMenuActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
     }
 }
