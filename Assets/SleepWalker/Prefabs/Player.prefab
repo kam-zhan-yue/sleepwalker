@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runtimeSet: {fileID: 0}
+  runtimeSet: {fileID: 11400000, guid: d6943c4fec65f475aa4a38b9142d9876, type: 2}
   onDeadEvent: {fileID: 11400000, guid: 6b1c8f8e68a464726bfff4dcd0339066, type: 2}
   maxHealth:
     _usage: 1

@@ -192,7 +192,7 @@ public class DialogueEvent : MonoBehaviour
         played = true;
         uiControls.UIInput.Next.started -= NextStarted;
         uiControls.UIInput.Disable();
-        Debug.Log("End Event");
+        // Debug.Log("End Event");
         dialogueEventEnded.Raise();
         if (script.useCamera)
         {

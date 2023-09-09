@@ -28,12 +28,11 @@ public class CameraManager : MonoBehaviour
     private float dirOffset = 1.5f;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
-    private CameraState state = CameraState.TrackingPlayer;
+    private CameraState state = CameraState.None;
 
     private Transform target;
     
     private Camera mainCamera;
-
 
     private Tween transitionTween;
 
@@ -44,11 +43,6 @@ public class CameraManager : MonoBehaviour
         else
             instance = this;
         mainCamera = Camera.main;
-    }
-
-    private void Start()
-    {
-        target = GameObject.FindWithTag("Player").transform;
     }
 
     private void Update()
@@ -65,7 +59,7 @@ public class CameraManager : MonoBehaviour
 
                 //transform.position = Vector3.Lerp(transform.position, target.position, damp) + offset;
                 transform.position = Vector3.Lerp(transform.position, target.position + offset, damp);
-                break;
+                    break;
             case CameraState.Transition:
                 break;
         }
@@ -78,6 +72,17 @@ public class CameraManager : MonoBehaviour
 
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
         return mouseWorldPosition;
+    }
+
+    public void OnPlayerAdded(GameObject _player)
+    {
+        target = _player.transform;
+        state = CameraState.TrackingPlayer;
+    }
+
+    public void OnPlayerRemoved(GameObject _player)
+    {
+        state = CameraState.None;
     }
 
     public void OnDialogueEventStarted(Transform _transform)
