@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 8965463861423883278}
   - component: {fileID: 6571252438357622928}
   - component: {fileID: 5796097751032943882}
+  - component: {fileID: 4816853198583880104}
   m_Layer: 13
   m_Name: EnemyLight
   m_TagString: Enemy
@@ -340,6 +341,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &4816853198583880104
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965463861423883313}
+  m_Enabled: 1
+  m_SortingLayerID: 47421343
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &8965463862264186991
 GameObject:
   m_ObjectHideFlags: 0
