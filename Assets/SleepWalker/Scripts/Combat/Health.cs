@@ -7,27 +7,28 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageTarget
 {
-    [BoxGroup("Setup Variables")]
-    public GameEvent onDeadEvent;
+    [BoxGroup("Setup Variables")] public GameObjectRuntimeSet runtimeSet;
+    [BoxGroup("Setup Variables")] public GameEvent onDeadEvent;
     
-    [BoxGroup("Health Variables")]
-    public FloatReference maxHealth;
-    [BoxGroup("Health Variables")]
+    [BoxGroup("Health Variables")] public FloatReference maxHealth;
     [SerializeField]
-    private FloatReference currentHealth;
+    [BoxGroup("Health Variables")] private FloatReference currentHealth;
 
     private Animator animator;
 
-    [BoxGroup("Events")] 
+    [BoxGroup("Unity Events")] 
     public UnityEvent onDamageTaken;
+    [BoxGroup("Unity Events")] 
     public UnityEvent onDead;
 
     private void Awake()
     {
         currentHealth.Value = maxHealth;
         TryGetComponent(out animator);
+        if(runtimeSet)
+            runtimeSet.Add(gameObject);
     }
-
+    
     public string GetId()
     {
         return gameObject.name;
@@ -39,29 +40,34 @@ public class Health : MonoBehaviour, IDamageTarget
         {
             currentHealth.Value -= _damage.damage;
             onDamageTaken?.Invoke();
-            
-            if (currentHealth <= 0f)
-            {
-                if (animator != null)
-                {
-                    Debug.Log("Send Dead Event");
-                    animator.SetTrigger(AnimationHelper.DeadParameter);
-                }
+            CheckDead();
+        }
+    }
 
-                if (onDeadEvent != null)
-                {
-                    onDeadEvent.Raise();
-                }
-                onDead?.Invoke();
-                // Destroy(gameObject);
-            }
-            else
+    private void CheckDead()
+    {
+        if (currentHealth <= 0f)
+        {
+            if (animator != null)
             {
-                if (animator != null)
-                {
-                    Debug.Log("Send Hurt Event");
-                    animator.SetTrigger(AnimationHelper.HurtParameter);
-                }
+                // Debug.Log("Send Dead Event");
+                animator.SetTrigger(AnimationHelper.DeadParameter);
+            }
+
+            if (onDeadEvent != null)
+            {
+                onDeadEvent.Raise();
+            }
+            onDead?.Invoke();
+            runtimeSet.Remove(gameObject);
+            // Destroy(gameObject);
+        }
+        else
+        {
+            if (animator != null)
+            {
+                // Debug.Log("Send Hurt Event");
+                animator.SetTrigger(AnimationHelper.HurtParameter);
             }
         }
     }

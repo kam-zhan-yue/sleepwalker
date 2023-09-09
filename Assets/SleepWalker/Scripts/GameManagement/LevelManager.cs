@@ -1,71 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [BoxGroup("Setup Variables")] public GameObjectRuntimeSet enemyRuntimeSet;
     [SerializeField] Animator screenFadeAnim;
-    [SerializeField] List<GameObject> activeEnemies;
     const int LAST_LEVEL = 5; //make this the build index of the first last level, not the level number
-    float time = 0;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        //set up what enemies are in the scene
-        activeEnemies.Clear();
-        GameObject[] active = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject o in active)
-        {
-            activeEnemies.Add(o);
-        }
+        // //set up what enemies are in the scene
+        // activeEnemies.Clear();
+        // GameObject[] active = GameObject.FindGameObjectsWithTag("Enemy");
+        // foreach (GameObject o in active)
+        // {
+        //     activeEnemies.Add(o);
+        // }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnemyAdded(GameObject _enemy)
     {
-        time += Time.deltaTime;
+        Debug.Log("Enemy Added!");
+    }
 
-        //so it doesn't check every frame but every few seconds
-        if (time >= 1)
-        {
-            Debug.Log("Checking for enemies...");
-            foreach (GameObject enemy in activeEnemies)
-            {
-                float enemyHealth = enemy.GetComponent<Health>().GetHeathPercentage(); ;
-                if (enemyHealth <= 0)
-                {
-                    RemoveEnemy(enemy);
-                }
-            }
-            Debug.Log($"There are {activeEnemies.Count} enemies");
-        }
+    public void OnEnemyRemoved(GameObject _enemy)
+    {
+        Debug.Log($"Enemy Removed! Remaining Enemies: {enemyRuntimeSet.items.Count}");
+        CheckEnemiesDead();
+    }
 
+    private void CheckEnemiesDead()
+    {
         //load next level if no more enemies
-        if (activeEnemies.Count <= 0)
+        if (enemyRuntimeSet.items.Count <= 0)
         {
             Debug.Log("No enemies");
             LoadLevel();
         }
     }
 
-    //removes enemy from active enemies list
-    //should work from in this script but can be called externally for any reason, not static though
-    public void RemoveEnemy(GameObject e)
+    public void OnPlayerDead()
     {
-        activeEnemies.Remove(e);
+        //TODO: Do something here?
     }
-    
+
     //load the next build index or go to home page if game is over
     //can be called externally if we need a skip level hack or something
-    public void LoadLevel(bool deathCase = false)
+    private void LoadLevel(bool _deathCase = false)
     {
         Debug.Log("Loading next level now");
         int currentLevel = SceneManager.GetActiveScene().buildIndex;
         IEnumerator coroutine;
 
-        if (!deathCase)
+        if (!_deathCase)
         {
             if (currentLevel != LAST_LEVEL)
             {
@@ -85,13 +76,13 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    IEnumerator FadeToLoad(float waitTime, int sceneToLoad)
+    private IEnumerator FadeToLoad(float _waitTime, int _sceneToLoad)
     {
         //start fade animation
-        screenFadeAnim.SetTrigger("FadeOut");
+        screenFadeAnim.SetTrigger(AnimationHelper.FadeOutParameter);
         //wait then load scene
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(_waitTime);
         Debug.Log("Fade out complete");
-        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+        SceneManager.LoadScene(_sceneToLoad, LoadSceneMode.Single);
     }
 }
