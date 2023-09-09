@@ -122,13 +122,14 @@ public class Attack : MonoBehaviour
 
     public void Deactivate()
     {
+        aiming.Deactivate();
         cooldown = false;
         Timing.KillCoroutines(attackRoutine);
         Timing.KillCoroutines(cooldownRoutine);
         Timing.KillCoroutines(aimingRoutine);
         DisableDamageArea();
     }
-
+    
     private void PlayAnimation()
     {
         if (usesAnimation && animator != null)
@@ -151,8 +152,9 @@ public class Attack : MonoBehaviour
         StaticHelper.DrawGizmoRectangle(Vector3.zero + (Vector3)areaOffset, areaSize, Color.red);
     }
 
-    private void OnDestroy()
+    public void UnInit()
     {
         Deactivate();
+        gameObject.SetActiveFast(false);
     }
 }

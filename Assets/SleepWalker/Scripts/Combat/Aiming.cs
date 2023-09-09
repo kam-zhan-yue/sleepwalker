@@ -6,7 +6,8 @@ public class Aiming : MonoBehaviour
     {
         Idle = 0,
         Aiming = 1,
-        Firing = 2
+        Firing = 2,
+        Deactivated = 3
     }
     public Orientation orientation;
     public SpriteRenderer weapon;
@@ -57,5 +58,10 @@ public class Aiming : MonoBehaviour
     public void ResetState()
     {
         aimingState = initialState;
+    }
+
+    public void Deactivate()
+    {
+        aimingState = AimingState.Deactivated;
     }
 }

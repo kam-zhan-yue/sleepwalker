@@ -13,9 +13,9 @@ public class Orientation : MonoBehaviour
         Movement = 1,
         Cursor = 2,
         Aiming = 3,
-        Both = 4
+        Deactivated = 4
     }
-    
+
     public FacingMode facingMode = FacingMode.Automatic;
 
     public bool facingRight;
@@ -24,7 +24,7 @@ public class Orientation : MonoBehaviour
     private Vector3 positionLastFrame;
     private Vector3 positionDifference;
     private Transform target;
-    
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,7 +34,7 @@ public class Orientation : MonoBehaviour
 
     private void Update()
     {
-        switch(facingMode)
+        switch (facingMode)
         {
             case FacingMode.Automatic:
                 ProcessAutomatic();
@@ -48,7 +48,7 @@ public class Orientation : MonoBehaviour
             case FacingMode.Aiming:
                 ProcessAiming();
                 break;
-            case FacingMode.Both:
+            case FacingMode.Deactivated:
                 break;
             default:
                 ProcessMovement();
@@ -69,6 +69,7 @@ public class Orientation : MonoBehaviour
             facingRight = false;
             FlipModel(-1);
         }
+
         positionLastFrame = transform.position;
     }
 
@@ -81,19 +82,19 @@ public class Orientation : MonoBehaviour
     {
         float xPos = transform.position.x;
         Vector3 mouseWorldPosition = CameraManager.instance.GetMousePosition();
-        if(mouseWorldPosition.x >= xPos)
+        if (mouseWorldPosition.x >= xPos)
             FlipModel(1);
         else
         {
             FlipModel(-1);
         }
     }
-    
+
     public void SetAimTarget(Transform _target)
     {
         target = _target;
     }
-    
+
     private void ProcessAiming()
     {
         Vector3 direction = transform.DirectionToObject(target);
@@ -109,5 +110,10 @@ public class Orientation : MonoBehaviour
     private void FlipModel(int _direction)
     {
         spriteRenderer.flipX = (_direction == -1);
+    }
+
+    public void Deactivate()
+    {
+        facingMode = FacingMode.Deactivated;
     }
 }

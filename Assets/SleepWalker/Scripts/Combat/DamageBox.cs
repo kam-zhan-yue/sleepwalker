@@ -58,8 +58,11 @@ public class DamageBox : MonoBehaviour, IDamageSource
 
         if (_collider.gameObject.TryGetComponent(out IDamagePhysics physics))
         {
-            Knockback knockback = new (knockbackForce, knockbackDirection, transform, physics);
-            knockback.KnockbackTarget();
+            if (physics.IsActive())
+            {
+                Knockback knockback = new (knockbackForce, knockbackDirection, transform, physics);
+                knockback.KnockbackTarget();
+            }
         }
     }
 

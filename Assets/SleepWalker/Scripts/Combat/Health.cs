@@ -36,7 +36,8 @@ public class Health : MonoBehaviour, IDamageTarget
 
     public void TakeDamage(Damage _damage)
     {
-        if (_damage.damage > 0f)
+        //Take damage if health is above 0
+        if (_damage.damage > 0f && currentHealth > 0f)
         {
             currentHealth.Value -= _damage.damage;
             onDamageTaken?.Invoke();
