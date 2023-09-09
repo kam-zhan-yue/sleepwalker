@@ -17,7 +17,7 @@ public class StateController : MonoBehaviour
 
     private List<State> stateList = new List<State>();
 
-    
+
     private void Awake()
     {
         if (defaultState == null)
@@ -134,5 +134,13 @@ public class StateController : MonoBehaviour
         _state.EnterState();
         previousState = currentState;
         currentState = _state;
+    }
+
+    public void Deactivate()
+    {
+        for (int i = 0; i < stateList.Count; ++i)
+        {
+            stateList[i].Deactivate();
+        }
     }
 }

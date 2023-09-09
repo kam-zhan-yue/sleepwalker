@@ -188,9 +188,16 @@ public class PlayerAwake : State
         canDash = true;
     }
 
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        playerControls.Disable();
+    }
+    
     private void OnDestroy()
     {
         playerControls.PlayerInput.Disable();
         playerControls.Dispose();
     }
+    
 }

@@ -69,4 +69,9 @@ public abstract class State : MonoBehaviour
     {
         active = false;
     }
+
+    public virtual void Deactivate()
+    {
+        active = false;
+    }
 }

@@ -227,4 +227,9 @@ public class PlayerSleep : State
         playerControls.Enable();
         pauseStamina = false;
     }
+
+    private void OnDestroy()
+    {
+        
+    }
 }

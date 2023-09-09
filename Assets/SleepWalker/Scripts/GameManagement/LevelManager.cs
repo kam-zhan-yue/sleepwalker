@@ -6,20 +6,17 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet enemyRuntimeSet;
     [SerializeField] Animator screenFadeAnim;
     const int LAST_LEVEL = 5; //make this the build index of the first last level, not the level number
 
-    // Start is called before the first frame update
     private void Awake()
     {
-        // //set up what enemies are in the scene
-        // activeEnemies.Clear();
-        // GameObject[] active = GameObject.FindGameObjectsWithTag("Enemy");
-        // foreach (GameObject o in active)
-        // {
-        //     activeEnemies.Add(o);
-        // }
+        if (instance && instance != this)
+            Destroy(gameObject);
+        else
+            instance = this;
     }
 
     public void OnEnemyAdded(GameObject _enemy)
@@ -84,5 +81,10 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(_waitTime);
         Debug.Log("Fade out complete");
         SceneManager.LoadScene(_sceneToLoad, LoadSceneMode.Single);
+    }
+    
+    private void OnDestroy()
+    {
+        instance = null;
     }
 }
