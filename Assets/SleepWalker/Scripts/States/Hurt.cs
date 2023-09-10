@@ -12,13 +12,7 @@ public class Hurt : State
     //for now, the player cannot be interrupted during their sleep
     public override bool CanEnterState(State _currentState)
     {
-        return !StateController.IsCurrentState<PlayerSleep>();
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        
+        return !StateController.IsCurrentState<PlayerSleep>() && !StateController.IsCurrentState<EnemySleep >();
     }
 
     public override void EnterState()

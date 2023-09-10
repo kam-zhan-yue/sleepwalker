@@ -58,10 +58,11 @@ GameObject:
   - component: {fileID: 8965463861423883274}
   - component: {fileID: 8965463861423883273}
   - component: {fileID: 8965463861423883277}
-  - component: {fileID: 9144417603907758834}
   - component: {fileID: 8965463861423883276}
   - component: {fileID: 8965463861423883279}
   - component: {fileID: 8965463861423883278}
+  - component: {fileID: 2969004462743883800}
+  - component: {fileID: 9144417603907758834}
   - component: {fileID: 6571252438357622928}
   - component: {fileID: 5796097751032943882}
   - component: {fileID: 4816853198583880104}
@@ -268,18 +269,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &9144417603907758834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8965463861423883313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 756ca43e7de8f4e0aa17b71b194c52c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8965463861423883276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +308,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4d3cae424de45d597946618d91c53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2969004462743883800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965463861423883313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac84bae57fc45490da03920f6d6ef722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sleepTime: 5
+--- !u!114 &9144417603907758834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965463861423883313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756ca43e7de8f4e0aa17b71b194c52c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackTime: 0.2
 --- !u!114 &6571252438357622928
 MonoBehaviour:
   m_ObjectHideFlags: 0

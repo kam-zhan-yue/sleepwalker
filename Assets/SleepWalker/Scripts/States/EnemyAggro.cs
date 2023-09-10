@@ -36,7 +36,7 @@ public class EnemyAggro : State
     //Need CanAggro to avoid changing states twice in EnterState
     public override bool CanEnterState(State _currentState)
     {
-        return !StateController.IsCurrentState<Hurt>() && CanAggro();
+        return !StateController.IsCurrentState<Hurt>() && CanAggro() && !StateController.IsCurrentState<EnemySleep>();
     }
 
     public override void EnterState()
