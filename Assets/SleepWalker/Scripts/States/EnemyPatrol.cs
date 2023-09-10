@@ -36,6 +36,7 @@ public class EnemyPatrol : State
 
     private Rigidbody2D rb;
     private Animator animator;
+    private Sequence patrolSequence;
     
     protected override void Awake()
     {
@@ -51,23 +52,23 @@ public class EnemyPatrol : State
         if (nodeList.Count > 0)
             transform.position = nodeList[0].nodeTransform.position;
 
-        Sequence sequence = DOTween.Sequence();
+        patrolSequence = DOTween.Sequence();
         for (int i = 0; i < nodeList.Count - 1; ++i)
         {
-            AppendToSequence(sequence, nodeList[i], nodeList[i+1]);
+            AppendToSequence(patrolSequence, nodeList[i], nodeList[i+1]);
         }
 
         if (CanLoop())
         {
-            AppendToSequence(sequence, nodeList[^1], nodeList[0]);
-            sequence.SetLoops(-1);
+            AppendToSequence(patrolSequence, nodeList[^1], nodeList[0]);
+            patrolSequence.SetLoops(-1);
         }
         else
         {
-            sequence.SetLoops(-1, LoopType.Yoyo);
+            patrolSequence.SetLoops(-1, LoopType.Yoyo);
         }
         animator.SetFloat(AnimationHelper.SpeedParameter, 1f);
-        sequence.Play();
+        patrolSequence.Play();
     }
 
     private void AppendToSequence(Sequence _sequence, PatrolNode _nodeA, PatrolNode _nodeB)
@@ -110,8 +111,13 @@ public class EnemyPatrol : State
         return patrolType == PatrolType.Loop && nodeList.Count > 1;
     }
 
+    public override void Deactivate()
+    {
+        DOTween.Kill(patrolSequence);
+    }
+
     private void OnDestroy()
     {
-        DOTween.KillAll();
+        DOTween.Kill(patrolSequence);
     }
 }

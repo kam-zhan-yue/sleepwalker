@@ -25,6 +25,8 @@ public abstract class Decision : MonoBehaviour
     
     protected virtual void Update()
     {
+        if (!brain.IsActive())
+            return;
         if (!active)
             return;
         decisionTimer -= Time.deltaTime;

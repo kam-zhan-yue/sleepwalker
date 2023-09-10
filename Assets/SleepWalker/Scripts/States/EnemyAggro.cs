@@ -127,6 +127,13 @@ public class EnemyAggro : State
         // orientation.SetFacingMode(Orientation.FacingMode.Automatic);
     }
 
+    public override void Deactivate()
+    {
+        Debug.Log("Deactivate Aggro");
+        Timing.KillCoroutines(aggroRoutine);
+        attack.Deactivate();
+    }
+    
     private void OnDestroy()
     {
         Timing.KillCoroutines(aggroRoutine);
