@@ -48,7 +48,6 @@ public class EnemyAggro : State
         decision.ToggleActive(false);
         orientation.SetAimTarget(target);
         orientation.SetFacingMode(Orientation.FacingMode.Aiming);
-        Debug.Log($"{gameObject.name} Enter Aggro");
     }
     
     private IEnumerator<float> AggroRoutine()
@@ -84,7 +83,6 @@ public class EnemyAggro : State
 
     private void AimTarget()
     {
-        Debug.Log("AIM");
         Vector3 direction = transform.DirectionToObject(target);
         aiming.AimWeapon(direction);
     }

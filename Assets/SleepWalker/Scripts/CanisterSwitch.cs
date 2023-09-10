@@ -9,6 +9,7 @@ public class CanisterSwitch : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] public SleepCanister canister;
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
+    [BoxGroup("Setup Variables")] public RectTransform promptHolder;
 
     private bool activated = false;
     private PlayerControls playerControls;
@@ -21,6 +22,7 @@ public class CanisterSwitch : MonoBehaviour
         playerControls.PlayerInput.Enable();
         playerControls.PlayerInput.Interact.started += InteractStarted;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        promptHolder.gameObject.SetActiveFast(false);
     }
 
     private void OnTriggerEnter2D(Collider2D _collider2D)
@@ -30,6 +32,7 @@ public class CanisterSwitch : MonoBehaviour
         //Hacky way to check if player. I don't have much time, evidently.
         if (_collider2D.gameObject.TryGetComponent(out PlayerAwake _))
         {
+            promptHolder.gameObject.SetActiveFast(true);
             canister.Highlight(true);
             canInteract = true;
         }
@@ -42,6 +45,7 @@ public class CanisterSwitch : MonoBehaviour
         //Hacky way to check if player. I don't have much time, evidently.
         if (_collider2D.gameObject.TryGetComponent(out PlayerAwake _))
         {
+            promptHolder.gameObject.SetActiveFast(false);
             canister.Highlight(false);
             canInteract = false;
         }
@@ -57,6 +61,7 @@ public class CanisterSwitch : MonoBehaviour
     
     private void Activate()
     {
+        promptHolder.gameObject.SetActiveFast(false);
         spriteRenderer.sprite = onSwitch;
         canister.Highlight(false);
         canister.Activate();

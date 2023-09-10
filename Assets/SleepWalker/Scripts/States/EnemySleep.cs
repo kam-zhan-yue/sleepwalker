@@ -7,32 +7,52 @@ using UnityEngine;
 public class EnemySleep : State
 {
     [BoxGroup("Setup Variables")] public float sleepTime;
-    private CoroutineHandle sleepRoutine;
+    
+    //I am so lazy right now, I'm sorry
+    [BoxGroup("Setup Variables")] public MiniSleepBarPopup sleepPopup;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private float sleepTimer;
 
     protected override void Awake()
     {
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        sleepRoutine = Timing.RunCoroutine(Countdown());
+        rb.velocity = Vector2.zero;
         spriteRenderer.color = Color.black;
+        sleepTimer = sleepTime;
+        if(sleepPopup)
+            sleepPopup.ShowPopup();
     }
 
-    private IEnumerator<float> Countdown()
+    public override void UpdateBehaviour()
     {
-        yield return Timing.WaitForSeconds(sleepTime);
-        StateController.EnterPreviousState();
+        if (sleepTimer > 0f)
+        {
+            sleepTimer -= Time.deltaTime;
+            if (sleepTimer <= 0f)
+            {
+                StateController.EnterPreviousState();
+            }
+        }
     }
 
+    public float GetSleepPercentage()
+    {
+        return sleepTimer / sleepTime;
+    }
+    
     public override void ExitState()
     {
         base.ExitState();
-        Timing.KillCoroutines(sleepRoutine);
         spriteRenderer.color = Color.white;
+        if(sleepPopup)
+            sleepPopup.HidePopup();
     }
 }
