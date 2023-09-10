@@ -43,12 +43,7 @@ public class EnemyPatrol : State
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         orientation = GetComponent<Orientation>();
-    }
-
-    public override void EnterState()
-    {
-        base.EnterState();
-        orientation.SetFacingMode(Orientation.FacingMode.Automatic);
+        
         if (nodeList.Count > 0)
             transform.position = nodeList[0].nodeTransform.position;
 
@@ -67,6 +62,12 @@ public class EnemyPatrol : State
         {
             patrolSequence.SetLoops(-1, LoopType.Yoyo);
         }
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+        orientation.SetFacingMode(Orientation.FacingMode.Automatic);
         animator.SetFloat(AnimationHelper.SpeedParameter, 1f);
         patrolSequence.Play();
     }
@@ -88,7 +89,7 @@ public class EnemyPatrol : State
     public override void ExitState()
     {
         base.ExitState();
-        patrolSequence.Kill();
+        patrolSequence.Pause();
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
     }
 
