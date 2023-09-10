@@ -117,11 +117,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyLight - Patrol
       objectReference: {fileID: 0}
-    - target: {fileID: 2130785485066996474, guid: 6cfcf78f39aa3486fa0c522527d1511e,
-        type: 3}
-      propertyPath: defaultState
-      value: 
-      objectReference: {fileID: 7652380631518311695}
     - target: {fileID: 2130785485066996477, guid: 6cfcf78f39aa3486fa0c522527d1511e,
         type: 3}
       propertyPath: m_RootOrder
@@ -219,9 +214,55 @@ MonoBehaviour:
     delay: 0
   - nodeTransform: {fileID: 1716182313}
     delay: 0
+--- !u!114 &2926946572849327475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2130785485066996474, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3822580256443803529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2926946572849327437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2ea4ba559124dfbbf95a3d2ab71f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2926946572849327476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2130785485066996477, guid: 6cfcf78f39aa3486fa0c522527d1511e,
     type: 3}
   m_PrefabInstance: {fileID: 3822580256443803529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3822580257639591589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1220954412, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3822580256443803529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9084777165778024851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822580257639591589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab1db41fa904c4ebc68774bea719ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reaction: {fileID: 9127486497195294080}
+  disableAfterActivation: 1
+  timeBetweenDecisions: 0.1
+--- !u!114 &9127486497195294080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822580257639591589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b03823712f445e1bfb9df2ff6daf97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateController: {fileID: 2926946572849327475}

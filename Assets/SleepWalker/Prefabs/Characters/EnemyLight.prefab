@@ -282,6 +282,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 474662803212042757}
+        m_TargetAssemblyTypeName: EnemyPopup, Assembly-CSharp
+        m_MethodName: HidePopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8965463861423883276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +570,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2899335fd21a74a6b97936113d040cbf, type: 3}
+--- !u!114 &474662803212042757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7908870677518076731, guid: 2899335fd21a74a6b97936113d040cbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 7734831993442814270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd10b352151e4b458fe3f0f13cb24e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8081358193555194419 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1977472497321282317, guid: 2899335fd21a74a6b97936113d040cbf,
