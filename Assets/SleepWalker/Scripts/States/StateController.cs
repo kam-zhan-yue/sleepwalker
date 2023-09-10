@@ -17,6 +17,8 @@ public class StateController : MonoBehaviour
 
     private List<State> stateList = new List<State>();
 
+    private bool active = true;
+
 
     private void Awake()
     {
@@ -47,6 +49,8 @@ public class StateController : MonoBehaviour
     
     private void Update()
     {
+        if (!active)
+            return;
         currentState.PreUpdateBehaviour();
         currentState.UpdateBehaviour();
         currentState.PostUpdateBehaviour();
@@ -56,6 +60,8 @@ public class StateController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!active)
+            return;
         currentState.FixedUpdateBehaviour();
     }
     
@@ -140,6 +146,7 @@ public class StateController : MonoBehaviour
     {
         for (int i = 0; i < stateList.Count; ++i)
         {
+            active = false;
             stateList[i].Deactivate();
         }
     }
