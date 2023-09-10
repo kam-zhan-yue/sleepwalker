@@ -162,11 +162,13 @@ public class PlayerSleep : State
         direction = direction.normalized;
 
         //check if there's enough space to move in that direction
-        RaycastHit hit;
+        //RaycastHit hit;
         Vector2 targetSpot;
         float avgScale = transform.localScale.x + transform.localScale.y / 2f;
 
-        if (Physics.Raycast(transform.position, direction, out hit, maxTargetDistance))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxTargetDistance);
+
+        if (hit.collider != null)
         {
             if (hit.distance < minTargetDistance + bufferDistance)
             {
