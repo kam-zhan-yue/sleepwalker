@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4890103133771908704}
   - component: {fileID: 6585535567274514681}
   m_Layer: 0
-  m_Name: OfficeRuleTiles
+  m_Name: OfficeWallRuleTiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
