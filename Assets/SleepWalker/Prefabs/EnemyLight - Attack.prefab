@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1220954416}
   - component: {fileID: 1220954415}
   - component: {fileID: 1220954414}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

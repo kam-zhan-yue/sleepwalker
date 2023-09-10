@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4861231555087974025}
   - component: {fileID: 4861231555087974024}
   - component: {fileID: 4861231555087974023}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: EnemyHeavyAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
