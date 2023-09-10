@@ -88,7 +88,7 @@ public class EnemyPatrol : State
     public override void ExitState()
     {
         base.ExitState();
-        DOTween.KillAll();
+        patrolSequence.Kill();
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
     }
 
@@ -113,11 +113,11 @@ public class EnemyPatrol : State
 
     public override void Deactivate()
     {
-        DOTween.Kill(patrolSequence);
+        patrolSequence.Kill();
     }
 
     private void OnDestroy()
     {
-        DOTween.Kill(patrolSequence);
+        patrolSequence.Kill();
     }
 }

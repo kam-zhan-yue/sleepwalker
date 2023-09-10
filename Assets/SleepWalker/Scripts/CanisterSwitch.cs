@@ -49,7 +49,7 @@ public class CanisterSwitch : MonoBehaviour
     
     private void InteractStarted(InputAction.CallbackContext _callbackContext)
     {
-        if (canInteract)
+        if (canInteract && !activated)
         {
             Activate();
         }
