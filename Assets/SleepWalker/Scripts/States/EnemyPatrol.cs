@@ -62,6 +62,8 @@ public class EnemyPatrol : State
         {
             patrolSequence.SetLoops(-1, LoopType.Yoyo);
         }
+
+        patrolSequence.Pause();
     }
 
     public override void EnterState()
