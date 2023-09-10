@@ -30,6 +30,7 @@ public class CameraManager : MonoBehaviour
     [NonSerialized, ShowInInspector, ReadOnly] 
     private CameraState state = CameraState.None;
 
+    [NonSerialized, ShowInInspector, ReadOnly] 
     private Transform target;
     
     private Camera mainCamera;
@@ -76,6 +77,7 @@ public class CameraManager : MonoBehaviour
 
     public void OnPlayerAdded(GameObject _player)
     {
+        Debug.Log("Player Added");
         target = _player.transform;
         state = CameraState.TrackingPlayer;
     }

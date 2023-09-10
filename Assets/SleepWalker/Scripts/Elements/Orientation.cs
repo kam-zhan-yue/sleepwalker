@@ -20,7 +20,7 @@ public class Orientation : MonoBehaviour
 
     public bool facingRight;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private Vector3 positionLastFrame;
     private Vector3 positionDifference;
     private Transform target;
@@ -115,5 +115,11 @@ public class Orientation : MonoBehaviour
     public void Deactivate()
     {
         facingMode = FacingMode.Deactivated;
+    }
+
+    public void EditorFlip()
+    {
+        facingRight = !facingRight;
+        FlipModel(facingRight ? 1 : -1);
     }
 }

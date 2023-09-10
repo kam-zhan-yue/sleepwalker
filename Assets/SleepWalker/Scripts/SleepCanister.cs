@@ -34,7 +34,6 @@ public class SleepCanister : MonoBehaviour
     {
         if (_toggle)
         {
-            Debug.Log("Highlight");
             // spriteRenderer.sprite = highlightedSprite;
         }
         else

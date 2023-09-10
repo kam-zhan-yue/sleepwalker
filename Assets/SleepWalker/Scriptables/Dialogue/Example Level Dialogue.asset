@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc676c80362ea4d00aa23fecdb4dcbe0, type: 3}
+  m_Name: Example Level Dialogue
+  m_EditorClassIdentifier: 
+  useCamera: 1
+  playOnce: 1
+  actors:
+  - Grunt 1
+  - Grunt 2
+  - Grunt 3
+  groups:
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: "Take one more step closer, \nand you're dead meat, kiddo."
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 2
+      custom: 0
+      customName: 
+      message: You're so cute, I wanna kiss you
+      animationName: 
+    - type: 0
+      actor: Grunt 3
+      custom: 0
+      customName: 
+      message: I wanna lick your toes
+      animationName: 

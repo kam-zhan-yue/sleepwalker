@@ -64,4 +64,9 @@ public class Aiming : MonoBehaviour
     {
         aimingState = AimingState.Deactivated;
     }
+
+    public void EditorFlip()
+    {
+        weapon.flipX = !orientation.facingRight;
+    }
 }

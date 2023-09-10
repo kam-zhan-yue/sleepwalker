@@ -169,7 +169,7 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
   currentHealth:
-    _usage: 2
+    _usage: 0
     _value: 0
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 3b46e92404e2546ed85e5b1d9ed66367, type: 2}
@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756ca43e7de8f4e0aa17b71b194c52c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackTime: 1
 --- !u!114 &2876119124840176091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingMode: 2
   facingRight: 0
+  spriteRenderer: {fileID: 2876119124840176082}
 --- !u!114 &2876119124840176095
 MonoBehaviour:
   m_ObjectHideFlags: 0

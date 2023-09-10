@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 8965463861423883313, guid: 71a6854a93ee14cd8b86df1a1e067dd5,
         type: 3}
       propertyPath: m_Name
-      value: EnemyHeavy
+      value: EnemyHeavy - Patrol
       objectReference: {fileID: 0}
     - target: {fileID: 8965463863138193918, guid: 71a6854a93ee14cd8b86df1a1e067dd5,
         type: 3}

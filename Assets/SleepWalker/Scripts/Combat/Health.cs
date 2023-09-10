@@ -25,8 +25,15 @@ public class Health : MonoBehaviour, IDamageTarget
     {
         currentHealth.Value = maxHealth;
         TryGetComponent(out animator);
-        if(runtimeSet)
+    }
+
+    private void Start()
+    {
+        if (runtimeSet)
+        {
+            Debug.Log($"Adding to {runtimeSet.name}");
             runtimeSet.Add(gameObject);
+        }
     }
     
     public string GetId()
