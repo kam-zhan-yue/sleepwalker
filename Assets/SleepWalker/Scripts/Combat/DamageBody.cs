@@ -33,6 +33,7 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
 
     public void Knockback()
     {
+        Debug.Log("knockback");
         Timing.KillCoroutines(countdownRoutine);
         countdownRoutine = Timing.RunCoroutine(HurtCountdown());
     }

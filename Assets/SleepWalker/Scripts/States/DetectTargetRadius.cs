@@ -5,6 +5,7 @@ using UnityEngine;
 
 public sealed class DetectTargetRadius : Decision
 {
+    [BoxGroup("Setup Variables")] public bool startActive = false;
     [BoxGroup("Setup Variables")] public float radius = 3f;
     [BoxGroup("Setup Variables")] public LayerMask targetLayerMask;
     [BoxGroup("Setup Variables")] public bool canTargetSelf;

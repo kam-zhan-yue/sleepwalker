@@ -7,13 +7,12 @@ using UnityEngine.Events;
 
 public abstract class Decision : MonoBehaviour
 {
+    public bool active = true;
+    
     [BoxGroup("Setup Variables")] public Reaction reaction;
     [BoxGroup("Setup Variables")] public bool disableAfterActivation = false;
     [BoxGroup("Setup Variables")] public float timeBetweenDecisions = 1f;
-
-    [NonSerialized, ShowInInspector, ReadOnly]
-    public bool active = true;
-
+    
     protected Brain brain;
     private float decisionTimer = 0f;
 
@@ -33,14 +32,14 @@ public abstract class Decision : MonoBehaviour
         if (decisionTimer <= 0f)
         {
             if (CanActivate())
-                Activate();
+                Decide();
             decisionTimer = timeBetweenDecisions;
         }
     }
 
     protected abstract bool CanActivate();
 
-    private void Activate()
+    private void Decide()
     {
         reaction.React();
         if(disableAfterActivation)

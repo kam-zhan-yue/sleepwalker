@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
     
     public static CameraManager instance;
 
-    [BoxGroup("Setup Variables")] public float transitionDuration = 1f;
+    [BoxGroup("Setup Variables")] public float transitionDuration = 0.5f;
     [BoxGroup("Setup Variables")] public Ease easing = Ease.OutQuart;
 
     [NonSerialized, ShowInInspector, ReadOnly] 

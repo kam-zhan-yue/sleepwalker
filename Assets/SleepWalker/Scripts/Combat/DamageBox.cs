@@ -48,9 +48,9 @@ public class DamageBox : MonoBehaviour, IDamageSource
             Debug.Log("Obstacle!");
             return;
         }
+        
         if (_collider.gameObject.TryGetComponent(out IDamageTarget target))
         {
-            // Debug.Log(target.GetId() + " Found");
             Damage damageObject = new(this, target);
             damageObject.DamageTarget();
             // Debug.Log(damageObject.ToString());

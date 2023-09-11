@@ -231,6 +231,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8848452104873629726}
+        m_TargetAssemblyTypeName: MiniHealthBarPopup, Assembly-CSharp
+        m_MethodName: UpdateHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDead:
     m_PersistentCalls:
       m_Calls:
@@ -404,6 +416,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8965463861423883272}
     m_Modifications:
+    - target: {fileID: 1674245417105918006, guid: 2899335fd21a74a6b97936113d040cbf,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 8965463861423883277}
     - target: {fileID: 1674245417260777809, guid: 2899335fd21a74a6b97936113d040cbf,
         type: 3}
       propertyPath: m_Name
@@ -571,3 +588,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7921859339481010216}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8848452104873629726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1674245417105918006, guid: 2899335fd21a74a6b97936113d040cbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 7921859339481010216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e953fe6cb1144fe3860ee51541c4597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

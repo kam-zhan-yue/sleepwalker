@@ -58,9 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48c33a95ea184b6ab522277809b24b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   reaction: {fileID: 1220954414}
   disableAfterActivation: 0
   timeBetweenDecisions: 0.2
+  startActive: 0
   radius: 3
   targetLayerMask:
     serializedVersion: 2
@@ -243,7 +245,7 @@ PrefabInstance:
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
@@ -264,12 +266,12 @@ PrefabInstance:
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 7453453773490638064}
+      objectReference: {fileID: 7059862983039310830}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 7059862983039310830}
+      objectReference: {fileID: 1220954416}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[5].m_Target
@@ -293,12 +295,12 @@ PrefabInstance:
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: HidePopup
+      value: UnInit
       objectReference: {fileID: 0}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: UnInit
+      value: Deactivate
       objectReference: {fileID: 0}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
@@ -308,12 +310,12 @@ PrefabInstance:
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: EnemyPopup, Assembly-CSharp
+      value: Attack, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: Attack, Assembly-CSharp
+      value: Brain, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8965463861423883277, guid: c572d8b3b5555468cae4df82c61427ed,
         type: 3}
@@ -421,15 +423,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7059862983177916149}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7453453773490638064 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 474662803212042757, guid: c572d8b3b5555468cae4df82c61427ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 7059862983177916149}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd10b352151e4b458fe3f0f13cb24e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -24,6 +24,7 @@ public class EnemyAggro : State
     private CoroutineHandle aggroRoutine;
     private Animator animator;
     private Orientation orientation;
+    private bool hasDecision = false;
 
     protected override void Awake()
     {
@@ -31,6 +32,7 @@ public class EnemyAggro : State
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         orientation = GetComponent<Orientation>();
+        hasDecision = decision != null;
     }
 
     //Need CanAggro to avoid changing states twice in EnterState
@@ -45,7 +47,8 @@ public class EnemyAggro : State
         aiming = attack.aiming;
         aiming.SetAimingState(Aiming.AimingState.Aiming);
         aggroRoutine = Timing.RunCoroutine(AggroRoutine());
-        decision.ToggleActive(false);
+        if(hasDecision)
+            decision.ToggleActive(false);
         orientation.SetAimTarget(target);
         orientation.SetFacingMode(Orientation.FacingMode.Aiming);
     }
@@ -121,7 +124,7 @@ public class EnemyAggro : State
         attack.Deactivate();
         aiming.ResetAim();
         aiming.SetAimingState(Aiming.AimingState.Idle);
-        if (resetDecision)
+        if (hasDecision && resetDecision)
             decision.ToggleActive(true);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
         // orientation.SetFacingMode(Orientation.FacingMode.Automatic);

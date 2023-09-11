@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 708376110c05a4e20b0ce756930c3bb0, type: 3}
-  m_Name: BossMaxHealth
+  m_Script: {fileID: 11500000, guid: 08615d3afcb064903b8df62d036a03ec, type: 3}
+  m_Name: OnBossDead
   m_EditorClassIdentifier: 
-  _developerDescription: 
-  _id: 
-  _value: 500
+  description: 

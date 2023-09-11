@@ -25,12 +25,13 @@ public class Hurt : State
     //for now, the player cannot be interrupted during their sleep
     public override bool CanEnterState(State _currentState)
     {
-        return !StateController.IsCurrentState<PlayerSleep>() && !StateController.IsCurrentState<EnemySleep >();
+        return !StateController.IsCurrentState<PlayerSleep>() && !StateController.IsCurrentState<EnemySleep>();
     }
 
     public override void EnterState()
     {
         base.EnterState();
+        Debug.Log("Enter Hurt");
         hurtRoutine = Timing.RunCoroutine(HurtCountdown());
         if (hasBrain)
         {
@@ -46,6 +47,7 @@ public class Hurt : State
             yield break;
         }
         yield return Timing.WaitForSeconds(hurtTime);
+        Debug.Log("Exit Hurt");
         StateController.EnterPreviousState();
     }
 
