@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 8783910816719343241}
   - component: {fileID: 7327815097212674942}
   - component: {fileID: 7327298882337341172}
+  - component: {fileID: 3869612389979257173}
   m_Layer: 13
   m_Name: EnemyHeavy
   m_TagString: Untagged
@@ -393,6 +394,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sleepTime: 5
   sleepPopup: {fileID: 8539244746572356389}
+--- !u!114 &3869612389979257173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965463861423883313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f24775a798e40679966eab0ffcbd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePopupPrefab: {fileID: 3539448771220117397, guid: 7273da780addf4d57861be12a69fd664,
+    type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &7921859339481010216
 PrefabInstance:
   m_ObjectHideFlags: 0

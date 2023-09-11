@@ -8,13 +8,17 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
     public float knockbackTime = 1f;
     private Rigidbody2D rb;
     private bool active = true;
-    
+    private Health health;
+
+    private bool hasHealth = false;
     private CoroutineHandle countdownRoutine;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
         active = true;
+        hasHealth = health != null;
     }
 
     public Transform GetTransform()
@@ -37,6 +41,8 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
     {
         yield return Timing.WaitForSeconds(knockbackTime);
         rb.velocity = Vector2.zero;
+        if(hasHealth && health.IsDead())
+            Deactivate();
     }
     
     public void Deactivate()

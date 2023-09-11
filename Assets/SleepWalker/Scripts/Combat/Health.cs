@@ -54,7 +54,7 @@ public class Health : MonoBehaviour, IDamageTarget
 
     private void CheckDead()
     {
-        if (currentHealth <= 0f)
+        if (IsDead())
         {
             if (animator != null)
             {
@@ -78,6 +78,11 @@ public class Health : MonoBehaviour, IDamageTarget
                 animator.SetTrigger(AnimationHelper.HurtParameter);
             }
         }
+    }
+
+    public bool IsDead()
+    {
+        return currentHealth <= 0f;
     }
 
     public float GetHeathPercentage()

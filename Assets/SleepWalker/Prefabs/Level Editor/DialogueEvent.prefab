@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3224922045343754679}
   - component: {fileID: 3224922045343754678}
-  - component: {fileID: 3224922045343754672}
+  - component: {fileID: 2286994100574894594}
   m_Layer: 0
   m_Name: DialogueEvent
   m_TagString: Untagged
@@ -54,7 +54,7 @@ MonoBehaviour:
     type: 2}
   actors: []
   script: {fileID: 0}
---- !u!61 &3224922045343754672
+--- !u!61 &2286994100574894594
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

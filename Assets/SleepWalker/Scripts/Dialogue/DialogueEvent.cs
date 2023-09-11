@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class DialogueEvent : MonoBehaviour
 {
+    [FoldoutGroup("Unity Event")] public UnityEvent onFinished; 
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventStarted;
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventEnded;
     [FoldoutGroup("Game Events")] public TransformGameEvent transformDialogueEventStarted;
@@ -20,6 +22,7 @@ public class DialogueEvent : MonoBehaviour
     // [ShowIf("useZone")]
     // public BoxCollider2D dialogueZone;
     
+        
     [FoldoutGroup("Setup Variables")] [InlineEditor()]
     public DialogueScript script;
 
@@ -197,6 +200,7 @@ public class DialogueEvent : MonoBehaviour
         {
             transformDialogueEventEnded.Raise(transform);
         }
+        onFinished?.Invoke();
     }
     
     private void OnDestroy()
