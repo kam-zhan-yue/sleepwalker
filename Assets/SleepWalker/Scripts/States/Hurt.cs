@@ -8,6 +8,15 @@ public class Hurt : State
 {
     [BoxGroup("Setup Variables")] public float hurtTime;
     private CoroutineHandle hurtRoutine;
+    private Brain brain;
+    private bool hasBrain = false;
+    
+    protected override void Awake()
+    {
+        base.Awake();
+        brain = GetComponentInChildren<Brain>();
+        hasBrain = brain != null;
+    }
     
     //for now, the player cannot be interrupted during their sleep
     public override bool CanEnterState(State _currentState)
@@ -19,6 +28,10 @@ public class Hurt : State
     {
         base.EnterState();
         hurtRoutine = Timing.RunCoroutine(HurtCountdown());
+        if (hasBrain)
+        {
+            brain.Deactivate();
+        }
     }
 
     private IEnumerator<float> HurtCountdown()
@@ -31,5 +44,9 @@ public class Hurt : State
     {
         base.ExitState();
         Timing.KillCoroutines(hurtRoutine);
+        if (hasBrain)
+        {
+            brain.Activate();
+        }
     }
 }

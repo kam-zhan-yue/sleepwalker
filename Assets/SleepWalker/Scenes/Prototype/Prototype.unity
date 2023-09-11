@@ -225,9 +225,19 @@ PrefabInstance:
       propertyPath: aggroRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7059862982689508469, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7059862982689508470, guid: 6cfcf78f39aa3486fa0c522527d1511e,
         type: 3}
       propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059862983039310828, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

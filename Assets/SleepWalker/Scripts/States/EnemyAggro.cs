@@ -24,7 +24,7 @@ public class EnemyAggro : State
     private CoroutineHandle aggroRoutine;
     private Animator animator;
     private Orientation orientation;
-    
+
     protected override void Awake()
     {
         base.Awake();
@@ -36,7 +36,7 @@ public class EnemyAggro : State
     //Need CanAggro to avoid changing states twice in EnterState
     public override bool CanEnterState(State _currentState)
     {
-        return !StateController.IsCurrentState<Hurt>() && CanAggro() && !StateController.IsCurrentState<EnemySleep>();
+        return CanAggro() && !StateController.IsCurrentState<EnemySleep>();
     }
 
     public override void EnterState()
@@ -129,6 +129,7 @@ public class EnemyAggro : State
 
     public override void Deactivate()
     {
+        base.Deactivate();
         Timing.KillCoroutines(aggroRoutine);
         attack.Deactivate();
     }

@@ -121,10 +121,8 @@ public class StateController : MonoBehaviour
     {
         if (previousState != null && previousState != currentState)
         {
-            Debug.Log($"Entering {previousState.name}");
             if (!TryEnterState(previousState))
             {
-                Debug.Log("Failed, entering default");
                 EnterDefaultState();
             }
         }

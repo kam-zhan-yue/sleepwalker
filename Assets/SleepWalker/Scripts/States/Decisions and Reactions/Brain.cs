@@ -14,6 +14,12 @@ public class Brain : MonoBehaviour
     {
         return active;
     }
+    
+    public void Activate()
+    {
+        active = true;
+    }
+    
     public void Deactivate()
     {
         active = false;
