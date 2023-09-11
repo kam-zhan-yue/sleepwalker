@@ -25,6 +25,12 @@ public class SleepCanister : MonoBehaviour
     {
         if (_collider2D.gameObject.TryGetComponent(out StateController stateController))
         {
+            //Don't sleep if dead
+            if (_collider2D.gameObject.TryGetComponent(out Health health))
+            {
+                if (health.IsDead())
+                    return;
+            }
             stateController.TryEnqueueState<PlayerSleep>();
             stateController.TryEnqueueState<EnemySleep>();
         }
