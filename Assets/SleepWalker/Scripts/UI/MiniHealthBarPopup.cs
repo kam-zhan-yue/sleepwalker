@@ -35,6 +35,8 @@ public class MiniHealthBarPopup : Popup
     
     public void OnDialogueEventEnded()
     {
-        ShowPopup();
+        //Don't show if dead in case of dialogue
+        if(!health.IsDead())
+            ShowPopup();
     }
 }
