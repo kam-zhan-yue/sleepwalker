@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class DialogueAction
 {
+    public string id = string.Empty;
     public DialogueType type = DialogueType.Message;
     
     [ShowIf("type", DialogueType.Message)]

@@ -9,7 +9,14 @@ using UnityEngine.InputSystem;
 
 public class DialogueEvent : MonoBehaviour
 {
+    [Serializable]
+    public class DialogueUnityEvent
+    {
+        public string id;
+        public UnityEvent unityEvent;
+    }
     [FoldoutGroup("Unity Event")] public UnityEvent onFinished; 
+    [FoldoutGroup("Unity Event")] public List<DialogueUnityEvent> onDialogueList; 
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventStarted;
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventEnded;
     [FoldoutGroup("Game Events")] public TransformGameEvent transformDialogueEventStarted;
@@ -142,6 +149,12 @@ public class DialogueEvent : MonoBehaviour
             case DialogueType.Pause:
             default:
                 break;
+        }
+
+        for (int i = 0; i < onDialogueList.Count; ++i)
+        {
+            if (_action.id == onDialogueList[i].id)
+                onDialogueList[i].unityEvent?.Invoke();
         }
     }
     

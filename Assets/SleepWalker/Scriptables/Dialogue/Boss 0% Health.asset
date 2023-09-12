@@ -18,105 +18,127 @@ MonoBehaviour:
   - Boss
   groups:
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: You have beaten me
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: But my legacy lives on
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Through McSleepFace Mattresses!
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: ...
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: No one will be buying my mattresses you say?
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Because you've beaten me?
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Oh, but you won't stop the gas.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: You're too powerful when you're asleep.
       animationName: 
   - actions:
-    - type: 0
+    - id: SPAWN_LEVER
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: You know you can rule them all.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: I will give you a choice.
       animationName: 
+    - id: 
+      type: 3
+      actor: 
+      custom: 0
+      customName: 
+      message: 
+      animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Pull the lever
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: And rule this sleepy city.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Or finish me
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: And go back to your pathetic life.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
