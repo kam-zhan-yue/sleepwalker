@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc676c80362ea4d00aa23fecdb4dcbe0, type: 3}
+  m_Name: Level_2_Script
+  m_EditorClassIdentifier: 
+  useCamera: 1
+  playOnce: 1
+  actors:
+  - Grunt 1
+  - Grunt 2
+  groups:
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: 
+      message: These cannisters are filled with our SLUMBERSOME SLEEP GAS
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 1
+      custom: 0
+      customName: YOU
+      message: Which will knock ANYONE who breathes it in
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 2
+      custom: 0
+      customName: 
+      message: ...
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 2
+      custom: 0
+      customName: 
+      message: I know
+      animationName: 
+  - actions:
+    - type: 0
+      actor: Grunt 2
+      custom: 0
+      customName: 
+      message: ...I work here
+      animationName: 

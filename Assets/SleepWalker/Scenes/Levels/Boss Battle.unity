@@ -43206,7 +43206,7 @@ PrefabInstance:
         type: 3}
       propertyPath: script
       value: 
-      objectReference: {fileID: 11400000, guid: 122babfea3fac4a58a01ee6bae439ee1,
+      objectReference: {fileID: 11400000, guid: 267f570ba9201924b89ff67ddc161f09,
         type: 2}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
