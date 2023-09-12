@@ -33,7 +33,6 @@ public class Health : MonoBehaviour, IDamageTarget
     {
         if (runtimeSet)
         {
-            Debug.Log($"Adding to {runtimeSet.name}");
             runtimeSet.Add(gameObject);
         }
     }
@@ -45,7 +44,6 @@ public class Health : MonoBehaviour, IDamageTarget
 
     public void TakeDamage(Damage _damage)
     {
-        Debug.Log(invulnerable);
         if (invulnerable)
             return;
         //Take damage if health is above 0
@@ -72,7 +70,8 @@ public class Health : MonoBehaviour, IDamageTarget
                 onDeadEvent.Raise();
             }
             onDead?.Invoke();
-            runtimeSet.Remove(gameObject);
+            if(runtimeSet != null)
+                runtimeSet.Remove(gameObject);
             // Destroy(gameObject);
         }
         else
@@ -98,5 +97,11 @@ public class Health : MonoBehaviour, IDamageTarget
     public float GetHeathPercentage()
     {
         return currentHealth / maxHealth;
+    }
+
+    private void OnDisable()
+    {
+        if(runtimeSet != null)
+            runtimeSet.Remove(gameObject);
     }
 }

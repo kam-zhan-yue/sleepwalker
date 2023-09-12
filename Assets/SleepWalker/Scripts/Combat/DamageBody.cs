@@ -33,7 +33,6 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
 
     public void Knockback()
     {
-        Debug.Log("knockback");
         Timing.KillCoroutines(countdownRoutine);
         countdownRoutine = Timing.RunCoroutine(HurtCountdown());
     }
@@ -44,6 +43,11 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
         rb.velocity = Vector2.zero;
         if(hasHealth && health.IsDead())
             Deactivate();
+    }
+    
+    public void Activate()
+    {
+        active = false;
     }
     
     public void Deactivate()

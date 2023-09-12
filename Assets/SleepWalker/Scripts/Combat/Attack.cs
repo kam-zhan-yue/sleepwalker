@@ -122,7 +122,8 @@ public class Attack : MonoBehaviour
 
     public void Deactivate()
     {
-        aiming.Deactivate();
+        if(aiming != null)
+            aiming.Deactivate();
         cooldown = false;
         Timing.KillCoroutines(attackRoutine);
         Timing.KillCoroutines(cooldownRoutine);
@@ -154,6 +155,9 @@ public class Attack : MonoBehaviour
 
     public void UnInit()
     {
+        //Don't if not active.
+        if (!isActiveAndEnabled)
+            return;
         Deactivate();
         gameObject.SetActiveFast(false);
     }

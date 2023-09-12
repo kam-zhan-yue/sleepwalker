@@ -61,6 +61,7 @@ public class DialogueEvent : MonoBehaviour
     [Button]
     public void StartEvent()
     {
+        Debug.Log($"Start Event {script.name}");
         //If already played, then don't bother
         if (script.playOnce && played)
             return;

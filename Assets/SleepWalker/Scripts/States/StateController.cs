@@ -101,6 +101,13 @@ public class StateController : MonoBehaviour
         Type queryType = typeof(T);
         return currentType == queryType;
     }
+    
+    public bool IsPreviousState<T>() where T : State
+    {
+        Type currentType = currentState.GetType();
+        Type queryType = typeof(T);
+        return currentType == queryType;
+    }
 
     public bool TryEnterState(State _state)
     {

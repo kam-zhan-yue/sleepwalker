@@ -77,7 +77,6 @@ public class CameraManager : MonoBehaviour
 
     public void OnPlayerAdded(GameObject _player)
     {
-        Debug.Log("Player Added");
         target = _player.transform;
         state = CameraState.TrackingPlayer;
     }

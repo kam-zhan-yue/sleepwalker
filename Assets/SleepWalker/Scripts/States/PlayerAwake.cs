@@ -10,6 +10,8 @@ using UnityEngine.Serialization;
 
 public class PlayerAwake : State
 {
+    [BoxGroup("Debug")] public bool noSleep = false;
+    
     [BoxGroup("Setup Variables")] 
     [SerializeField]
     private FloatReference speed;
@@ -127,6 +129,8 @@ public class PlayerAwake : State
 
     private void UpdateStamina()
     {
+        if (noSleep)
+            return;
         if (pauseStamina)
             return;
         stamina.Value -= Time.deltaTime;

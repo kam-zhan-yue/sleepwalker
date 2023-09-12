@@ -16,6 +16,7 @@ public class BossRetreat : State
     private Health health;
     private DamageBody damageBody;
     private UnityEvent onComplete;
+    private Tween rbTween;
 
     protected override void Awake()
     {
@@ -25,6 +26,12 @@ public class BossRetreat : State
         damageBody = GetComponent<DamageBody>();
         retreatVector = retreatPosition.position;
     }
+
+    public override bool CanEnterState(State _currentState)
+    {
+        //Stop a bug where boss retreat is called twice
+        return !StateController.IsCurrentState<BossRetreat>();
+    }
     
     public override void EnterState()
     {
@@ -33,9 +40,12 @@ public class BossRetreat : State
         damageBody.Deactivate();
         float distance = Vector3.Distance(transform.position, retreatVector);
         float time = distance / retreatSpeed;
-        rb.DOMove(retreatVector, time).SetEase(Ease.Linear)
+        Debug.Log("Enter boss retreat");
+        rbTween.Kill();
+        rbTween = rb.DOMove(retreatVector, time).SetEase(Ease.Linear)
             .OnComplete(() =>
             {
+                Debug.Log("Invoke");
                 onComplete?.Invoke();
                 StateController.TryEnqueueState<EnemyIdle>();
             });
@@ -44,6 +54,13 @@ public class BossRetreat : State
     public void ForceActivate()
     {
         StateController.TryEnqueueState<BossRetreat>();
+    }
+
+    public void ForceAttack()
+    {
+        health.ToggleInvulnerability(false);
+        damageBody.Activate();
+        StateController.TryEnqueueState<EnemyAggro>();
     }
 
     public void SetEvents(UnityEvent _events)

@@ -14,6 +14,8 @@ public class BossFlow : MonoBehaviour
     {
         public float healthPercentage;
         public UnityEvent events;
+        [HideInInspector]
+        public bool played;
     }
 
     [BoxGroup("Setup Variables")] public BossRetreat bossRetreat;
@@ -28,11 +30,16 @@ public class BossFlow : MonoBehaviour
         float healthPercent = bossCurrentHealth / bossMaxHealth;
         for (int i = 0; i < bossStates.Count; ++i)
         {
+            if (bossStates[i].played)
+                continue;
             //Only take the first state. Cannot activate two at once
             if (bossStates[i].healthPercentage >= healthPercent)
             {
+                bossStates[i].played = true;
                 bossRetreat.SetEvents(bossStates[i].events);
+                Debug.Log($"Activate {bossStates[i].healthPercentage}");
                 bossRetreat.ForceActivate();
+                break;
             }
         }
     }

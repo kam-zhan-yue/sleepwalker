@@ -40,8 +40,8 @@ public partial class @UIControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""89ad9bf0-d861-483a-ba0b-aaa96f0087d4"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""57b55f9d-2b39-40ab-af6c-6fdb075db6da"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
