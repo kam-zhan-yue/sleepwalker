@@ -133,7 +133,7 @@ public class Attack : MonoBehaviour
     
     private void PlayAnimation()
     {
-        if (usesAnimation && animator != null)
+        if (usesAnimation && animator != null && animator.isActiveAndEnabled)
             animator.Play(animationToTrigger);
     }
 

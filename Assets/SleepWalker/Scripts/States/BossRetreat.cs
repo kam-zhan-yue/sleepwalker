@@ -56,6 +56,11 @@ public class BossRetreat : State
         StateController.TryEnqueueState<BossRetreat>();
     }
 
+    public void ToggleInvulnerability(bool _toggle)
+    {
+        health.ToggleInvulnerability(_toggle);
+    }
+
     public void ForceAttack()
     {
         health.ToggleInvulnerability(false);

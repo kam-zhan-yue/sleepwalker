@@ -20,6 +20,8 @@ public class Health : MonoBehaviour, IDamageTarget
     public UnityEvent onDamageTaken;
     [BoxGroup("Unity Events")] 
     public UnityEvent onDead;
+    [BoxGroup("Unity Events")] 
+    public UnityEvent onDamageAfterDead;
 
     private bool invulnerable = false;
 
@@ -47,11 +49,19 @@ public class Health : MonoBehaviour, IDamageTarget
         if (invulnerable)
             return;
         //Take damage if health is above 0
-        if (_damage.damage > 0f && currentHealth > 0f)
+        if (_damage.damage > 0f)
         {
-            currentHealth.Value -= _damage.damage;
-            onDamageTaken?.Invoke();
-            CheckDead();
+            if (currentHealth > 0f)
+            {
+                currentHealth.Value -= _damage.damage;
+                onDamageTaken?.Invoke();
+                CheckDead();
+            }
+            //only for special boss state!
+            else
+            {
+                onDamageAfterDead?.Invoke();
+            }
         }
     }
 
