@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc676c80362ea4d00aa23fecdb4dcbe0, type: 3}
-  m_Name: Boss 4 25%
+  m_Name: Boss Wave 2 Over
   m_EditorClassIdentifier: 
   useCamera: 1
   playOnce: 1
@@ -22,12 +22,5 @@ MonoBehaviour:
       actor: Boss
       custom: 1
       customName: McSleepFace
-      message: This is the final stretch.
-      animationName: 
-  - actions:
-    - type: 0
-      actor: Boss
-      custom: 1
-      customName: McSleepFace
-      message: Our dream. Our aspirations. They will not falter to you.
+      message: Bring the executives! Take them out of their meetings!
       animationName: 

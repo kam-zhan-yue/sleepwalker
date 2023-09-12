@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc676c80362ea4d00aa23fecdb4dcbe0, type: 3}
-  m_Name: Boss 3 50%
+  m_Name: Boss Wave 3 Over
   m_EditorClassIdentifier: 
   useCamera: 1
   playOnce: 1
@@ -22,12 +22,5 @@ MonoBehaviour:
       actor: Boss
       custom: 1
       customName: McSleepFace
-      message: You are strong.
-      animationName: 
-  - actions:
-    - type: 0
-      actor: Boss
-      custom: 1
-      customName: McSleepFace
-      message: We won't go easy on you.
+      message: Call a company emergency!
       animationName: 
