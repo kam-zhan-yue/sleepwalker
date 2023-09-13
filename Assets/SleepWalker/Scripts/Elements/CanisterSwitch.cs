@@ -81,6 +81,7 @@ public class CanisterSwitch : MonoBehaviour
         onActivate?.Invoke();
     }
 
+    [Button]
     public void Reactivate()
     {
         activated = false;

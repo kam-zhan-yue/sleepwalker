@@ -7,22 +7,21 @@ using UnityEngine.Events;
 
 public class SleepCanister : MonoBehaviour
 {
-    [BoxGroup("Setup Variables")] public Sprite defaultSprite;
-    [BoxGroup("Setup Variables")] public Sprite highlightedSprite;
-    [BoxGroup("Setup Variables")] public Sprite activatedSprite;
+    [BoxGroup("Setup Variables")] public GameObject highlight;
     [BoxGroup("Setup Variables")] public Collider2D sleepCollider;
     [BoxGroup("Setup Variables")] public Fade fade;
     [BoxGroup("Setup Variables")] public float timeActive;
 
     public UnityEvent onActivate;
 
-    private SpriteRenderer spriteRenderer;
     private CoroutineHandle countdownRoutine;
+    private Animator animator;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         sleepCollider.enabled = false;
+        highlight.SetActiveFast(false);
     }
     
     private void OnTriggerEnter2D(Collider2D _collider2D)
@@ -42,20 +41,16 @@ public class SleepCanister : MonoBehaviour
 
     public void Highlight(bool _toggle)
     {
-        if (_toggle)
-        {
-            // spriteRenderer.sprite = highlightedSprite;
-        }
-        else
-        {
-            spriteRenderer.sprite = defaultSprite;
-        }
+        highlight.SetActiveFast(_toggle);
     }
 
     public void Activate()
     {
-        spriteRenderer.sprite = activatedSprite;
+        animator.StopPlayback();
+        highlight.SetActiveFast(false);
+        animator.SetTrigger(AnimationHelper.ActivateParameter);
         countdownRoutine = Timing.RunCoroutine(Countdown());
+        onActivate?.Invoke();
     }
 
     private IEnumerator<float> Countdown()
@@ -67,6 +62,11 @@ public class SleepCanister : MonoBehaviour
 
     public void Reactivate()
     {
-        spriteRenderer.sprite = defaultSprite;
+        animator.SetTrigger(AnimationHelper.ReactivateParameter);
+    }
+
+    private void OnDestroy()
+    {
+        Timing.KillCoroutines(countdownRoutine);
     }
 }
