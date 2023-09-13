@@ -56,7 +56,14 @@ public class Health : MonoBehaviour, IDamageTarget
     {
         if (invulnerable)
         {
-            onInvulnerableHit?.Invoke();
+            if (IsDead())
+            {
+                onDamageAfterDead?.Invoke();
+            }
+            else
+            {
+                onInvulnerableHit?.Invoke();
+            }
             return;
         }
         //Take damage if health is above 0

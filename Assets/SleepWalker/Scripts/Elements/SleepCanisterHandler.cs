@@ -8,7 +8,7 @@ public class SleepCanisterHandler : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] public List<CanisterSwitch> canisters = new();
     [BoxGroup("Setup Variables")] public float reactivateCountdown = 5f;
-    
+
     private CoroutineHandle countdownRoutine;
     private int activatedCanisters = 0;
 
@@ -25,6 +25,14 @@ public class SleepCanisterHandler : MonoBehaviour
     {
         yield return Timing.WaitForSeconds(reactivateCountdown);
         Reactivate();
+    }
+
+    public void FadeOut()
+    {
+        for (int i = 0; i < canisters.Count; ++i)
+        {
+            canisters[i].FadeOut();
+        }
     }
 
     public void Reactivate()

@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 9100957310839848502}
   - component: {fileID: 9100957310839848497}
   - component: {fileID: 9100957310839848500}
+  - component: {fileID: 8034972195235279990}
   m_Layer: 0
   m_Name: Canister
   m_TagString: Untagged
@@ -533,6 +534,7 @@ MonoBehaviour:
   highlightedSprite: {fileID: 0}
   activatedSprite: {fileID: 21300002, guid: 493485af0ed29f443a4cb8953d946ed8, type: 3}
   sleepCollider: {fileID: 9100957310839848500}
+  fade: {fileID: 8034972195235279990}
   timeActive: 0.2
   onActivate:
     m_PersistentCalls:
@@ -553,6 +555,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!114 &8034972195235279990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100957310839848496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d15d66c7d56149c2b7242ee6cfc31ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeFade: 0
+  destroyAfterFade: 1
+  floatDuration: 1
 --- !u!1 &9100957311608418754
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +582,7 @@ GameObject:
   - component: {fileID: 9100957311608418753}
   - component: {fileID: 9100957311608418752}
   - component: {fileID: 9100957311608418755}
+  - component: {fileID: 4514572681838788703}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -652,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canister: {fileID: 9100957310839848497}
+  fade: {fileID: 4514572681838788703}
   offSwitch: {fileID: 21300000, guid: 4008a82543ff9fd4ca0ef39a6746b2b2, type: 3}
   onSwitch: {fileID: 21300002, guid: 4008a82543ff9fd4ca0ef39a6746b2b2, type: 3}
   promptHolder: {fileID: 7036500047379682874}
@@ -684,3 +703,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4514572681838788703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100957311608418754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d15d66c7d56149c2b7242ee6cfc31ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeFade: 0
+  destroyAfterFade: 1
+  floatDuration: 1

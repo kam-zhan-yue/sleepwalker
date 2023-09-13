@@ -10,6 +10,7 @@ using UnityEngine.Serialization;
 public class CanisterSwitch : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] public SleepCanister canister;
+    [BoxGroup("Setup Variables")] public Fade fade;
     [FormerlySerializedAs("pffSwitch")] [BoxGroup("Setup Variables")] public Sprite offSwitch;
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
     [BoxGroup("Setup Variables")] public RectTransform promptHolder;
@@ -64,7 +65,13 @@ public class CanisterSwitch : MonoBehaviour
             Activate();
         }
     }
-    
+
+    public void FadeOut()
+    {
+        fade.FadeOut();
+        canister.fade.FadeOut();
+    }
+
     private void Activate()
     {
         promptHolder.gameObject.SetActiveFast(false);

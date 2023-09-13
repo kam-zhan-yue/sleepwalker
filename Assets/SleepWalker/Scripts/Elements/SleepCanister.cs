@@ -11,6 +11,7 @@ public class SleepCanister : MonoBehaviour
     [BoxGroup("Setup Variables")] public Sprite highlightedSprite;
     [BoxGroup("Setup Variables")] public Sprite activatedSprite;
     [BoxGroup("Setup Variables")] public Collider2D sleepCollider;
+    [BoxGroup("Setup Variables")] public Fade fade;
     [BoxGroup("Setup Variables")] public float timeActive;
 
     public UnityEvent onActivate;

@@ -44473,6 +44473,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5793960136874332686, guid: f797f7de22c774189a00494bf2d1a886,
+        type: 3}
+      propertyPath: damage._variable
+      value: 
+      objectReference: {fileID: 11400000, guid: b5726ff5c44f64d1baaebecd540e9282,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f797f7de22c774189a00494bf2d1a886, type: 3}
 --- !u!1 &845317057
@@ -46272,6 +46278,23 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 25a758de227594eca9908f5897a6aa52, type: 2}
     _variableInstancer: {fileID: 0}
   bossStates:
+  - healthPercentage: 0
+    events:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 727539931}
+          m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
+          m_MethodName: StartEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    played: 0
   - healthPercentage: 0.75
     events:
       m_PersistentCalls:
@@ -46311,23 +46334,6 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1489159217}
-          m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
-          m_MethodName: StartEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    played: 0
-  - healthPercentage: 0
-    events:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 727539931}
           m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
           m_MethodName: StartEvent
           m_Mode: 1
@@ -57041,7 +57047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInvulerable: 1
+  startInvulerable: 0
   runtimeSet: {fileID: 0}
   onDeadEvent: {fileID: 11400000, guid: 4d5ad23e753af44489270a88d6cffebf, type: 2}
   maxHealth:
@@ -57996,7 +58002,7 @@ GameObject:
   - component: {fileID: 2507236769315763407}
   - component: {fileID: 2507236769315763409}
   m_Layer: 0
-  m_Name: Switch
+  m_Name: Final Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58082,7 +58088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f702b2acb5d4e8cb0ced70887b25aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGamePopup: {fileID: 0}
+  endGamePopup: {fileID: 2115075484}
   onSwitch: {fileID: 21300002, guid: 4008a82543ff9fd4ca0ef39a6746b2b2, type: 3}
   fade: {fileID: 2507236769315763407}
   boxCollider2D: {fileID: 2507236769315763403}
