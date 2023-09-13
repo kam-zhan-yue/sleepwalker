@@ -2,17 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuPopup : MonoBehaviour
+public class MainMenuPopup : Popup
 {
-    // Start is called before the first frame update
-    void Start()
+    public LevelSelectPopup levelSelectPopup;
+    public SettingsPopup settingsPopup;
+    public CreditsPopup creditsPopup;
+    
+    protected override void InitPopup()
     {
-        
+        levelSelectPopup.HidePopup();
+        settingsPopup.HidePopup();
+        creditsPopup.HidePopup();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayButtonClicked()
     {
-        
+        Debug.Log("Load First Level");
+    }
+
+    public void LevelSelectButtonClicked()
+    {
+        HidePopup();
+        levelSelectPopup.ShowPopup();
+    }
+
+    public void SettingsButtonClicked()
+    {
+        HidePopup();
+        settingsPopup.ShowPopup();
+    }
+    
+    public void CreditsButtonClicked()
+    {
+        HidePopup();
+        creditsPopup.ShowPopup();
+    }
+
+    public override void CloseButtonClicked()
+    {
+        base.CloseButtonClicked();
+        levelSelectPopup.HidePopup();
+        settingsPopup.HidePopup();
+        creditsPopup.HidePopup();
+        ShowPopup();
     }
 }

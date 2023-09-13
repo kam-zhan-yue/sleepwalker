@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c275a6c2129ed421da027f79524fbd69, type: 3}
+  m_Name: Level Database
+  m_EditorClassIdentifier: 
+  levelSelectDataList:
+  - autoUnlock: 1
+    id: 1
+    buildIndex: 1
+    playerPrefsKey: LEVEL_1
+  - autoUnlock: 0
+    id: 2
+    buildIndex: 2
+    playerPrefsKey: LEVEL_2
+  - autoUnlock: 0
+    id: 3
+    buildIndex: 3
+    playerPrefsKey: LEVEL_3
+  - autoUnlock: 0
+    id: 4
+    buildIndex: 4
+    playerPrefsKey: LEVEL_4
+  - autoUnlock: 0
+    id: 5
+    buildIndex: 5
+    playerPrefsKey: LEVEL_5
+  - autoUnlock: 0
+    id: B
+    buildIndex: 6
+    playerPrefsKey: LEVEL_BOSS
