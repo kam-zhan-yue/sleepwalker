@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvulerable: 0
   runtimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
   onDeadEvent: {fileID: 0}
   maxHealth:
@@ -408,6 +409,9 @@ MonoBehaviour:
   onDamageAfterDead:
     m_PersistentCalls:
       m_Calls: []
+  onInvulnerableHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9144417603907758834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +524,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sleepTime: 5
   sleepPopup: {fileID: 8539244746572356389}
+  onSleep:
+    m_PersistentCalls:
+      m_Calls: []
+  onAwake:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3869612389979257173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,7 +571,7 @@ PrefabInstance:
         type: 3}
       propertyPath: orientation
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8965463861423883276}
     - target: {fileID: 4861231555087974025, guid: 1a858d1f20c6c4a51807b2021cbe96c8,
         type: 3}
       propertyPath: m_RootOrder

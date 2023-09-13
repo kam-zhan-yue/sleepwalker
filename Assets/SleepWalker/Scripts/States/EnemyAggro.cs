@@ -24,6 +24,7 @@ public class EnemyAggro : State
     private CoroutineHandle aggroRoutine;
     private Animator animator;
     private Orientation orientation;
+    private DamageBody damageBody;
     private bool hasDecision = false;
 
     protected override void Awake()
@@ -32,6 +33,7 @@ public class EnemyAggro : State
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         orientation = GetComponent<Orientation>();
+        damageBody = GetComponent<DamageBody>();
         hasDecision = decision != null;
     }
 
@@ -73,6 +75,7 @@ public class EnemyAggro : State
     {
         bool attackOver = false;
         rb.velocity = Vector2.zero;
+        Debug.Log($"{name} AttackRoutine setting rb velocity");
         attack.Activate(() =>
         {
             attackOver = true;
@@ -92,6 +95,8 @@ public class EnemyAggro : State
 
     private void MoveTowardsTarget()
     {
+        if (damageBody.InKnockback())
+            return;
         // Calculate the direction from this object to the target
         float distanceToTarget = transform.DistanceToObject(target);
         if (distanceToTarget > attackDistance)
@@ -105,6 +110,7 @@ public class EnemyAggro : State
             rb.velocity = Vector2.zero;
             animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
         }
+        Debug.Log($"{name} setting rb velocity");
     }
     
     private bool CanAttack()

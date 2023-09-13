@@ -15,7 +15,8 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
 
     private bool hasHealth = false;
     private CoroutineHandle countdownRoutine;
-
+    private bool inKnockback = false;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,6 +37,7 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
 
     public void Knockback()
     {
+        inKnockback = true;
         Timing.KillCoroutines(countdownRoutine);
         countdownRoutine = Timing.RunCoroutine(HurtCountdown());
     }
@@ -44,10 +46,16 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
     {
         yield return Timing.WaitForSeconds(knockbackTime);
         rb.velocity = Vector2.zero;
+        inKnockback = false;
         if(hasHealth && health.IsDead())
             Deactivate();
     }
-    
+
+    public bool InKnockback()
+    {
+        return inKnockback;
+    }
+
     public void Activate()
     {
         active = true;

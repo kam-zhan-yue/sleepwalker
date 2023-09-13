@@ -7,4 +7,5 @@ public interface IDamagePhysics
     public void Deactivate();
     public bool IsActive();
     public void Knockback();
+    public bool InKnockback();
 }

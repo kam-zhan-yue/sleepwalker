@@ -31,6 +31,7 @@ public class Hurt : State
     public override void EnterState()
     {
         base.EnterState();
+        Debug.Log($"{name} Enter Hurt");
         hurtRoutine = Timing.RunCoroutine(HurtCountdown());
         if (hasBrain)
         {
@@ -52,6 +53,7 @@ public class Hurt : State
     public override void ExitState()
     {
         base.ExitState();
+        Debug.Log($"{name} Exit Hurt");
         Timing.KillCoroutines(hurtRoutine);
         if (hasBrain)
         {

@@ -35,6 +35,7 @@ public class Knockback
                 break;
         }
 
+        Debug.Log($"{target} | Adding Force");
         Rigidbody2D targetRigidbody = target.GetRigidbody2D();
         targetRigidbody.velocity = Vector2.zero;
         targetRigidbody.AddForce(force * finalDirection, ForceMode2D.Impulse);
