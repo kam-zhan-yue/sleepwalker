@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class FinalSwitch : MonoBehaviour
 {
+    [BoxGroup("Setup Variables")] public EndGamePopup endGamePopup;
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
     [BoxGroup("Setup Variables")] public Fade fade;
     [BoxGroup("Setup Variables")] public BoxCollider2D boxCollider2D;
@@ -77,12 +78,14 @@ public class FinalSwitch : MonoBehaviour
     public void BossKilled()
     {
         Debug.Log("BOSS KILLED INSTEAD!");
+        endGamePopup.GameOver();
     }
 
     private void Activate()
     {
         activated = true;
         spriteRenderer.sprite = onSwitch;
-        Debug.Log("END THE GAME!!!!!");
+        Debug.Log("END THE WORLD!!!!!");
+        endGamePopup.WorldEnd();
     }
 }
