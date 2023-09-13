@@ -4355,11 +4355,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2876119124840176089, guid: f797f7de22c774189a00494bf2d1a886,
-        type: 3}
-      propertyPath: staminaSlider
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2876119124840176093, guid: f797f7de22c774189a00494bf2d1a886,
         type: 3}
       propertyPath: m_RootOrder
@@ -4415,13 +4410,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2876119126197167423, guid: f797f7de22c774189a00494bf2d1a886,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2876119126197167423, guid: f797f7de22c774189a00494bf2d1a886,
-        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

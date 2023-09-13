@@ -44,6 +44,11 @@ public class CameraManager : MonoBehaviour
         else
             instance = this;
         mainCamera = Camera.main;
+
+        //target = GameObject.FindGameObjectWithTag("Player").transform;
+        //state = CameraState.TrackingPlayer;
+
+        OnPlayerAdded(GameObject.FindGameObjectWithTag("Player"));
     }
 
     private void Update()

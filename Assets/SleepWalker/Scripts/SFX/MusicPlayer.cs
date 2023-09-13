@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    [SerializeField] GameObject musicPrefab;
-    [SerializeField] GameObject musicObj;
+
     [SerializeField] AudioClip defaultMusic;
+    AudioSource source;
 
     // Start is called before the first frame update
     void Start()
@@ -17,27 +17,24 @@ public class MusicPlayer : MonoBehaviour
             return;
         }
 
-        musicObj = Instantiate(musicPrefab);
+        source = GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
         ChangeTrack(defaultMusic);
     }
 
     public void ChangeTrack(AudioClip clip)
     {
-        AudioSource source = musicObj.GetComponent<AudioSource>();
         source.clip = clip;
         source.Play();
     }
 
     public void PauseMusic()
     {
-        AudioSource source = musicObj.GetComponent<AudioSource>();
         source.Pause();
     }
 
     public void ResumeMusic()
     {
-        AudioSource source = musicObj.GetComponent<AudioSource>();
         source.Play();
     }
 }
