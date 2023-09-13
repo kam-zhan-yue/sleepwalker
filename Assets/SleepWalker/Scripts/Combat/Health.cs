@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageTarget
 {
+    [BoxGroup("Invulnerable")] public bool startInvulerable;
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet runtimeSet;
     [BoxGroup("Setup Variables")] public GameEvent onDeadEvent;
     
@@ -37,6 +38,8 @@ public class Health : MonoBehaviour, IDamageTarget
         {
             runtimeSet.Add(gameObject);
         }
+
+        invulnerable = startInvulerable;
     }
     
     public string GetId()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySleep : State
 {
@@ -13,6 +14,9 @@ public class EnemySleep : State
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private float sleepTimer;
+
+    [BoxGroup("Unity Events")] public UnityEvent onSleep;
+    [BoxGroup("Unity Events")] public UnityEvent onAwake;
 
     protected override void Awake()
     {
@@ -29,6 +33,7 @@ public class EnemySleep : State
         sleepTimer = sleepTime;
         if(sleepPopup)
             sleepPopup.ShowPopup();
+        onSleep?.Invoke();
     }
 
     public override void UpdateBehaviour()
@@ -54,5 +59,6 @@ public class EnemySleep : State
         spriteRenderer.color = Color.white;
         if(sleepPopup)
             sleepPopup.HidePopup();
+        onAwake?.Invoke();
     }
 }

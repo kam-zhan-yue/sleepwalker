@@ -3,14 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class CanisterSwitch : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] public SleepCanister canister;
+    [FormerlySerializedAs("pffSwitch")] [BoxGroup("Setup Variables")] public Sprite offSwitch;
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
     [BoxGroup("Setup Variables")] public RectTransform promptHolder;
+    
+    [BoxGroup("Unity Events")] public UnityEvent onActivate;
 
+    [NonSerialized, ShowInInspector, ReadOnly]
     private bool activated = false;
     private PlayerControls playerControls;
     private bool canInteract = false;
@@ -63,9 +69,16 @@ public class CanisterSwitch : MonoBehaviour
     {
         promptHolder.gameObject.SetActiveFast(false);
         spriteRenderer.sprite = onSwitch;
-        canister.Highlight(false);
         canister.Activate();
         activated = true;
+        onActivate?.Invoke();
+    }
+
+    public void Reactivate()
+    {
+        activated = false;
+        spriteRenderer.sprite = offSwitch;
+        canister.Reactivate();
     }
 
     private void OnDestroy()

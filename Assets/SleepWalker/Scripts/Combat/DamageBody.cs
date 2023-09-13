@@ -52,6 +52,7 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
     
     public void Deactivate()
     {
+        Debug.Log($"{name} Deactivate!");
         active = false;
     }
 

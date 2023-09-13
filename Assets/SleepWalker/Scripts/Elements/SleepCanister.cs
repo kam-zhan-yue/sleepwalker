@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SleepCanister : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class SleepCanister : MonoBehaviour
     [BoxGroup("Setup Variables")] public Sprite activatedSprite;
     [BoxGroup("Setup Variables")] public Collider2D sleepCollider;
     [BoxGroup("Setup Variables")] public float timeActive;
+
+    public UnityEvent onActivate;
 
     private SpriteRenderer spriteRenderer;
     private CoroutineHandle countdownRoutine;
@@ -59,5 +62,10 @@ public class SleepCanister : MonoBehaviour
         sleepCollider.enabled = true;
         yield return Timing.WaitForSeconds(timeActive);
         sleepCollider.enabled = false;
+    }
+
+    public void Reactivate()
+    {
+        spriteRenderer.sprite = defaultSprite;
     }
 }
