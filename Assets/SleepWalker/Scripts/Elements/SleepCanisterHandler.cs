@@ -15,7 +15,6 @@ public class SleepCanisterHandler : MonoBehaviour
     public void OnCanisterActivated()
     {
         activatedCanisters++;
-        Debug.Log($"{activatedCanisters} / {canisters.Count}");
         if (activatedCanisters >= canisters.Count)
         {
             countdownRoutine = Timing.RunCoroutine(Countdown());

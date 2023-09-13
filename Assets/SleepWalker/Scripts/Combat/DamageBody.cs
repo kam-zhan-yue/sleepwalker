@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MEC;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class DamageBody : MonoBehaviour, IDamagePhysics
 {
     public float knockbackTime = 1f;
     private Rigidbody2D rb;
+    [NonSerialized, ShowInInspector, ReadOnly]
     private bool active = true;
     private Health health;
 
@@ -47,12 +50,11 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
     
     public void Activate()
     {
-        active = false;
+        active = true;
     }
     
     public void Deactivate()
     {
-        Debug.Log($"{name} Deactivate!");
         active = false;
     }
 

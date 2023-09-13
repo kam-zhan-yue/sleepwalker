@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -25,7 +26,9 @@ public class Health : MonoBehaviour, IDamageTarget
     public UnityEvent onDamageAfterDead;
     [BoxGroup("Unity Events")] 
     public UnityEvent onInvulnerableHit;
-
+    
+    [BoxGroup("Invulnerable")] 
+    [NonSerialized, ShowInInspector, ReadOnly]
     private bool invulnerable = false;
 
     private void Awake()
@@ -53,7 +56,7 @@ public class Health : MonoBehaviour, IDamageTarget
     {
         if (invulnerable)
         {
-            
+            onInvulnerableHit?.Invoke();
             return;
         }
         //Take damage if health is above 0

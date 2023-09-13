@@ -37,7 +37,7 @@ public class BossFlow : MonoBehaviour
             {
                 bossStates[i].played = true;
                 bossRetreat.SetEvents(bossStates[i].events);
-                Debug.Log($"Activate {bossStates[i].healthPercentage}");
+                // Debug.Log($"Activate {bossStates[i].healthPercentage}");
                 bossRetreat.ForceActivate();
                 break;
             }

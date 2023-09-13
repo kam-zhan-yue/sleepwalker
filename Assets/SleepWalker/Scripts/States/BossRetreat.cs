@@ -40,7 +40,6 @@ public class BossRetreat : State
         damageBody.Deactivate();
         float distance = Vector3.Distance(transform.position, retreatVector);
         float time = distance / retreatSpeed;
-        Debug.Log("Enter boss retreat");
         rbTween.Kill();
         rbTween = rb.DOMove(retreatVector, time).SetEase(Ease.Linear)
             .OnComplete(() =>
@@ -63,7 +62,8 @@ public class BossRetreat : State
 
     public void ForceAttack()
     {
-        health.ToggleInvulnerability(false);
+        //FOR TESTING PURPOSES, SET TO FALSE
+        health.ToggleInvulnerability(true);
         damageBody.Activate();
         StateController.TryEnqueueState<EnemyAggro>();
     }
