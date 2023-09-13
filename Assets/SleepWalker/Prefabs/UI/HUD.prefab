@@ -276,9 +276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953fe6cb1144fe3860ee51541c4597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainHolder: {fileID: 0}
   health: {fileID: 0}
   slider: {fileID: 0}
-  holder: {fileID: 0}
 --- !u!1 &2323463192339781486
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,9 +736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953fe6cb1144fe3860ee51541c4597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainHolder: {fileID: 0}
   health: {fileID: 0}
   slider: {fileID: 0}
-  holder: {fileID: 0}
 --- !u!1 &2323463193441899507
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b69ea237922c4baeac52f460b619ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 2323463192973069079}
+  mainHolder: {fileID: 2323463192973069079}
   playerMaxStamina:
     _usage: 2
     _value: 0
@@ -932,11 +932,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54893bec5c41485facdf946f90033f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainHolder: {fileID: 4402888054104041422}
   primaryTime: 0.1
   secondaryTime: 0.1
   delay: 1
   easing: 18
-  holder: {fileID: 4402888054104041422}
   maxHealth:
     _usage: 1
     _value: 0

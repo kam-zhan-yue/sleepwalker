@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Popup : MonoBehaviour
 {
+    [BoxGroup("UI Objects")]
+    public RectTransform mainHolder;
+    
     [NonSerialized, ShowInInspector, ReadOnly]
     public bool isAnimating = false;
     
@@ -17,22 +20,20 @@ public abstract class Popup : MonoBehaviour
         InitPopup();
     }
 
-    public abstract void InitPopup();
-    public abstract void ShowPopup();
-    public abstract void HidePopup();
+    protected abstract void InitPopup();
 
-
-    public virtual void DoneShowing()
+    public virtual void ShowPopup()
     {
-        isAnimating = false;
+        isShowing = true;
+        mainHolder.gameObject.SetActiveFast(true);
     }
 
-    public virtual void DoneHiding()
+    public virtual void HidePopup()
     {
-        isAnimating = false;
         isShowing = false;
+        mainHolder.gameObject.SetActiveFast(false);
     }
-
+    
     public virtual void CloseButtonClicked()
     {
         onCloseButtonClicked?.Invoke(this);

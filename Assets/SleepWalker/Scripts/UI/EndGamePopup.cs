@@ -6,7 +6,6 @@ using UnityEngine.Serialization;
 
 public class EndGamePopup : Popup
 {
-    [BoxGroup("UI Objects")] public RectTransform mainHolder;
     [BoxGroup("UI Objects")] public RectTransform worldEndHolder;
     [BoxGroup("UI Objects")] public RectTransform gameOverHolder;
     [BoxGroup("UI Objects")] public RectTransform thankYouHolder;
@@ -14,7 +13,7 @@ public class EndGamePopup : Popup
 
     private bool showingLastScreen = false;
     
-    public override void InitPopup()
+    protected override void InitPopup()
     {
         mainHolder.gameObject.SetActiveFast(false);
         worldEndHolder.gameObject.SetActiveFast(false);
@@ -25,6 +24,7 @@ public class EndGamePopup : Popup
 
     public override void ShowPopup()
     {
+        base.ShowPopup();
         Time.timeScale = 0f;
         mainHolder.gameObject.SetActive(true);
     }
@@ -45,6 +45,7 @@ public class EndGamePopup : Popup
 
     public override void HidePopup()
     {
+        base.HidePopup();
         mainHolder.gameObject.SetActiveFast(false);
         worldEndHolder.gameObject.SetActiveFast(false);
         gameOverHolder.gameObject.SetActiveFast(false);

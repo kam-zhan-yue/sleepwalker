@@ -6,21 +6,10 @@ using UnityEngine.UI;
 
 public class MiniHealthBarPopup : Popup
 {
-    [FoldoutGroup("System Objects")] public Health health;
-    [FoldoutGroup("UI Objects")] public Slider slider;
-    [FoldoutGroup("UI Objects")] public RectTransform holder;
-    public override void InitPopup()
+    [BoxGroup("System Objects")] public Health health;
+    [BoxGroup("UI Objects")] public Slider slider;
+    protected override void InitPopup()
     {
-    }
-
-    public override void ShowPopup()
-    {
-        holder.gameObject.SetActiveFast(true);
-    }
-
-    public override void HidePopup()
-    {
-        holder.gameObject.SetActiveFast(false);
     }
 
     public void UpdateHealth()

@@ -6,9 +6,8 @@ using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
-public class DialoguePopup : MonoBehaviour
+public class DialoguePopup : Popup
 {
-    [BoxGroup("UI Objects")] public CanvasGroup textPanelCanvasGroup;
     [BoxGroup("UI Objects")] public TMP_Text nameText;
     [BoxGroup("UI Objects")] public TMP_Text dialogueText;
     [BoxGroup("Setup Variables")] public Vector3 offset;
@@ -50,5 +49,10 @@ public class DialoguePopup : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActiveFast(false);
+    }
+
+    protected override void InitPopup()
+    {
+        
     }
 }

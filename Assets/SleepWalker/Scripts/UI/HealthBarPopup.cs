@@ -8,29 +8,18 @@ using UnityEngine.UI;
 
 public class HealthBarPopup : Popup
 {
-    [FoldoutGroup("Setup")] public float primaryTime;
-    [FoldoutGroup("Setup")] public float secondaryTime;
-    [FoldoutGroup("Setup")] public float delay;
-    [FoldoutGroup("Setup")] public Ease easing;
-    [FoldoutGroup("UI Objects")] public RectTransform holder;
-    [FoldoutGroup("UI Objects")] public FloatReference maxHealth;
-    [FoldoutGroup("UI Objects")] public Slider primarySlider;
-    [FoldoutGroup("UI Objects")] public Slider secondarySlider;
+    [BoxGroup("Setup Variables")] public float primaryTime;
+    [BoxGroup("Setup Variables")] public float secondaryTime;
+    [BoxGroup("Setup Variables")] public float delay;
+    [BoxGroup("Setup Variables")] public Ease easing;
+    [BoxGroup("UI Objects")] public FloatReference maxHealth;
+    [BoxGroup("UI Objects")] public Slider primarySlider;
+    [BoxGroup("UI Objects")] public Slider secondarySlider;
     
-    public override void InitPopup()
+    protected override void InitPopup()
     {
     }
-
-    public override void ShowPopup()
-    {
-        holder.gameObject.SetActiveFast(true);
-    }
-
-    public override void HidePopup()
-    {
-        holder.gameObject.SetActiveFast(false);
-    }
-
+    
     public void OnHealthChanged(FloatPair _floatPair)
     {
         if (maxHealth.Value <= 0)

@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9631adc9863dcf6438f1b3cd25dd708c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPanelCanvasGroup: {fileID: 2220636510558413123}
+  mainHolder: {fileID: 2652490675648237997}
   nameText: {fileID: 40536690034650685}
   dialogueText: {fileID: 7037457791300935805}
   offset: {x: 0, y: 0.65, z: 0}
@@ -1104,7 +1104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.14, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2255518853534020826

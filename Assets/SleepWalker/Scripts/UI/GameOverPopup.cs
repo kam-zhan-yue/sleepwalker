@@ -6,16 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameOverPopup : Popup
 {
-    [BoxGroup("UI Objects")] public RectTransform mainHolder;
-    
-    public override void InitPopup()
+    protected override void InitPopup()
     {
         mainHolder.gameObject.SetActiveFast(false);
-    }
-
-    public override void ShowPopup()
-    {
-        mainHolder.gameObject.SetActiveFast(true);
     }
 
     public void RestartLevelButtonClicked()
@@ -40,10 +33,5 @@ public class GameOverPopup : Popup
     public void OnPlayerDead()
     {
         ShowPopup();
-    }
-
-    public override void HidePopup()
-    {
-        mainHolder.gameObject.SetActiveFast(false);
     }
 }
