@@ -23,6 +23,8 @@ public class Health : MonoBehaviour, IDamageTarget
     public UnityEvent onDead;
     [BoxGroup("Unity Events")] 
     public UnityEvent onDamageAfterDead;
+    [BoxGroup("Unity Events")] 
+    public UnityEvent onInvulnerableHit;
 
     private bool invulnerable = false;
 
@@ -50,7 +52,10 @@ public class Health : MonoBehaviour, IDamageTarget
     public void TakeDamage(Damage _damage)
     {
         if (invulnerable)
+        {
+            
             return;
+        }
         //Take damage if health is above 0
         if (_damage.damage > 0f)
         {
