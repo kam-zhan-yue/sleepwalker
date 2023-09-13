@@ -44473,12 +44473,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5793960136874332686, guid: f797f7de22c774189a00494bf2d1a886,
-        type: 3}
-      propertyPath: damage._variable
-      value: 
-      objectReference: {fileID: 11400000, guid: b5726ff5c44f64d1baaebecd540e9282,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f797f7de22c774189a00494bf2d1a886, type: 3}
 --- !u!1 &845317057
@@ -46278,23 +46272,6 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 25a758de227594eca9908f5897a6aa52, type: 2}
     _variableInstancer: {fileID: 0}
   bossStates:
-  - healthPercentage: 0
-    events:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 727539931}
-          m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
-          m_MethodName: StartEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    played: 0
   - healthPercentage: 0.75
     events:
       m_PersistentCalls:
@@ -46336,6 +46313,35 @@ MonoBehaviour:
         - m_Target: {fileID: 1489159217}
           m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
           m_MethodName: StartEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    played: 0
+  - healthPercentage: 0
+    events:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 727539931}
+          m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
+          m_MethodName: StartEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1844522599}
+          m_TargetAssemblyTypeName: SleepCanisterHandler, Assembly-CSharp
+          m_MethodName: FadeOut
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -47031,6 +47037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1844522600}
   - component: {fileID: 1844522599}
+  - component: {fileID: 1844522601}
   m_Layer: 0
   m_Name: Canisters
   m_TagString: Untagged
@@ -47075,6 +47082,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844522601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844522598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d15d66c7d56149c2b7242ee6cfc31ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeFade: 0
+  destroyAfterFade: 1
+  floatDuration: 1
 --- !u!1001 &1873032565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57047,7 +57069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInvulerable: 0
+  startInvulerable: 1
   runtimeSet: {fileID: 0}
   onDeadEvent: {fileID: 11400000, guid: 4d5ad23e753af44489270a88d6cffebf, type: 2}
   maxHealth:
