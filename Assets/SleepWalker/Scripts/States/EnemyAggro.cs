@@ -75,7 +75,6 @@ public class EnemyAggro : State
     {
         bool attackOver = false;
         rb.velocity = Vector2.zero;
-        Debug.Log($"{name} AttackRoutine setting rb velocity");
         attack.Activate(() =>
         {
             attackOver = true;
@@ -110,7 +109,6 @@ public class EnemyAggro : State
             rb.velocity = Vector2.zero;
             animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
         }
-        Debug.Log($"{name} setting rb velocity");
     }
     
     private bool CanAttack()
