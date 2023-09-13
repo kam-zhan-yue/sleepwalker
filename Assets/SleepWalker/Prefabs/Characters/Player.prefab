@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 2861235402514903776}
   - component: {fileID: 5266860228867354459}
   - component: {fileID: 4585638746131633615}
+  - component: {fileID: 8661382832435218116}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -240,6 +241,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDamageAfterDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2403198204158527193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1e2f2c592f04b408271eac32807780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noSleep: 0
   speed:
     _usage: 2
     _value: 0
@@ -436,6 +441,21 @@ SortingGroup:
   m_SortingLayerID: 47421343
   m_SortingLayer: 4
   m_SortingOrder: 0
+--- !u!114 &8661382832435218116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876119124840176086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f24775a798e40679966eab0ffcbd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePopupPrefab: {fileID: 3539448771220117397, guid: 7273da780addf4d57861be12a69fd664,
+    type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &3804559895136002168
 GameObject:
   m_ObjectHideFlags: 0
