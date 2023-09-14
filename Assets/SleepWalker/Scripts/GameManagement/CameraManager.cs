@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour
     private float damp = 0.3f;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
-    private float dirOffset = 1.5f;
+    private float dirOffset = 3f;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private CameraState state = CameraState.None;
@@ -44,9 +44,6 @@ public class CameraManager : MonoBehaviour
         else
             instance = this;
         mainCamera = Camera.main;
-
-        //target = GameObject.FindGameObjectWithTag("Player").transform;
-        //state = CameraState.TrackingPlayer;
 
         OnPlayerAdded(GameObject.FindGameObjectWithTag("Player"));
     }

@@ -9,6 +9,153 @@ using UnityEngine.Serialization;
 
 public class PlayerSleep : State
 {
+    //ok so heres the logic
+
+    //check for enemies within a range and that aren't obstructed by a wall
+    //check if there's a restriction on choosing a given enemy
+    //check if they are alive
+    //choose the closest one and dash towards it, attacking it
+    //disallow selecting the attacked enemy for a small time
+    //redo this process
+
+    [SerializeField] float timeBetweenAttacks = 1f;
+    [SerializeField] float maxDistance = 2f;
+
+    private Enemy[] enemies;
+    private bool continueAttack = true;
+
+    private List<Enemy> activeEnemies = new List<Enemy>();
+
+    public class Enemy
+    {
+        public GameObject gameObject;
+        public bool canSee = true;
+    }
+
+    private void Start()
+    {
+        GameObject[] startingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = new Enemy[startingEnemies.Length];
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].gameObject = startingEnemies[i];
+            enemies[i].canSee = true;
+        }
+
+        //line up next attack
+        IEnumerator coroutine = NextAttack(timeBetweenAttacks/2f);
+        StartCoroutine(coroutine);
+    }
+
+    public override void UpdateBehaviour()
+    {
+        if (continueAttack)
+        {
+            activeEnemies.Clear();
+            LookForEnemies();
+            if (activeEnemies.Count > 0)
+            {
+                Vector3 target = ChooseEnemy();
+
+                //dash here in direction of target
+
+                LungeAttack();
+            }
+        }
+    }
+
+    void LookForEnemies()
+    {
+        //check for enemies within a range and that aren't obstructed by a wall
+        for (int i = 0; i < enemies.Length; i++) {
+            RaycastHit2D hit = 
+                Physics2D.Raycast(transform.position, enemies[i].gameObject.transform.position - transform.position, maxDistance);
+
+            //if it hits something
+            if (hit.collider != false)
+            {
+                //check if its the intended enemy
+                if (hit.transform != enemies[i].gameObject.transform)
+                {
+                    break;
+                }
+                //check if there's a restriction on choosing a given enemy
+                if (!enemies[i].canSee)
+                {
+                    break;
+                }
+                //check if its alive
+                Health health = enemies[i].gameObject.GetComponent<Health>();
+                if (health != null)
+                {
+                    //not sure about accessing the health yet
+                    //if (health <= 0)
+                    //{
+                        break;
+                    //}
+                }
+                //if still here, add it to list
+                activeEnemies.Add(enemies[i]);
+            }
+        }
+        
+    }
+
+    Vector2 ChooseEnemy()
+    {
+        Vector2 playerPos = transform.position;
+        Vector2 value = playerPos;
+        //choose the closest one
+        if (activeEnemies.Count > 0)
+        {
+            Enemy closestEnemy = enemies[0];
+            foreach (Enemy e in enemies)
+            {
+                Vector2 enemyPos = e.gameObject.transform.position;
+                if (Vector2.Distance(playerPos, enemyPos) < Vector2.Distance(playerPos, enemyPos))
+                {
+                    closestEnemy = e;
+                }
+            }
+
+            value = closestEnemy.gameObject.transform.position;
+            IEnumerator coroutine = IgnoreEnemyFor(timeBetweenAttacks + 1, closestEnemy);
+            StartCoroutine(coroutine);
+        }
+
+        return value;
+    }
+
+    public void LungeAttack()
+    {
+        //attack
+        Debug.Log("Attacking now");
+
+        //line up next attack
+        IEnumerator coroutine = NextAttack(timeBetweenAttacks);
+        StartCoroutine(coroutine);
+    }
+
+    IEnumerator NextAttack(float waitTime)
+    {
+        continueAttack = false;
+
+        yield return new WaitForSeconds(waitTime);
+
+        LungeAttack();
+        continueAttack = true;
+    }
+
+    IEnumerator IgnoreEnemyFor(float waitTime, Enemy enemy)
+    {
+        enemy.canSee = false;
+
+        yield return new WaitForSeconds(waitTime);
+
+        enemy.canSee = true;
+    }
+
+    /*
     [BoxGroup("Setup Variables")] public CircleCollider2D trigger;
     [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;
     [BoxGroup("Setup Variables")] public FloatReference staminaTime;
@@ -245,5 +392,5 @@ public class PlayerSleep : State
     {
         playerControls.Dispose();
     }
-
+    */
 }
