@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MEC;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +12,12 @@ using UnityEngine.Serialization;
 
 public class PlayerSleep : State
 {
+    public enum SleepState
+    {
+        Attacking,
+        Deactivated
+    }
+    
     //ok so heres the logic
 
     //check for enemies within a range and that aren't obstructed by a wall
@@ -18,9 +26,16 @@ public class PlayerSleep : State
     //choose the closest one and dash towards it, attacking it
     //disallow selecting the attacked enemy for a small time
     //redo this process
-
+    [BoxGroup("Setup Variables")] public FloatReference speed;
+    [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;
+    [BoxGroup("Setup Variables")] public FloatReference staminaTime;
+    [SerializeField]
+    [BoxGroup("Setup Variables")] private FloatReference stamina;
+    
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet enemyRuntimeSet;
     [BoxGroup("Setup Variables")] public Attack playerAttack;
+    [BoxGroup("Setup Variables")] public float stopMoveDistance;
+    [BoxGroup("Setup Variables")] public float attackDistance;
     
     [SerializeField] float timeBetweenAttacks = 1f;
     [SerializeField] float maxDistance = 2f;
@@ -29,48 +44,151 @@ public class PlayerSleep : State
     private bool continueAttack = true;
 
     private List<Enemy> activeEnemies = new();
+    private Rigidbody2D rb;
+    private Aiming aiming;
+    private Orientation orientation;
     private DamageBody damageBody;
+    private Animator animator;
     private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
     private readonly LayerMask enemyLayerMask = LayerHelper.obstaclesLayerMask;
 
+    [NonSerialized, ShowInInspector, ReadOnly]
+    private SleepState sleepState;
+    
+    private CoroutineHandle aggroRoutine;
+    private CoroutineHandle attackRoutine;
+    private bool pauseStamina = false;
+    private Transform target;
+    
     public class Enemy
     {
         public GameObject gameObject;
         public bool canSee = true;
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        orientation = GetComponent <Orientation>();
+        damageBody = GetComponent<DamageBody>();
+    }
+
     public override void EnterState()
     {
-        // GameObject[] startingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        // enemies = new Enemy[startingEnemies.Length];
-        // for (int i = 0; i < enemies.Length; i++)
-        // {
-        //     enemies[i].gameObject = startingEnemies[i];
-        //     enemies[i].canSee = true;
-        // }
-
+        base.EnterState();
+        
+        //Setup Variables
+        staminaTime.Value = maxSleepTime;
+        stamina.Value = staminaTime;
         playerAttack.ReInit();
-        //line up next attack
-        IEnumerator coroutine = NextAttack(timeBetweenAttacks/2f);
-        StartCoroutine(coroutine);
+        aiming = playerAttack.aiming;
+        aiming.SetAimingState(Aiming.AimingState.Aiming);
+        
+        aggroRoutine = Timing.RunCoroutine(AggroRoutine());
+        attackRoutine = Timing.RunCoroutine(AttackRoutine());
     }
 
     public override void UpdateBehaviour()
     {
-        if (continueAttack)
+        if (!pauseStamina)
+            stamina.Value -= Time.deltaTime;
+
+        if (sleepState == SleepState.Deactivated)
+            return;
+        // stateText.text = $"Sleep State: {aiState}";
+
+        if (stamina <= 0f)
         {
-            LookForEnemies();
-            if (activeEnemies.Count > 0)
+            StateController.TryEnqueueState<PlayerAwake>();
+        }
+    }
+
+    private IEnumerator<float> AggroRoutine()
+    {
+        //Ignore if in deactivated mode
+        while (true)
+        {
+            if (sleepState == SleepState.Deactivated)
             {
-                Vector3 target = ChooseEnemy();
+                yield return Timing.WaitForOneFrame;
+            }
+            
+            LookForEnemies();
+            ChooseEnemy();
+            MoveTowardsTarget();
+            yield return Timing.WaitForOneFrame;
+        }
+    }
 
-                //dash here in direction of target
-
-                LungeAttack();
+    private IEnumerator<float> AttackRoutine()
+    {
+        //Attack non-stop until out of sleep!
+        while (true)
+        {
+            //If deactivated, don't bother
+            if (sleepState == SleepState.Deactivated)
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+            //if no target, don't bother
+            if (target == null)
+            {
+                orientation.SetFacingMode(Orientation.FacingMode.Movement);
+                yield return Timing.WaitForOneFrame;
+            }
+            
+            Vector3 direction = transform.DirectionToObject(target);
+            aiming.AimWeapon(direction);
+            orientation.SetAimTarget(target);
+            orientation.SetFacingMode(Orientation.FacingMode.Aiming);
+            
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
+            //if the target is out of distance, don't bother
+            if (distanceToTarget > attackDistance)
+                yield return Timing.WaitForOneFrame;
+            //If attack in cooldown, don't bother
+            if (playerAttack.InCooldown())
+                yield return Timing.WaitForOneFrame;
+            bool attackOver = false;
+            playerAttack.Activate(() =>
+            {
+                attackOver = true;
+            });
+            while (!attackOver)
+            {
+                yield return Timing.WaitForOneFrame;
             }
         }
     }
 
+    private void MoveTowardsTarget()
+    {
+        //Don't move if in knockback or target is null
+        if (damageBody.InKnockback())
+            return;
+        if (target == null)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        // Calculate the direction from this object to the target
+        float distanceToTarget = transform.DistanceToObject(target);
+        if (distanceToTarget > stopMoveDistance)
+        {
+            Vector3 direction = transform.DirectionToObject(target);
+            Debug.Log($"Direction: {direction}");
+            rb.velocity = direction * speed;
+            animator.SetFloat(AnimationHelper.SpeedParameter, speed);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+        }
+    }
+    
     private void LookForEnemies()
     {
         //check for enemies within a range and that aren't obstructed by a wall
@@ -95,7 +213,6 @@ public class PlayerSleep : State
                 continue;
             
             int hitCount = Physics2D.RaycastNonAlloc(startPosition, endPosition - startPosition, hits, maxDistance, enemyLayerMask);
-            Debug.Log($"Hit Count: {hitCount}");
             //Skip if there are obstacles (hitCount > 0)
             if (hitCount == 0)
             {
@@ -110,15 +227,9 @@ public class PlayerSleep : State
                 activeEnemies.Add(enemies[i]);
             }
         }
-        Debug.Log("Active Enemies");
-
-        for (int i = 0; i < activeEnemies.Count; ++i)
-        {
-            Debug.Log($"{activeEnemies[i]}");
-        }
     }
 
-    Vector2 ChooseEnemy()
+    private void ChooseEnemy()
     {
         Vector2 playerPos = transform.position;
         Vector2 value = playerPos;
@@ -134,16 +245,20 @@ public class PlayerSleep : State
                     closestEnemy = e;
                 }
             }
-
-            value = closestEnemy.gameObject.transform.position;
-            IEnumerator coroutine = IgnoreEnemyFor(timeBetweenAttacks + 1, closestEnemy);
-            StartCoroutine(coroutine);
+            
+            // value = closestEnemy.gameObject.transform.position;
+            target = closestEnemy.gameObject.transform;
+            // IEnumerator coroutine = IgnoreEnemyFor(timeBetweenAttacks + 1, closestEnemy);
+            // StartCoroutine(coroutine);
         }
-
-        return value;
+        else
+        {
+            target = null;
+        }
+        Debug.Log($"Target: {target}");
     }
 
-    public void LungeAttack()
+    private void LungeAttack()
     {
         //attack
         Debug.Log("Attacking now");
@@ -172,6 +287,34 @@ public class PlayerSleep : State
         enemy.canSee = true;
     }
 
+    public void OnDialogueEventStarted()
+    {
+        pauseStamina = true;
+    }
+
+    public void OnDialogueEventEnded()
+    {
+        pauseStamina = false;
+    }
+    
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        sleepState = SleepState.Deactivated;
+        rb.velocity = Vector2.zero;
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+        Timing.KillCoroutines(aggroRoutine);
+        Timing.KillCoroutines(attackRoutine);
+        playerAttack.Deactivate();
+        aiming.ResetAim();
+        aiming.SetAimingState(Aiming.AimingState.Idle);
+        animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+    }
+    
     /*
     [BoxGroup("Setup Variables")] public CircleCollider2D trigger;
     [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;

@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756ca43e7de8f4e0aa17b71b194c52c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackTime: 1
+  knockbackTime: 0.2
 --- !u!114 &2876119124840176091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,8 +349,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4aa929b374ce4d989336469ae788ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 5942c12dfdad94c9d8f2ecb400f30735, type: 2}
+    _variableInstancer: {fileID: 0}
+  maxSleepTime:
+    _usage: 1
+    _value: 0
+    _constant: {fileID: 11400000, guid: 29283943d6f40425ead30b3bd59b817c, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+  staminaTime:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: a0f99ce71deb04226907b11e0713fdef, type: 2}
+    _variableInstancer: {fileID: 0}
+  stamina:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 3f820509435f94db9b08aed0bc4526d9, type: 2}
+    _variableInstancer: {fileID: 0}
   enemyRuntimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
   playerAttack: {fileID: 5793960136874332686}
+  stopMoveDistance: 2
+  attackDistance: 3
   timeBetweenAttacks: 1
   maxDistance: 8
 --- !u!114 &2876119124840176089
@@ -685,6 +711,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2876119124840176093}
     m_Modifications:
+    - target: {fileID: 4052213863478499741, guid: 6b1a87389eb5b43829460465bd6a057b,
+        type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 2876119124840176091}
+    - target: {fileID: 6178875089385519109, guid: 6b1a87389eb5b43829460465bd6a057b,
+        type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 2876119124840176091}
     - target: {fileID: 6439376788038639215, guid: 6b1a87389eb5b43829460465bd6a057b,
         type: 3}
       propertyPath: m_RootOrder

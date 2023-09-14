@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6439376788038639215}
   - component: {fileID: 8611532371416308863}
-  - component: {fileID: 6178875089385519109}
+  - component: {fileID: 4052213863478499741}
   m_Layer: 0
   m_Name: PlayerAttack
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MonoBehaviour:
   animator: {fileID: 3978038592194075979}
   animationToTrigger: Koala_Sword_Slash1
   aiming: {fileID: 0}
---- !u!114 &6178875089385519109
+--- !u!114 &4052213863478499741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6461816733410029854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0daa06211cc420e84cccd322fd23ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d15bb39c34924dae9dbd17077da38ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 0}
   weapon: {fileID: 339839052198203769}
-  aimingState: 1
+  aimingState: 0
