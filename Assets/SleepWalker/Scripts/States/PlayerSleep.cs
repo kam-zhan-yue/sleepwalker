@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -18,13 +19,19 @@ public class PlayerSleep : State
     //disallow selecting the attacked enemy for a small time
     //redo this process
 
+    [BoxGroup("Setup Variables")] public GameObjectRuntimeSet enemyRuntimeSet;
+    [BoxGroup("Setup Variables")] public Attack playerAttack;
+    
     [SerializeField] float timeBetweenAttacks = 1f;
     [SerializeField] float maxDistance = 2f;
 
-    private Enemy[] enemies;
+    private List<Enemy> enemies = new();
     private bool continueAttack = true;
 
-    private List<Enemy> activeEnemies = new List<Enemy>();
+    private List<Enemy> activeEnemies = new();
+    private DamageBody damageBody;
+    private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
+    private readonly LayerMask enemyLayerMask = LayerHelper.obstaclesLayerMask;
 
     public class Enemy
     {
@@ -32,16 +39,17 @@ public class PlayerSleep : State
         public bool canSee = true;
     }
 
-    private void Start()
+    public override void EnterState()
     {
-        GameObject[] startingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemies = new Enemy[startingEnemies.Length];
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemies[i].gameObject = startingEnemies[i];
-            enemies[i].canSee = true;
-        }
+        // GameObject[] startingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // enemies = new Enemy[startingEnemies.Length];
+        // for (int i = 0; i < enemies.Length; i++)
+        // {
+        //     enemies[i].gameObject = startingEnemies[i];
+        //     enemies[i].canSee = true;
+        // }
 
+        playerAttack.ReInit();
         //line up next attack
         IEnumerator coroutine = NextAttack(timeBetweenAttacks/2f);
         StartCoroutine(coroutine);
@@ -51,7 +59,6 @@ public class PlayerSleep : State
     {
         if (continueAttack)
         {
-            activeEnemies.Clear();
             LookForEnemies();
             if (activeEnemies.Count > 0)
             {
@@ -64,41 +71,51 @@ public class PlayerSleep : State
         }
     }
 
-    void LookForEnemies()
+    private void LookForEnemies()
     {
         //check for enemies within a range and that aren't obstructed by a wall
-        for (int i = 0; i < enemies.Length; i++) {
-            RaycastHit2D hit = 
-                Physics2D.Raycast(transform.position, enemies[i].gameObject.transform.position - transform.position, maxDistance);
-
-            //if it hits something
-            if (hit.collider != false)
+        activeEnemies.Clear();
+        enemies = new List<Enemy>();
+        for (int i = 0; i < enemyRuntimeSet.items.Count; ++i)
+        {
+            Enemy enemy = new()
             {
-                //check if its the intended enemy
-                if (hit.transform != enemies[i].gameObject.transform)
-                {
-                    break;
-                }
-                //check if there's a restriction on choosing a given enemy
+                gameObject = enemyRuntimeSet.items[i],
+                canSee = true
+            };
+            enemies.Add(enemy);
+        }
+        
+        for (int i = 0; i < enemies.Count; i++) {
+            Vector3 startPosition = transform.position;
+            Vector3 endPosition = enemies[i].gameObject.transform.position;
+            //Skip if the enemy is too far
+            float distance = Vector2.Distance(startPosition, endPosition);
+            if (distance > maxDistance)
+                continue;
+            
+            int hitCount = Physics2D.RaycastNonAlloc(startPosition, endPosition - startPosition, hits, maxDistance, enemyLayerMask);
+            Debug.Log($"Hit Count: {hitCount}");
+            //Skip if there are obstacles (hitCount > 0)
+            if (hitCount == 0)
+            {
                 if (!enemies[i].canSee)
+                    continue;
+                if (enemies[i].gameObject.TryGetComponent(out Health enemyHealth))
                 {
-                    break;
+                    //Skip vulnerable dead enemies. Need to target invulnerable for boss
+                    if (!enemyHealth.IsInvulnerable() && enemyHealth.IsDead())
+                        continue;
                 }
-                //check if its alive
-                Health health = enemies[i].gameObject.GetComponent<Health>();
-                if (health != null)
-                {
-                    //not sure about accessing the health yet
-                    //if (health <= 0)
-                    //{
-                        break;
-                    //}
-                }
-                //if still here, add it to list
                 activeEnemies.Add(enemies[i]);
             }
         }
-        
+        Debug.Log("Active Enemies");
+
+        for (int i = 0; i < activeEnemies.Count; ++i)
+        {
+            Debug.Log($"{activeEnemies[i]}");
+        }
     }
 
     Vector2 ChooseEnemy()

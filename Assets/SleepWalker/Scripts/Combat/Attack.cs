@@ -161,4 +161,9 @@ public class Attack : MonoBehaviour
         Deactivate();
         gameObject.SetActiveFast(false);
     }
+
+    public void ReInit()
+    {
+        gameObject.SetActiveFast(true);
+    }
 }

@@ -349,8 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4aa929b374ce4d989336469ae788ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyRuntimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
+  playerAttack: {fileID: 5793960136874332686}
   timeBetweenAttacks: 1
-  maxDistance: 2
+  maxDistance: 8
 --- !u!114 &2876119124840176089
 MonoBehaviour:
   m_ObjectHideFlags: 0

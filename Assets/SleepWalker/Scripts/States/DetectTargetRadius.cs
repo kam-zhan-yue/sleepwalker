@@ -16,7 +16,7 @@ public sealed class DetectTargetRadius : Decision
     private readonly LayerMask obstacleLayerMask = LayerHelper.obstaclesLayerMask;
     private Collider2D[] results;
     private List<Transform> potentialTargets = new();
-    private RaycastHit2D[] hits = new RaycastHit2D[10];
+    private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
     
     protected override void Awake()
     {

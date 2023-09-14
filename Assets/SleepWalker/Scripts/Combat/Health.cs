@@ -52,6 +52,11 @@ public class Health : MonoBehaviour, IDamageTarget
         return gameObject.name;
     }
 
+    public bool IsInvulnerable()
+    {
+        return invulnerable;
+    }
+    
     public void TakeDamage(Damage _damage)
     {
         if (invulnerable)

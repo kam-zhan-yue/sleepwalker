@@ -77,12 +77,14 @@ public class PlayerAwake : State
     private void Start()
     {
         //Avoid messy null pointers due to different awake calls
-        playerAttack.aiming.SetAimingState(Aiming.AimingState.Aiming);
+        // playerAttack.aiming.SetAimingState(Aiming.AimingState.Aiming);
+        // playerAttack.UnInit();
     }
 
     public override void EnterState()
     {
         base.EnterState();
+        playerAttack.UnInit();
         spriteRenderer.color = Color.white;
         staminaTime.Value = maxStamina;
         stamina.Value = staminaTime;
