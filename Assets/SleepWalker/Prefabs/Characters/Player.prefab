@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startInvulerable: 0
+  removeFromSetOnDead: 1
   runtimeSet: {fileID: 11400000, guid: d6943c4fec65f475aa4a38b9142d9876, type: 2}
   onDeadEvent: {fileID: 11400000, guid: 6b1c8f8e68a464726bfff4dcd0339066, type: 2}
   maxHealth:
@@ -373,6 +374,7 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 3f820509435f94db9b08aed0bc4526d9, type: 2}
     _variableInstancer: {fileID: 0}
+  bossRuntimeSet: {fileID: 11400000, guid: 41a781b5574824103a5f27e5bb8e6637, type: 2}
   enemyRuntimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
   playerAttack: {fileID: 5793960136874332686}
   stopMoveDistance: 2

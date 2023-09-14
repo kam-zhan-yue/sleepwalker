@@ -43697,6 +43697,11 @@ PrefabInstance:
       propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2677603417674061888, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3122341976423847272, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -43726,6 +43731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967094115034031922, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6945899299642938850, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
         type: 3}
@@ -47020,11 +47030,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sleep Canister (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100957310839848503, guid: 3f1cd8291e67541c28516dce9e032c93,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9100957310839848503, guid: 3f1cd8291e67541c28516dce9e032c93,
         type: 3}
@@ -56994,6 +56999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeSets:
   - {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
+  - {fileID: 11400000, guid: 41a781b5574824103a5f27e5bb8e6637, type: 2}
 --- !u!1 &2102590477
 GameObject:
   m_ObjectHideFlags: 0
@@ -57080,6 +57086,7 @@ MonoBehaviour:
   gameOverHolder: {fileID: 200594703}
   thankYouHolder: {fileID: 2032613305}
   mainMenuHolder: {fileID: 783965909}
+  canPause: {fileID: 0}
 --- !u!114 &685819773072799217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57160,7 +57167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startInvulerable: 1
-  runtimeSet: {fileID: 0}
+  removeFromSetOnDead: 0
+  runtimeSet: {fileID: 11400000, guid: 41a781b5574824103a5f27e5bb8e6637, type: 2}
   onDeadEvent: {fileID: 11400000, guid: 4d5ad23e753af44489270a88d6cffebf, type: 2}
   maxHealth:
     _usage: 1
@@ -59225,6 +59233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   retreatPosition: {fileID: 1701476597}
   retreatSpeed: 20
+  aiming: {fileID: 3223680130010729612}
+  attack: {fileID: 3223680130010729603}
 --- !u!225 &7197229095573394986
 CanvasGroup:
   m_ObjectHideFlags: 0

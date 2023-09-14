@@ -10,6 +10,8 @@ public class BossRetreat : State
 {
     [BoxGroup("Setup Variables")] public Transform retreatPosition;
     [BoxGroup("Setup Variables")] public float retreatSpeed = 5f;
+    [BoxGroup("Setup Variables")] public Aiming aiming;
+    [BoxGroup("Setup Variables")] public Attack attack;
     private Rigidbody2D rb;
 
     private Vector3 retreatVector;
@@ -36,7 +38,10 @@ public class BossRetreat : State
     public override void EnterState()
     {
         base.EnterState();
+        attack.UnInit();
+        aiming.ResetAim();
         health.ToggleInvulnerability(true);
+        health.ToggleTargetable(false);
         damageBody.Deactivate();
         float distance = Vector3.Distance(transform.position, retreatVector);
         float time = distance / retreatSpeed;
@@ -44,9 +49,8 @@ public class BossRetreat : State
         rbTween = rb.DOMove(retreatVector, time).SetEase(Ease.Linear)
             .OnComplete(() =>
             {
-                Debug.Log("Invoke");
                 onComplete?.Invoke();
-                StateController.TryEnqueueState<EnemyIdle>();
+                // StateController.TryEnqueueState<EnemyIdle>();
             });
     }
 
@@ -60,9 +64,17 @@ public class BossRetreat : State
         health.ToggleInvulnerability(_toggle);
     }
 
+    public override void ExitState()
+    {
+        base.ExitState();
+        attack.ReInit();
+    }
+
     public void ForceAttack()
     {
         //FOR TESTING PURPOSES, SET TO FALSE
+        Debug.Log("Force Attack");
+        health.ToggleTargetable(true);
         health.ToggleInvulnerability(true);
         damageBody.Activate();
         StateController.TryEnqueueState<EnemyAggro>();

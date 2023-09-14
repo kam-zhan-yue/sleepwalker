@@ -32,6 +32,7 @@ public class PlayerSleep : State
     [SerializeField]
     [BoxGroup("Setup Variables")] private FloatReference stamina;
     
+    [BoxGroup("Setup Variables")] public GameObjectRuntimeSet bossRuntimeSet;
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet enemyRuntimeSet;
     [BoxGroup("Setup Variables")] public Attack playerAttack;
     [BoxGroup("Setup Variables")] public float stopMoveDistance;
@@ -200,6 +201,17 @@ public class PlayerSleep : State
         //check for enemies within a range and that aren't obstructed by a wall
         activeEnemies.Clear();
         enemies = new List<Enemy>();
+        
+        for (int i = 0; i < bossRuntimeSet.items.Count; ++i)
+        {
+            Enemy enemy = new()
+            {
+                gameObject = bossRuntimeSet.items[i],
+                canSee = true
+            };
+            enemies.Add(enemy);
+        }
+        
         for (int i = 0; i < enemyRuntimeSet.items.Count; ++i)
         {
             Enemy enemy = new()
@@ -226,8 +238,10 @@ public class PlayerSleep : State
                     continue;
                 if (enemies[i].gameObject.TryGetComponent(out Health enemyHealth))
                 {
-                    //Skip vulnerable dead enemies. Need to target invulnerable for boss
-                    if (!enemyHealth.IsInvulnerable() && enemyHealth.IsDead())
+                    //Skip untargetable and dead enemies. Need to target invulnerable for boss
+                    if (!enemyHealth.IsTargetable())
+                        continue;
+                    if (enemyHealth.IsDead())
                         continue;
                 }
                 activeEnemies.Add(enemies[i]);
@@ -293,14 +307,15 @@ public class PlayerSleep : State
         enemy.canSee = true;
     }
 
+    //Disable because in boss battle, it's good to wait until awake to face the next wave
     public void OnDialogueEventStarted()
     {
-        pauseStamina = true;
+        // pauseStamina = true;
     }
 
     public void OnDialogueEventEnded()
     {
-        pauseStamina = false;
+        // pauseStamina = false;
     }
     
     public override void Deactivate()

@@ -85,6 +85,7 @@ public class PlayerAwake : State
     {
         base.EnterState();
         playerAttack.UnInit();
+        playerControls.Enable();
         spriteRenderer.color = Color.white;
         staminaTime.Value = maxStamina;
         stamina.Value = staminaTime;
@@ -209,6 +210,12 @@ public class PlayerAwake : State
         canDash = true;
     }
 
+    public override void ExitState()
+    {
+        base.ExitState();
+        playerControls.Disable();
+    }
+    
     public override void Deactivate()
     {
         base.Deactivate();

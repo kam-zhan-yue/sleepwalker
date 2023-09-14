@@ -25,6 +25,11 @@ public class EnemySleep : State
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public override bool CanEnterState(State _currentState)
+    {
+        return !StateController.IsCurrentState<BossRetreat>();
+    }
+
     public override void EnterState()
     {
         base.EnterState();
@@ -59,6 +64,8 @@ public class EnemySleep : State
         spriteRenderer.color = Color.white;
         if(sleepPopup)
             sleepPopup.HidePopup();
-        onAwake?.Invoke();
+        //Don't trigger on boss retreat...
+        if(StateController.IsCurrentState<BossRetreat>())
+            onAwake?.Invoke();
     }
 }

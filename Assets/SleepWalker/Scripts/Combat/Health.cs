@@ -9,6 +9,8 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour, IDamageTarget
 {
     [BoxGroup("Invulnerable")] public bool startInvulerable;
+
+    [BoxGroup("Setup Variables")] public bool removeFromSetOnDead = true;
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet runtimeSet;
     [BoxGroup("Setup Variables")] public GameEvent onDeadEvent;
     
@@ -31,6 +33,8 @@ public class Health : MonoBehaviour, IDamageTarget
     [NonSerialized, ShowInInspector, ReadOnly]
     private bool invulnerable = false;
 
+    private bool targetable = true;
+
     private void Awake()
     {
         currentHealth.Value = maxHealth;
@@ -52,9 +56,9 @@ public class Health : MonoBehaviour, IDamageTarget
         return gameObject.name;
     }
 
-    public bool IsInvulnerable()
+    public bool IsTargetable()
     {
-        return invulnerable;
+        return targetable;
     }
     
     public void TakeDamage(Damage _damage)
@@ -103,7 +107,7 @@ public class Health : MonoBehaviour, IDamageTarget
                 onDeadEvent.Raise();
             }
             onDead?.Invoke();
-            if(runtimeSet != null)
+            if(removeFromSetOnDead && runtimeSet != null)
                 runtimeSet.Remove(gameObject);
             // Destroy(gameObject);
         }
@@ -120,6 +124,11 @@ public class Health : MonoBehaviour, IDamageTarget
     public void ToggleInvulnerability(bool _toggle)
     {
         invulnerable = _toggle;
+    }
+
+    public void ToggleTargetable(bool _toggle)
+    {
+        targetable = _toggle;
     }
 
     public bool IsDead()
