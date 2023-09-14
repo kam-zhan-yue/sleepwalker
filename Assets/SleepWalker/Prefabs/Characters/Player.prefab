@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvulerable: 0
   runtimeSet: {fileID: 11400000, guid: d6943c4fec65f475aa4a38b9142d9876, type: 2}
   onDeadEvent: {fileID: 11400000, guid: 6b1c8f8e68a464726bfff4dcd0339066, type: 2}
   maxHealth:
@@ -244,6 +245,9 @@ MonoBehaviour:
   onDamageAfterDead:
     m_PersistentCalls:
       m_Calls: []
+  onInvulnerableHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2403198204158527193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1e2f2c592f04b408271eac32807780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashAbility: 1
+  sleepAbility: 1
+  sleepEvent: {fileID: 11400000, guid: a00ddbbfc9607416a913829b6db6d062, type: 2}
+  dashEvent: {fileID: 11400000, guid: 7a1616abc35474e7da78d937aa08077c, type: 2}
   noSleep: 0
   speed:
     _usage: 2
@@ -341,36 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4aa929b374ce4d989336469ae788ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 8930296283736806794}
-  maxSleepTime:
-    _usage: 1
-    _value: 0
-    _constant: {fileID: 11400000, guid: 29283943d6f40425ead30b3bd59b817c, type: 2}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
-  staminaTime:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: a0f99ce71deb04226907b11e0713fdef, type: 2}
-    _variableInstancer: {fileID: 0}
-  stamina:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 3f820509435f94db9b08aed0bc4526d9, type: 2}
-    _variableInstancer: {fileID: 0}
-  playerAttack: {fileID: 5793960136874332686}
-  maxTargetDistance: 7
-  minTargetDistance: 1
-  bufferDistance: 1
-  speed:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 5942c12dfdad94c9d8f2ecb400f30735, type: 2}
-    _variableInstancer: {fileID: 0}
-  stateText: {fileID: 0}
+  timeBetweenAttacks: 1
+  maxDistance: 2
 --- !u!114 &2876119124840176089
 MonoBehaviour:
   m_ObjectHideFlags: 0

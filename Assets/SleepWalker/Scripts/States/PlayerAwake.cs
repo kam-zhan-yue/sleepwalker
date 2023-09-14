@@ -12,6 +12,8 @@ public class PlayerAwake : State
 {
     [BoxGroup("Init State")] public bool dashAbility = true;
     [BoxGroup("Init State")] public bool sleepAbility = true;
+    [BoxGroup("Game Events")] public GameEvent sleepEvent;
+    [BoxGroup("Game Events")] public GameEvent dashEvent;
     
     [BoxGroup("Debug")] public bool noSleep = false;
     
@@ -148,6 +150,7 @@ public class PlayerAwake : State
 
     private void Dash()
     {
+        dashEvent.Raise();
         //dash vector needs to be normalized
         Vector3 reference = CameraManager.instance.GetMouseDirection(transform.position);
         Vector2 dashVector = new Vector2(reference.x, reference.y);
@@ -173,8 +176,11 @@ public class PlayerAwake : State
     {
         if (!sleepAbility)
             return;
-        if(canSleep)
-            StateController.TryEnqueueState<PlayerSleep>();
+        if (canSleep)
+        {
+            if(StateController.TryEnqueueState<PlayerSleep>())
+                sleepEvent.Raise();
+        }
     }
     
     private void FireStarted(InputAction.CallbackContext _callbackContext)
