@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
         None = 0,
         TrackingPlayer = 1,
         Transition = 2,
+        Paused = 3
     }
     
     public static CameraManager instance;
@@ -26,9 +27,19 @@ public class CameraManager : MonoBehaviour
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private float dirOffset = 3f;
-    
-    [NonSerialized, ShowInInspector, ReadOnly] 
+
     private CameraState state = CameraState.None;
+
+    [ShowInInspector, ReadOnly]
+    private CameraState State
+    {
+        get => state;
+        set
+        {
+            previousState = state;
+            state = value;
+        }
+    }
 
     [NonSerialized, ShowInInspector, ReadOnly] 
     private Transform target;
@@ -36,6 +47,8 @@ public class CameraManager : MonoBehaviour
     private Camera mainCamera;
 
     private Tween transitionTween;
+
+    private CameraState previousState;
 
     private void Awake()
     {
@@ -50,7 +63,7 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        switch (state)
+        switch (State)
         {
             case CameraState.None:
                 break;
@@ -64,6 +77,8 @@ public class CameraManager : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, target.position + offset, damp);
                     break;
             case CameraState.Transition:
+                break;
+            case CameraState.Paused:
                 break;
         }
     }
@@ -80,17 +95,17 @@ public class CameraManager : MonoBehaviour
     public void OnPlayerAdded(GameObject _player)
     {
         target = _player.transform;
-        state = CameraState.TrackingPlayer;
+        State = CameraState.TrackingPlayer;
     }
 
     public void OnPlayerRemoved(GameObject _player)
     {
-        state = CameraState.None;
+        State = CameraState.None;
     }
 
     public void OnDialogueEventStarted(Transform _transform)
     {
-        state = CameraState.Transition;
+        State = CameraState.Transition;
         Vector3 position = _transform.position;
         position.z = transform.position.z;
         transitionTween = transform.DOMove(position, transitionDuration)
@@ -105,8 +120,18 @@ public class CameraManager : MonoBehaviour
             .SetEase(easing)
             .OnComplete(() =>
             {
-                state = CameraState.TrackingPlayer;
+                State = CameraState.TrackingPlayer;
             });;
+    }
+
+    public void OnPauseStarted()
+    {
+        State = CameraState.Paused;
+    }
+
+    public void OnPauseEnded()
+    {
+        State = previousState;
     }
     
     public Vector3 GetMouseDirection(Vector3 _targetPosition)

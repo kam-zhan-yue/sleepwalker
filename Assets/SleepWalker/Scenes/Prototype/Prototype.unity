@@ -10818,6 +10818,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1604885334645177174, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526863930091103444, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3122341976423847272, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
         type: 3}
       propertyPath: m_AnchorMax.x

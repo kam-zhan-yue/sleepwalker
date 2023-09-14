@@ -9,7 +9,7 @@ public class LevelSelectPopup : Popup
     public LevelSelectPopupItem samplePopupItem;
     public LevelSelectDatabase database;
     
-    private List<LevelSelectPopupItem> popupList = new();
+    private readonly List<LevelSelectPopupItem> popupList = new();
     
     protected override void InitPopup()
     {

@@ -10,6 +10,9 @@ using UnityEngine.Serialization;
 
 public class PlayerAwake : State
 {
+    [BoxGroup("Init State")] public bool dashAbility = true;
+    [BoxGroup("Init State")] public bool sleepAbility = true;
+    
     [BoxGroup("Debug")] public bool noSleep = false;
     
     [BoxGroup("Setup Variables")] 
@@ -129,6 +132,8 @@ public class PlayerAwake : State
 
     private void UpdateStamina()
     {
+        if (!sleepAbility)
+            return;
         if (noSleep)
             return;
         if (pauseStamina)
@@ -158,12 +163,16 @@ public class PlayerAwake : State
     
     private void DashStarted(InputAction.CallbackContext _callbackContext)
     {
+        if (!dashAbility)
+            return;
         if (StateController.currentState == this && canDash)
             Dash();
     }
     
     private void SleepStarted(InputAction.CallbackContext _callbackContext)
     {
+        if (!sleepAbility)
+            return;
         if(canSleep)
             StateController.TryEnqueueState<PlayerSleep>();
     }

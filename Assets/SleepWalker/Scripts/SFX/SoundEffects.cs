@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
 {
+    public FloatReference volume;
     private AudioSource[] audioSources;
     private int sourcePlaying = 0;
 

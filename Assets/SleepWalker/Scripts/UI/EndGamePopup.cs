@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class EndGamePopup : Popup
@@ -10,6 +13,7 @@ public class EndGamePopup : Popup
     [BoxGroup("UI Objects")] public RectTransform gameOverHolder;
     [BoxGroup("UI Objects")] public RectTransform thankYouHolder;
     [BoxGroup("UI Objects")] public RectTransform mainMenuHolder;
+    [BoxGroup("System Objects")] public BoolVariable canPause;
 
     private bool showingLastScreen = false;
     
@@ -27,6 +31,7 @@ public class EndGamePopup : Popup
         base.ShowPopup();
         Time.timeScale = 0f;
         mainHolder.gameObject.SetActive(true);
+        canPause.Value = false;
     }
 
     [Button]
@@ -75,5 +80,6 @@ public class EndGamePopup : Popup
     {
         Debug.Log("Return to Main Menu");
         Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 }

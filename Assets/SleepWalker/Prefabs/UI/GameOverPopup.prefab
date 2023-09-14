@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainHolder: {fileID: 7714273181330034332}
+  showLevelSelection: {fileID: 11400000, guid: 5071ae460d8bf4b0f9c655c7ce694911, type: 2}
 --- !u!1001 &4183561646131228792
 PrefabInstance:
   m_ObjectHideFlags: 0

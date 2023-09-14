@@ -30,10 +30,6 @@ MonoBehaviour:
     buildIndex: 4
     playerPrefsKey: LEVEL_4
   - autoUnlock: 0
-    id: 5
-    buildIndex: 5
-    playerPrefsKey: LEVEL_5
-  - autoUnlock: 0
     id: B
-    buildIndex: 6
+    buildIndex: 5
     playerPrefsKey: LEVEL_BOSS

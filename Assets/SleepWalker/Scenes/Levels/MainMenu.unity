@@ -1533,9 +1533,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
-        m_TargetAssemblyTypeName: UnityAtoms.AtomVariable`5[[System.Single, mscorlib
-        m_MethodName: set_Value
+      - m_Target: {fileID: 540966663}
+        m_TargetAssemblyTypeName: VolumePopup, Assembly-CSharp
+        m_MethodName: OnSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

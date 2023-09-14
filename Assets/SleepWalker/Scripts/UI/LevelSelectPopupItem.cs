@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelectPopupItem : MonoBehaviour
@@ -25,5 +26,6 @@ public class LevelSelectPopupItem : MonoBehaviour
     public void Pressed()
     {
         Debug.Log($"Go to build index {data.buildIndex}");
+        SceneManager.LoadScene(data.buildIndex);
     }
 }

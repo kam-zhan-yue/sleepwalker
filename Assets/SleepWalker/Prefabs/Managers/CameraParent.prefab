@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8418466170163600626}
   - component: {fileID: 8418466170163600627}
   - component: {fileID: 8418466170163600624}
+  - component: {fileID: 6473365968422632174}
+  - component: {fileID: 734495401068112087}
   m_Layer: 0
   m_Name: CameraParent
   m_TagString: Untagged
@@ -107,6 +109,64 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   transformGameEvent: {fileID: 11400000, guid: 8c0bde72991464d509769a3c4d9b8d1f, type: 2}
+--- !u!114 &6473365968422632174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418466170163600625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf768aa86014a7a8ce7cc388cd0172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8418466170163600626}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: OnPauseStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 1c2db8306e63e44a38ddc833506bab97, type: 2}
+--- !u!114 &734495401068112087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418466170163600625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf768aa86014a7a8ce7cc388cd0172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8418466170163600626}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: OnPauseEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 1a24bb6107a5f489484ed66b5e0fcc14, type: 2}
 --- !u!1001 &8418466169598362935
 PrefabInstance:
   m_ObjectHideFlags: 0
