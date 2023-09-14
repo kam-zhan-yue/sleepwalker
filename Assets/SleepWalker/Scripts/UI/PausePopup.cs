@@ -24,7 +24,7 @@ public class PausePopup : Popup
     {
         if (isShowing)
             HidePopup();
-        else if(canPause)
+        else if(canPause.Value)
             ShowPopup();
     }
 

@@ -38,6 +38,8 @@ public class Attack : MonoBehaviour
     private CoroutineHandle attackRoutine;
     private CoroutineHandle aimingRoutine;
     private CoroutineHandle cooldownRoutine;
+    private bool attacking = false;
+    private bool resetAim = false;
     
     private void Awake()
     {
@@ -97,11 +99,18 @@ public class Attack : MonoBehaviour
     
     private IEnumerator<float> ActivateAttack(Action _callback = null)
     {
+        attacking = true;
         float initialDelay = StaticHelper.GetFrameInSeconds(activationFrame, sampleRate);
         yield return Timing.WaitForSeconds(initialDelay);
         EnableDamageArea();
         yield return Timing.WaitForSeconds(activationTime);
         DisableDamageArea();
+        attacking = false;
+        if (resetAim)
+        {
+            aiming.ResetAim();
+            resetAim = false;
+        }
         _callback?.Invoke();
     }
 
@@ -145,6 +154,16 @@ public class Attack : MonoBehaviour
     private void EnableDamageArea()
     {
         damageAreaCollider.enabled = true;
+    }
+
+    public void ResetAim()
+    {
+        if (attacking)
+            resetAim = true;
+        else
+        {
+            aiming.ResetAim();
+        }
     }
 
     private void OnDrawGizmos()

@@ -316,7 +316,7 @@ public class PlayerSleep : State
         Timing.KillCoroutines(aggroRoutine);
         Timing.KillCoroutines(attackRoutine);
         playerAttack.Deactivate();
-        aiming.ResetAim();
+        playerAttack.ResetAim();
         aiming.SetAimingState(Aiming.AimingState.Idle);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
     }

@@ -44266,6 +44266,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2130785484360910495, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2130785485066996420, guid: 6cfcf78f39aa3486fa0c522527d1511e,
         type: 3}
       propertyPath: m_Name
@@ -45184,6 +45189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130785484360910495, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2130785485066996420, guid: 6cfcf78f39aa3486fa0c522527d1511e,
         type: 3}
@@ -53523,6 +53533,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2130785484360910495, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2130785485066996420, guid: 6cfcf78f39aa3486fa0c522527d1511e,
         type: 3}
       propertyPath: m_Name
@@ -53599,6 +53614,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b5726ff5c44f64d1baaebecd540e9282,
         type: 2}
+    - target: {fileID: 7607304873660908107, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: radius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfcf78f39aa3486fa0c522527d1511e, type: 3}
 --- !u!4 &1999877115 stripped
@@ -53866,6 +53886,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130785484360910495, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2130785485066996420, guid: 6cfcf78f39aa3486fa0c522527d1511e,
         type: 3}

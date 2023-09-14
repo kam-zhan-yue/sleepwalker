@@ -158,8 +158,8 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 1f883f8883a1646a8983d80a6149ab29, type: 2}
     _variableInstancer: {fileID: 0}
-  attackCooldown: 2
-  knockbackForce: 10
+  attackCooldown: 1.2
+  knockbackForce: 5
   knockbackDirection: 1
   aimingTransform: {fileID: 4861231554471373074}
   activationFrame: 6

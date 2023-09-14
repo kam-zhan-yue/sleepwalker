@@ -63,7 +63,7 @@ MonoBehaviour:
   disableAfterActivation: 0
   timeBetweenDecisions: 0.2
   startActive: 0
-  radius: 3
+  radius: 5
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1024

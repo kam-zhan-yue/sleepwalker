@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -49,8 +50,10 @@ public class DamageBox : MonoBehaviour, IDamageSource
             return;
         }
         
+        Debug.Log($"HITTT {name}");
         if (_collider.gameObject.TryGetComponent(out IDamageTarget target))
         {
+            Debug.Log($"Found {target}");
             Damage damageObject = new(this, target);
             damageObject.DamageTarget();
             // Debug.Log(damageObject.ToString());
