@@ -5,10 +5,23 @@ using UnityEngine;
 public class SettingsPopup : Popup
 {
     public MainMenuPopup mainMenuPopup;
+    public VolumePopup volumePopup;
     
     protected override void InitPopup()
     {
         mainHolder.gameObject.SetActiveFast(false);
+    }
+
+    public override void ShowPopup()
+    {
+        base.ShowPopup();
+        volumePopup.ShowPopup();
+    }
+
+    public override void HidePopup()
+    {
+        base.HidePopup();
+        volumePopup.HidePopup();
     }
 
     public override void CloseButtonClicked()
