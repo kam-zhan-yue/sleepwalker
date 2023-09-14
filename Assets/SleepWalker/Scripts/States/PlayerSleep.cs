@@ -306,6 +306,7 @@ public class PlayerSleep : State
     public override void Deactivate()
     {
         base.Deactivate();
+        playerAttack.Deactivate();
         sleepState = SleepState.Deactivated;
         rb.velocity = Vector2.zero;
     }
@@ -315,7 +316,7 @@ public class PlayerSleep : State
         base.ExitState();
         Timing.KillCoroutines(aggroRoutine);
         Timing.KillCoroutines(attackRoutine);
-        playerAttack.Deactivate();
+        // playerAttack.Deactivate();
         playerAttack.ResetAim();
         aiming.SetAimingState(Aiming.AimingState.Idle);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);

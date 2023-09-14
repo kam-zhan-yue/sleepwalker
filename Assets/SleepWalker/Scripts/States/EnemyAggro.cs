@@ -125,11 +125,11 @@ public class EnemyAggro : State
     {
         base.ExitState();
         Timing.KillCoroutines(aggroRoutine);
-        attack.Deactivate();
+        // attack.Deactivate();
         attack.ResetAim();
         //TODO this will cause enemies to not reset aim when they lose aggro, but also will be bugged if they go to hurt while attacking
         // aiming.ResetAim();
-        aiming.SetAimingState(Aiming.AimingState.Idle);
+        // aiming.SetAimingState(Aiming.AimingState.Idle);
         if (hasDecision && resetDecision)
             decision.ToggleActive(true);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);

@@ -39,7 +39,6 @@ public class Attack : MonoBehaviour
     private CoroutineHandle aimingRoutine;
     private CoroutineHandle cooldownRoutine;
     private bool attacking = false;
-    private bool resetAim = false;
     
     private void Awake()
     {
@@ -106,11 +105,6 @@ public class Attack : MonoBehaviour
         yield return Timing.WaitForSeconds(activationTime);
         DisableDamageArea();
         attacking = false;
-        if (resetAim)
-        {
-            aiming.ResetAim();
-            resetAim = false;
-        }
         _callback?.Invoke();
     }
 
@@ -158,11 +152,10 @@ public class Attack : MonoBehaviour
 
     public void ResetAim()
     {
-        if (attacking)
-            resetAim = true;
-        else
+        if (!attacking)
         {
             aiming.ResetAim();
+            aiming.SetAimingState(Aiming.AimingState.Idle);
         }
     }
 
