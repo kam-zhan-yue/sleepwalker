@@ -24,6 +24,7 @@ public class Orientation : MonoBehaviour
     private Vector3 positionLastFrame;
     private Vector3 positionDifference;
     private Transform target;
+    private Vector3 targetPosition;
 
     private void Awake()
     {
@@ -95,11 +96,25 @@ public class Orientation : MonoBehaviour
         target = _target;
     }
 
+    public void SetAimTargetPosition(Vector3 _position)
+    {
+        targetPosition = _position;
+    }
+
     private void ProcessAiming()
     {
-        Vector3 direction = transform.DirectionToObject(target);
-        facingRight = direction.x >= 0f;
-        FlipModel(facingRight ? 1 : -1);
+        if (target != null)
+        {
+            Vector3 direction = transform.DirectionToObject(target);
+            facingRight = direction.x >= 0f;
+            FlipModel(facingRight ? 1 : -1);
+        }
+        else
+        {
+            Vector3 direction = transform.DirectionToPoint(targetPosition);
+            facingRight = direction.x >= 0f;
+            FlipModel(facingRight ? 1 : -1);
+        }
     }
 
     public void SetFacingMode(FacingMode _mode)

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff8732ad33534dceb377924fb398b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuration: 0.5
+  transitionDuration: 0.2
   easing: 12
 --- !u!114 &8418466170163600627
 MonoBehaviour:
@@ -98,7 +98,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8418466170163600626}
         m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: OnDialogueEventStarted
+        m_MethodName: OnDialogueEventEnded
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

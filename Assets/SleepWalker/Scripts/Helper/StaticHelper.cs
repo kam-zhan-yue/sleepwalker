@@ -66,12 +66,22 @@ public static class StaticHelper
         return (_transformB.position - _transformA.position).normalized;
     }
     
+    public static Vector3 DirectionToPoint(this Transform _transform, Vector3 _point)
+    {
+        return (_point - _transform.position).normalized;
+    }
+    
     public static float DistanceToObject(this Transform _transformA, Transform _transformB)
     {
         float distance = Vector3.Distance(_transformA.position, _transformB.position);
         return distance;
     }
     
+    public static float DistanceToPoint(this Transform _transform, Vector3 _point)
+    {
+        float distance = Vector3.Distance(_transform.position, _point);
+        return distance;
+    }
 
     /// <summary>
     /// Draws a gizmo rectangle

@@ -3,6 +3,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class CameraManager : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class CameraManager : MonoBehaviour
     
     public static CameraManager instance;
 
-    [BoxGroup("Setup Variables")] public float transitionDuration = 0.5f;
+    [BoxGroup("Setup Variables")] public float transitionInDuration = 0.5f;
+    [BoxGroup("Setup Variables")] public float transitionOutDuration = 0.2f;
     [BoxGroup("Setup Variables")] public Ease easing = Ease.OutQuart;
 
     [NonSerialized, ShowInInspector, ReadOnly] 
@@ -49,6 +51,8 @@ public class CameraManager : MonoBehaviour
     private Tween transitionTween;
 
     private CameraState previousState;
+
+    public Action onTransitionOutEnded;
 
     private void Awake()
     {
@@ -108,7 +112,7 @@ public class CameraManager : MonoBehaviour
         State = CameraState.Transition;
         Vector3 position = _transform.position;
         position.z = transform.position.z;
-        transitionTween = transform.DOMove(position, transitionDuration)
+        transitionTween = transform.DOMove(position, transitionInDuration)
             .SetEase(easing);
     }
 
@@ -116,11 +120,12 @@ public class CameraManager : MonoBehaviour
     {
         Vector3 position = target.position;
         position.z = transform.position.z;
-        transitionTween = transform.DOMove(position, transitionDuration)
+        transitionTween = transform.DOMove(position, transitionOutDuration)
             .SetEase(easing)
             .OnComplete(() =>
             {
                 State = CameraState.TrackingPlayer;
+                onTransitionOutEnded?.Invoke();
             });;
     }
 

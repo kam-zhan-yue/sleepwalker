@@ -58,7 +58,8 @@ public class PlayerSleep : State
     private CoroutineHandle aggroRoutine;
     private CoroutineHandle attackRoutine;
     private bool pauseStamina = false;
-    private Transform target;
+    private Vector3 target = Vector3.zero;
+    private bool hasTarget;
     
     public class Enemy
     {
@@ -71,7 +72,7 @@ public class PlayerSleep : State
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        orientation = GetComponent <Orientation>();
+        orientation = GetComponent<Orientation>();
         damageBody = GetComponent<DamageBody>();
     }
 
@@ -131,20 +132,22 @@ public class PlayerSleep : State
             if (sleepState == SleepState.Deactivated)
             {
                 yield return Timing.WaitForOneFrame;
+                continue;
             }
             //if no target, don't bother
-            if (target == null)
+            if (!hasTarget)
             {
                 orientation.SetFacingMode(Orientation.FacingMode.Movement);
                 yield return Timing.WaitForOneFrame;
+                continue;
             }
             
-            Vector3 direction = transform.DirectionToObject(target);
+            Vector3 direction = transform.DirectionToPoint(target);
             aiming.AimWeapon(direction);
-            orientation.SetAimTarget(target);
+            orientation.SetAimTargetPosition(target);
             orientation.SetFacingMode(Orientation.FacingMode.Aiming);
             
-            float distanceToTarget = Vector2.Distance(transform.position, target.position);
+            float distanceToTarget = Vector2.Distance(transform.position, target);
             //if the target is out of distance, don't bother
             if (distanceToTarget > attackDistance)
                 yield return Timing.WaitForOneFrame;
@@ -168,17 +171,20 @@ public class PlayerSleep : State
         //Don't move if in knockback or target is null
         if (damageBody.InKnockback())
             return;
-        if (target == null)
+        if (target == Vector3.zero)
         {
             rb.velocity = Vector2.zero;
+            animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
             return;
         }
+
+        // Debug.Log($"Target: {target}");
         // Calculate the direction from this object to the target
-        float distanceToTarget = transform.DistanceToObject(target);
+        float distanceToTarget = transform.DistanceToPoint(target);
         if (distanceToTarget > stopMoveDistance)
         {
-            Vector3 direction = transform.DirectionToObject(target);
-            Debug.Log($"Direction: {direction}");
+            Vector3 direction = transform.DirectionToPoint(target);
+            // Debug.Log($"Direction: {direction}");
             rb.velocity = direction * speed;
             animator.SetFloat(AnimationHelper.SpeedParameter, speed);
         }
@@ -232,12 +238,11 @@ public class PlayerSleep : State
     private void ChooseEnemy()
     {
         Vector2 playerPos = transform.position;
-        Vector2 value = playerPos;
         //choose the closest one
         if (activeEnemies.Count > 0)
         {
-            Enemy closestEnemy = enemies[0];
-            foreach (Enemy e in enemies)
+            Enemy closestEnemy = activeEnemies[0];
+            foreach (Enemy e in activeEnemies)
             {
                 Vector2 enemyPos = e.gameObject.transform.position;
                 if (Vector2.Distance(playerPos, enemyPos) < Vector2.Distance(playerPos, enemyPos))
@@ -247,21 +252,22 @@ public class PlayerSleep : State
             }
             
             // value = closestEnemy.gameObject.transform.position;
-            target = closestEnemy.gameObject.transform;
+            target = closestEnemy.gameObject.transform.position;
+            hasTarget = true;
             // IEnumerator coroutine = IgnoreEnemyFor(timeBetweenAttacks + 1, closestEnemy);
             // StartCoroutine(coroutine);
         }
         else
         {
-            target = null;
+            hasTarget = false;
+            target = Vector3.zero;
         }
-        Debug.Log($"Target: {target}");
     }
 
     private void LungeAttack()
     {
         //attack
-        Debug.Log("Attacking now");
+        // Debug.Log("Attacking now");
 
         //line up next attack
         IEnumerator coroutine = NextAttack(timeBetweenAttacks);
