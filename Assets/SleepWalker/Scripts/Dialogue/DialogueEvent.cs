@@ -62,6 +62,10 @@ public class DialogueEvent : MonoBehaviour
     {
         if (_collider2D.gameObject.TryGetComponent(out DialogueTrigger _))
         {
+            if (_collider2D.gameObject.TryGetComponent(out Rigidbody2D rb))
+            {
+                rb.velocity = Vector2.zero;
+            }
             StartEvent();
         }
     }
