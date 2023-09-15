@@ -203,6 +203,7 @@ public class PlayerAwake : State
     
     private void SleepStarted(InputAction.CallbackContext _callbackContext)
     {
+        Debug.Log("Sleep Ability");
         if (!sleepAbility)
             return;
         if (canSleep)
@@ -244,6 +245,7 @@ public class PlayerAwake : State
     
     public override void Deactivate()
     {
+        Debug.Log("Deactivate");
         base.Deactivate();
         playerControls.Disable();
         pauseStamina = true;

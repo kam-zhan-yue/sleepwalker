@@ -16,8 +16,12 @@ public class TutorialPopup : Popup
 
     protected override void InitPopup()
     {
-        CameraManager.instance.onTransitionOutEnded += ActivateSleepTutorial;
         HidePopup();
+    }
+
+    private void Start()
+    {
+        CameraManager.instance.onTransitionOutEnded += ActivateSleepTutorial;
     }
 
     public override void HidePopup()

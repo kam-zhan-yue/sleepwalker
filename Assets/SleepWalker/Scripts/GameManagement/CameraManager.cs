@@ -127,15 +127,16 @@ public class CameraManager : MonoBehaviour
 
     public void OnDialogueEventEnded(Transform _transform)
     {
-        Vector3 position = target.position;
-        position.z = transform.position.z;
-        transitionTween = transform.DOMove(position, transitionOutDuration)
-            .SetEase(easing)
-            .OnComplete(() =>
-            {
-                State = CameraState.TrackingPlayer;
-                onTransitionOutEnded?.Invoke();
-            });;
+        State = CameraState.TrackingPlayer;
+        // Vector3 position = target.position;
+        // position.z = transform.position.z;
+        // transitionTween = transform.DOMove(position, transitionOutDuration)
+        //     .SetEase(easing)
+        //     .OnComplete(() =>
+        //     {
+        //         State = CameraState.TrackingPlayer;
+        //         onTransitionOutEnded?.Invoke();
+        //     });;
     }
 
     public void OnPauseStarted()
