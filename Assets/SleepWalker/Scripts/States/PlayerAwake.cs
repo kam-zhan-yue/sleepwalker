@@ -57,6 +57,8 @@ public class PlayerAwake : State
     public Attack playerAttack;
 
     private bool pauseStamina = false;
+
+    [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
     
     protected override void Awake()
     {
@@ -93,6 +95,20 @@ public class PlayerAwake : State
         canSleep = true; //get rid of this when you fix the cooldown
         //Uncomment when done testing attack 1st September Alex
         // orientation.facingMode = Orientation.FacingMode.Movement;
+
+        //find what child has the zs particles
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            ParticleSystem inChild = transform.GetChild(i).GetComponent<ParticleSystem>();
+            if (inChild != null)
+            {
+                zzzParticles = inChild;
+            }
+        }
+        if (zzzParticles.isPlaying)
+        {
+            zzzParticles.Stop();
+        }
     }
     
     public override void UpdateBehaviour()
@@ -103,11 +119,21 @@ public class PlayerAwake : State
         UpdateOrientation();
         UpdateStamina();
         UpdateAnimator();
+
+        if (zzzParticles.isPlaying)
+        {
+            zzzParticles.Stop();
+        }
     }
 
     private void UpdateAnimator()
     {
         animator.SetFloat(AnimationHelper.SpeedParameter, Mathf.Abs(vert) + Mathf.Abs(horiz));
+
+        if (animator.GetBool("Sleeping"))
+        {
+            animator.SetBool("Sleeping", false);
+        }
     }
 
     private void UpdateOrientation()

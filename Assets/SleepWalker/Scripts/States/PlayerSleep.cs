@@ -61,6 +61,8 @@ public class PlayerSleep : State
     private bool pauseStamina = false;
     private Vector3 target = Vector3.zero;
     private bool hasTarget;
+
+    [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
     
     public class Enemy
     {
@@ -75,6 +77,16 @@ public class PlayerSleep : State
         animator = GetComponent<Animator>();
         orientation = GetComponent<Orientation>();
         damageBody = GetComponent<DamageBody>();
+        
+        //find what child has the zs particles
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            ParticleSystem inChild = transform.GetChild(i).GetComponent<ParticleSystem>();
+            if (inChild != null)
+            {
+                zzzParticles = inChild;
+            }
+        }
     }
 
     public override void EnterState()
@@ -90,6 +102,8 @@ public class PlayerSleep : State
         
         aggroRoutine = Timing.RunCoroutine(AggroRoutine());
         attackRoutine = Timing.RunCoroutine(AttackRoutine());
+
+        zzzParticles.Play();
     }
 
     public override void UpdateBehaviour()
@@ -104,6 +118,11 @@ public class PlayerSleep : State
         if (stamina <= 0f)
         {
             StateController.TryEnqueueState<PlayerAwake>();
+        }
+
+        if (!animator.GetBool("Sleeping"))
+        {
+            animator.SetBool("Sleeping", true);
         }
     }
 

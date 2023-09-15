@@ -54,13 +54,17 @@ public class CameraManager : MonoBehaviour
 
     public Action onTransitionOutEnded;
 
+    private Animator camShake;
+
     private void Awake()
     {
         if (instance && instance != this)
             Destroy(gameObject);
         else
             instance = this;
+
         mainCamera = Camera.main;
+        camShake = transform.GetChild(0).GetComponent<Animator>();
 
         OnPlayerAdded(GameObject.FindGameObjectWithTag("Player"));
     }
@@ -114,6 +118,11 @@ public class CameraManager : MonoBehaviour
         position.z = transform.position.z;
         transitionTween = transform.DOMove(position, transitionInDuration)
             .SetEase(easing);
+    }
+
+    public void ShakeCamera()
+    {
+        camShake.SetTrigger("Shake");
     }
 
     public void OnDialogueEventEnded(Transform _transform)

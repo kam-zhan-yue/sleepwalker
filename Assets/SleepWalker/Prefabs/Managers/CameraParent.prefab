@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8418466170163600624}
   - component: {fileID: 6473365968422632174}
   - component: {fileID: 734495401068112087}
+  - component: {fileID: 5233657587781575295}
   m_Layer: 0
   m_Name: CameraParent
   m_TagString: Untagged
@@ -49,7 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff8732ad33534dceb377924fb398b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDuration: 0.2
+  transitionInDuration: 0.5
+  transitionOutDuration: 0
   easing: 12
 --- !u!114 &8418466170163600627
 MonoBehaviour:
@@ -167,6 +169,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   gameEvent: {fileID: 11400000, guid: 1a24bb6107a5f489484ed66b5e0fcc14, type: 2}
+--- !u!114 &5233657587781575295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418466170163600625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ed58f7371751c458dedb56caa8b9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLevelMusic: {fileID: 8300000, guid: b8be545b05bd5b24a9d15e67cc09ccdd, type: 3}
 --- !u!1001 &8418466169598362935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 2277029200274741231, guid: 4a74d541691354ce781ed6f51f2a0bf5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2277029200274741231, guid: 4a74d541691354ce781ed6f51f2a0bf5,
         type: 3}
@@ -239,9 +254,115 @@ PrefabInstance:
     - {fileID: 2277029200274741226, guid: 4a74d541691354ce781ed6f51f2a0bf5, type: 3}
     - {fileID: 2277029200274741229, guid: 4a74d541691354ce781ed6f51f2a0bf5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4a74d541691354ce781ed6f51f2a0bf5, type: 3}
+--- !u!1 &7732055618948512788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2277029200490723619, guid: 4a74d541691354ce781ed6f51f2a0bf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8418466169598362935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &692850651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732055618948512788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf768aa86014a7a8ce7cc388cd0172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5233657587781575295}
+        m_TargetAssemblyTypeName: MusicSelect, Assembly-CSharp
+        m_MethodName: PassToSFXPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 1ce585521090fc0459e678a4a279e9bd,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 7a1616abc35474e7da78d937aa08077c, type: 2}
+--- !u!114 &4128712592164657806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732055618948512788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf768aa86014a7a8ce7cc388cd0172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5233657587781575295}
+        m_TargetAssemblyTypeName: MusicSelect, Assembly-CSharp
+        m_MethodName: PassToSFXPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: f38c62384375f9147975076549be671f,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5233657587781575295}
+        m_TargetAssemblyTypeName: MusicSelect, Assembly-CSharp
+        m_MethodName: PassToMusicPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b9c75b2b6e8b1c143a43a4dc57839ee7,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 6b1c8f8e68a464726bfff4dcd0339066, type: 2}
 --- !u!4 &7732055618984121048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2277029200274741231, guid: 4a74d541691354ce781ed6f51f2a0bf5,
     type: 3}
   m_PrefabInstance: {fileID: 8418466169598362935}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7732055618984121063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2277029200274741200, guid: 4a74d541691354ce781ed6f51f2a0bf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8418466169598362935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2060641773
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732055618984121063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edf47e82c2337554499b892b12c8696d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

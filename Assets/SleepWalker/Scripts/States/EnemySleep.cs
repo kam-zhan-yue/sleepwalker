@@ -18,11 +18,22 @@ public class EnemySleep : State
     [BoxGroup("Unity Events")] public UnityEvent onSleep;
     [BoxGroup("Unity Events")] public UnityEvent onAwake;
 
+    [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
+
     protected override void Awake()
     {
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            ParticleSystem inChild = transform.GetChild(i).GetComponent<ParticleSystem>();
+            if (inChild != null)
+            {
+                zzzParticles = inChild;
+            }
+        }
     }
 
     public override bool CanEnterState(State _currentState)
@@ -39,6 +50,7 @@ public class EnemySleep : State
         if(sleepPopup)
             sleepPopup.ShowPopup();
         onSleep?.Invoke();
+        zzzParticles.Play();
     }
 
     public override void UpdateBehaviour()
@@ -67,5 +79,6 @@ public class EnemySleep : State
         //Don't trigger on boss retreat...
         if(StateController.IsCurrentState<BossRetreat>())
             onAwake?.Invoke();
+        zzzParticles.Stop();
     }
 }

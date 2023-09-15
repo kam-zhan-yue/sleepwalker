@@ -17,11 +17,15 @@ public class SleepCanister : MonoBehaviour
     private CoroutineHandle countdownRoutine;
     private Animator animator;
 
+    private SoundEffects sfx;
+    [SerializeField] AudioClip gasSprayClip;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         sleepCollider.enabled = false;
         highlight.SetActiveFast(false);
+        sfx = GameObject.FindGameObjectWithTag("SFX Manager").GetComponent<SoundEffects>();
     }
     
     private void OnTriggerEnter2D(Collider2D _collider2D)
@@ -51,6 +55,8 @@ public class SleepCanister : MonoBehaviour
         animator.SetTrigger(AnimationHelper.ActivateParameter);
         countdownRoutine = Timing.RunCoroutine(Countdown());
         onActivate?.Invoke();
+
+        sfx.Play(gasSprayClip);
     }
 
     private IEnumerator<float> Countdown()

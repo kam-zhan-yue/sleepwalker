@@ -6,15 +6,15 @@ using UnityEngine;
 public class SoundEffects : MonoBehaviour
 {
     public FloatReference volume;
-    private AudioSource[] audioSources;
+    [SerializeField] private AudioSource[] audioSources;
     private int sourcePlaying = 0;
 
     private void Awake()
     {
         //only one should exist in the scene
-        if (GameObject.FindGameObjectsWithTag("SFX Manager").Length != 0)
+        if (GameObject.FindGameObjectsWithTag("SFX Manager").Length > 1)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
             return;
         }
 
@@ -32,8 +32,10 @@ public class SoundEffects : MonoBehaviour
 
     public void Play(AudioClip clip)
     {
+        Debug.Log("Playing audio");
         AudioSource source = audioSources[sourcePlaying];
         source.clip = clip;
+        source.time = 0;
         source.Play();
 
         sourcePlaying++;
