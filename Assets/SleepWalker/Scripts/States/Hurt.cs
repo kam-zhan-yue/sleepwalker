@@ -32,7 +32,7 @@ public class Hurt : State
     {
         base.EnterState();
         Debug.Log($"{name} Enter Hurt");
-        hurtRoutine = Timing.RunCoroutine(HurtCountdown());
+        hurtRoutine = Timing.RunCoroutine(HurtCountdown().CancelWith(gameObject));
         if (hasBrain)
         {
             brain.Deactivate();
@@ -53,7 +53,6 @@ public class Hurt : State
     public override void ExitState()
     {
         base.ExitState();
-        Debug.Log($"{name} Exit Hurt");
         Timing.KillCoroutines(hurtRoutine);
         if (hasBrain)
         {

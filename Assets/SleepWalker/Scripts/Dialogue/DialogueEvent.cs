@@ -60,6 +60,9 @@ public class DialogueEvent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _collider2D)
     {
+        //If already played, then don't bother
+        if (script.playOnce && played)
+            return;
         if (_collider2D.gameObject.TryGetComponent(out DialogueTrigger _))
         {
             if (_collider2D.gameObject.TryGetComponent(out Rigidbody2D rb))

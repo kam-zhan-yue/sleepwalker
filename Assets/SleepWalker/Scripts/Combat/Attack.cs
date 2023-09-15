@@ -87,7 +87,7 @@ public class Attack : MonoBehaviour
         cooldownRoutine = Timing.RunCoroutine(CooldownCountdown());
         if (aiming)
         {
-            attackRoutine = Timing.RunCoroutine(ActivateAttack());
+            attackRoutine = Timing.RunCoroutine(ActivateAttack().CancelWith(damageAreaCollider.gameObject));
             aimingRoutine = Timing.RunCoroutine(HandleAiming(_callback));
         }
         else
@@ -177,5 +177,12 @@ public class Attack : MonoBehaviour
     public void ReInit()
     {
         gameObject.SetActiveFast(true);
+    }
+
+    private void OnDestroy()
+    {
+        Timing.KillCoroutines(attackRoutine);
+        Timing.KillCoroutines(cooldownRoutine);
+        Timing.KillCoroutines(aimingRoutine);
     }
 }

@@ -27,6 +27,8 @@ public class BossFlow : MonoBehaviour
     {
         if (bossMaxHealth == 0f)
             return;
+        if (!isActiveAndEnabled)
+            return;
         float healthPercent = bossCurrentHealth / bossMaxHealth;
         for (int i = 0; i < bossStates.Count; ++i)
         {
