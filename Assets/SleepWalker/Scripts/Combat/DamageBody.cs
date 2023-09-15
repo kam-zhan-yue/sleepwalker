@@ -39,7 +39,7 @@ public class DamageBody : MonoBehaviour, IDamagePhysics
     {
         inKnockback = true;
         Timing.KillCoroutines(countdownRoutine);
-        countdownRoutine = Timing.RunCoroutine(HurtCountdown());
+        countdownRoutine = Timing.RunCoroutine(HurtCountdown().CancelWith(gameObject));
     }
 
     private IEnumerator<float> HurtCountdown()

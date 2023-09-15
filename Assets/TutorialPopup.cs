@@ -19,11 +19,6 @@ public class TutorialPopup : Popup
         HidePopup();
     }
 
-    private void Start()
-    {
-        CameraManager.instance.onTransitionOutEnded += ActivateSleepTutorial;
-    }
-
     public override void HidePopup()
     {
         base.HidePopup();
@@ -31,7 +26,7 @@ public class TutorialPopup : Popup
         dashTutorialHolder.gameObject.SetActiveFast(false);
     }
 
-    private void ActivateSleepTutorial()
+    public void ActivateSleepTutorial()
     {
         if (sleepTutoralOver)
             return;
@@ -70,10 +65,5 @@ public class TutorialPopup : Popup
             HidePopup();
             inDashTutorial = false;
         }
-    }
-
-    private void OnDestroy()
-    {
-        CameraManager.instance.onTransitionOutEnded -= ActivateSleepTutorial;
     }
 }

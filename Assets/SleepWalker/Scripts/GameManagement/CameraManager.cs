@@ -52,8 +52,6 @@ public class CameraManager : MonoBehaviour
 
     private CameraState previousState;
 
-    public Action onTransitionOutEnded;
-
     private Animator camShake;
 
     private void Awake()
