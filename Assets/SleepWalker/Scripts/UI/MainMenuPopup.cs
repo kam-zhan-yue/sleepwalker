@@ -13,9 +13,7 @@ public class MainMenuPopup : Popup
     
     protected override void InitPopup()
     {
-        levelSelectPopup.HidePopup();
-        settingsPopup.HidePopup();
-        creditsPopup.HidePopup();
+        ShowPopup();
     }
 
     public void PlayButtonClicked()
@@ -26,14 +24,20 @@ public class MainMenuPopup : Popup
 
     public override void ShowPopup()
     {
-        if (showLevelSelection)
+        if (showLevelSelection.Value)
         {
             showLevelSelection.Value = false;
+            HidePopup();
             levelSelectPopup.ShowPopup();
+            settingsPopup.HidePopup();
+            creditsPopup.HidePopup();
         }
         else
         {
             base.ShowPopup();
+            levelSelectPopup.HidePopup();
+            settingsPopup.HidePopup();
+            creditsPopup.HidePopup();
         }
     }
 

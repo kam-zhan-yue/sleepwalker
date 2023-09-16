@@ -8,7 +8,6 @@ public class CreditsPopup : Popup
     
     protected override void InitPopup()
     {
-        mainHolder.gameObject.SetActiveFast(false);
     }
 
     public override void CloseButtonClicked()

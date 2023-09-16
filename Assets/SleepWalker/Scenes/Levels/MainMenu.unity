@@ -229,7 +229,7 @@ MonoBehaviour:
   levelSelectPopup: {fileID: 1793898671}
   settingsPopup: {fileID: 1369097955}
   creditsPopup: {fileID: 33427153}
-  showLevelSelection: {fileID: 0}
+  showLevelSelection: {fileID: 11400000, guid: 5071ae460d8bf4b0f9c655c7ce694911, type: 2}
 --- !u!1 &71951253
 GameObject:
   m_ObjectHideFlags: 0

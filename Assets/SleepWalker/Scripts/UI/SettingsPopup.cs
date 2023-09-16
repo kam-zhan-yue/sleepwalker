@@ -9,7 +9,6 @@ public class SettingsPopup : Popup
     
     protected override void InitPopup()
     {
-        mainHolder.gameObject.SetActiveFast(false);
     }
 
     public override void ShowPopup()

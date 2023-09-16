@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet enemyRuntimeSet;
     [SerializeField] Animator screenFadeAnim;
     const int LAST_LEVEL = 5; //make this the build index of the first last level, not the level number
+    private CoroutineHandle fadeCoroutine;
 
     private void Awake()
     {
@@ -50,35 +52,36 @@ public class LevelManager : MonoBehaviour
     private void LoadLevel(bool _deathCase = false)
     {
         Debug.Log("Loading next level now");
-        int currentLevel = SceneManager.GetActiveScene().buildIndex;
-        IEnumerator coroutine;
+        Scene activeScene = SceneManager.GetActiveScene();
+        PlayerPrefs.SetInt(activeScene.name, 1);
+        int currentLevel = activeScene.buildIndex;
 
         if (!_deathCase)
         {
             if (currentLevel != LAST_LEVEL)
             {
-                coroutine = FadeToLoad(1f, currentLevel + 1);
+                fadeCoroutine = Timing.RunCoroutine(FadeToLoad(1f, currentLevel + 1).CancelWith(gameObject));
             }
             else
             {
-                coroutine = FadeToLoad(1f, 0); //or whatever the index of the home page is
+                //or whatever the index of the home page is
+                fadeCoroutine = Timing.RunCoroutine(FadeToLoad(1f, 0).CancelWith(gameObject));
             }
-        } else
+        } 
+        else
         {
             //restart the level if they died by reloading the same scene
             //(i think this works)
-            coroutine = FadeToLoad(1f, currentLevel);
+            fadeCoroutine = Timing.RunCoroutine(FadeToLoad(1f, currentLevel).CancelWith(gameObject));
         }
-
-        StartCoroutine(coroutine);
     }
 
-    private IEnumerator FadeToLoad(float _waitTime, int _sceneToLoad)
+    private IEnumerator<float> FadeToLoad(float _waitTime, int _sceneToLoad)
     {
         //start fade animation
         screenFadeAnim.SetTrigger(AnimationHelper.FadeOutParameter);
         //wait then load scene
-        yield return new WaitForSeconds(_waitTime);
+        yield return Timing.WaitForSeconds(_waitTime);
         Debug.Log("Fade out complete");
         SceneManager.LoadScene(_sceneToLoad, LoadSceneMode.Single);
     }

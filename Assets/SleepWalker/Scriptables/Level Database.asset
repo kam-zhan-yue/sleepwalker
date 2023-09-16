@@ -16,20 +16,20 @@ MonoBehaviour:
   - autoUnlock: 1
     id: 1
     buildIndex: 1
-    playerPrefsKey: LEVEL_1
+    playerPrefsKey: Level1
   - autoUnlock: 0
     id: 2
     buildIndex: 2
-    playerPrefsKey: LEVEL_2
+    playerPrefsKey: Level2
   - autoUnlock: 0
     id: 3
     buildIndex: 3
-    playerPrefsKey: LEVEL_3
+    playerPrefsKey: Level3
   - autoUnlock: 0
     id: 4
     buildIndex: 4
-    playerPrefsKey: LEVEL_4
+    playerPrefsKey: Level4
   - autoUnlock: 0
     id: B
     buildIndex: 5
-    playerPrefsKey: LEVEL_BOSS
+    playerPrefsKey: BossLevel
