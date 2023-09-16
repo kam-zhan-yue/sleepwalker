@@ -352,6 +352,7 @@ public class PlayerSleep : State
     public override void Deactivate()
     {
         base.Deactivate();
+        zzzParticles.Stop();
         playerAttack.Deactivate();
         sleepState = SleepState.Deactivated;
         rb.velocity = Vector2.zero;

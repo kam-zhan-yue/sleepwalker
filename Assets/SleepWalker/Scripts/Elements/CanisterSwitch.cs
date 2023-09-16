@@ -84,6 +84,7 @@ public class CanisterSwitch : MonoBehaviour
     [Button]
     public void Reactivate()
     {
+        canInteract = false;
         activated = false;
         spriteRenderer.sprite = offSwitch;
         canister.Reactivate();

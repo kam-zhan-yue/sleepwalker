@@ -526,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sleepTime: 5
   sleepPopup: {fileID: 8539244746572356389}
+  attack: {fileID: 4654330644286031750}
   onSleep:
     m_PersistentCalls:
       m_Calls: []

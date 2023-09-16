@@ -46,6 +46,7 @@ public class EnemyAggro : State
     public override void EnterState()
     {
         base.EnterState();
+        attack.ReInit();
         aiming = attack.aiming;
         aiming.SetAimingState(Aiming.AimingState.Aiming);
         aggroRoutine = Timing.RunCoroutine(AggroRoutine());

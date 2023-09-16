@@ -11,6 +11,7 @@ public class EnemySleep : State
     
     //I am so lazy right now, I'm sorry
     [BoxGroup("Setup Variables")] public MiniSleepBarPopup sleepPopup;
+    [BoxGroup("Setup Variables")] public Attack attack;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private float sleepTimer;
@@ -44,6 +45,7 @@ public class EnemySleep : State
     public override void EnterState()
     {
         base.EnterState();
+        attack.UnInit();
         rb.velocity = Vector2.zero;
         spriteRenderer.color = Color.black;
         sleepTimer = sleepTime;
