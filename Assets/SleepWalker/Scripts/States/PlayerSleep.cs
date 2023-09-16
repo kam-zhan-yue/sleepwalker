@@ -27,6 +27,7 @@ public class PlayerSleep : State
     //disallow selecting the attacked enemy for a small time
     //redo this process
     [BoxGroup("Setup Variables")] public FloatReference speed;
+    [BoxGroup("Setup Variables")] public FloatReference maxStamina;
     [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;
     [BoxGroup("Setup Variables")] public FloatReference staminaTime;
     [BoxGroup("Setup Variables")] public BoolReference playerSleep;
@@ -361,6 +362,8 @@ public class PlayerSleep : State
     public override void ExitState()
     {
         base.ExitState();
+        staminaTime.Value = maxStamina;
+        stamina.Value = staminaTime;
         zzzParticles.Stop();
         Timing.KillCoroutines(aggroRoutine);
         Timing.KillCoroutines(attackRoutine);

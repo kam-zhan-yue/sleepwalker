@@ -60,23 +60,19 @@ public class PlayerAwake : State
         playerControls.PlayerInput.Sleep.started += SleepStarted;
         //not needed because player can't attack while awake (keeping it commented in case we use it later)
         playerControls.PlayerInput.Fire.started += FireStarted;
-    }
-
-    private void Start()
-    {
-        //Avoid messy null pointers due to different awake calls
-        // playerAttack.aiming.SetAimingState(Aiming.AimingState.Aiming);
-        // playerAttack.UnInit();
+        
+        staminaTime.Value = maxStamina;
+        stamina.Value = staminaTime;
     }
 
     public override void EnterState()
     {
         base.EnterState();
         playerAttack.UnInit();
-        playerControls.Enable();
+        // playerControls.Enable();
         spriteRenderer.color = Color.white;
-        staminaTime.Value = maxStamina;
-        stamina.Value = staminaTime;
+        // staminaTime.Value = maxStamina;
+        // stamina.Value = staminaTime;
         playerSleep.Value = false;
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
@@ -183,6 +179,8 @@ public class PlayerAwake : State
     {
         if (!dashAbility)
             return;
+        if (playerSleep.Value)
+            return;
         if (StateController.currentState == this && canDash)
             Dash();
     }
@@ -191,6 +189,8 @@ public class PlayerAwake : State
     {
         Debug.Log("Sleep Ability");
         if (!sleepAbility)
+            return;
+        if (playerSleep.Value)
             return;
         if (canSleep)
         {
@@ -201,18 +201,22 @@ public class PlayerAwake : State
     
     private void FireStarted(InputAction.CallbackContext _callbackContext)
     {
+        if (playerSleep.Value)
+            return;
         if(playerAttack != null)
             playerAttack.Activate();
     }
 
     public void OnDialogueEventStarted()
     {
+        Debug.Log("Disable Player Controls");
         playerControls.Disable();
         pauseStamina = true;
     }
 
     public void OnDialogueEventEnded()
     {
+        Debug.Log("Enable Player Controls");
         playerControls.Enable();
         pauseStamina = false;
     }
@@ -233,7 +237,7 @@ public class PlayerAwake : State
     {
         Debug.Log("Deactivate");
         base.Deactivate();
-        playerControls.Disable();
+        // playerControls.Disable();
         pauseStamina = true;
     }
     

@@ -358,6 +358,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3676837888725410452}
   - component: {fileID: 6950215110416298924}
+  - component: {fileID: 6286793757508908569}
+  - component: {fileID: 42439811291570238}
   m_Layer: 5
   m_Name: EnemyTrackerPopup
   m_TagString: Untagged
@@ -403,3 +405,61 @@ MonoBehaviour:
   mainHolder: {fileID: 6879553151890797935}
   enemyRuntimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
   text: {fileID: 6671429044435173609}
+--- !u!114 &6286793757508908569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753446600210976961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf768aa86014a7a8ce7cc388cd0172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6950215110416298924}
+        m_TargetAssemblyTypeName: Popup, Assembly-CSharp
+        m_MethodName: HidePopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: e0e9348d6bb9d4f5aa15e6f3bfd730f3, type: 2}
+--- !u!114 &42439811291570238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753446600210976961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf768aa86014a7a8ce7cc388cd0172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6950215110416298924}
+        m_TargetAssemblyTypeName: Popup, Assembly-CSharp
+        m_MethodName: ShowPopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameEvent: {fileID: 11400000, guid: 8f4b091ec2b7b4aa8bc99f713f2596ca, type: 2}

@@ -389,6 +389,12 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 5942c12dfdad94c9d8f2ecb400f30735, type: 2}
     _variableInstancer: {fileID: 0}
+  maxStamina:
+    _usage: 1
+    _value: 0
+    _constant: {fileID: 11400000, guid: 02f913d3810204846954831cea7f0540, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   maxSleepTime:
     _usage: 1
     _value: 0
