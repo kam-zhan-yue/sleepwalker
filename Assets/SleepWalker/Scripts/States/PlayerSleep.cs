@@ -28,7 +28,7 @@ public class PlayerSleep : State
     //redo this process
     [BoxGroup("Setup Variables")] public FloatReference speed;
     [BoxGroup("Setup Variables")] public FloatReference maxStamina;
-    [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;
+    [BoxGroup("Setup Variables")] public FloatReference staminaIncreaseRate;
     [BoxGroup("Setup Variables")] public FloatReference staminaTime;
     [BoxGroup("Setup Variables")] public BoolReference playerSleep;
 
@@ -65,6 +65,8 @@ public class PlayerSleep : State
     private Vector3 target = Vector3.zero;
     private bool hasTarget;
 
+    private PlayerControls playerControls;
+    
     private Vector3 debugEnemyPosition = Vector3.zero;
 
     [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
@@ -82,6 +84,9 @@ public class PlayerSleep : State
         animator = GetComponent<Animator>();
         orientation = GetComponent<Orientation>();
         damageBody = GetComponent<DamageBody>();
+        playerControls = new PlayerControls();
+        playerControls.PlayerInput.Enable();
+        playerControls.PlayerInput.Sleep.started += SleepStarted;
 
         //find what child has the zs particles
         for (int i = 0; i < transform.childCount; i++)
@@ -99,8 +104,6 @@ public class PlayerSleep : State
         base.EnterState();
 
         //Setup Variables
-        staminaTime.Value = maxSleepTime;
-        stamina.Value = staminaTime;
         playerSleep.Value = true;
         playerAttack.ReInit();
         aiming = playerAttack.aiming;
@@ -114,14 +117,15 @@ public class PlayerSleep : State
 
     public override void UpdateBehaviour()
     {
-        if (!pauseStamina)
-            stamina.Value -= Time.deltaTime;
-
         if (sleepState == SleepState.Deactivated)
             return;
+        
+        if (!pauseStamina)
+            stamina.Value += staminaIncreaseRate * Time.deltaTime;
+
         // stateText.text = $"Sleep State: {aiState}";
 
-        if (stamina <= 0f)
+        if (stamina >= maxStamina)
         {
             StateController.TryEnqueueState<PlayerAwake>();
         }
@@ -137,6 +141,15 @@ public class PlayerSleep : State
         StateController.TryEnqueueState<PlayerAwake>();
     }
 
+    private void SleepStarted(InputAction.CallbackContext _callbackContext)
+    {
+        Debug.Log("Sleep Ability");
+        //If not sleeping, don't bother
+        if (!playerSleep.Value)
+            return;
+        StateController.TryEnqueueState<PlayerAwake>();
+    }
+    
     private IEnumerator<float> AggroRoutine()
     {
         //Ignore if in deactivated mode
@@ -362,8 +375,6 @@ public class PlayerSleep : State
     public override void ExitState()
     {
         base.ExitState();
-        staminaTime.Value = maxStamina;
-        stamina.Value = staminaTime;
         zzzParticles.Stop();
         Timing.KillCoroutines(aggroRoutine);
         Timing.KillCoroutines(attackRoutine);
@@ -384,5 +395,6 @@ public class PlayerSleep : State
     {
         Timing.KillCoroutines(aggroRoutine);
         Timing.KillCoroutines(attackRoutine);
+        playerControls.Dispose();
     }
 }

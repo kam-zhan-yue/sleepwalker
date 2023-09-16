@@ -19,7 +19,7 @@ public class PlayerAwake : State
     [BoxGroup("Setup Variables")] public FloatReference speed;
     [BoxGroup("Setup Variables")] public FloatReference dashSpeed;
     [BoxGroup("Setup Variables")] public FloatReference maxStamina;
-    [BoxGroup("Setup Variables")] public FloatReference staminaTime;
+    [BoxGroup("Setup Variables")] public FloatReference staminaDecreaseRate;
     [BoxGroup("Setup Variables")] public FloatReference stamina;
     [BoxGroup("Setup Variables")] public BoolReference playerSleep;
     
@@ -61,8 +61,7 @@ public class PlayerAwake : State
         //not needed because player can't attack while awake (keeping it commented in case we use it later)
         playerControls.PlayerInput.Fire.started += FireStarted;
         
-        staminaTime.Value = maxStamina;
-        stamina.Value = staminaTime;
+        stamina.Value = maxStamina.Value;
     }
 
     public override void EnterState()
@@ -151,7 +150,7 @@ public class PlayerAwake : State
             return;
         if (pauseStamina)
             return;
-        stamina.Value -= Time.deltaTime;
+        stamina.Value -= staminaDecreaseRate * Time.deltaTime;
 
         if (stamina <= 0f)
         {
@@ -230,7 +229,12 @@ public class PlayerAwake : State
     public override void ExitState()
     {
         base.ExitState();
-        playerControls.Disable();
+        // playerControls.Disable();
+    }
+
+    public void ActivateSleepAbility()
+    {
+        sleepAbility = true;
     }
     
     public override void Deactivate()

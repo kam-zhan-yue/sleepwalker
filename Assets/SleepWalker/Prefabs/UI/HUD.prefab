@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953fe6cb1144fe3860ee51541c4597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   mainHolder: {fileID: 0}
   health: {fileID: 0}
   slider: {fileID: 0}
@@ -814,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953fe6cb1144fe3860ee51541c4597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   mainHolder: {fileID: 0}
   health: {fileID: 0}
   slider: {fileID: 0}
@@ -827,7 +829,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2323463193441899506}
   - component: {fileID: 2323463193441899511}
-  - component: {fileID: 2323463193441899508}
   - component: {fileID: 2323463193441899509}
   m_Layer: 5
   m_Name: Stamina Bar
@@ -869,11 +870,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b69ea237922c4baeac52f460b619ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   mainHolder: {fileID: 2323463192973069079}
   playerMaxStamina:
-    _usage: 2
+    _usage: 1
     _value: 0
-    _constant: {fileID: 0}
+    _constant: {fileID: 11400000, guid: 02f913d3810204846954831cea7f0540, type: 2}
     _variable: {fileID: 11400000, guid: a0f99ce71deb04226907b11e0713fdef, type: 2}
     _variableInstancer: {fileID: 0}
   playerStamina:
@@ -883,10 +885,10 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 3f820509435f94db9b08aed0bc4526d9, type: 2}
     _variableInstancer: {fileID: 0}
   playerSleep:
-    _usage: 0
+    _usage: 2
     _value: 0
     _constant: {fileID: 0}
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 6e023eb0bfdac472fbd5569bb0f5850a, type: 2}
     _variableInstancer: {fileID: 0}
   staminaSlider: {fileID: 2323463192973069078}
   fillImage: {fileID: 2323463193510794409}
@@ -895,44 +897,6 @@ MonoBehaviour:
   sleepBackground: {r: 0.24705882, g: 0.19215687, b: 0.34117648, a: 1}
   awakeFill: {r: 0.7764706, g: 0.93333334, b: 1, a: 1}
   awakeBackground: {r: 0.24705882, g: 0.19215687, b: 0.34117648, a: 1}
---- !u!114 &2323463193441899508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2323463193441899507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2821f0c77045f4c12acd5e89a9c15ea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _developerDescription: 
-  _unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2323463193441899511}
-        m_TargetAssemblyTypeName: StaminaBarPopup, Assembly-CSharp
-        m_MethodName: OnMaxStaminaChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _actionResponses: []
-  _conditions: []
-  _operator: 0
-  _replayEventBufferOnRegister: 1
-  _eventReference:
-    _usage: 0
-    _event: {fileID: 11400000, guid: 98c49a405a18a4a669ae50a1fb0af395, type: 2}
-    _eventInstancer: {fileID: 0}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
 --- !u!114 &2323463193441899509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,6 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54893bec5c41485facdf946f90033f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   mainHolder: {fileID: 4402888054104041422}
   primaryTime: 0.1
   secondaryTime: 0.1

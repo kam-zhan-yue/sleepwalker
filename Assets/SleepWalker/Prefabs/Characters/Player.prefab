@@ -351,11 +351,11 @@ MonoBehaviour:
     _constant: {fileID: 11400000, guid: 02f913d3810204846954831cea7f0540, type: 2}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  staminaTime:
-    _usage: 2
+  staminaDecreaseRate:
+    _usage: 1
     _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: a0f99ce71deb04226907b11e0713fdef, type: 2}
+    _constant: {fileID: 11400000, guid: b6d75d6b34ab543cc9cf0f22bfdd2498, type: 2}
+    _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
   stamina:
     _usage: 2
@@ -395,10 +395,10 @@ MonoBehaviour:
     _constant: {fileID: 11400000, guid: 02f913d3810204846954831cea7f0540, type: 2}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
-  maxSleepTime:
+  staminaIncreaseRate:
     _usage: 1
     _value: 0
-    _constant: {fileID: 11400000, guid: 29283943d6f40425ead30b3bd59b817c, type: 2}
+    _constant: {fileID: 11400000, guid: 8725d46f4b0f649a7b0a7c6aff6f0f41, type: 2}
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
   staminaTime:

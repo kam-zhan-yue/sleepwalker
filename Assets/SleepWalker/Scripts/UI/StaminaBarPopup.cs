@@ -23,17 +23,13 @@ public class StaminaBarPopup : Popup
     protected override void InitPopup()
     {
         staminaSlider.maxValue = playerMaxStamina;
+        staminaSlider.value = playerStamina;
         SetColours(playerSleep.Value);
     }
-    
+
     public void OnStaminaChanged(FloatPair _floatPair)
     {
         staminaSlider.value = _floatPair.Item1;
-    }
-
-    public void OnMaxStaminaChanged(FloatPair _floatPair)
-    {
-        staminaSlider.maxValue = _floatPair.Item1;
     }
 
     public void OnPlayerSleep(bool _sleep)
