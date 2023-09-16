@@ -12,7 +12,7 @@ using UnityEngine.Serialization;
 
 public class PlayerSleep : State
 {
-    public enum SleepState
+    private enum SleepState
     {
         Attacking,
         Deactivated
@@ -52,7 +52,7 @@ public class PlayerSleep : State
     private DamageBody damageBody;
     private Animator animator;
     private readonly RaycastHit2D[] hits = new RaycastHit2D[10];
-    private readonly LayerMask enemyLayerMask = LayerHelper.obstaclesLayerMask;
+    private readonly LayerMask obstacleLayerMask = LayerHelper.obstaclesLayerMask;
 
     [NonSerialized, ShowInInspector, ReadOnly]
     private SleepState sleepState;
@@ -62,6 +62,8 @@ public class PlayerSleep : State
     private bool pauseStamina = false;
     private Vector3 target = Vector3.zero;
     private bool hasTarget;
+
+    private Vector3 debugEnemyPosition = Vector3.zero;
 
     [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
 
@@ -242,15 +244,16 @@ public class PlayerSleep : State
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            Vector3 startPosition = transform.position;
             Vector3 endPosition = enemies[i].gameObject.transform.position;
+            Vector3 direction = transform.DirectionToPoint(endPosition);
             //Skip if the enemy is too far
-            float distance = Vector2.Distance(startPosition, endPosition);
+            float distance = transform.DistanceToPoint(endPosition);
             if (distance > maxDistance)
                 continue;
+            debugEnemyPosition = endPosition;
 
-            int hitCount = Physics2D.RaycastNonAlloc(startPosition, endPosition - startPosition, hits, maxDistance,
-                enemyLayerMask);
+            int hitCount = Physics2D.RaycastNonAlloc(transform.position, direction, hits, distance,
+                obstacleLayerMask);
             //Skip if there are obstacles (hitCount > 0)
             if (hitCount == 0)
             {
@@ -356,6 +359,13 @@ public class PlayerSleep : State
         playerAttack.ResetAim();
         aiming.SetAimingState(Aiming.AimingState.Idle);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Transform transform1;
+        Vector3 direction = (transform1 = transform).DirectionToPoint(debugEnemyPosition);
+        Debug.DrawRay(transform1.position, direction, Color.green);
     }
 
     private void OnDestroy()

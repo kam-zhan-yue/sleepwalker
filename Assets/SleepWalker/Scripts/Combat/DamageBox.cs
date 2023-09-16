@@ -71,7 +71,9 @@ public class DamageBox : MonoBehaviour, IDamageSource
     {
         Vector3 startPosition = transform.position;
         Vector3 endPosition = _target.position;
-        int hitCount = Physics2D.RaycastNonAlloc(startPosition, endPosition - startPosition, hits, Vector2.Distance(startPosition, endPosition), obstacleLayerMask);
+        Vector3 direction = transform.DirectionToPoint(endPosition);
+        float distance = transform.DistanceToPoint(endPosition);
+        int hitCount = Physics2D.RaycastNonAlloc(startPosition, direction, hits, distance,obstacleLayerMask);
         return hitCount != 0;
     }
     

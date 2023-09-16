@@ -74,20 +74,15 @@ public sealed class DetectTargetRadius : Decision
                 //Shoot a ray to each target to see if there are any obstacles
                 Vector3 startPosition = transform.position;
                 Vector3 endPosition = potentialTargets[i].position;
-                int hitCount = Physics2D.RaycastNonAlloc(startPosition, endPosition - startPosition, hits, Vector2.Distance(startPosition, endPosition), obstacleLayerMask);
-                // Debug.Log("Hit Count: "+hitCount);
+                Vector3 direction = transform.DirectionToPoint(endPosition);
+                float distance = transform.DistanceToPoint(endPosition);
+                int hitCount = Physics2D.RaycastNonAlloc(startPosition, direction, hits, distance, obstacleLayerMask);
                 //If there are no hits, then return the target
                 if (hitCount == 0)
                 {
-                    float distance = transform.DistanceToObject(potentialTargets[i].gameObject.transform);
-                    // Debug.Log("Hit with Distance: "+distance);
                     brain.target = potentialTargets[i].gameObject.transform;
                     return true;
                 }
-                // else
-                // {
-                //     Debug.Log(hits[0].collider.gameObject.name);
-                // }
             }
         }
         //If there is no obstacle detection and there is a target, then can decide
