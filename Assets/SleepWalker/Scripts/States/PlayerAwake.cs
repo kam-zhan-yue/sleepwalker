@@ -16,26 +16,12 @@ public class PlayerAwake : State
     [BoxGroup("Game Events")] public GameEvent dashEvent;
     
     [BoxGroup("Debug")] public bool noSleep = false;
-    
-    [BoxGroup("Setup Variables")] 
-    [SerializeField]
-    private FloatReference speed;
-
-    [BoxGroup("Setup Variables")] 
-    [SerializeField]
-    private FloatReference dashSpeed;
-
-    [BoxGroup("Setup Variables")] 
-    [SerializeField]
-    private FloatReference maxStamina;
-    
-    [BoxGroup("Setup Variables")] 
-    [SerializeField] 
-    private FloatReference staminaTime;
-    
-    [BoxGroup("Setup Variables")] 
-    [SerializeField] 
-    private FloatReference stamina;
+    [BoxGroup("Setup Variables")] public FloatReference speed;
+    [BoxGroup("Setup Variables")] public FloatReference dashSpeed;
+    [BoxGroup("Setup Variables")] public FloatReference maxStamina;
+    [BoxGroup("Setup Variables")] public FloatReference staminaTime;
+    [BoxGroup("Setup Variables")] public FloatReference stamina;
+    [BoxGroup("Setup Variables")] public BoolReference playerSleep;
     
     [NonSerialized, ShowInInspector, ReadOnly] 
     private bool canDash = true;
@@ -91,6 +77,7 @@ public class PlayerAwake : State
         spriteRenderer.color = Color.white;
         staminaTime.Value = maxStamina;
         stamina.Value = staminaTime;
+        playerSleep.Value = false;
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
         //Uncomment when done testing attack 1st September Alex

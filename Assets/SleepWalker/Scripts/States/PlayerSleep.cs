@@ -29,6 +29,7 @@ public class PlayerSleep : State
     [BoxGroup("Setup Variables")] public FloatReference speed;
     [BoxGroup("Setup Variables")] public FloatReference maxSleepTime;
     [BoxGroup("Setup Variables")] public FloatReference staminaTime;
+    [BoxGroup("Setup Variables")] public BoolReference playerSleep;
 
     [SerializeField] [BoxGroup("Setup Variables")]
     private FloatReference stamina;
@@ -99,6 +100,7 @@ public class PlayerSleep : State
         //Setup Variables
         staminaTime.Value = maxSleepTime;
         stamina.Value = staminaTime;
+        playerSleep.Value = true;
         playerAttack.ReInit();
         aiming = playerAttack.aiming;
         aiming.SetAimingState(Aiming.AimingState.Aiming);

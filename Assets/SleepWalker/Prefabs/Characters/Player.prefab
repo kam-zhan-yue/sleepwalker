@@ -363,6 +363,12 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 3f820509435f94db9b08aed0bc4526d9, type: 2}
     _variableInstancer: {fileID: 0}
+  playerSleep:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 6e023eb0bfdac472fbd5569bb0f5850a, type: 2}
+    _variableInstancer: {fileID: 0}
   playerAttack: {fileID: 5793960136874332686}
   zzzParticles: {fileID: 0}
 --- !u!114 &2876119124840176094
@@ -394,6 +400,12 @@ MonoBehaviour:
     _value: 0
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: a0f99ce71deb04226907b11e0713fdef, type: 2}
+    _variableInstancer: {fileID: 0}
+  playerSleep:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 6e023eb0bfdac472fbd5569bb0f5850a, type: 2}
     _variableInstancer: {fileID: 0}
   stamina:
     _usage: 2
