@@ -80,8 +80,7 @@ public class PlayerAwake : State
         playerSleep.Value = false;
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
-        //Uncomment when done testing attack 1st September Alex
-        // orientation.facingMode = Orientation.FacingMode.Movement;
+        orientation.facingMode = Orientation.FacingMode.Cursor;
 
         //find what child has the zs particles
         for (int i = 0; i < transform.childCount; i++)
@@ -117,9 +116,9 @@ public class PlayerAwake : State
     {
         animator.SetFloat(AnimationHelper.SpeedParameter, Mathf.Abs(vert) + Mathf.Abs(horiz));
 
-        if (animator.GetBool("Sleeping"))
+        if (animator.GetBool(AnimationHelper.SleepParameter))
         {
-            animator.SetBool("Sleeping", false);
+            animator.SetBool(AnimationHelper.SleepParameter, false);
         }
     }
 

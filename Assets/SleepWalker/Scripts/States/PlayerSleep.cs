@@ -125,10 +125,15 @@ public class PlayerSleep : State
             StateController.TryEnqueueState<PlayerAwake>();
         }
 
-        if (!animator.GetBool("Sleeping"))
+        if (!animator.GetBool(AnimationHelper.SleepParameter))
         {
-            animator.SetBool("Sleeping", true);
+            animator.SetBool(AnimationHelper.SleepParameter, true);
         }
+    }
+
+    public void ForceAwake()
+    {
+        StateController.TryEnqueueState<PlayerAwake>();
     }
 
     private IEnumerator<float> AggroRoutine()
@@ -355,6 +360,7 @@ public class PlayerSleep : State
     public override void ExitState()
     {
         base.ExitState();
+        zzzParticles.Stop();
         Timing.KillCoroutines(aggroRoutine);
         Timing.KillCoroutines(attackRoutine);
         // playerAttack.Deactivate();

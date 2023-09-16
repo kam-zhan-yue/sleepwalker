@@ -889,8 +889,8 @@ MonoBehaviour:
     _variable: {fileID: 0}
     _variableInstancer: {fileID: 0}
   staminaSlider: {fileID: 2323463192973069078}
-  fillImage: {fileID: 0}
-  backgroundImage: {fileID: 0}
+  fillImage: {fileID: 2323463193510794409}
+  backgroundImage: {fileID: 2323463192969619513}
   sleepFill: {r: 0.85882354, g: 0.7764706, b: 1, a: 1}
   sleepBackground: {r: 0.24705882, g: 0.19215687, b: 0.34117648, a: 1}
   awakeFill: {r: 0.7764706, g: 0.93333334, b: 1, a: 1}
@@ -1387,6 +1387,7 @@ GameObject:
   - component: {fileID: 3048041294450282528}
   - component: {fileID: 4502807198290974758}
   - component: {fileID: 8520750683217618990}
+  - component: {fileID: 6020489668640557995}
   m_Layer: 5
   m_Name: Listeners
   m_TagString: Untagged
@@ -1496,6 +1497,44 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   gameEvent: {fileID: 11400000, guid: e0e9348d6bb9d4f5aa15e6f3bfd730f3, type: 2}
+--- !u!114 &6020489668640557995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611463102043983198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6ab7cbc45164d19b20476265c251c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerDescription: 
+  _unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2323463193441899511}
+        m_TargetAssemblyTypeName: StaminaBarPopup, Assembly-CSharp
+        m_MethodName: OnPlayerSleep
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _actionResponses: []
+  _conditions: []
+  _operator: 0
+  _replayEventBufferOnRegister: 1
+  _eventReference:
+    _usage: 0
+    _event: {fileID: 11400000, guid: d3d1d57d223774f6ca62fda932cecd8e, type: 2}
+    _eventInstancer: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
 --- !u!1 &8503684201776787552
 GameObject:
   m_ObjectHideFlags: 0
