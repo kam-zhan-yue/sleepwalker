@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeSets:
   - {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
+  - {fileID: 11400000, guid: 41a781b5574824103a5f27e5bb8e6637, type: 2}
 --- !u!1 &5614489661546091737
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyRuntimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
   screenFadeAnim: {fileID: 0}
-  activeEnemies: []
 --- !u!114 &5614489661546091686
 MonoBehaviour:
   m_ObjectHideFlags: 0
