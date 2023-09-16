@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c16a835fe8e44cfaa1255fc84ac3d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 6879553151890797935}
   enemyRuntimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
   text: {fileID: 6671429044435173609}

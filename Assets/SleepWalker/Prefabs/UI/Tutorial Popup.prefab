@@ -512,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60660c1e7f72a4efd8c39f477efa353c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 3283311760805391389}
   canPause: {fileID: 11400000, guid: ed49185be54a042cd93071d48a22b7bd, type: 2}
   playerAwake: {fileID: 0}

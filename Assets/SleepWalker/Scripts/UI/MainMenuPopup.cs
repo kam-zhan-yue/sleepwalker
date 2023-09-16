@@ -18,6 +18,7 @@ public class MainMenuPopup : Popup
 
     public void PlayButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Load First Level");
         SceneManager.LoadScene(1);
     }
@@ -43,24 +44,28 @@ public class MainMenuPopup : Popup
 
     public void LevelSelectButtonClicked()
     {
+        ButtonClicked();
         HidePopup();
         levelSelectPopup.ShowPopup();
     }
 
     public void SettingsButtonClicked()
     {
+        ButtonClicked();
         HidePopup();
         settingsPopup.ShowPopup();
     }
     
     public void CreditsButtonClicked()
     {
+        ButtonClicked();
         HidePopup();
         creditsPopup.ShowPopup();
     }
 
     public override void CloseButtonClicked()
     {
+        ButtonClicked();
         base.CloseButtonClicked();
         levelSelectPopup.HidePopup();
         settingsPopup.HidePopup();

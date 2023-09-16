@@ -62,6 +62,7 @@ public class EndGamePopup : Popup
     {
         if (showingLastScreen)
             return;
+        ButtonClicked();
         worldEndHolder.gameObject.SetActiveFast(false);
         gameOverHolder.gameObject.SetActiveFast(false);
         if (!thankYouHolder.gameObject.activeSelf)
@@ -78,6 +79,7 @@ public class EndGamePopup : Popup
 
     public void MainMenuButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Return to Main Menu");
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);

@@ -9,14 +9,13 @@ public class VolumePopup : Popup
     public Slider slider;
     public FloatReference volume;
 
-    private const string PLAYER_PREFS_VOLUME = "VOLUME";
     private float value = 1f;
 
     protected override void InitPopup()
     {
-        if (PlayerPrefs.HasKey(PLAYER_PREFS_VOLUME))
+        if (PlayerPrefs.HasKey(PopupSettings.PLAYER_PREFS_VOLUME))
         {
-            volume.Value = PlayerPrefs.GetFloat(PLAYER_PREFS_VOLUME);
+            volume.Value = PlayerPrefs.GetFloat(PopupSettings.PLAYER_PREFS_VOLUME);
         }
     }
 
@@ -29,6 +28,6 @@ public class VolumePopup : Popup
     public void OnSliderChanged(float _value)
     {
         volume.Value = _value;
-        PlayerPrefs.SetFloat(PLAYER_PREFS_VOLUME, _value);
+        PlayerPrefs.SetFloat(PopupSettings.PLAYER_PREFS_VOLUME, _value);
     }
 }

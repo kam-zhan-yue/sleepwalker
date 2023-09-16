@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e953fe6cb1144fe3860ee51541c4597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 6951630821256870744}
   health: {fileID: 0}
   slider: {fileID: 7191709783883841941}

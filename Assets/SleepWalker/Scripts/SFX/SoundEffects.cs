@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
 {
+    public static SoundEffects instance;
     public FloatReference volume;
     [SerializeField] private AudioSource[] audioSources;
     private int sourcePlaying = 0;
 
     private void Awake()
     {
-        //only one should exist in the scene
-        if (GameObject.FindGameObjectsWithTag("SFX Manager").Length > 1)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
+        if (instance && instance != this)
+            Destroy(gameObject);
+        else
+            instance = this;
+        
         //it should exist across scenes
         DontDestroyOnLoad(this.gameObject);
         sourcePlaying = 0;
@@ -29,12 +28,13 @@ public class SoundEffects : MonoBehaviour
             audioSources[i] = transform.GetChild(i).GetComponent<AudioSource>();
         }
     }
-
-    public void Play(AudioClip clip)
+    
+    public void Play(AudioClip _clip)
     {
         Debug.Log("Playing audio");
         AudioSource source = audioSources[sourcePlaying];
-        source.clip = clip;
+        source.volume = volume.Value;
+        source.clip = _clip;
         source.time = 0;
         source.Play();
 

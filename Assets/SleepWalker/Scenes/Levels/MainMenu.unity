@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a130b78a83e4d3582da434cbfeada3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 1059646859}
   mainMenuPopup: {fileID: 39398757}
 --- !u!1 &39398755
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663026ba425e04ad48b8462c61d755a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 1587879304}
   levelSelectPopup: {fileID: 1793898671}
   settingsPopup: {fileID: 1369097955}
@@ -337,6 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56981550ea55b49a08d78b62afdebd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
+  mainHolder: {fileID: 767672710}
   text: {fileID: 1035981143}
   button: {fileID: 767672707}
 --- !u!114 &158750346
@@ -638,6 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76a35714b48d45deaa9fc544f151ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   mainHolder: {fileID: 254846333}
   slider: {fileID: 757724115}
   volume:
@@ -3364,6 +3369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5219f391a46407b9552b01a769832a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 552914376}
   mainMenuPopup: {fileID: 39398757}
   volumePopup: {fileID: 540966663}
@@ -3956,6 +3962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af51810e6f1c3418c8d9d2d5d598a9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 71951254}
   mainMenuPopup: {fileID: 39398757}
   itemHolder: {fileID: 1111100594}

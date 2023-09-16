@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Popup : MonoBehaviour
 {
     [BoxGroup("UI Objects")]
+    public PopupSettings settings;
     public RectTransform mainHolder;
     
     [NonSerialized, ShowInInspector, ReadOnly]
@@ -37,6 +38,11 @@ public abstract class Popup : MonoBehaviour
     public virtual void CloseButtonClicked()
     {
         onCloseButtonClicked?.Invoke(this);
+    }
+
+    protected void ButtonClicked()
+    {
+        settings.PlayButton();
     }
 
     public virtual void EscapeButtonClicked()

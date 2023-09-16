@@ -23,9 +23,15 @@ public class PausePopup : Popup
     private void PauseStarted(InputAction.CallbackContext _callbackContext)
     {
         if (isShowing)
+        {
+            ButtonClicked();
             HidePopup();
-        else if(canPause.Value)
+        }
+        else if (canPause.Value)
+        {
+            ButtonClicked();
             ShowPopup();
+        }
     }
 
     public override void ShowPopup()
@@ -46,6 +52,7 @@ public class PausePopup : Popup
 
     public void RestartLevelPressed()
     {
+        ButtonClicked();
         Debug.Log("Restart Level");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         HidePopup();
@@ -53,6 +60,7 @@ public class PausePopup : Popup
     
     public void LevelSelectionButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Level Select");
         showLevelSelection.Value = true;
         SceneManager.LoadScene(0);
@@ -61,6 +69,7 @@ public class PausePopup : Popup
 
     public void MainMenuButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Main Menu");
         SceneManager.LoadScene(0);
         HidePopup();

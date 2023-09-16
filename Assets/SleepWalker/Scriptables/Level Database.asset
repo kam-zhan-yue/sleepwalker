@@ -29,7 +29,7 @@ MonoBehaviour:
     id: 4
     buildIndex: 4
     playerPrefsKey: Level4
-  - autoUnlock: 0
+  - autoUnlock: 1
     id: B
     buildIndex: 5
     playerPrefsKey: BossLevel

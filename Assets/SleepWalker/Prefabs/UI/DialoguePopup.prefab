@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9631adc9863dcf6438f1b3cd25dd708c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 2652490675648237997}
   nameText: {fileID: 40536690034650685}
   dialogueText: {fileID: 7037457791300935805}

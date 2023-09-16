@@ -15,7 +15,7 @@ MonoBehaviour:
   _developerDescription: 
   _id: 
   _value: 1
-  _changed: {fileID: 0}
+  _changed: {fileID: 11400000, guid: 272990f6255e645faa131369e0f7002b, type: 2}
   _changedWithHistory: {fileID: 0}
   _triggerChangedOnOnEnable: 0
   _triggerChangedWithHistoryOnOnEnable: 0

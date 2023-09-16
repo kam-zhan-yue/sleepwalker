@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelSelectPopupItem : MonoBehaviour
+public class LevelSelectPopupItem : Popup
 {
     [NonSerialized, ShowInInspector, ReadOnly]
     private LevelSelectData data;
@@ -15,6 +15,10 @@ public class LevelSelectPopupItem : MonoBehaviour
     public TMP_Text text;
     public Button button;
 
+    protected override void InitPopup()
+    {
+    }
+    
     public void Init(LevelSelectData _data)
     {
         data = _data;
@@ -25,6 +29,7 @@ public class LevelSelectPopupItem : MonoBehaviour
 
     public void Pressed()
     {
+        ButtonClicked();
         Debug.Log($"Go to build index {data.buildIndex}");
         SceneManager.LoadScene(data.buildIndex);
     }

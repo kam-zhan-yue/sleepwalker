@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593d27e82b9cb40d28bf828073430b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 644729786818751434}
   pauseStarted: {fileID: 11400000, guid: 1c2db8306e63e44a38ddc833506bab97, type: 2}
   pauseEnded: {fileID: 11400000, guid: 1a24bb6107a5f489484ed66b5e0fcc14, type: 2}
@@ -1660,6 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76a35714b48d45deaa9fc544f151ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   mainHolder: {fileID: 121716926721278751}
   slider: {fileID: 1392760475786019176}
   volume:

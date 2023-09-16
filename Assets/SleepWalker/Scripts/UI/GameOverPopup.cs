@@ -16,6 +16,7 @@ public class GameOverPopup : Popup
 
     public void RestartLevelButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Restart Level");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         HidePopup();
@@ -23,6 +24,7 @@ public class GameOverPopup : Popup
     
     public void LevelSelectionButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Level Select");
         showLevelSelection.Value = true;
         SceneManager.LoadScene(0);
@@ -31,6 +33,7 @@ public class GameOverPopup : Popup
 
     public void MainMenuButtonClicked()
     {
+        ButtonClicked();
         Debug.Log("Main Menu");
         SceneManager.LoadScene(0);
         HidePopup();
