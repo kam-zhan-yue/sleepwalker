@@ -17,15 +17,15 @@ MonoBehaviour:
     id: 1
     buildIndex: 1
     playerPrefsKey: Level1
-  - autoUnlock: 0
+  - autoUnlock: 1
     id: 2
     buildIndex: 2
     playerPrefsKey: Level2
-  - autoUnlock: 0
+  - autoUnlock: 1
     id: 3
     buildIndex: 3
     playerPrefsKey: Level3
-  - autoUnlock: 0
+  - autoUnlock: 1
     id: 4
     buildIndex: 4
     playerPrefsKey: Level4

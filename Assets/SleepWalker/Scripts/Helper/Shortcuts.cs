@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -43,3 +44,4 @@ public class Shortcuts : MonoBehaviour
         window.maximized = !window.maximized;
     }
 }
+#endif

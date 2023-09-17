@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Orientation : MonoBehaviour
 {
