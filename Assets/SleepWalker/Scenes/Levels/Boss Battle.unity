@@ -61729,6 +61729,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 783965909}
     m_Modifications:
+    - target: {fileID: 2938033009313572380, guid: 742948195f3f2474aa6a7291e5092935,
+        type: 3}
+      propertyPath: m_Text
+      value: Main Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 2938033009502619101, guid: 742948195f3f2474aa6a7291e5092935,
         type: 3}
       propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.size

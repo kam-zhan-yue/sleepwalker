@@ -29,6 +29,7 @@ public class EndGamePopup : Popup
     public override void ShowPopup()
     {
         base.ShowPopup();
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
         Time.timeScale = 0f;
         mainHolder.gameObject.SetActive(true);
         canPause.Value = false;
