@@ -9,8 +9,15 @@ using UnityEngine.Serialization;
 
 public class Health : MonoBehaviour, IDamageTarget
 {
+    [Serializable]
+    public enum TargetState
+    {
+        Alive = 0,
+        Invisible = 1,
+        Always = 2,
+    }
     [BoxGroup("Invulnerable")] public bool startInvulnerable = false;
-    [BoxGroup("Invulnerable")] public bool alwaysTarget = false;
+    [BoxGroup("Invulnerable")] public TargetState targetState = TargetState.Alive;
 
     [BoxGroup("Setup Variables")] public bool playDeadAnim = true;
     [BoxGroup("Setup Variables")] public bool removeFromSetOnDead = true;
@@ -50,6 +57,11 @@ public class Health : MonoBehaviour, IDamageTarget
         }
 
         invulnerable = startInvulnerable;
+    }
+
+    public void SetTargetState(TargetState _state)
+    {
+        targetState = _state; 
     }
     
     public string GetId()

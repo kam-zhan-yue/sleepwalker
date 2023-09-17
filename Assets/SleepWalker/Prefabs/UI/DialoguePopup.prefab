@@ -517,6 +517,12 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   mainHolder: {fileID: 2652490675648237997}
   hasAudio: 1
+  paused:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 4e89c22c5374949f19a84be427f32aaf, type: 2}
+    _variableInstancer: {fileID: 0}
   volume: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
   audioSource: {fileID: 8752650113372357376}
   nameText: {fileID: 40536690034650685}
@@ -1303,7 +1309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.14, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2255518853534020826

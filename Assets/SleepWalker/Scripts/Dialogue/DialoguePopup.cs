@@ -10,6 +10,7 @@ using UnityEngine;
 public class DialoguePopup : Popup
 {
     [FoldoutGroup("Audio")] public bool hasAudio;
+    [FoldoutGroup("Audio"), ShowIf("hasAudio")] public BoolReference paused;
     [FoldoutGroup("Audio"), ShowIf("hasAudio")] public FloatVariable volume;
     [FoldoutGroup("Audio"), ShowIf("hasAudio")] public AudioSource audioSource;
     [BoxGroup("UI Objects")] public TMP_Text nameText;
@@ -39,7 +40,12 @@ public class DialoguePopup : Popup
             .OnUpdate(() =>
             {
                 if (hasAudio)
-                    audioSource.volume = volume.Value;
+                {
+                    if(paused.Value)
+                        audioSource.Stop();
+                    else if (!audioSource.isPlaying)
+                        audioSource.Play();
+                }
                 dialogueText.SetText(text);
             })
             .OnComplete(() =>

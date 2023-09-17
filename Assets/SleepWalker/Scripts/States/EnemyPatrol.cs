@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 
 public class EnemyPatrol : State
 {
+    public Attack attack;
     private Orientation orientation;
     
     [Serializable]
@@ -82,6 +83,7 @@ public class EnemyPatrol : State
     public override void EnterState()
     {
         base.EnterState();
+        attack.UnInit();
         orientation.SetFacingMode(Orientation.FacingMode.Automatic);
         animator.SetFloat(AnimationHelper.SpeedParameter, 1f);
         patrolSequence.Play();

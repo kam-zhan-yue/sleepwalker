@@ -16,6 +16,7 @@ public class PlayerAwake : State
     [BoxGroup("Game Events")] public GameEvent dashEvent;
     
     [BoxGroup("Debug")] public bool noSleep = false;
+    [BoxGroup("Setup Variables")] public BoolReference paused;
     [BoxGroup("Setup Variables")] public FloatReference volume;
     [BoxGroup("Setup Variables")] public FloatReference speed;
     [BoxGroup("Setup Variables")] public FloatReference dashSpeed;
@@ -211,6 +212,8 @@ public class PlayerAwake : State
             return;
         if (playerSleep.Value)
             return;
+        if (paused.Value)
+            return;
         if (StateController.currentState == this && canDash)
             Dash();
     }
@@ -220,6 +223,8 @@ public class PlayerAwake : State
         if (!sleepAbility)
             return;
         if (playerSleep.Value)
+            return;
+        if (paused.Value)
             return;
         if (canSleep)
         {

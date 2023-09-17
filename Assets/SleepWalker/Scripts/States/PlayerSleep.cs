@@ -293,17 +293,19 @@ public class PlayerSleep : State
                     continue;
                 if (enemies[i].gameObject.TryGetComponent(out Health enemyHealth))
                 {
-                    //Skip untargetable and dead enemies. Need to target invulnerable for boss
-                    // if (!enemyHealth.IsTargetable())
-                    //     continue;
-                    if (enemyHealth.alwaysTarget)
+                    switch (enemyHealth.targetState)
                     {
-                        activeEnemies.Add(enemies[i]);
-                        continue;
+                        //If invisible, forget about it
+                        case Health.TargetState.Invisible:
+                            continue;
+                        //If always target, just set and forget
+                        case Health.TargetState.Always:
+                            activeEnemies.Add(enemies[i]);
+                            continue;
+                        //If alive target but dead, ignore
+                        case Health.TargetState.Alive when enemyHealth.IsDead():
+                            continue;
                     }
-
-                    if (enemyHealth.IsDead())
-                        continue;
                 }
 
                 activeEnemies.Add(enemies[i]);

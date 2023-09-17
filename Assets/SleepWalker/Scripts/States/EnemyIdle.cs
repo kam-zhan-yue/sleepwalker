@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyIdle : State
 {
+    public Attack attack;
     private Rigidbody2D rb;
     private Orientation orientation;
 
@@ -29,6 +30,7 @@ public class EnemyIdle : State
     public override void EnterState()
     {
         base.EnterState();
+        attack.UnInit();
         rb.velocity = Vector2.zero;
         orientation.SetFacingMode(Orientation.FacingMode.Automatic);
 

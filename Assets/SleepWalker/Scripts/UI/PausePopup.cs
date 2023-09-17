@@ -11,6 +11,7 @@ public class PausePopup : Popup
     public GameEvent pauseEnded;
     public VolumePopup volumePopup;
     public BoolVariable canPause;
+    public BoolVariable paused;
     public BoolVariable showLevelSelection;
     private UIControls uiControls;
     protected override void InitPopup()
@@ -40,6 +41,7 @@ public class PausePopup : Popup
         volumePopup.ShowPopup();
         Time.timeScale = 0f;
         pauseStarted.Raise();
+        paused.Value = true;
     }
 
     public override void HidePopup()
@@ -48,6 +50,7 @@ public class PausePopup : Popup
         volumePopup.HidePopup();
         Time.timeScale = 1f;
         pauseEnded.Raise();
+        paused.Value = false;
     }
 
     public void RestartLevelPressed()

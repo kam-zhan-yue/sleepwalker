@@ -42,6 +42,7 @@ public class BossRetreat : State
         attack.UnInit();
         aiming.ResetAim();
         health.ToggleInvulnerability(true);
+        health.SetTargetState(Health.TargetState.Invisible);
         damageBody.Deactivate();
         float distance = Vector3.Distance(transform.position, retreatVector);
         float time = distance / retreatSpeed;
@@ -70,8 +71,14 @@ public class BossRetreat : State
         attack.ReInit();
     }
 
+    public void SetTargetable()
+    {
+        health.SetTargetState(Health.TargetState.Always);
+    }
+
     public void ForceAttack()
     {
+        health.SetTargetState(Health.TargetState.Always);
         health.ToggleInvulnerability(true);
         damageBody.Activate();
         StateController.TryEnqueueState<EnemyAggro>();

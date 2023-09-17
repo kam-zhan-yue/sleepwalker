@@ -292,7 +292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInvulerable: 0
+  startInvulnerable: 0
+  targetState: 0
+  playDeadAnim: 1
   removeFromSetOnDead: 1
   runtimeSet: {fileID: 11400000, guid: d6943c4fec65f475aa4a38b9142d9876, type: 2}
   onDeadEvent: {fileID: 11400000, guid: 6b1c8f8e68a464726bfff4dcd0339066, type: 2}
@@ -476,6 +478,12 @@ MonoBehaviour:
   sleepEvent: {fileID: 11400000, guid: a00ddbbfc9607416a913829b6db6d062, type: 2}
   dashEvent: {fileID: 11400000, guid: 7a1616abc35474e7da78d937aa08077c, type: 2}
   noSleep: 0
+  paused:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 4e89c22c5374949f19a84be427f32aaf, type: 2}
+    _variableInstancer: {fileID: 0}
   volume:
     _usage: 2
     _value: 0
@@ -580,7 +588,6 @@ MonoBehaviour:
   playerAttack: {fileID: 5793960136874332686}
   stopMoveDistance: 2
   attackDistance: 3
-  timeBetweenAttacks: 1
   maxDistance: 8
   zzzParticles: {fileID: 0}
   footstepAudio: {fileID: 0}
