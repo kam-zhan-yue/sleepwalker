@@ -3614,6 +3614,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 122782005}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &122782007 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 822557889294290557, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 122782005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &187814570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5981,7 +5987,7 @@ PrefabInstance:
         type: 3}
       propertyPath: screenFadeAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 122782007}
     - target: {fileID: 5614489661546091737, guid: 3206d38533baa43669654961a964d8de,
         type: 3}
       propertyPath: m_Name

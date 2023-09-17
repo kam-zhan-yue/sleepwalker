@@ -48144,6 +48144,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3, type: 3}
+--- !u!95 &89093143 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 822557889294290557, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 89093142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &206515735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49316,7 +49322,7 @@ PrefabInstance:
         type: 3}
       propertyPath: screenFadeAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 89093143}
     - target: {fileID: 5614489661546091737, guid: 3206d38533baa43669654961a964d8de,
         type: 3}
       propertyPath: m_Name
@@ -49945,6 +49951,16 @@ PrefabInstance:
       propertyPath: onDamageTaken.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2126265514}
+    - target: {fileID: 2876119124840176092, guid: f797f7de22c774189a00494bf2d1a886,
+        type: 3}
+      propertyPath: dashAbility
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876119124840176092, guid: f797f7de22c774189a00494bf2d1a886,
+        type: 3}
+      propertyPath: sleepAbility
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2876119124840176093, guid: f797f7de22c774189a00494bf2d1a886,
         type: 3}
       propertyPath: m_RootOrder
