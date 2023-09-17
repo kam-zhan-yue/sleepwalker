@@ -75,14 +75,10 @@ public class EnemySleep : State
     
     public override void ExitState()
     {
-        Debug.Log("Exit State");
         base.ExitState();
         if(sleepPopup)
             sleepPopup.HidePopup();
-        Debug.Log("Sleeping False");
         animator.SetBool(AnimationHelper.SleepParameter, false);
-        //Don't trigger on boss retreat...
-        // if(StateController.IsCurrentState<BossRetreat>())
         onAwake?.Invoke();
         zzzParticles.Stop();
     }

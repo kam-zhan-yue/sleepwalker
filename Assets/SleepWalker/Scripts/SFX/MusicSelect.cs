@@ -20,13 +20,13 @@ public class MusicSelect : MonoBehaviour
     {
         //finds the active music manager and changes the track
         MusicPlayer.instance.ChangeTrack(clip);
-        Debug.Log("Passing music now");
+        // Debug.Log("Passing music now");
     }
 
     public void PassToSFXPlayer(AudioClip clip)
     {
         //finds the active music manager and changes the track
         SoundEffects.instance.Play(clip);
-        Debug.Log("Passing audio now");
+        // Debug.Log("Passing audio now");
     }
 }

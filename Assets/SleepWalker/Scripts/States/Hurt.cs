@@ -31,7 +31,7 @@ public class Hurt : State
     public override void EnterState()
     {
         base.EnterState();
-        Debug.Log($"{name} Enter Hurt");
+        // Debug.Log($"{name} Enter Hurt");
         hurtRoutine = Timing.RunCoroutine(HurtCountdown().CancelWith(gameObject));
         if (hasBrain)
         {

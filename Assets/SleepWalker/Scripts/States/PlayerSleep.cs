@@ -1,14 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class PlayerSleep : State
 {
@@ -42,7 +38,6 @@ public class PlayerSleep : State
     [BoxGroup("Setup Variables")] public float stopMoveDistance;
     [BoxGroup("Setup Variables")] public float attackDistance;
 
-    [SerializeField] float timeBetweenAttacks = 1f;
     [SerializeField] float maxDistance = 2f;
 
     private List<Enemy> enemies = new();

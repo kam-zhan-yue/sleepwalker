@@ -60,7 +60,7 @@ public class Wave : MonoBehaviour
     {
         if (!activated)
             return;
-        Debug.Log($"Enemy Removed! Count is {enemyRuntimeSet.items.Count}");
+        // Debug.Log($"Enemy Removed! Count is {enemyRuntimeSet.items.Count}");
         if (enemyRuntimeSet.items.Count <= 0)
         {
             OnComplete();

@@ -13,10 +13,10 @@ public class BossRetreat : State
     [BoxGroup("Setup Variables")] public Aiming aiming;
     [BoxGroup("Setup Variables")] public Attack attack;
     [BoxGroup("Setup Variables")] public Brain brain;
+    [BoxGroup("Setup Variables")] public Health health;
     private Rigidbody2D rb;
 
     private Vector3 retreatVector;
-    private Health health;
     private DamageBody damageBody;
     private UnityEvent onComplete;
     private Tween rbTween;
@@ -25,7 +25,6 @@ public class BossRetreat : State
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
-        health = GetComponent<Health>();
         damageBody = GetComponent<DamageBody>();
         retreatVector = retreatPosition.position;
     }
@@ -74,8 +73,8 @@ public class BossRetreat : State
 
     public void ForceAttack()
     {
-        //FOR TESTING PURPOSES, SET TO FALSE
         Debug.Log("Force Attack");
+        Debug.Log(health);
         health.ToggleTargetable(true);
         health.ToggleInvulnerability(true);
         damageBody.Activate();
