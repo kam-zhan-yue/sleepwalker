@@ -143,7 +143,6 @@ public class PlayerSleep : State
 
     private void SleepStarted(InputAction.CallbackContext _callbackContext)
     {
-        Debug.Log("Sleep Ability");
         //If not sleeping, don't bother
         if (!playerSleep.Value)
             return;
