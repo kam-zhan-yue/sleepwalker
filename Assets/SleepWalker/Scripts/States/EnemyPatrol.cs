@@ -82,12 +82,25 @@ public class EnemyPatrol : State
         base.EnterState();
         orientation.SetFacingMode(Orientation.FacingMode.Automatic);
         animator.SetFloat(AnimationHelper.SpeedParameter, 1f);
+        patrolSequence.Play();
+    }
+
+    public override void UpdateBehaviour()
+    {
         if (!footstepAudio.isPlaying)
         {
             //play footsteps sfx
-            footstepAudio.Play();
+            float dist = Vector2.Distance(transform.position, Camera.main.transform.position);
+            Debug.Log($"Distance is {dist}");
+            if (dist < 15f)
+            {
+                footstepAudio.Play();
+            }
+            else if (footstepAudio.isPlaying)
+            {
+                footstepAudio.Pause();
+            }
         }
-        patrolSequence.Play();
     }
 
     private void AppendToSequence(Sequence _sequence, PatrolNode _nodeA, PatrolNode _nodeB)

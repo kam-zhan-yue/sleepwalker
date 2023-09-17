@@ -18,6 +18,7 @@ public class DialogueEvent : MonoBehaviour
     }
 
     [FoldoutGroup("Game Events")] public BoolVariable inDialogue;
+    [FoldoutGroup("Unity Event")] public UnityEvent onBegun;
     [FoldoutGroup("Unity Event")] public UnityEvent onFinished; 
     [FoldoutGroup("Unity Event")] public List<DialogueUnityEvent> onDialogueList; 
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventStarted;
@@ -83,6 +84,7 @@ public class DialogueEvent : MonoBehaviour
             return;
         uiControls.UIInput.Enable();
         uiControls.UIInput.Next.started += NextStarted;
+        onBegun?.Invoke();
         dialogueQueue.Clear();
         for (int i = 0; i < script.groups.Count; ++i)
             dialogueQueue.Enqueue(script.groups[i]);

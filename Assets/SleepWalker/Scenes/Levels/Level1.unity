@@ -44441,7 +44441,7 @@ PrefabInstance:
     - target: {fileID: 2923254486862082249, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00024414062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3122341976423847272, guid: 8e6d8c47b1fdc4218b9bdd72ba4691b3,
         type: 3}
@@ -52913,41 +52913,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1449662987}
     m_Modifications:
-    - target: {fileID: 2286994100574894594, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2286994100574894594, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754677, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: m_Name
       value: DialogueEvent
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: script
-      value: 
-      objectReference: {fileID: 11400000, guid: e4b3cecd88ac6724d8443729768f94d8,
-        type: 2}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: actors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: actors.Array.data[0].key
-      value: Grunt 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: actors.Array.data[1].key
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
@@ -52956,44 +52925,9 @@ PrefabInstance:
       objectReference: {fileID: 1999877116}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
-      propertyPath: actors.Array.data[1].dialogueObject
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1517008025}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ActivateSleepTutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TutorialPopup, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754679, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: m_RootOrder
