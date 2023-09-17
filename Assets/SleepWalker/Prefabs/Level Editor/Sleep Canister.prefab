@@ -5322,7 +5322,6 @@ Transform:
   m_Children:
   - {fileID: 9100957311608418758}
   - {fileID: 9100957310839848503}
-  - {fileID: 6981838503405855001}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5435,14 +5434,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6981838503405855002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7036500047379682874}
-  m_Father: {fileID: 5275537416782610646}
-  m_RootOrder: 2
+  m_Father: {fileID: 9100957311608418758}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5615,7 +5614,7 @@ MonoBehaviour:
   highlight: {fileID: 2312278556625728958}
   sleepCollider: {fileID: 9100957310839848500}
   fade: {fileID: 8034972195235279990}
-  timeActive: 0.2
+  timeActive: 0.1
   onActivate:
     m_PersistentCalls:
       m_Calls:
@@ -5713,9 +5712,10 @@ Transform:
   m_GameObject: {fileID: 9100957311608418754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 6981838503405855001}
   m_Father: {fileID: 5275537416782610646}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5760,7 +5760,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4008a82543ff9fd4ca0ef39a6746b2b2, type: 3}
+  m_Sprite: {fileID: 658239061, guid: cd1c114e6779b457290e0d5adc4455ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5785,8 +5785,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canister: {fileID: 9100957310839848497}
   fade: {fileID: 4514572681838788703}
-  offSwitch: {fileID: 21300000, guid: 4008a82543ff9fd4ca0ef39a6746b2b2, type: 3}
-  onSwitch: {fileID: 21300002, guid: 4008a82543ff9fd4ca0ef39a6746b2b2, type: 3}
+  offSwitch: {fileID: 658239061, guid: cd1c114e6779b457290e0d5adc4455ac, type: 3}
+  onSwitch: {fileID: -1267301156, guid: cd1c114e6779b457290e0d5adc4455ac, type: 3}
   promptHolder: {fileID: 7036500047379682874}
   onActivate:
     m_PersistentCalls:
