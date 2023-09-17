@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5158425076337626710
 Transform:
   m_ObjectHideFlags: 0
@@ -137,6 +137,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5158425076337626710}
+  - {fileID: 9079558887938722794}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -161,19 +162,19 @@ MonoBehaviour:
   attackCooldown: 1
   knockbackForce: 10
   knockbackDirection: 1
-  aimingTransform: {fileID: 5158425076337626710}
+  aimingTransform: {fileID: 9079558887938722794}
   activationFrame: 5
-  endFrame: 8
-  sampleRate: 12
+  endFrame: 9
+  sampleRate: 24
   activationTime: 0.05
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 8192
-  areaOffset: {x: 0, y: 0.04}
-  areaSize: {x: 5.51, y: 2.14}
+  areaOffset: {x: 1.2, y: 0}
+  areaSize: {x: 2.8, y: 2}
   usesAnimation: 1
-  animator: {fileID: 3978038592194075979}
-  animationToTrigger: Koala_Sword_Slash1
+  animator: {fileID: 4009356171981972268}
+  animationToTrigger: PillowAttack
   aiming: {fileID: 0}
 --- !u!114 &4052213863478499741
 MonoBehaviour:
@@ -190,3 +191,89 @@ MonoBehaviour:
   orientation: {fileID: 0}
   weapon: {fileID: 339839052198203769}
   aimingState: 0
+--- !u!1001 &5851977371339631086
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6439376788038639215}
+    m_Modifications:
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534636231367753744, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_Name
+      value: Pillow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788488808974040363, guid: 428a7a1d9ad5d4955923279fed750e0b,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 428a7a1d9ad5d4955923279fed750e0b, type: 3}
+--- !u!95 &4009356171981972268 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7391108855651093186, guid: 428a7a1d9ad5d4955923279fed750e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5851977371339631086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9079558887938722794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3402316523095106052, guid: 428a7a1d9ad5d4955923279fed750e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5851977371339631086}
+  m_PrefabAsset: {fileID: 0}

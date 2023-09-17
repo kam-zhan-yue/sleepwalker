@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7fc3aad845b93490b85296e6518bd1dd
+guid: 85609d0afede9429c9d7986c4ce31637
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,7 +122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75b7ed33bffa34e79b3e101d299215f3
-      internalID: -216183225
+      spriteID: c23b6d1f3088a4fc6a754f82a73ebbff
+      internalID: 1549746411
       vertices: []
       indices: 
       edges: []
@@ -141,9 +141,9 @@ TextureImporter:
       name: pillow_idle_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc66ddd04f34b47f085c2c2ea2d55187
-      internalID: -29400923
+      spriteID: 9b61b2b86a58544d29cd21dac340aec1
+      internalID: 179437901
       vertices: []
       indices: 
       edges: []
@@ -162,9 +162,9 @@ TextureImporter:
       name: pillow_idle_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f699709ad11f4e4f8f031d6ab629db3
-      internalID: 1547192276
+      spriteID: 3e2b35652ba894fbcb53dd8eece54f18
+      internalID: -12377113
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
       name: pillow_idle_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 768
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a3f757e866f44321845eedb8fa4ab55
-      internalID: 302279174
+      spriteID: 7678e5f23338f4174865baf61e33bc17
+      internalID: 1569580957
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pillow_idle_0: -216183225
-      pillow_idle_1: -29400923
-      pillow_idle_2: 1547192276
-      pillow_idle_3: 302279174
+      pillow_idle_0: 1549746411
+      pillow_idle_1: 179437901
+      pillow_idle_2: -12377113
+      pillow_idle_3: 1569580957
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
