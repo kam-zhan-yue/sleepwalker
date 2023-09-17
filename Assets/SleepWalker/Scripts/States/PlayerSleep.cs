@@ -197,10 +197,16 @@ public class PlayerSleep : State
             float distanceToTarget = Vector2.Distance(transform.position, target);
             //if the target is out of distance, don't bother
             if (distanceToTarget > attackDistance)
+            {
                 yield return Timing.WaitForOneFrame;
+                continue;
+            }
             //If attack in cooldown, don't bother
             if (playerAttack.InCooldown())
+            {
                 yield return Timing.WaitForOneFrame;
+                continue;
+            }
             bool attackOver = false;
             playerAttack.Activate(() => { attackOver = true; });
             while (!attackOver)

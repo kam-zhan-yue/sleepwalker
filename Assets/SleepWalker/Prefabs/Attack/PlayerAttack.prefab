@@ -159,7 +159,7 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: f969340a1d8a84f839ddfe32593674cb, type: 2}
     _variableInstancer: {fileID: 0}
-  attackCooldown: 1
+  attackCooldown: 0.5
   knockbackForce: 10
   knockbackDirection: 1
   aimingTransform: {fileID: 9079558887938722794}
@@ -176,6 +176,7 @@ MonoBehaviour:
   animator: {fileID: 4009356171981972268}
   animationToTrigger: PillowAttack
   aiming: {fileID: 0}
+  swingSound: {fileID: 0}
 --- !u!114 &4052213863478499741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 7788488808974040363, guid: 428a7a1d9ad5d4955923279fed750e0b,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428a7a1d9ad5d4955923279fed750e0b, type: 3}
