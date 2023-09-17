@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3914a9319035a4695a155282e9be015a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inDialogue: {fileID: 11400000, guid: b8a1cfae7c55d46b0b269e35a72b65d7, type: 2}
+  onFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogueList: []
   dialogueEventStarted: {fileID: 11400000, guid: 8f4b091ec2b7b4aa8bc99f713f2596ca,
     type: 2}
   dialogueEventEnded: {fileID: 11400000, guid: e0e9348d6bb9d4f5aa15e6f3bfd730f3, type: 2}

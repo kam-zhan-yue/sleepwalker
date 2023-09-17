@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -11,9 +12,10 @@ public class CanisterSwitch : MonoBehaviour
 {
     [BoxGroup("Setup Variables")] public SleepCanister canister;
     [BoxGroup("Setup Variables")] public Fade fade;
-    [FormerlySerializedAs("pffSwitch")] [BoxGroup("Setup Variables")] public Sprite offSwitch;
+    [BoxGroup("Setup Variables")] public Sprite offSwitch;
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
     [BoxGroup("Setup Variables")] public RectTransform promptHolder;
+    [BoxGroup("Setup Variables")] public BoolVariable inDialogue;
     
     [BoxGroup("Unity Events")] public UnityEvent onActivate;
 
@@ -60,6 +62,8 @@ public class CanisterSwitch : MonoBehaviour
     
     private void InteractStarted(InputAction.CallbackContext _callbackContext)
     {
+        if (inDialogue.Value)
+            return;
         if (canInteract && !activated)
         {
             Activate();

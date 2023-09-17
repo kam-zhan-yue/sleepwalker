@@ -5788,6 +5788,7 @@ MonoBehaviour:
   offSwitch: {fileID: 658239061, guid: cd1c114e6779b457290e0d5adc4455ac, type: 3}
   onSwitch: {fileID: -1267301156, guid: cd1c114e6779b457290e0d5adc4455ac, type: 3}
   promptHolder: {fileID: 7036500047379682874}
+  inDialogue: {fileID: 11400000, guid: b8a1cfae7c55d46b0b269e35a72b65d7, type: 2}
   onActivate:
     m_PersistentCalls:
       m_Calls: []

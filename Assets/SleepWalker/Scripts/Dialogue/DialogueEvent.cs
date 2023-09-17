@@ -16,6 +16,8 @@ public class DialogueEvent : MonoBehaviour
         public string id;
         public UnityEvent unityEvent;
     }
+
+    [FoldoutGroup("Game Events")] public BoolVariable inDialogue;
     [FoldoutGroup("Unity Event")] public UnityEvent onFinished; 
     [FoldoutGroup("Unity Event")] public List<DialogueUnityEvent> onDialogueList; 
     [FoldoutGroup("Game Events")] public GameEvent dialogueEventStarted;
@@ -90,6 +92,8 @@ public class DialogueEvent : MonoBehaviour
         {
             transformDialogueEventStarted.Raise(transform);
         }
+
+        inDialogue.Value = true;
     }
 
     private void DequeueDialogue()
@@ -214,6 +218,7 @@ public class DialogueEvent : MonoBehaviour
     private void EndEvent()
     {
         played = true;
+        inDialogue.Value = false;
         uiControls.UIInput.Next.started -= NextStarted;
         uiControls.UIInput.Disable();
         dialogueEventEnded.Raise();
