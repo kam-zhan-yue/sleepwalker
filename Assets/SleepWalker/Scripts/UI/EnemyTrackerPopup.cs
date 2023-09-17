@@ -11,11 +11,15 @@ public class EnemyTrackerPopup : Popup
     
     protected override void InitPopup()
     {
-        
+        if(enemyRuntimeSet.items.Count <= 0)
+            HidePopup();
     }
 
     public void OnEnemyAdded(GameObject _gameObject)
     {
+        if(enemyRuntimeSet.items.Count > 0)
+            ShowPopup();
+        
         if (enemyRuntimeSet.items.Count > maxEnemies)
         {
             maxEnemies = enemyRuntimeSet.items.Count;

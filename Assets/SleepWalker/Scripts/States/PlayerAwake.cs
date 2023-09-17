@@ -239,6 +239,7 @@ public class PlayerAwake : State
         base.Deactivate();
         // playerControls.Disable();
         pauseStamina = true;
+        playerControls.Dispose();
     }
     
     private void OnDestroy()
