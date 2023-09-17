@@ -17,7 +17,7 @@ public class SleepCanisterHandler : MonoBehaviour
         activatedCanisters++;
         if (activatedCanisters >= canisters.Count)
         {
-            countdownRoutine = Timing.RunCoroutine(Countdown());
+            countdownRoutine = Timing.RunCoroutine(Countdown().CancelWith(gameObject));
         }
     }
 

@@ -91,7 +91,7 @@ public class EnemyPatrol : State
         {
             //play footsteps sfx
             float dist = Vector2.Distance(transform.position, Camera.main.transform.position);
-            Debug.Log($"Distance is {dist}");
+            // Debug.Log($"Distance is {dist}");
             if (dist < 15f)
             {
                 footstepAudio.Play();
