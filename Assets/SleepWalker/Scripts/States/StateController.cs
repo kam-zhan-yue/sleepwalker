@@ -130,6 +130,7 @@ public class StateController : MonoBehaviour
         {
             if (!TryEnterState(previousState))
             {
+                Debug.Log($"Couldn't enter {previousState}! Entering {defaultState}");
                 EnterDefaultState();
             }
         }
