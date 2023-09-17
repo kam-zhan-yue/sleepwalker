@@ -43789,7 +43789,22 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
         type: 3}
+      propertyPath: alwaysTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
+        type: 3}
+      propertyPath: playDeadAnim
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
+        type: 3}
       propertyPath: startInvulerable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
+        type: 3}
+      propertyPath: startInvulnerable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
@@ -43798,6 +43813,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 29c2c13b57b064f39ba7eb76f53c9d18,
         type: 2}
+    - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
+        type: 3}
+      propertyPath: removeFromSetOnDead
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1171207559648398581, guid: 6142f12a76a044907afd58ed91576b61,
         type: 3}
       propertyPath: currentHealth._usage
@@ -45277,7 +45297,7 @@ PrefabInstance:
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
@@ -45313,7 +45333,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 106394813}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -45377,7 +45397,7 @@ PrefabInstance:
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Pause
+      value: ToggleTargetable
       objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
@@ -45412,7 +45432,7 @@ PrefabInstance:
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
+      value: Health, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
@@ -61052,7 +61072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInvulerable: 1
+  startInvulnerable: 0
+  alwaysTarget: 0
+  playDeadAnim: 1
   removeFromSetOnDead: 0
   runtimeSet: {fileID: 11400000, guid: 41a781b5574824103a5f27e5bb8e6637, type: 2}
   onDeadEvent: {fileID: 11400000, guid: 4d5ad23e753af44489270a88d6cffebf, type: 2}

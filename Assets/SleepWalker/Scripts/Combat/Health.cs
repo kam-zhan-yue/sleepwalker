@@ -5,11 +5,14 @@ using Sirenix.OdinInspector;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Health : MonoBehaviour, IDamageTarget
 {
-    [BoxGroup("Invulnerable")] public bool startInvulerable;
+    [BoxGroup("Invulnerable")] public bool startInvulnerable = false;
+    [BoxGroup("Invulnerable")] public bool alwaysTarget = false;
 
+    [BoxGroup("Setup Variables")] public bool playDeadAnim = true;
     [BoxGroup("Setup Variables")] public bool removeFromSetOnDead = true;
     [BoxGroup("Setup Variables")] public GameObjectRuntimeSet runtimeSet;
     [BoxGroup("Setup Variables")] public GameEvent onDeadEvent;
@@ -33,8 +36,6 @@ public class Health : MonoBehaviour, IDamageTarget
     [NonSerialized, ShowInInspector, ReadOnly]
     private bool invulnerable = false;
 
-    private bool targetable = true;
-
     private void Awake()
     {
         currentHealth.Value = maxHealth;
@@ -48,7 +49,7 @@ public class Health : MonoBehaviour, IDamageTarget
             runtimeSet.Add(gameObject);
         }
 
-        invulnerable = startInvulerable;
+        invulnerable = startInvulnerable;
     }
     
     public string GetId()
@@ -56,15 +57,8 @@ public class Health : MonoBehaviour, IDamageTarget
         return gameObject.name;
     }
 
-    public bool IsTargetable()
-    {
-        return targetable;
-    }
-    
     public void TakeDamage(Damage _damage)
     {
-        if (!targetable)
-            return;
         if (invulnerable)
         {
             if (IsDead())
@@ -101,7 +95,8 @@ public class Health : MonoBehaviour, IDamageTarget
             if (animator != null)
             {
                 // Debug.Log("Send Dead Event");
-                animator.SetTrigger(AnimationHelper.DeadParameter);
+                if(playDeadAnim)
+                    animator.SetTrigger(AnimationHelper.DeadParameter);
             }
 
             if (onDeadEvent != null)
@@ -126,11 +121,6 @@ public class Health : MonoBehaviour, IDamageTarget
     public void ToggleInvulnerability(bool _toggle)
     {
         invulnerable = _toggle;
-    }
-
-    public void ToggleTargetable(bool _toggle)
-    {
-        targetable = _toggle;
     }
 
     public bool IsDead()
