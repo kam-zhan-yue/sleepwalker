@@ -11,6 +11,9 @@ public class Fade : MonoBehaviour
     [BoxGroup("Setup Variables")] public float floatDuration = 1f;
     private SpriteRenderer spriteRenderer;
 
+    private Sequence fadeIn;
+    private Sequence fadeOut;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,23 +21,28 @@ public class Fade : MonoBehaviour
 
     public void FadeIn()
     {
-        Sequence sequence = DOTween.Sequence();
-        sequence.AppendInterval(timeBeforeFade);
-        sequence.Append(spriteRenderer.DOFade(1f, floatDuration).SetEase(Ease.Linear));
-        sequence.Play();
-
+        fadeIn = DOTween.Sequence();
+        fadeIn.AppendInterval(timeBeforeFade);
+        fadeIn.Append(spriteRenderer.DOFade(1f, floatDuration).SetEase(Ease.Linear));
+        fadeIn.Play();
     }
 
     [Button]
     public void FadeOut()
     {
-        Sequence sequence = DOTween.Sequence();
-        sequence.AppendInterval(timeBeforeFade);
-        sequence.Append(spriteRenderer.DOFade(0f, floatDuration).SetEase(Ease.Linear));
-        sequence.Play().OnComplete(() =>
+        fadeOut = DOTween.Sequence();
+        fadeOut.AppendInterval(timeBeforeFade);
+        fadeOut.Append(spriteRenderer.DOFade(0f, floatDuration).SetEase(Ease.Linear));
+        fadeOut.Play().OnComplete(() =>
         {
             if(destroyAfterFade)
                 Destroy(gameObject);
         });
+    }
+
+    private void OnDestroy()
+    {
+        fadeOut.Kill();
+        fadeIn.Kill();
     }
 }

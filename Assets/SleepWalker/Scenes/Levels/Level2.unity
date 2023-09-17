@@ -45650,17 +45650,7 @@ PrefabInstance:
       objectReference: {fileID: 972396312}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
-      propertyPath: onBegun.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
-      propertyPath: onBegun.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
@@ -45675,11 +45665,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
-      propertyPath: onBegun.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
-        type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 276083422}
@@ -45687,7 +45672,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1259316762}
+      objectReference: {fileID: 0}
     - target: {fileID: 3224922045343754678, guid: 58327f2e143e64ecbb04669c8c0f3764,
         type: 3}
       propertyPath: onFinished.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -45783,12 +45768,6 @@ PrefabInstance:
 --- !u!4 &1259316761 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3224922045343754679, guid: 58327f2e143e64ecbb04669c8c0f3764,
-    type: 3}
-  m_PrefabInstance: {fileID: 1259316760}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1259316762 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1979729083, guid: 58327f2e143e64ecbb04669c8c0f3764,
     type: 3}
   m_PrefabInstance: {fileID: 1259316760}
   m_PrefabAsset: {fileID: 0}

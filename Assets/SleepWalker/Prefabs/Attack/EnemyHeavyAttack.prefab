@@ -176,6 +176,7 @@ MonoBehaviour:
   animator: {fileID: 675291173071433811}
   animationToTrigger: PillowAttack
   aiming: {fileID: 0}
+  swingSound: {fileID: 0}
 --- !u!114 &4861231555087974023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 0}
-  weapon: {fileID: 4861231554471373072}
+  weapon: {fileID: 277858305742882746}
   aimingState: 0
 --- !u!1001 &8056205149400660625
 PrefabInstance:
@@ -260,6 +261,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428a7a1d9ad5d4955923279fed750e0b, type: 3}
+--- !u!212 &277858305742882746 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7788488808974040363, guid: 428a7a1d9ad5d4955923279fed750e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8056205149400660625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &675291173071433811 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7391108855651093186, guid: 428a7a1d9ad5d4955923279fed750e0b,

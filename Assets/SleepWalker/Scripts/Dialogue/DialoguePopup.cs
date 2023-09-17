@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class DialoguePopup : Popup
 {
+    [FoldoutGroup("Audio")] public bool hasAudio;
+    [FoldoutGroup("Audio"), ShowIf("hasAudio")] public FloatVariable volume;
+    [FoldoutGroup("Audio"), ShowIf("hasAudio")] public AudioSource audioSource;
     [BoxGroup("UI Objects")] public TMP_Text nameText;
     [BoxGroup("UI Objects")] public TMP_Text dialogueText;
     [BoxGroup("Setup Variables")] public Vector3 offset;
@@ -18,6 +22,11 @@ public class DialoguePopup : Popup
     public void Show(Vector3 _position, string _name, string _text, Action _onComplete = null)
     {
         gameObject.SetActiveFast(true);
+        if (hasAudio)
+        {
+            audioSource.volume = volume.Value;
+            audioSource.Play();
+        }
         _position.x += offset.x;
         _position.y += offset.y;
         _position.z += offset.z;
@@ -29,14 +38,20 @@ public class DialoguePopup : Popup
             .SetEase(Ease.Linear)
             .OnUpdate(() =>
             {
+                if (hasAudio)
+                    audioSource.volume = volume.Value;
                 dialogueText.SetText(text);
             })
             .OnComplete(() =>
             {
+                if(hasAudio)
+                    audioSource.Stop();
                 dialogueText.SetText(_text);
                 _onComplete?.Invoke();
             }).OnKill(() =>
             {
+                if(hasAudio)
+                    audioSource.Stop();
                 dialogueText.SetText(_text);
                 _onComplete?.Invoke();
             });

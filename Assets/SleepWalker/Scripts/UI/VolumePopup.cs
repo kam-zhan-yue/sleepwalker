@@ -8,9 +8,7 @@ public class VolumePopup : Popup
 {
     public Slider slider;
     public FloatReference volume;
-
-    private float value = 1f;
-
+    
     protected override void InitPopup()
     {
         if (PlayerPrefs.HasKey(PopupSettings.PLAYER_PREFS_VOLUME))

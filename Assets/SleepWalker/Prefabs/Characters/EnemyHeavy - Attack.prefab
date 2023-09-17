@@ -277,6 +277,12 @@ MonoBehaviour:
   aggroRange: 8
   resetDecision: 1
   decision: {fileID: 7384878834566250314}
+  volume:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
+    _variableInstancer: {fileID: 0}
 --- !u!4 &1171207559648398576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8965463861423883272, guid: 71a6854a93ee14cd8b86df1a1e067dd5,

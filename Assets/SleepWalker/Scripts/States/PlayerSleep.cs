@@ -46,7 +46,6 @@ public class PlayerSleep : State
     [SerializeField] float maxDistance = 2f;
 
     private List<Enemy> enemies = new();
-    private bool continueAttack = true;
 
     private List<Enemy> activeEnemies = new();
     private Rigidbody2D rb;
@@ -336,35 +335,6 @@ public class PlayerSleep : State
             hasTarget = false;
             target = Vector3.zero;
         }
-    }
-
-    private void LungeAttack()
-    {
-        //attack
-        // Debug.Log("Attacking now");
-
-        //line up next attack
-        IEnumerator coroutine = NextAttack(timeBetweenAttacks);
-        StartCoroutine(coroutine);
-    }
-
-    IEnumerator NextAttack(float waitTime)
-    {
-        continueAttack = false;
-
-        yield return new WaitForSeconds(waitTime);
-
-        LungeAttack();
-        continueAttack = true;
-    }
-
-    IEnumerator IgnoreEnemyFor(float waitTime, Enemy enemy)
-    {
-        enemy.canSee = false;
-
-        yield return new WaitForSeconds(waitTime);
-
-        enemy.canSee = true;
     }
 
     //Disable because in boss battle, it's good to wait until awake to face the next wave
