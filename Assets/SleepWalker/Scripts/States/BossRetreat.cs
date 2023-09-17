@@ -12,6 +12,7 @@ public class BossRetreat : State
     [BoxGroup("Setup Variables")] public float retreatSpeed = 5f;
     [BoxGroup("Setup Variables")] public Aiming aiming;
     [BoxGroup("Setup Variables")] public Attack attack;
+    [BoxGroup("Setup Variables")] public Brain brain;
     private Rigidbody2D rb;
 
     private Vector3 retreatVector;
@@ -38,6 +39,7 @@ public class BossRetreat : State
     public override void EnterState()
     {
         base.EnterState();
+        brain.Deactivate();
         attack.UnInit();
         aiming.ResetAim();
         health.ToggleInvulnerability(true);

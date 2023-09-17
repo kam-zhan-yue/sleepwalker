@@ -8,6 +8,7 @@ public class Brain : MonoBehaviour
     [NonSerialized, ShowInInspector, ReadOnly]
     public Transform target;
 
+    [NonSerialized, ShowInInspector, ReadOnly]
     private bool active = true;
 
     public bool IsActive()

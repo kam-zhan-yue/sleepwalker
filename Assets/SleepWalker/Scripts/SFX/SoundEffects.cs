@@ -31,7 +31,6 @@ public class SoundEffects : MonoBehaviour
     
     public void Play(AudioClip _clip)
     {
-        Debug.Log("Playing audio");
         AudioSource source = audioSources[sourcePlaying];
         source.volume = volume.Value;
         source.clip = _clip;
