@@ -77,6 +77,7 @@ public class TutorialPopup : Popup
 
     private IEnumerator<float> SleepTutorialCoroutine()
     {
+        yield return Timing.WaitForSeconds(1f);
         sleepTutorialDescriptionHolder.gameObject.SetActiveFast(true);
         yield return Timing.WaitForSeconds(descriptionShowTime);
         HidePopup();

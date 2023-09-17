@@ -57,7 +57,6 @@ public class EnemyAggro : State
 
     public override void EnterState()
     {
-        Debug.Log($"{name} enter Aggro");
         base.EnterState();
         attack.ReInit();
         aiming = attack.aiming;

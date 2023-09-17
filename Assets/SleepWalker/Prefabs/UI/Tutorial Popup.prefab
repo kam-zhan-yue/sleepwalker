@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3804301419815748041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -893,8 +893,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your stamina charges as you sleep and falls while you are awake. You'll
-    fall asleep and wake up automatically, so be careful!
+  m_text: 'Your stamina charges as you sleep and falls while you are awake. You''ll
+    fall asleep automatically when tired!
+
+    Press [SPACE] to wake up again!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
   m_sharedMaterial: {fileID: 7159369417392969216, guid: 3944eaaf70beffa4097d8c293604125e,

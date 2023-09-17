@@ -128,10 +128,10 @@ public class PlayerSleep : State
 
         // stateText.text = $"Sleep State: {aiState}";
 
-        if (stamina >= maxStamina)
-        {
-            StateController.TryEnqueueState<PlayerAwake>();
-        }
+        // if (stamina >= maxStamina)
+        // {
+        //     StateController.TryEnqueueState<PlayerAwake>();
+        // }
 
         if (!animator.GetBool(AnimationHelper.SleepParameter))
         {

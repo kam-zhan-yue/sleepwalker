@@ -72,6 +72,11 @@ public class DialogueEvent : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
             }
+
+            if (_collider2D.gameObject.TryGetComponent(out PlayerSleep playerSleep))
+            {
+                playerSleep.ForceAwake();
+            }
             StartEvent();
         }
     }
