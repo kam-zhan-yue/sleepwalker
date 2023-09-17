@@ -71,6 +71,8 @@ public class PlayerSleep : State
 
     [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
 
+    [SerializeField, ReadOnly] private AudioSource footstepAudio;
+
     public class Enemy
     {
         public GameObject gameObject;
@@ -88,13 +90,19 @@ public class PlayerSleep : State
         playerControls.PlayerInput.Enable();
         playerControls.PlayerInput.Sleep.started += SleepStarted;
 
-        //find what child has the zs particles
+        //find what child has the zs particles and the footstep audio
         for (int i = 0; i < transform.childCount; i++)
         {
             ParticleSystem inChild = transform.GetChild(i).GetComponent<ParticleSystem>();
             if (inChild != null)
             {
                 zzzParticles = inChild;
+            }
+
+            AudioSource source = transform.GetChild(i).GetComponent<AudioSource>();
+            if (source != null)
+            {
+                footstepAudio = source;
             }
         }
     }
@@ -216,6 +224,7 @@ public class PlayerSleep : State
         {
             rb.velocity = Vector2.zero;
             animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+            footstepAudio.Pause();
             return;
         }
 
@@ -228,11 +237,18 @@ public class PlayerSleep : State
             // Debug.Log($"Direction: {direction}");
             rb.velocity = direction * speed;
             animator.SetFloat(AnimationHelper.SpeedParameter, speed);
+
+            if (!footstepAudio.isPlaying)
+            {
+                //play footsteps sfx
+                footstepAudio.Play();
+            }
         }
         else
         {
             rb.velocity = Vector2.zero;
             animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+            footstepAudio.Pause();
         }
     }
 
@@ -381,6 +397,7 @@ public class PlayerSleep : State
         playerAttack.ResetAim();
         aiming.SetAimingState(Aiming.AimingState.Idle);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+        footstepAudio.Pause();
     }
 
     private void OnDrawGizmos()

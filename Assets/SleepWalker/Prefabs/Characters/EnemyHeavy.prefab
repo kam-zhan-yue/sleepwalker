@@ -576,6 +576,11 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 8965463861423883276}
+    - target: {fileID: 4861231555087974024, guid: 1a858d1f20c6c4a51807b2021cbe96c8,
+        type: 3}
+      propertyPath: swingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a63f3443d3453345875ea52c8dc058e, type: 3}
     - target: {fileID: 4861231555087974025, guid: 1a858d1f20c6c4a51807b2021cbe96c8,
         type: 3}
       propertyPath: m_RootOrder

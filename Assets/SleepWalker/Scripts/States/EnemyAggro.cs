@@ -26,6 +26,7 @@ public class EnemyAggro : State
     private Orientation orientation;
     private DamageBody damageBody;
     private bool hasDecision = false;
+    private AudioSource footstepAudio;
 
     protected override void Awake()
     {
@@ -35,6 +36,16 @@ public class EnemyAggro : State
         orientation = GetComponent<Orientation>();
         damageBody = GetComponent<DamageBody>();
         hasDecision = decision != null;
+
+        //find footstep audio
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            AudioSource source = transform.GetChild(i).GetComponent<AudioSource>();
+            if (source != null)
+            {
+                footstepAudio = source;
+            }
+        }
     }
 
     //Need CanAggro to avoid changing states twice in EnterState
@@ -104,11 +115,17 @@ public class EnemyAggro : State
             Vector3 direction = transform.DirectionToObject(target);
             rb.velocity = direction * speed;
             animator.SetFloat(AnimationHelper.SpeedParameter, speed);
+            if (!footstepAudio.isPlaying)
+            {
+                //play footsteps sfx
+                footstepAudio.Play();
+            }
         }
         else
         {
             rb.velocity = Vector2.zero;
             animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+            footstepAudio.Pause();
         }
     }
     

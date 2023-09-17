@@ -45,6 +45,8 @@ public class PlayerAwake : State
     private bool pauseStamina = false;
 
     [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
+
+    [SerializeField, ReadOnly] private AudioSource footstepAudio;
     
     protected override void Awake()
     {
@@ -62,6 +64,16 @@ public class PlayerAwake : State
         playerControls.PlayerInput.Fire.started += FireStarted;
         
         stamina.Value = maxStamina.Value;
+
+        //find footstep audio
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            AudioSource source = transform.GetChild(i).GetComponent<AudioSource>();
+            if (source != null)
+            {
+                footstepAudio = source;
+            }
+        }
     }
 
     public override void EnterState()
@@ -109,7 +121,20 @@ public class PlayerAwake : State
 
     private void UpdateAnimator()
     {
-        animator.SetFloat(AnimationHelper.SpeedParameter, Mathf.Abs(vert) + Mathf.Abs(horiz));
+        float speed = Mathf.Abs(vert) + Mathf.Abs(horiz);
+        animator.SetFloat(AnimationHelper.SpeedParameter, speed);
+
+        if (speed > 0.1f)
+        {
+            if (!footstepAudio.isPlaying)
+            {
+                //play footsteps sfx
+                footstepAudio.Play();
+            }
+        } else
+        {
+            footstepAudio.Pause();
+        }
 
         if (animator.GetBool(AnimationHelper.SleepParameter))
         {

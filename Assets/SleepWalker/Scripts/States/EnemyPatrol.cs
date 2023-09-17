@@ -37,6 +37,7 @@ public class EnemyPatrol : State
     private Rigidbody2D rb;
     private Animator animator;
     private Sequence patrolSequence;
+    private AudioSource footstepAudio;
     
     protected override void Awake()
     {
@@ -64,6 +65,16 @@ public class EnemyPatrol : State
         }
 
         patrolSequence.Pause();
+
+        //find footstep audio
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            AudioSource source = transform.GetChild(i).GetComponent<AudioSource>();
+            if (source != null)
+            {
+                footstepAudio = source;
+            }
+        }
     }
 
     public override void EnterState()
@@ -71,6 +82,11 @@ public class EnemyPatrol : State
         base.EnterState();
         orientation.SetFacingMode(Orientation.FacingMode.Automatic);
         animator.SetFloat(AnimationHelper.SpeedParameter, 1f);
+        if (!footstepAudio.isPlaying)
+        {
+            //play footsteps sfx
+            footstepAudio.Play();
+        }
         patrolSequence.Play();
     }
 
@@ -93,6 +109,7 @@ public class EnemyPatrol : State
         base.ExitState();
         patrolSequence.Pause();
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+        footstepAudio.Pause();
     }
 
     private void OnDrawGizmos()

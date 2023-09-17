@@ -39,10 +39,14 @@ public class Attack : MonoBehaviour
     private CoroutineHandle aimingRoutine;
     private CoroutineHandle cooldownRoutine;
     private bool attacking = false;
+
+    public AudioClip swingSound;
+    private SoundEffects sfxManager;
     
     private void Awake()
     {
         aiming = GetComponent<Aiming>();
+        sfxManager = GameObject.FindGameObjectWithTag("SFX Manager").GetComponent<SoundEffects>();
         
         damageArea = new GameObject();
         damageArea.name = name + "DamageArea";
@@ -138,6 +142,8 @@ public class Attack : MonoBehaviour
     {
         if (usesAnimation && animator != null && animator.isActiveAndEnabled)
             animator.Play(animationToTrigger);
+
+        sfxManager.Play(swingSound, 0.25f);
     }
 
     private void DisableDamageArea()

@@ -651,6 +651,11 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 8965463861423883276}
+    - target: {fileID: 4861231555087974024, guid: 9b670ee8312c04ad9915f7ec2d84ffc5,
+        type: 3}
+      propertyPath: swingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a63f3443d3453345875ea52c8dc058e, type: 3}
     - target: {fileID: 4861231555087974025, guid: 9b670ee8312c04ad9915f7ec2d84ffc5,
         type: 3}
       propertyPath: m_RootOrder
@@ -857,6 +862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674245417260777812, guid: 2899335fd21a74a6b97936113d040cbf,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1674245418802239680, guid: 2899335fd21a74a6b97936113d040cbf,
         type: 3}

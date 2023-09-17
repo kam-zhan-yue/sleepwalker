@@ -28,14 +28,23 @@ public class SoundEffects : MonoBehaviour
             audioSources[i] = transform.GetChild(i).GetComponent<AudioSource>();
         }
     }
-    
-    public void Play(AudioClip _clip)
+
+    public void Play(AudioClip _clip, float delay = 0f)
     {
         AudioSource source = audioSources[sourcePlaying];
         source.volume = volume.Value;
         source.clip = _clip;
         source.time = 0;
-        source.Play();
+
+        if (delay > 0)
+        {
+            source.PlayDelayed(delay);
+        }
+        else
+        {
+            source.Play();
+        }
+        
 
         sourcePlaying++;
         if (sourcePlaying >= audioSources.Length)

@@ -3,7 +3,11 @@ guid: 3f347bd1d488140b49e51eca6fed06d4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - aimingTransform: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - aiming: {instanceID: 0}
+  - swingSound: {fileID: 8300000, guid: 5a63f3443d3453345875ea52c8dc058e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
