@@ -183,6 +183,11 @@ public class PlayerAwake : State
         }
     }
 
+    public void RefillStamina()
+    {
+        stamina.Value = maxStamina.Value;
+    }
+
     private void Dash()
     {
         dashEvent.Raise();
