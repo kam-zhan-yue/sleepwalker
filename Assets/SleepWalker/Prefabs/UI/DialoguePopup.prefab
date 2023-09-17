@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1015525405398158161}
   - component: {fileID: 7241078319969723689}
   - component: {fileID: 40536690034650685}
+  - component: {fileID: 3269300772813450439}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -136,6 +137,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!210 &3269300772813450439
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339816992682149262}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &1424833156104019120
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +159,7 @@ GameObject:
   - component: {fileID: 1530705694785941}
   - component: {fileID: 1361729903818975761}
   - component: {fileID: 6199092427308369867}
+  - component: {fileID: 7458570377653651266}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -272,6 +285,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!210 &7458570377653651266
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424833156104019120}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &1503904460295277848
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +307,7 @@ GameObject:
   - component: {fileID: 5551027943659780245}
   - component: {fileID: 8299857432441071980}
   - component: {fileID: 4589359004377048513}
+  - component: {fileID: 2402927987466654915}
   m_Layer: 5
   m_Name: Prompt
   m_TagString: Untagged
@@ -344,6 +369,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!210 &2402927987466654915
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503904460295277848}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &1701589167625735499
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +391,7 @@ GameObject:
   - component: {fileID: 7881749801507079151}
   - component: {fileID: 2203783473861096337}
   - component: {fileID: 6062525880607886019}
+  - component: {fileID: 1585588371186364586}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -420,6 +457,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!210 &1585588371186364586
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701589167625735499}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &2417131803653369191
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,8 +478,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7281019590355159027}
   - component: {fileID: 3539448771220117397}
-  - component: {fileID: 3039362736897929021}
-  - component: {fileID: 5516797986049007067}
   m_Layer: 0
   m_Name: DialoguePopup
   m_TagString: Untagged
@@ -473,117 +519,6 @@ MonoBehaviour:
   dialogueText: {fileID: 7037457791300935805}
   offset: {x: 0, y: 0.65, z: 0}
   speed: 20
---- !u!82 &3039362736897929021
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2417131803653369191}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 938c349c364415142bccae23c50dc07b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &5516797986049007067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2417131803653369191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7108296156449541a14ccf4a07e88c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 3039362736897929021}
-  timeStartRange: {x: 0, y: 3}
 --- !u!1 &2652490675480419238
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +532,7 @@ GameObject:
   - component: {fileID: 2652490675480419234}
   - component: {fileID: 2652490675480419237}
   - component: {fileID: 2652490675480419236}
+  - component: {fileID: 3947976042010734129}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -705,6 +641,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!210 &3947976042010734129
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652490675480419238}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &2652490675648238000
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +764,7 @@ GameObject:
   - component: {fileID: 2652490676160479776}
   - component: {fileID: 2652490676160479774}
   - component: {fileID: 2652490676160479777}
+  - component: {fileID: 3583141918957653455}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -886,6 +834,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: sssszzasssszzasssszzasssszzasssszzasssszzasssszza
+--- !u!210 &3583141918957653455
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652490676160479779}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &3568263346394146084
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +932,7 @@ GameObject:
   - component: {fileID: 3974079746539620232}
   - component: {fileID: 3975799615696758488}
   - component: {fileID: 937983608217630299}
+  - component: {fileID: 8626235670509724154}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1098,6 +1058,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!210 &8626235670509724154
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763889484768003394}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &4757621398278798540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1080,7 @@ GameObject:
   - component: {fileID: 2764853777098154249}
   - component: {fileID: 8509933371005373251}
   - component: {fileID: 7698718725920583390}
+  - component: {fileID: 4644195044394598860}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1178,6 +1150,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: sssszzasssszzasssszzasssszzasssszzasssszzasssszza
+--- !u!210 &4644195044394598860
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4757621398278798540}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &5826249651738498356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1174,7 @@ GameObject:
   - component: {fileID: 6350980104424809628}
   - component: {fileID: 9032018746388195303}
   - component: {fileID: 8572473232774132794}
+  - component: {fileID: 7365322861291706002}
   m_Layer: 0
   m_Name: TextPanel (1)
   m_TagString: Untagged
@@ -1299,6 +1283,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!210 &7365322861291706002
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826249651738498356}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &6556534502312243346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1305,7 @@ GameObject:
   - component: {fileID: 4296088911645401914}
   - component: {fileID: 7026781336071503246}
   - component: {fileID: 690340223686561311}
+  - component: {fileID: 4987541315753887034}
   m_Layer: 5
   m_Name: Prompt
   m_TagString: Untagged
@@ -1371,6 +1367,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!210 &4987541315753887034
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6556534502312243346}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &8442450524654877049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1520,7 @@ GameObject:
   - component: {fileID: 3828111613010998622}
   - component: {fileID: 8186194179261968126}
   - component: {fileID: 7037457791300935805}
+  - component: {fileID: 2428068950052329210}
   m_Layer: 0
   m_Name: Message
   m_TagString: Untagged
@@ -1638,6 +1646,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!210 &2428068950052329210
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708834479757081626}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0
 --- !u!1 &8765291499082778172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,6 +1668,7 @@ GameObject:
   - component: {fileID: 3599352201511604307}
   - component: {fileID: 970039285174273891}
   - component: {fileID: 584255751466497242}
+  - component: {fileID: 5266921113831531143}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1714,3 +1734,14 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!210 &5266921113831531143
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765291499082778172}
+  m_Enabled: 1
+  m_SortingLayerID: 1843865371
+  m_SortingLayer: 6
+  m_SortingOrder: 0

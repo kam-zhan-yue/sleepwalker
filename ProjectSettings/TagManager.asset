@@ -63,3 +63,6 @@ TagManager:
   - name: Above
     uniqueID: 961700441
     locked: 0
+  - name: Dialogue
+    uniqueID: 1843865371
+    locked: 0

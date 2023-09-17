@@ -13,16 +13,10 @@ public class DialoguePopup : Popup
     [BoxGroup("Setup Variables")] public Vector3 offset;
     [BoxGroup("Setup Variables")] public float speed = 5f;
     private Tween typeWriterTween;
-    private HandleGibberish gibHandler;
-
-    private void Awake()
-    {
-        gibHandler = GetComponent<HandleGibberish>();
-    }
+   // private HandleGibberish gibHandler;
 
     public void Show(Vector3 _position, string _name, string _text, Action _onComplete = null)
     {
-        gibHandler.PlayGibberish();
         gameObject.SetActiveFast(true);
         _position.x += offset.x;
         _position.y += offset.y;
@@ -50,13 +44,13 @@ public class DialoguePopup : Popup
 
     public void Stop()
     {
-        gibHandler.PauseGibberish();
+        //gibHandler.PauseGibberish();
         typeWriterTween.Kill();
     }
 
     public void Hide()
     {
-        gibHandler.PauseGibberish();
+       // gibHandler.PauseGibberish();
         gameObject.SetActiveFast(false);
     }
 
