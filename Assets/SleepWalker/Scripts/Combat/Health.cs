@@ -63,6 +63,8 @@ public class Health : MonoBehaviour, IDamageTarget
     
     public void TakeDamage(Damage _damage)
     {
+        if (!targetable)
+            return;
         if (invulnerable)
         {
             if (IsDead())

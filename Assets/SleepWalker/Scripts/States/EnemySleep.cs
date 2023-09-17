@@ -53,7 +53,6 @@ public class EnemySleep : State
             sleepPopup.ShowPopup();
         onSleep?.Invoke();
         zzzParticles.Play();
-        Debug.Log("Sleeping True");
         animator.SetBool(AnimationHelper.SleepParameter, true);
     }
 
@@ -83,8 +82,8 @@ public class EnemySleep : State
         Debug.Log("Sleeping False");
         animator.SetBool(AnimationHelper.SleepParameter, false);
         //Don't trigger on boss retreat...
-        if(StateController.IsCurrentState<BossRetreat>())
-            onAwake?.Invoke();
+        // if(StateController.IsCurrentState<BossRetreat>())
+        onAwake?.Invoke();
         zzzParticles.Stop();
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3c27a51bb4a934307a71eb0222d864d3
+guid: 30f518bfbb0d740fd8dec94700e75321
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,7 +122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbe5d87c975ce4e5eb46fa4ac17c1534
-      internalID: -1369606497
+      spriteID: bd9eea3826f17447098bd3604b5a36cb
+      internalID: 93127425
       vertices: []
       indices: 
       edges: []
@@ -141,9 +141,9 @@ TextureImporter:
       name: pillow_attack_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43f5de28e03b4458fa5d597cb7d356b7
-      internalID: 1498551122
+      spriteID: c4b8116774dd7436dab8cdaf3c6a124b
+      internalID: 134740873
       vertices: []
       indices: 
       edges: []
@@ -162,9 +162,9 @@ TextureImporter:
       name: pillow_attack_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05186f9f9686a4545a06a189d5c3a9d8
-      internalID: -341371811
+      spriteID: 56cbe1358d26d47418a6397c255ef2b2
+      internalID: 160630662
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
       name: pillow_attack_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 768
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffaf984c1edcf48b8bceb4075a474f10
-      internalID: 610295567
+      spriteID: 8fa37c4df983c4fcbb4a5398b4ce476c
+      internalID: 2026516651
       vertices: []
       indices: 
       edges: []
@@ -204,9 +204,9 @@ TextureImporter:
       name: pillow_attack_4
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1024
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23292f2c60d0f40d783a42554445ea8f
-      internalID: -1087706085
+      spriteID: 3021f89fa1d064db2abbbaeb2a9ee240
+      internalID: 517711197
       vertices: []
       indices: 
       edges: []
@@ -225,9 +225,9 @@ TextureImporter:
       name: pillow_attack_5
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1280
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -236,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c1c167fef32b498481251e17082606a
-      internalID: 661220454
+      spriteID: 3b8521883fb4649d9ba55039eeac0568
+      internalID: -1397347929
       vertices: []
       indices: 
       edges: []
@@ -246,9 +246,9 @@ TextureImporter:
       name: pillow_attack_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1536
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd12729cf34914ba99500290673a44ae
-      internalID: 1313923219
+      spriteID: 9d63410f09c064f51b441da0ed088981
+      internalID: -1345972354
       vertices: []
       indices: 
       edges: []
@@ -267,9 +267,9 @@ TextureImporter:
       name: pillow_attack_7
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1792
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -278,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f97dfa910cf9425a99ccc33c2e508d3
-      internalID: 542491924
+      spriteID: e4a09e85c18d049cfacbae7ab984b9ea
+      internalID: 970418162
       vertices: []
       indices: 
       edges: []
@@ -288,9 +288,9 @@ TextureImporter:
       name: pillow_attack_8
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 2048
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,8 +299,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83e6cc563ac6d4529bce661a24048046
-      internalID: 1543369484
+      spriteID: 5df304e4ce5ac4b399b31922a5944e5e
+      internalID: -1369670182
       vertices: []
       indices: 
       edges: []
@@ -309,9 +309,9 @@ TextureImporter:
       name: pillow_attack_9
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 2304
         y: 0
-        width: 128
+        width: 256
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -320,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2effee5b1f3494e85a973d3182e5dc60
-      internalID: -1347860726
+      spriteID: 1007bbda99c924693b4ca762cf514f8d
+      internalID: -142196169
       vertices: []
       indices: 
       edges: []
@@ -337,16 +337,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pillow_attack_0: -1369606497
-      pillow_attack_1: 1498551122
-      pillow_attack_2: -341371811
-      pillow_attack_3: 610295567
-      pillow_attack_4: -1087706085
-      pillow_attack_5: 661220454
-      pillow_attack_6: 1313923219
-      pillow_attack_7: 542491924
-      pillow_attack_8: 1543369484
-      pillow_attack_9: -1347860726
+      pillow_attack_0: 93127425
+      pillow_attack_1: 134740873
+      pillow_attack_2: 160630662
+      pillow_attack_3: 2026516651
+      pillow_attack_4: 517711197
+      pillow_attack_5: -1397347929
+      pillow_attack_6: -1345972354
+      pillow_attack_7: 970418162
+      pillow_attack_8: -1369670182
+      pillow_attack_9: -142196169
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
