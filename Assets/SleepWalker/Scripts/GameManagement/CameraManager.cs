@@ -47,6 +47,7 @@ public class CameraManager : MonoBehaviour
     private Transform target;
     
     private Camera mainCamera;
+    public Camera MainCamera => mainCamera;
 
     private Tween transitionTween;
 

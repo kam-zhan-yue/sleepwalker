@@ -31,6 +31,7 @@ public class PlayerSleep : State
     [BoxGroup("Setup Variables")] public FloatReference staminaIncreaseRate;
     [BoxGroup("Setup Variables")] public FloatReference staminaTime;
     [BoxGroup("Setup Variables")] public BoolReference playerSleep;
+    [BoxGroup("Setup Variables")] public FloatReference volume;
 
     [SerializeField] [BoxGroup("Setup Variables")]
     private FloatReference stamina;
@@ -242,6 +243,7 @@ public class PlayerSleep : State
             {
                 //play footsteps sfx
                 footstepAudio.Play();
+                footstepAudio.volume = volume.Value;
             }
         }
         else
@@ -311,25 +313,23 @@ public class PlayerSleep : State
 
     private void ChooseEnemy()
     {
-        Vector2 playerPos = transform.position;
         //choose the closest one
         if (activeEnemies.Count > 0)
         {
-            Enemy closestEnemy = activeEnemies[0];
-            foreach (Enemy e in activeEnemies)
+            int targetIndex = 0;
+            float minDistance = transform.DistanceToObject(activeEnemies[targetIndex].gameObject.transform);
+            for (int i = 1; i < activeEnemies.Count; ++i)
             {
-                Vector2 enemyPos = e.gameObject.transform.position;
-                if (Vector2.Distance(playerPos, enemyPos) < Vector2.Distance(playerPos, enemyPos))
+                float distance = transform.DistanceToObject(activeEnemies[i].gameObject.transform);
+                if (distance < minDistance)
                 {
-                    closestEnemy = e;
+                    minDistance = distance;
+                    targetIndex = i;
                 }
             }
 
-            // value = closestEnemy.gameObject.transform.position;
-            target = closestEnemy.gameObject.transform.position;
+            target = activeEnemies[targetIndex].gameObject.transform.position;
             hasTarget = true;
-            // IEnumerator coroutine = IgnoreEnemyFor(timeBetweenAttacks + 1, closestEnemy);
-            // StartCoroutine(coroutine);
         }
         else
         {

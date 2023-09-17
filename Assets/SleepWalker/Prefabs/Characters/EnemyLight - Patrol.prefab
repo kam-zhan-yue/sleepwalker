@@ -207,6 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf6c650740744c548519cb625d673c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
+    _variableInstancer: {fileID: 0}
   speed:
     _usage: 2
     _value: 0

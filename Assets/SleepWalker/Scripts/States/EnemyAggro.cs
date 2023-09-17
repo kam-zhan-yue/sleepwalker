@@ -14,6 +14,7 @@ public class EnemyAggro : State
     [BoxGroup("Setup Variables")] public bool resetDecision;
     [ShowIf("resetDecision")]
     [BoxGroup("Setup Variables")] public Decision decision;
+    [BoxGroup("Setup Variables")] public FloatReference volume;
     
     [ShowInInspector, NonSerialized, ReadOnly]
     public Transform target;
@@ -119,6 +120,7 @@ public class EnemyAggro : State
             {
                 //play footsteps sfx
                 footstepAudio.Play();
+                footstepAudio.volume = volume.Value;
             }
         }
         else

@@ -24,6 +24,8 @@ public class EnemyPatrol : State
         Loop
     }
 
+    public FloatReference volume;
+    
     [BoxGroup("Patrol Variables")]
     public FloatReference speed;
     
@@ -90,11 +92,12 @@ public class EnemyPatrol : State
         if (!footstepAudio.isPlaying)
         {
             //play footsteps sfx
-            float dist = Vector2.Distance(transform.position, Camera.main.transform.position);
+            float dist = Vector2.Distance(transform.position, CameraManager.instance.MainCamera.transform.position);
             // Debug.Log($"Distance is {dist}");
             if (dist < 15f)
             {
                 footstepAudio.Play();
+                footstepAudio.volume = volume.Value;
             }
             else if (footstepAudio.isPlaying)
             {

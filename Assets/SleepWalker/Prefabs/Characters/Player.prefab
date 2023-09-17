@@ -476,6 +476,12 @@ MonoBehaviour:
   sleepEvent: {fileID: 11400000, guid: a00ddbbfc9607416a913829b6db6d062, type: 2}
   dashEvent: {fileID: 11400000, guid: 7a1616abc35474e7da78d937aa08077c, type: 2}
   noSleep: 0
+  volume:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
+    _variableInstancer: {fileID: 0}
   speed:
     _usage: 2
     _value: 0
@@ -556,6 +562,12 @@ MonoBehaviour:
     _value: 0
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 6e023eb0bfdac472fbd5569bb0f5850a, type: 2}
+    _variableInstancer: {fileID: 0}
+  volume:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
     _variableInstancer: {fileID: 0}
   stamina:
     _usage: 2

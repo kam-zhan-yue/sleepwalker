@@ -16,6 +16,7 @@ public class PlayerAwake : State
     [BoxGroup("Game Events")] public GameEvent dashEvent;
     
     [BoxGroup("Debug")] public bool noSleep = false;
+    [BoxGroup("Setup Variables")] public FloatReference volume;
     [BoxGroup("Setup Variables")] public FloatReference speed;
     [BoxGroup("Setup Variables")] public FloatReference dashSpeed;
     [BoxGroup("Setup Variables")] public FloatReference maxStamina;
@@ -66,6 +67,7 @@ public class PlayerAwake : State
         stamina.Value = maxStamina.Value;
 
         //find footstep audio
+        //why.............. :(((((((((
         for (int i = 0; i < transform.childCount; i++)
         {
             AudioSource source = transform.GetChild(i).GetComponent<AudioSource>();
@@ -80,16 +82,14 @@ public class PlayerAwake : State
     {
         base.EnterState();
         playerAttack.UnInit();
-        // playerControls.Enable();
         spriteRenderer.color = Color.white;
-        // staminaTime.Value = maxStamina;
-        // stamina.Value = staminaTime;
         playerSleep.Value = false;
         rb.velocity = Vector2.zero;
         canSleep = true; //get rid of this when you fix the cooldown
         orientation.facingMode = Orientation.FacingMode.Cursor;
 
         //find what child has the zs particles
+        //whhhhhyyyyy :((((((((
         for (int i = 0; i < transform.childCount; i++)
         {
             ParticleSystem inChild = transform.GetChild(i).GetComponent<ParticleSystem>();
@@ -113,23 +113,24 @@ public class PlayerAwake : State
         UpdateStamina();
         UpdateAnimator();
 
-        if (zzzParticles.isPlaying)
-        {
-            zzzParticles.Stop();
-        }
+        // if (zzzParticles.isPlaying)
+        // {
+        //     zzzParticles.Stop();
+        // }
     }
 
     private void UpdateAnimator()
     {
-        float speed = Mathf.Abs(vert) + Mathf.Abs(horiz);
-        animator.SetFloat(AnimationHelper.SpeedParameter, speed);
+        float absSpeed = Mathf.Abs(vert) + Mathf.Abs(horiz);
+        animator.SetFloat(AnimationHelper.SpeedParameter, absSpeed);
 
-        if (speed > 0.1f)
+        if (absSpeed > 0.1f)
         {
             if (!footstepAudio.isPlaying)
             {
                 //play footsteps sfx
                 footstepAudio.Play();
+                footstepAudio.volume = volume.Value;
             }
         } else
         {
