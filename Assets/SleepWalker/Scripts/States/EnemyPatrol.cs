@@ -41,7 +41,8 @@ public class EnemyPatrol : State
     private Animator animator;
     private Sequence patrolSequence;
     private AudioSource footstepAudio;
-    
+    private float footstepDefaultVolume;
+
     protected override void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -76,6 +77,7 @@ public class EnemyPatrol : State
             if (source != null)
             {
                 footstepAudio = source;
+                footstepDefaultVolume = source.volume;
             }
         }
     }
@@ -99,7 +101,7 @@ public class EnemyPatrol : State
             if (dist < 15f)
             {
                 footstepAudio.Play();
-                footstepAudio.volume = volume.Value;
+                footstepAudio.volume = footstepDefaultVolume * volume.Value;
             }
             else if (footstepAudio.isPlaying)
             {
