@@ -15,7 +15,9 @@ public class EnemyAggro : State
     [ShowIf("resetDecision")]
     [BoxGroup("Setup Variables")] public Decision decision;
     [BoxGroup("Setup Variables")] public FloatReference volume;
-    
+    [BoxGroup("Setup Variables")] public BoolReference paused;
+    [BoxGroup("Setup Variables")] public BoolReference tutorial;
+
     [ShowInInspector, NonSerialized, ReadOnly]
     public Transform target;
 
@@ -118,7 +120,11 @@ public class EnemyAggro : State
             Vector3 direction = transform.DirectionToObject(target);
             rb.velocity = direction * speed;
             animator.SetFloat(AnimationHelper.SpeedParameter, speed);
-            if (!footstepAudio.isPlaying)
+            if (paused || tutorial)
+            {
+                footstepAudio.Pause();
+            }
+            else if (!footstepAudio.isPlaying)
             {
                 //play footsteps sfx
                 footstepAudio.Play();

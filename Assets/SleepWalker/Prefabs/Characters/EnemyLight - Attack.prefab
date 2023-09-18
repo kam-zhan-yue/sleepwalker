@@ -298,6 +298,18 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 92af11b17216d4789b9b88928151e48c, type: 2}
     _variableInstancer: {fileID: 0}
+  paused:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 4e89c22c5374949f19a84be427f32aaf, type: 2}
+    _variableInstancer: {fileID: 0}
+  tutorial:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 500c6fb8e26ed48729a7f35ec06ae1b5, type: 2}
+    _variableInstancer: {fileID: 0}
 --- !u!114 &2130785485066996474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8965463861423883279, guid: c572d8b3b5555468cae4df82c61427ed,

@@ -42,7 +42,7 @@ public class DialoguePopup : Popup
                 if (hasAudio)
                 {
                     if(paused.Value)
-                        audioSource.Stop();
+                        audioSource.Pause();
                     else if (!audioSource.isPlaying)
                         audioSource.Play();
                 }

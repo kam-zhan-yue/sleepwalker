@@ -10,6 +10,8 @@ using UnityEngine.Serialization;
 public class EnemyPatrol : State
 {
     public Attack attack;
+    public BoolReference paused;
+    public BoolReference tutorial;
     private Orientation orientation;
     
     [Serializable]
@@ -98,7 +100,11 @@ public class EnemyPatrol : State
             //play footsteps sfx
             float dist = Vector2.Distance(transform.position, CameraManager.instance.MainCamera.transform.position);
             // Debug.Log($"Distance is {dist}");
-            if (dist < 15f)
+            if (paused || tutorial)
+            {
+                footstepAudio.Pause();
+            }
+            else if (dist < 15f)
             {
                 footstepAudio.Play();
                 footstepAudio.volume = footstepDefaultVolume * volume.Value;

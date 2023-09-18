@@ -647,6 +647,12 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: ed49185be54a042cd93071d48a22b7bd, type: 2}
     _variableInstancer: {fileID: 0}
+  tutorial:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 500c6fb8e26ed48729a7f35ec06ae1b5, type: 2}
+    _variableInstancer: {fileID: 0}
   descriptionShowTime: 5
   playerAwake: {fileID: 0}
   sleepTutorialHolder: {fileID: 3283311761295801053}

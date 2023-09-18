@@ -18,56 +18,64 @@ MonoBehaviour:
   - Boss
   groups:
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: ???
       message: I'm surprised you made it this far.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: ???
       message: But you're too late.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: My name is Sleepy McSleepFace.
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Owner of the second biggest mattress chain in the country!
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: Soon my Slumbersome Sleep Gas will be released
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
       message: And everyone will be so sleepy
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace
-      message: That they buy all my mattresses!
+      message: Then they will all buy my mattresses!
       animationName: 
   - actions:
-    - type: 0
+    - id: 
+      type: 0
       actor: Boss
       custom: 1
       customName: McSleepFace

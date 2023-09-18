@@ -11,7 +11,7 @@ public class MusicPlayer : MonoBehaviour
     AudioSource source;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (instance && instance != this)
             Destroy(gameObject);

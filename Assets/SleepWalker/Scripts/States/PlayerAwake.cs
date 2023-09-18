@@ -16,6 +16,7 @@ public class PlayerAwake : State
     [BoxGroup("Game Events")] public GameEvent dashEvent;
     
     [BoxGroup("Debug")] public bool noSleep = false;
+    [FormerlySerializedAs("inTutorial")] [BoxGroup("Setup Variables")] public BoolReference tutorial;
     [BoxGroup("Setup Variables")] public BoolReference paused;
     [BoxGroup("Setup Variables")] public FloatReference volume;
     [BoxGroup("Setup Variables")] public FloatReference speed;
@@ -122,6 +123,12 @@ public class PlayerAwake : State
 
     private void UpdateAnimator()
     {
+        if (tutorial || paused)
+        {
+            footstepAudio.Pause();
+            return;
+        }
+        
         float absSpeed = Mathf.Abs(vert) + Mathf.Abs(horiz);
         animator.SetFloat(AnimationHelper.SpeedParameter, absSpeed);
 

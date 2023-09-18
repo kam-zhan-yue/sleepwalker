@@ -478,6 +478,12 @@ MonoBehaviour:
   sleepEvent: {fileID: 11400000, guid: a00ddbbfc9607416a913829b6db6d062, type: 2}
   dashEvent: {fileID: 11400000, guid: 7a1616abc35474e7da78d937aa08077c, type: 2}
   noSleep: 0
+  tutorial:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 500c6fb8e26ed48729a7f35ec06ae1b5, type: 2}
+    _variableInstancer: {fileID: 0}
   paused:
     _usage: 2
     _value: 0

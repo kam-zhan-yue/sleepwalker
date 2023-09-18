@@ -5,12 +5,14 @@ using DG.Tweening;
 using MEC;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TutorialPopup : Popup
 {
     public FloatReference maxStamina;
     public FloatReference stamina;
     public BoolReference canPause;
+    [FormerlySerializedAs("inTutorial")] public BoolReference tutorial;
     public float descriptionShowTime = 5f;
     public PlayerAwake playerAwake;
     public RectTransform sleepTutorialHolder;
@@ -18,7 +20,7 @@ public class TutorialPopup : Popup
     public RectTransform dashTutorialHolder;
     public bool sleepTutorial;
     public bool dashTutorial;
-    private bool sleepTutoralOver = false;
+    private bool sleepTutorialOver = false;
     private bool inSleepTutorial = false;
     private bool inDashTutorial = false;
     private CoroutineHandle sleepTutorialRoutine;
@@ -44,20 +46,22 @@ public class TutorialPopup : Popup
 
     public void ActivateSleepTutorial()
     {
-        if (sleepTutoralOver)
+        if (sleepTutorialOver)
             return;
         ShowPopup();
+        tutorial.Value = true;
         canPause.Value = false;
         sleepTutorialHolder.gameObject.SetActiveFast(true);
         Time.timeScale = 0f;
         playerAwake.sleepAbility = true;
         inSleepTutorial = true;
-        sleepTutoralOver = true;
+        sleepTutorialOver = true;
     }
 
     public void ActivateDashTutorial()
     {
         ShowPopup();
+        tutorial.Value = true;
         dashTutorialHolder.gameObject.SetActiveFast(true);
         playerAwake.dashAbility = true;
         inDashTutorial = true;
@@ -67,6 +71,7 @@ public class TutorialPopup : Popup
     {
         if (inSleepTutorial)
         {
+            tutorial.Value = false;
             canPause.Value = true;
             Time.timeScale = 1f;
             inSleepTutorial = false;
