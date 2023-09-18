@@ -45849,12 +45849,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5793960136874332686, guid: f797f7de22c774189a00494bf2d1a886,
-        type: 3}
-      propertyPath: damage._variable
-      value: 
-      objectReference: {fileID: 11400000, guid: b5726ff5c44f64d1baaebecd540e9282,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f797f7de22c774189a00494bf2d1a886, type: 3}
 --- !u!1001 &843877960
@@ -49015,71 +49009,6 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 25a758de227594eca9908f5897a6aa52, type: 2}
     _variableInstancer: {fileID: 0}
   bossStates:
-  - healthPercentage: 0
-    events:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 727539931}
-          m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
-          m_MethodName: StartEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1844522599}
-          m_TargetAssemblyTypeName: SleepCanisterHandler, Assembly-CSharp
-          m_MethodName: FadeOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 346180969}
-          m_TargetAssemblyTypeName: PlayerSleep, Assembly-CSharp
-          m_MethodName: ForceAwake
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 346180971}
-          m_TargetAssemblyTypeName: PlayerAwake, Assembly-CSharp
-          m_MethodName: RefillStamina
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 106394812}
-          m_TargetAssemblyTypeName: Attack, Assembly-CSharp
-          m_MethodName: UnInit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    played: 0
   - healthPercentage: 0.75
     events:
       m_PersistentCalls:
@@ -49193,6 +49122,71 @@ MonoBehaviour:
         - m_Target: {fileID: 346180971}
           m_TargetAssemblyTypeName: PlayerAwake, Assembly-CSharp
           m_MethodName: RefillStamina
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    played: 0
+  - healthPercentage: 0
+    events:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 727539931}
+          m_TargetAssemblyTypeName: DialogueEvent, Assembly-CSharp
+          m_MethodName: StartEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1844522599}
+          m_TargetAssemblyTypeName: SleepCanisterHandler, Assembly-CSharp
+          m_MethodName: FadeOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 346180969}
+          m_TargetAssemblyTypeName: PlayerSleep, Assembly-CSharp
+          m_MethodName: ForceAwake
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 346180971}
+          m_TargetAssemblyTypeName: PlayerAwake, Assembly-CSharp
+          m_MethodName: RefillStamina
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 106394812}
+          m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+          m_MethodName: UnInit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
