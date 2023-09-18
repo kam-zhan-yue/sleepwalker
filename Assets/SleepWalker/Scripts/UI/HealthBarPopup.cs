@@ -31,7 +31,10 @@ public class HealthBarPopup : Popup
         sequence.Append(DOTween.To(_x => primarySlider.value = _x, _floatPair.Item2 / maxHealth.Value, _floatPair.Item1 / maxHealth.Value, primaryTime).SetEase(easing));
         sequence.AppendInterval(delay);
         sequence.Append(DOTween.To(_x => secondarySlider.value = _x, _floatPair.Item2 / maxHealth.Value, _floatPair.Item1 / maxHealth.Value, secondaryTime).SetEase(easing));
-        sequence.Play();
+        sequence.Play().OnKill(() =>
+        {
+            secondarySlider.value = _floatPair.Item1 / maxHealth.Value;
+        });
     }
 
     public void OnDialogueEventStarted()

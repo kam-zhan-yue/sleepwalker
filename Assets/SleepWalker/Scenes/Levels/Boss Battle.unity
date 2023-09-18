@@ -44049,6 +44049,11 @@ PrefabInstance:
       propertyPath: obstacleDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7384878834566250314, guid: 6142f12a76a044907afd58ed91576b61,
+        type: 3}
+      propertyPath: timeBetweenDecisions
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6142f12a76a044907afd58ed91576b61, type: 3}
 --- !u!114 &106394811 stripped
@@ -47959,6 +47964,11 @@ PrefabInstance:
       propertyPath: radius
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7607304873660908107, guid: 6cfcf78f39aa3486fa0c522527d1511e,
+        type: 3}
+      propertyPath: timeBetweenDecisions
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfcf78f39aa3486fa0c522527d1511e, type: 3}
 --- !u!4 &1411380979 stripped
@@ -48033,7 +48043,7 @@ PrefabInstance:
     - target: {fileID: 1843680238394505504, guid: 7273da780addf4d57861be12a69fd664,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1843680238394505504, guid: 7273da780addf4d57861be12a69fd664,
         type: 3}
@@ -49811,6 +49821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 553925072}
     m_Modifications:
+    - target: {fileID: 288963241, guid: 6142f12a76a044907afd58ed91576b61, type: 3}
+      propertyPath: aggroRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 516381961, guid: 6142f12a76a044907afd58ed91576b61, type: 3}
       propertyPath: radius
       value: 15
@@ -49904,6 +49918,11 @@ PrefabInstance:
         type: 3}
       propertyPath: radius
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384878834566250314, guid: 6142f12a76a044907afd58ed91576b61,
+        type: 3}
+      propertyPath: timeBetweenDecisions
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6142f12a76a044907afd58ed91576b61, type: 3}
@@ -60636,6 +60655,7 @@ MonoBehaviour:
   thankYouHolder: {fileID: 2032613305}
   mainMenuHolder: {fileID: 783965909}
   canPause: {fileID: 11400000, guid: ed49185be54a042cd93071d48a22b7bd, type: 2}
+  paused: {fileID: 11400000, guid: 4e89c22c5374949f19a84be427f32aaf, type: 2}
 --- !u!1 &2145937097
 GameObject:
   m_ObjectHideFlags: 0

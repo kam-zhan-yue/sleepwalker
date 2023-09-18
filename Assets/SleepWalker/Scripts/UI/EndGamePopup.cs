@@ -14,6 +14,7 @@ public class EndGamePopup : Popup
     [BoxGroup("UI Objects")] public RectTransform thankYouHolder;
     [BoxGroup("UI Objects")] public RectTransform mainMenuHolder;
     [BoxGroup("System Objects")] public BoolVariable canPause;
+    [BoxGroup("System Objects")] public BoolVariable paused;
 
     private bool showingLastScreen = false;
     
@@ -29,6 +30,7 @@ public class EndGamePopup : Popup
     public override void ShowPopup()
     {
         base.ShowPopup();
+        paused.Value = true;
         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
         Time.timeScale = 0f;
         mainHolder.gameObject.SetActive(true);
@@ -80,6 +82,7 @@ public class EndGamePopup : Popup
 
     public void MainMenuButtonClicked()
     {
+        paused.Value = false;
         ButtonClicked();
         Debug.Log("Return to Main Menu");
         Time.timeScale = 1f;
