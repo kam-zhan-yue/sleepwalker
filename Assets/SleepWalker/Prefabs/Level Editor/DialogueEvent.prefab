@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3914a9319035a4695a155282e9be015a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 424c7619716644f37a02f2087fe21f01, type: 2}
   inDialogue: {fileID: 11400000, guid: b8a1cfae7c55d46b0b269e35a72b65d7, type: 2}
   onBegun:
     m_PersistentCalls:

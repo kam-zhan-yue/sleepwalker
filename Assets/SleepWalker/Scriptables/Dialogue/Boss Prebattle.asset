@@ -79,5 +79,45 @@ MonoBehaviour:
       actor: Boss
       custom: 1
       customName: McSleepFace
-      message: And you won't live to see it.
+      message: ...
+      animationName: 
+  - actions:
+    - id: 
+      type: 0
+      actor: Boss
+      custom: 1
+      customName: McSleepFace
+      message: You and me kid...
+      animationName: 
+  - actions:
+    - id: 
+      type: 0
+      actor: Boss
+      custom: 1
+      customName: McSleepFace
+      message: We're one and the same
+      animationName: 
+  - actions:
+    - id: 
+      type: 0
+      actor: Boss
+      custom: 1
+      customName: McSleepFace
+      message: I am invincible while awake. You are invincible while asleep.
+      animationName: 
+  - actions:
+    - id: 
+      type: 0
+      actor: Boss
+      custom: 1
+      customName: McSleepFace
+      message: We would've made a great team
+      animationName: 
+  - actions:
+    - id: 
+      type: 0
+      actor: Boss
+      custom: 1
+      customName: McSleepFace
+      message: It is a pity you must die here.
       animationName: 

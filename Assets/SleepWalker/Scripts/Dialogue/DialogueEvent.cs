@@ -17,6 +17,7 @@ public class DialogueEvent : MonoBehaviour
         public UnityEvent unityEvent;
     }
 
+    [FoldoutGroup("UI Objects")] public PopupSettings settings;
     [FoldoutGroup("Game Events")] public BoolVariable inDialogue;
     [FoldoutGroup("Unity Event")] public UnityEvent onBegun;
     [FoldoutGroup("Unity Event")] public UnityEvent onFinished; 
@@ -128,6 +129,7 @@ public class DialogueEvent : MonoBehaviour
     [Button]
     private void MoveDialogue()
     {
+        settings.PlayButton();
         //If not finished, then force finish
         if (!CurrentGroupFinished())
         {
