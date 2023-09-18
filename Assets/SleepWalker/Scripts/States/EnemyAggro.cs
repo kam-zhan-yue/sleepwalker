@@ -28,6 +28,7 @@ public class EnemyAggro : State
     private DamageBody damageBody;
     private bool hasDecision = false;
     private AudioSource footstepAudio;
+    private float footstepDefaultVolume;
 
     protected override void Awake()
     {
@@ -45,6 +46,7 @@ public class EnemyAggro : State
             if (source != null)
             {
                 footstepAudio = source;
+                footstepDefaultVolume = source.volume;
             }
         }
     }
@@ -120,7 +122,7 @@ public class EnemyAggro : State
             {
                 //play footsteps sfx
                 footstepAudio.Play();
-                footstepAudio.volume = volume.Value;
+                footstepAudio.volume = footstepDefaultVolume * volume.Value;
             }
         }
         else
