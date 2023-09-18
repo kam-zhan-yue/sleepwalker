@@ -8,11 +8,24 @@ public class MusicSelect : MonoBehaviour
     [SerializeField] AudioClip thisLevelMusic;
     private void Start()
     {
-        AudioClip currentMusic = MusicPlayer.instance.GetComponent<AudioSource>().clip;
-
-        if (currentMusic != thisLevelMusic)
+        if (MusicPlayer.instance != null)
         {
-            MusicPlayer.instance.GetComponent<MusicPlayer>().ChangeTrack(thisLevelMusic);
+            if (MusicPlayer.instance.TryGetComponent(out AudioSource source))
+            {
+                AudioClip currentMusic = source.clip;
+                if (currentMusic != thisLevelMusic)
+                {
+                    MusicPlayer.instance.ChangeTrack(thisLevelMusic);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Couldn't find an audio source on MusicPlayer!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No Music Player in the scene.");
         }
     }
 
