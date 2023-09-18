@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class FinalSwitch : MonoBehaviour
 {
+    [BoxGroup("Unity Events")] public UnityEvent onBossKilled;
+    [BoxGroup("Unity Events")] public UnityEvent onWorldEnded;
     [BoxGroup("Setup Variables")] public EndGamePopup endGamePopup;
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
     [BoxGroup("Setup Variables")] public Fade fade;
@@ -78,6 +81,7 @@ public class FinalSwitch : MonoBehaviour
     public void BossKilled()
     {
         Debug.Log("BOSS KILLED INSTEAD!");
+        onBossKilled?.Invoke();
         endGamePopup.GameOver();
     }
 
@@ -86,6 +90,7 @@ public class FinalSwitch : MonoBehaviour
         activated = true;
         spriteRenderer.sprite = onSwitch;
         Debug.Log("END THE WORLD!!!!!");
+        onWorldEnded?.Invoke();
         endGamePopup.WorldEnd();
     }
 }
