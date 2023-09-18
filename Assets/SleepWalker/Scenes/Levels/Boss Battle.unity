@@ -49305,6 +49305,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1655586258}
+          m_TargetAssemblyTypeName: MusicSelect, Assembly-CSharp
+          m_MethodName: PauseMusic
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     played: 0
 --- !u!1001 &1637944309
 PrefabInstance:
@@ -49486,6 +49498,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5233657587781575295, guid: 5e3eed965700e0846b93bc6d170867bc,
+        type: 3}
+      propertyPath: thisLevelMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 0bcc7fe0964024f2eae1b4e73a201f3e, type: 3}
     - target: {fileID: 8418466170163600625, guid: 5e3eed965700e0846b93bc6d170867bc,
         type: 3}
       propertyPath: m_Name
@@ -62246,10 +62263,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBossKilled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1655586258}
+        m_TargetAssemblyTypeName: MusicSelect, Assembly-CSharp
+        m_MethodName: PassToMusicPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7659427285bf6485e904d11738e075a7,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onWorldEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1655586258}
+        m_TargetAssemblyTypeName: MusicSelect, Assembly-CSharp
+        m_MethodName: PassToMusicPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 7659427285bf6485e904d11738e075a7,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   endGamePopup: {fileID: 2115075484}
   onSwitch: {fileID: 658239061, guid: cd1c114e6779b457290e0d5adc4455ac, type: 3}
   fade: {fileID: 2507236769315763407}
