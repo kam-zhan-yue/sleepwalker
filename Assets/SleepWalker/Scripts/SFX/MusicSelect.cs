@@ -36,6 +36,16 @@ public class MusicSelect : MonoBehaviour
         // Debug.Log("Passing music now");
     }
 
+    public void PauseMusic()
+    {
+        MusicPlayer.instance.PauseMusic();
+    }
+
+    public void ResumeMusic()
+    {
+        MusicPlayer.instance.ResumeMusic();
+    }
+
     public void PassToSFXPlayer(AudioClip clip)
     {
         //finds the active music manager and changes the track

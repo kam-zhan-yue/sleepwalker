@@ -161,6 +161,12 @@ public class EnemyAggro : State
         if (hasDecision && resetDecision)
             decision.ToggleActive(true);
         animator.SetFloat(AnimationHelper.SpeedParameter, 0f);
+        
+        if (footstepAudio.isPlaying)
+        {
+            //stop footsteps sfx
+            footstepAudio.Stop();
+        }
         // orientation.SetFacingMode(Orientation.FacingMode.Automatic);
     }
 
