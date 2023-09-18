@@ -141,6 +141,7 @@ public class PlayerSleep : State
 
     public void ForceAwake()
     {
+        Debug.Log("Force Awake");
         StateController.TryEnqueueState<PlayerAwake>();
     }
 

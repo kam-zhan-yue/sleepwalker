@@ -16,6 +16,7 @@ public class Health : MonoBehaviour, IDamageTarget
         Invisible = 1,
         Always = 2,
     }
+    [BoxGroup("Invulnerable")] public bool sendInvulnerableEvent = true;
     [BoxGroup("Invulnerable")] public bool startInvulnerable = false;
     [BoxGroup("Invulnerable")] public TargetState targetState = TargetState.Alive;
 
@@ -77,7 +78,7 @@ public class Health : MonoBehaviour, IDamageTarget
             {
                 onDamageAfterDead?.Invoke();
             }
-            else
+            else if(sendInvulnerableEvent)
             {
                 onInvulnerableHit?.Invoke();
             }

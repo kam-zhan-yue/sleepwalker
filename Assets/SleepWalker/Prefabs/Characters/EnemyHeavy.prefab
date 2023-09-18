@@ -63,7 +63,7 @@ MonoBehaviour:
   disableAfterActivation: 0
   timeBetweenDecisions: 0.2
   startActive: 0
-  radius: 3
+  radius: 5
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendInvulnerableEvent: 1
   startInvulnerable: 0
   targetState: 0
   playDeadAnim: 1
@@ -428,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756ca43e7de8f4e0aa17b71b194c52c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackTime: 0.2
+  knockbackTime: 0.1
 --- !u!114 &8965463861423883276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30f84e7c281e496e9579dbe8ce0be3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtTime: 0.2
+  hurtTime: 0.1
 --- !u!95 &8783910816719343241
 Animator:
   serializedVersion: 5

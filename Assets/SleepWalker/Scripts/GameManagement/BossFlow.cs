@@ -25,6 +25,7 @@ public class BossFlow : MonoBehaviour
 
     public void OnHealthChanged()
     {
+        Debug.Log("On Health Changed");
         if (bossMaxHealth == 0f)
             return;
         if (!isActiveAndEnabled)

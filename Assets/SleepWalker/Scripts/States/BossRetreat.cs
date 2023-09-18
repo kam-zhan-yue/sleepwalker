@@ -37,11 +37,13 @@ public class BossRetreat : State
     
     public override void EnterState()
     {
+        Debug.Log("Enter Boss Retreat");
         base.EnterState();
         brain.Deactivate();
         attack.UnInit();
         aiming.ResetAim();
         health.ToggleInvulnerability(true);
+        health.sendInvulnerableEvent = false;
         health.SetTargetState(Health.TargetState.Invisible);
         damageBody.Deactivate();
         float distance = Vector3.Distance(transform.position, retreatVector);
@@ -57,6 +59,7 @@ public class BossRetreat : State
 
     public void ForceActivate()
     {
+        Debug.Log("Force Activate");
         StateController.TryEnqueueState<BossRetreat>();
     }
 
@@ -79,6 +82,8 @@ public class BossRetreat : State
     public void ForceAttack()
     {
         health.SetTargetState(Health.TargetState.Always);
+        health.sendInvulnerableEvent = true;
+        brain.Activate();
         health.ToggleInvulnerability(true);
         damageBody.Activate();
         StateController.TryEnqueueState<EnemyAggro>();
