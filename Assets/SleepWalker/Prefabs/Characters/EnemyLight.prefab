@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startInvulnerable: 0
-  alwaysTarget: 0
+  targetState: 0
   playDeadAnim: 1
   removeFromSetOnDead: 1
   runtimeSet: {fileID: 11400000, guid: a1fe62f4a97ef49dea9d7071b90aea28, type: 2}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac84bae57fc45490da03920f6d6ef722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sleepTime: 5
+  sleepTime: 3
   sleepPopup: {fileID: 8081358193555194419}
   attack: {fileID: 2187511752180765685}
   onSleep:

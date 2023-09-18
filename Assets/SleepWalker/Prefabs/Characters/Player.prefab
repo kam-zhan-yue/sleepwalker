@@ -594,7 +594,7 @@ MonoBehaviour:
   playerAttack: {fileID: 5793960136874332686}
   stopMoveDistance: 2
   attackDistance: 3
-  maxDistance: 8
+  maxDistance: 6
   zzzParticles: {fileID: 0}
   footstepAudio: {fileID: 0}
 --- !u!114 &2876119124840176089

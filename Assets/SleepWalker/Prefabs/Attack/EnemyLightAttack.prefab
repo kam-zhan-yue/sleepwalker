@@ -176,6 +176,7 @@ MonoBehaviour:
   animator: {fileID: 1687432580194455067}
   animationToTrigger: PillowAttack
   aiming: {fileID: 0}
+  swingSound: {fileID: 0}
 --- !u!114 &4861231555087974023
 MonoBehaviour:
   m_ObjectHideFlags: 0
