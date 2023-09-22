@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f6fbdfd101458c92461f907bb459a, type: 3}
+  m_Name: Audio Database
+  m_EditorClassIdentifier: 
+  audioDataList:
+  - id: button
+    clip: {fileID: 8300000, guid: 0231e212ecc3a4a998953f63d53de397, type: 3}
+    volume: 1
+  - id: dash
+    clip: {fileID: 8300000, guid: 1ce585521090fc0459e678a4a279e9bd, type: 3}
+    volume: 0.15
+  - id: footsteps
+    clip: {fileID: 8300000, guid: ac9f1e260e10a794e8df0f0f1398b6f0, type: 3}
+    volume: 0.4
+  - id: game_over_sfx
+    clip: {fileID: 8300000, guid: f38c62384375f9147975076549be671f, type: 3}
+    volume: 0.5
+  - id: gas_spray
+    clip: {fileID: 8300000, guid: e68a46d92a9993b48a3f532f6f6f5b56, type: 3}
+    volume: 0.6
+  - id: gibberish
+    clip: {fileID: 8300000, guid: 938c349c364415142bccae23c50dc07b, type: 3}
+    volume: 0.1
+  - id: player_grunt
+    clip: {fileID: 8300000, guid: 4cc8b38f6fc4bf044be8cb2c9eba4bbd, type: 3}
+    volume: 0.5
+  - id: swing_pillow
+    clip: {fileID: 8300000, guid: 5a63f3443d3453345875ea52c8dc058e, type: 3}
+    volume: 0.3

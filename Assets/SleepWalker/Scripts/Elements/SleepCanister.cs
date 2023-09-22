@@ -11,6 +11,7 @@ public class SleepCanister : MonoBehaviour
     [BoxGroup("Setup Variables")] public Collider2D sleepCollider;
     [BoxGroup("Setup Variables")] public Fade fade;
     [BoxGroup("Setup Variables")] public float timeActive;
+    [BoxGroup("Setup Variables")] public AudioDatabase audioDatabase;
 
     public UnityEvent onActivate;
 
@@ -18,14 +19,14 @@ public class SleepCanister : MonoBehaviour
     private Animator animator;
 
     private SoundEffects sfx;
-    [SerializeField] AudioClip gasSprayClip;
+
+    private const string GAS_SPRAY_SFX = "gas_spray";
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         sleepCollider.enabled = false;
         highlight.SetActiveFast(false);
-        sfx = GameObject.FindGameObjectWithTag("SFX Manager").GetComponent<SoundEffects>();
     }
     
     private void OnTriggerEnter2D(Collider2D _collider2D)
@@ -56,7 +57,7 @@ public class SleepCanister : MonoBehaviour
         countdownRoutine = Timing.RunCoroutine(Countdown());
         onActivate?.Invoke();
 
-        sfx.Play(gasSprayClip);
+        audioDatabase.PlaySFX(GAS_SPRAY_SFX);
     }
 
     private IEnumerator<float> Countdown()

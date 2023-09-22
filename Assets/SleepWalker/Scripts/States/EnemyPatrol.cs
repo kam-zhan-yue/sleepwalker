@@ -31,6 +31,8 @@ public class EnemyPatrol : State
     
     [BoxGroup("Patrol Variables")]
     public FloatReference speed;
+    [BoxGroup("Patrol Variables")]
+    public float audioRange = 10f;
     
     [BoxGroup("Patrol Variables")] 
     public PatrolType patrolType;
@@ -104,7 +106,7 @@ public class EnemyPatrol : State
             {
                 footstepAudio.Pause();
             }
-            else if (dist < 15f)
+            else if (dist < audioRange)
             {
                 footstepAudio.Play();
                 footstepAudio.volume = footstepDefaultVolume * volume.Value;

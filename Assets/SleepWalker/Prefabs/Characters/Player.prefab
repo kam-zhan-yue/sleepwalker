@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911beaaf1c604eb285e992ec6836451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendInvulnerableEvent: 1
   startInvulnerable: 0
   targetState: 0
   playDeadAnim: 1

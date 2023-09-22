@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisLevelMusic: {fileID: 8300000, guid: b8be545b05bd5b24a9d15e67cc09ccdd, type: 3}
+  audioDatabase: {fileID: 11400000, guid: a10a32238392a4daa82f68b3a135b567, type: 2}
 --- !u!1001 &8418466169598362935
 PrefabInstance:
   m_ObjectHideFlags: 0

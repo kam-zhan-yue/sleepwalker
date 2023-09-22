@@ -50,6 +50,8 @@ public class PlayerAwake : State
     [SerializeField, ReadOnly] private ParticleSystem zzzParticles;
 
     [SerializeField, ReadOnly] private AudioSource footstepAudio;
+
+    private float originalVolume;
     
     protected override void Awake()
     {
@@ -78,6 +80,8 @@ public class PlayerAwake : State
                 footstepAudio = source;
             }
         }
+
+        originalVolume = footstepAudio.volume;
     }
 
     public override void EnterState()
@@ -138,7 +142,7 @@ public class PlayerAwake : State
             {
                 //play footsteps sfx
                 footstepAudio.Play();
-                footstepAudio.volume = volume.Value;
+                footstepAudio.volume = volume.Value * originalVolume;
             }
         } else
         {

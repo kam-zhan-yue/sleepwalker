@@ -6,6 +6,8 @@ public class MusicSelect : MonoBehaviour
 {
     //selects music for when the scene is opened, does not change if currently on right track
     [SerializeField] AudioClip thisLevelMusic;
+    public AudioDatabase audioDatabase;
+    
     private void Start()
     {
         if (MusicPlayer.instance != null)
@@ -49,7 +51,8 @@ public class MusicSelect : MonoBehaviour
     public void PassToSFXPlayer(AudioClip clip)
     {
         //finds the active music manager and changes the track
-        SoundEffects.instance.Play(clip);
+        // SoundEffects.instance.Play(clip, _originalVolume);
+        audioDatabase.PlaySFX(clip.name);
         // Debug.Log("Passing audio now");
     }
 }

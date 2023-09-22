@@ -68,6 +68,8 @@ public class PlayerSleep : State
 
     [SerializeField, ReadOnly] private AudioSource footstepAudio;
 
+    private float originalVolume;
+
     public class Enemy
     {
         public GameObject gameObject;
@@ -100,6 +102,8 @@ public class PlayerSleep : State
                 footstepAudio = source;
             }
         }
+
+        originalVolume = footstepAudio.volume;
     }
 
     public override void EnterState()
@@ -244,7 +248,7 @@ public class PlayerSleep : State
             {
                 //play footsteps sfx
                 footstepAudio.Play();
-                footstepAudio.volume = volume.Value;
+                footstepAudio.volume = volume.Value * originalVolume;
             }
         }
         else

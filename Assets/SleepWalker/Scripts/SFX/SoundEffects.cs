@@ -29,16 +29,16 @@ public class SoundEffects : MonoBehaviour
         }
     }
 
-    public void Play(AudioClip _clip, float delay = 0f)
+    public void Play(AudioClip _clip, float _originalVolume = 1f, float _delay = 0f)
     {
         AudioSource source = audioSources[sourcePlaying];
-        source.volume = volume.Value;
+        source.volume = volume.Value * _originalVolume;
         source.clip = _clip;
         source.time = 0;
 
-        if (delay > 0)
+        if (_delay > 0)
         {
-            source.PlayDelayed(delay);
+            source.PlayDelayed(_delay);
         }
         else
         {

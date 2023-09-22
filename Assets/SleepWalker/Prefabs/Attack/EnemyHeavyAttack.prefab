@@ -172,11 +172,11 @@ MonoBehaviour:
     m_Bits: 1024
   areaOffset: {x: 1.2, y: 0}
   areaSize: {x: 2.8, y: 2}
+  audioDatabase: {fileID: 11400000, guid: a10a32238392a4daa82f68b3a135b567, type: 2}
   usesAnimation: 1
   animator: {fileID: 675291173071433811}
   animationToTrigger: PillowAttack
   aiming: {fileID: 0}
-  swingSound: {fileID: 0}
 --- !u!114 &4861231555087974023
 MonoBehaviour:
   m_ObjectHideFlags: 0

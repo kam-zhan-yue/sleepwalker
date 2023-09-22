@@ -20,6 +20,7 @@ public class Attack : MonoBehaviour
     [BoxGroup("Setup Variables")] public LayerMask targetLayerMask;
     [BoxGroup("Setup Variables")] public Vector2 areaOffset;
     [BoxGroup("Setup Variables")] public Vector2 areaSize;
+    [BoxGroup("Setup Variables")] public AudioDatabase audioDatabase;
     [BoxGroup("Animation Variables")] public bool usesAnimation = false;
     [ShowIf("usesAnimation"), BoxGroup("Animation Variables")]
     public Animator animator;
@@ -39,14 +40,10 @@ public class Attack : MonoBehaviour
     private CoroutineHandle aimingRoutine;
     private CoroutineHandle cooldownRoutine;
     private bool attacking = false;
-
-    public AudioClip swingSound;
-    private SoundEffects sfxManager;
     
     private void Awake()
     {
         aiming = GetComponent<Aiming>();
-        sfxManager = GameObject.FindGameObjectWithTag("SFX Manager").GetComponent<SoundEffects>();
         
         damageArea = new GameObject();
         damageArea.name = name + "DamageArea";
@@ -105,6 +102,7 @@ public class Attack : MonoBehaviour
         attacking = true;
         float initialDelay = StaticHelper.GetFrameInSeconds(activationFrame, sampleRate);
         yield return Timing.WaitForSeconds(initialDelay);
+        audioDatabase.PlaySFX("swing_pillow");
         EnableDamageArea();
         yield return Timing.WaitForSeconds(activationTime);
         DisableDamageArea();
@@ -142,8 +140,6 @@ public class Attack : MonoBehaviour
     {
         if (usesAnimation && animator != null && animator.isActiveAndEnabled)
             animator.Play(animationToTrigger);
-
-        sfxManager.Play(swingSound, 0.25f);
     }
 
     private void DisableDamageArea()

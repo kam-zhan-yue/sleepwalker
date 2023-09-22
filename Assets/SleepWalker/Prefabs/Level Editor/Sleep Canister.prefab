@@ -5615,6 +5615,7 @@ MonoBehaviour:
   sleepCollider: {fileID: 9100957310839848500}
   fade: {fileID: 8034972195235279990}
   timeActive: 0.1
+  audioDatabase: {fileID: 11400000, guid: a10a32238392a4daa82f68b3a135b567, type: 2}
   onActivate:
     m_PersistentCalls:
       m_Calls:
@@ -5630,7 +5631,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  gasSprayClip: {fileID: 8300000, guid: e68a46d92a9993b48a3f532f6f6f5b56, type: 3}
 --- !u!58 &9100957310839848500
 CircleCollider2D:
   m_ObjectHideFlags: 0

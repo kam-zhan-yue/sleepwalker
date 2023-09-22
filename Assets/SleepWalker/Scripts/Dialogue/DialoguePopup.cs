@@ -18,14 +18,20 @@ public class DialoguePopup : Popup
     [BoxGroup("Setup Variables")] public Vector3 offset;
     [BoxGroup("Setup Variables")] public float speed = 5f;
     private Tween typeWriterTween;
-   // private HandleGibberish gibHandler;
+    private float originalVolume;
+
+    private void Awake()
+    {
+        if (hasAudio)
+            originalVolume = audioSource.volume;
+    }
 
     public void Show(Vector3 _position, string _name, string _text, Action _onComplete = null)
     {
         gameObject.SetActiveFast(true);
         if (hasAudio)
         {
-            audioSource.volume = volume.Value;
+            audioSource.volume = volume.Value * originalVolume;
             audioSource.Play();
         }
         _position.x += offset.x;
@@ -44,7 +50,10 @@ public class DialoguePopup : Popup
                     if(paused.Value)
                         audioSource.Pause();
                     else if (!audioSource.isPlaying)
+                    {
+                        audioSource.volume = volume.Value * originalVolume;
                         audioSource.Play();
+                    }
                 }
                 dialogueText.SetText(text);
             })
