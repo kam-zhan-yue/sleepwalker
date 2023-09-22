@@ -127,7 +127,7 @@ public class PlayerSleep : State
         if (sleepState == SleepState.Deactivated)
             return;
         
-        if (!pauseStamina)
+        if (!pauseStamina && stamina.Value <= maxStamina.Value)
             stamina.Value += staminaIncreaseRate * Time.deltaTime;
 
         // stateText.text = $"Sleep State: {aiState}";

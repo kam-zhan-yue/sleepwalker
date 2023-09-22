@@ -4,6 +4,7 @@ using MEC;
 using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class LevelManager : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class LevelManager : MonoBehaviour
     private IEnumerator<float> FadeToLoad(float _waitTime, int _sceneToLoad)
     {
         //start fade animation
-        screenFadeAnim.SetTrigger(AnimationHelper.FadeOutParameter);
+        if(screenFadeAnim != null)
+            screenFadeAnim.SetTrigger(AnimationHelper.FadeOutParameter);
         //wait then load scene
         yield return Timing.WaitForSeconds(_waitTime);
         Debug.Log("Fade out complete");

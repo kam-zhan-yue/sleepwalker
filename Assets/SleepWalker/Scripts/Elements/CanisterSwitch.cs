@@ -16,6 +16,7 @@ public class CanisterSwitch : MonoBehaviour
     [BoxGroup("Setup Variables")] public Sprite onSwitch;
     [BoxGroup("Setup Variables")] public RectTransform promptHolder;
     [BoxGroup("Setup Variables")] public BoolVariable inDialogue;
+    [BoxGroup("Setup Variables")] public List<CanisterSwitch> connectedSwitches = new();
     
     [BoxGroup("Unity Events")] public UnityEvent onActivate;
 
@@ -78,11 +79,20 @@ public class CanisterSwitch : MonoBehaviour
 
     private void Activate()
     {
+        ActivateEffect();
+        for (int i = 0; i < connectedSwitches.Count; ++i)
+        {
+            connectedSwitches[i].ActivateEffect();
+        }
+        canister.Activate();
+        onActivate?.Invoke();
+    }
+
+    public void ActivateEffect()
+    {
         promptHolder.gameObject.SetActiveFast(false);
         spriteRenderer.sprite = onSwitch;
-        canister.Activate();
         activated = true;
-        onActivate?.Invoke();
     }
 
     [Button]

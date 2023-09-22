@@ -274,7 +274,7 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 9d70d77cef4464d51b2ef26ce825daa6, type: 2}
     _variableInstancer: {fileID: 0}
   attackDistance: 3
-  aggroRange: 8
+  aggroRange: 15
   resetDecision: 1
   decision: {fileID: 7384878834566250314}
   volume:
