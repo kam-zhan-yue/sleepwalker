@@ -32,7 +32,7 @@ public class EnemyPatrol : State
     [BoxGroup("Patrol Variables")]
     public FloatReference speed;
     [BoxGroup("Patrol Variables")]
-    public float audioRange = 10f;
+    public float audioRange = 12f;
     
     [BoxGroup("Patrol Variables")] 
     public PatrolType patrolType;
@@ -97,24 +97,21 @@ public class EnemyPatrol : State
 
     public override void UpdateBehaviour()
     {
-        if (!footstepAudio.isPlaying)
+        //play footsteps sfx
+        float dist = Vector2.Distance(transform.position, CameraManager.instance.MainCamera.transform.position);
+        // Debug.Log($"Distance is {dist}");
+        if (paused || tutorial)
         {
-            //play footsteps sfx
-            float dist = Vector2.Distance(transform.position, CameraManager.instance.MainCamera.transform.position);
-            // Debug.Log($"Distance is {dist}");
-            if (paused || tutorial)
-            {
-                footstepAudio.Pause();
-            }
-            else if (dist < audioRange)
-            {
-                footstepAudio.Play();
-                footstepAudio.volume = footstepDefaultVolume * volume.Value;
-            }
-            else if (footstepAudio.isPlaying)
-            {
-                footstepAudio.Pause();
-            }
+            footstepAudio.Pause();
+        }
+        else if (dist < audioRange && !footstepAudio.isPlaying)
+        {
+            footstepAudio.Play();
+            footstepAudio.volume = footstepDefaultVolume * volume.Value;
+        }
+        else if (footstepAudio.isPlaying)
+        {
+            footstepAudio.Pause();
         }
     }
 
